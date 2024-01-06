@@ -1,1809 +1,499 @@
 <!doctype html>
 <html style='font-size:12px !important'>
-
 <head>
-    <meta charset='UTF-8'>
-    <meta name='viewport' content='width=device-width initial-scale=1'>
-
-    <style type='text/css'>
-        html {
-            overflow-x: initial !important;
-        }
-
-        :root {
-            --bg-color: #ffffff;
-            --text-color: #333333;
-            --select-text-bg-color: #B5D6FC;
-            --select-text-font-color: auto;
-            --monospace: "Lucida Console", Consolas, "Courier", monospace;
-            --title-bar-height: 20px;
-        }
-
-        .mac-os-11 {
-            --title-bar-height: 28px;
-        }
-
-        html {
-            font-size: 14px;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        body {
-            margin: 0px;
-            padding: 0px;
-            height: auto;
-            inset: 0px;
-            font-size: 1rem;
-            line-height: 1.428571;
-            overflow-x: hidden;
-            background: inherit;
-            tab-size: 4;
-        }
-
-        iframe {
-            margin: auto;
-        }
-
-        a.url {
-            word-break: break-all;
-        }
-
-        a:active,
-        a:hover {
-            outline: 0px;
-        }
-
-        .in-text-selection,
-        ::selection {
-            text-shadow: none;
-            background: var(--select-text-bg-color);
-            color: var(--select-text-font-color);
-        }
-
-        #write {
-            margin: 0px auto;
-            height: auto;
-            width: inherit;
-            word-break: normal;
-            overflow-wrap: break-word;
-            position: relative;
-            white-space: normal;
-            overflow-x: visible;
-            padding-top: 36px;
-        }
-
-        #write.first-line-indent p {
-            text-indent: 0em;
-        }
-
-        #write.first-line-indent li p,
-        #write.first-line-indent p * {
-            text-indent: 0px;
-        }
-
-        #write.first-line-indent li {
-            margin-left: 2em;
-        }
-
-        .for-image #write {
-            padding-left: 8px;
-            padding-right: 8px;
-        }
-
-        body.typora-export {
-            padding-left: 30px;
-            padding-right: 30px;
-        }
-
-        .typora-export .footnote-line,
-        .typora-export li,
-        .typora-export p {
-            white-space: pre-wrap;
-        }
-
-        .typora-export .task-list-item input {
-            pointer-events: none;
-        }
-
-        @media screen and (max-width: 500px) {
-            body.typora-export {
-                padding-left: 0px;
-                padding-right: 0px;
-            }
-
-            #write {
-                padding-left: 20px;
-                padding-right: 20px;
-            }
-
-            .CodeMirror-sizer {
-                margin-left: 0px !important;
-            }
-
-            .CodeMirror-gutters {
-                display: none !important;
-            }
-        }
-
-        #write li>figure:last-child {
-            margin-bottom: 0.5rem;
-        }
-
-        #write ol,
-        #write ul {
-            position: relative;
-        }
-
-        img {
-            max-width: 100%;
-            vertical-align: middle;
-            image-orientation: from-image;
-        }
-
-        button,
-        input,
-        select,
-        textarea {
-            color: inherit;
-            font-style: inherit;
-            font-variant-caps: inherit;
-            font-weight: inherit;
-            font-stretch: inherit;
-            font-size: inherit;
-            line-height: inherit;
-            font-family: inherit;
-            font-size-adjust: inherit;
-            font-kerning: inherit;
-            font-variant-alternates: inherit;
-            font-variant-ligatures: inherit;
-            font-variant-numeric: inherit;
-            font-variant-east-asian: inherit;
-            font-variant-position: inherit;
-            font-feature-settings: inherit;
-            font-optical-sizing: inherit;
-            font-variation-settings: inherit;
-        }
-
-        input[type="checkbox"],
-        input[type="radio"] {
-            line-height: normal;
-            padding: 0px;
-        }
-
-        *,
-        ::after,
-        ::before {
-            box-sizing: border-box;
-        }
-
-        #write h1,
-        #write h2,
-        #write h3,
-        #write h4,
-        #write h5,
-        #write h6,
-        #write p,
-        #write pre {
-            width: inherit;
-        }
-
-        #write h1,
-        #write h2,
-        #write h3,
-        #write h4,
-        #write h5,
-        #write h6,
-        #write p {
-            position: relative;
-        }
-
-        p {
-            line-height: inherit;
-        }
-
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
-            break-after: avoid-page;
-            break-inside: avoid;
-            orphans: 4;
-        }
-
-        p {
-            orphans: 4;
-        }
-
-        h1 {
-            font-size: 2rem;
-        }
-
-        h2 {
-            font-size: 1.8rem;
-        }
-
-        h3 {
-            font-size: 1.6rem;
-        }
-
-        h4 {
-            font-size: 1.4rem;
-        }
-
-        h5 {
-            font-size: 1.2rem;
-        }
-
-        h6 {
-            font-size: 1rem;
-        }
-
-        .md-math-block,
-        .md-rawblock,
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6,
-        p {
-            margin-top: 1rem;
-            margin-bottom: 1rem;
-        }
-
-        .hidden {
-            display: none;
-        }
-
-        .md-blockmeta {
-            color: rgb(204, 204, 204);
-            font-weight: 700;
-            font-style: italic;
-        }
-
-        a {
-            cursor: pointer;
-        }
-
-        sup.md-footnote {
-            padding: 2px 4px;
-            background-color: rgba(238, 238, 238, 0.7);
-            color: rgb(85, 85, 85);
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        sup.md-footnote a,
-        sup.md-footnote a:hover {
-            color: inherit;
-            text-transform: inherit;
-            text-decoration: inherit;
-        }
-
-        #write input[type="checkbox"] {
-            cursor: pointer;
-            width: inherit;
-            height: inherit;
-        }
-
-        figure {
-            overflow-x: auto;
-            margin: 1.2em 0px;
-            max-width: calc(100% + 16px);
-            padding: 0px;
-        }
-
-        figure>table {
-            margin: 0px;
-        }
-
-        tr {
-            break-inside: avoid;
-            break-after: auto;
-        }
-
-        thead {
-            display: table-header-group;
-        }
-
-        table {
-            border-collapse: collapse;
-            border-spacing: 0px;
-            width: 100%;
-            overflow: auto;
-            break-inside: auto;
-            text-align: left;
-        }
-
-        table.md-table td {
-            min-width: 32px;
-        }
-
-        .CodeMirror-gutters {
-            border-right-width: 0px;
-            border-right-style: none;
-            border-right-color: currentcolor;
-            background-color: inherit;
-        }
-
-        .CodeMirror-linenumber {}
-
-        .CodeMirror {
-            text-align: left;
-        }
-
-        .CodeMirror-placeholder {
-            opacity: 0.3;
-        }
-
-        .CodeMirror pre {
-            padding: 0px 4px;
-        }
-
-        .CodeMirror-lines {
-            padding: 0px;
-        }
-
-        div.hr:focus {
-            cursor: none;
-        }
-
-        #write pre {
-            white-space: pre-wrap;
-        }
-
-        #write.fences-no-line-wrapping pre {
-            white-space: pre;
-        }
-
-        #write pre.ty-contain-cm {
-            white-space: normal;
-        }
-
-        .CodeMirror-gutters {
-            margin-right: 4px;
-        }
-
-        .md-fences {
-            font-size: 0.9rem;
-            display: block;
-            break-inside: avoid;
-            text-align: left;
-            overflow: visible;
-            white-space: pre;
-            background: inherit;
-            position: relative !important;
-        }
-
-        .md-fences-adv-panel {
-            width: 100%;
-            margin-top: 10px;
-            text-align: center;
-            padding-top: 0px;
-            padding-bottom: 8px;
-            overflow-x: auto;
-        }
-
-        #write .md-fences.mock-cm {
-            white-space: pre-wrap;
-        }
-
-        .md-fences.md-fences-with-lineno {
-            padding-left: 0px;
-        }
-
-        #write.fences-no-line-wrapping .md-fences.mock-cm {
-            white-space: pre;
-            overflow-x: auto;
-        }
-
-        .md-fences.mock-cm.md-fences-with-lineno {
-            padding-left: 8px;
-        }
-
-        .CodeMirror-line,
-        twitterwidget {
-            break-inside: avoid;
-        }
-
-        .footnotes {
-            opacity: 0.8;
-            font-size: 0.9rem;
-            margin-top: 1em;
-            margin-bottom: 1em;
-        }
-
-        .footnotes+.footnotes {
-            margin-top: 0px;
-        }
-
-        .md-reset {
-            margin: 0px;
-            padding: 0px;
-            border: 0px;
-            outline: 0px;
-            vertical-align: top;
-            background: 0px 0px;
-            text-decoration: none;
-            text-shadow: none;
-            float: none;
-            position: static;
-            width: auto;
-            height: auto;
-            white-space: nowrap;
-            cursor: inherit;
-            line-height: normal;
-            font-weight: 400;
-            text-align: left;
-            box-sizing: content-box;
-            direction: ltr;
-        }
-
-        li div {
-            padding-top: 0px;
-        }
-
-        blockquote {
-            margin: 1rem 0px;
-        }
-
-        li .mathjax-block,
-        li p {
-            margin: 0.5rem 0px;
-        }
-
-        li blockquote {
-            margin: 1rem 0px;
-        }
-
-        li {
-            margin: 0px;
-            position: relative;
-        }
-
-        blockquote> :last-child {
-            margin-bottom: 0px;
-        }
-
-        blockquote> :first-child,
-        li> :first-child {
-            margin-top: 0px;
-        }
-
-        .footnotes-area {
-            color: rgb(136, 136, 136);
-            margin-top: 0.714rem;
-            padding-bottom: 0.143rem;
-            white-space: normal;
-        }
-
-        #write .footnote-line {
-            white-space: pre-wrap;
-        }
-
-        @media print {
-
-            body,
-            html {
-                border: 1px solid transparent;
-                height: 99%;
-                break-after: avoid;
-                break-before: avoid;
-                font-variant-ligatures: no-common-ligatures;
-            }
-
-            #write {
-                margin-top: 0px;
-                padding-top: 0px;
-                border-color: transparent !important;
-            }
-
-            .typora-export * {
-                print-color-adjust: exact;
-            }
-
-            .typora-export #write {
-                break-after: avoid;
-            }
-
-            .typora-export #write::after {
-                height: 0px;
-            }
-
-            .is-mac table {
-                break-inside: avoid;
-            }
-
-            .typora-export-show-outline .typora-export-sidebar {
-                display: none;
-            }
-        }
-
-        .footnote-line {
-            margin-top: 0.714em;
-            font-size: 0.7em;
-        }
-
-        a img,
-        img a {
-            cursor: pointer;
-        }
-
-        pre.md-meta-block {
-            font-size: 0.8rem;
-            min-height: 0.8rem;
-            white-space: pre-wrap;
-            background: rgb(204, 204, 204);
-            display: block;
-            overflow-x: hidden;
-        }
-
-        p>.md-image:only-child:not(.md-img-error) img,
-        p>img:only-child {
-            display: block;
-            margin: auto;
-        }
-
-        #write.first-line-indent p>.md-image:only-child:not(.md-img-error) img {
-            left: -2em;
-            position: relative;
-        }
-
-        p>.md-image:only-child {
-            display: inline-block;
-            width: 100%;
-        }
-
-        #write .MathJax_Display {
-            margin: 0.8em 0px 0px;
-        }
-
-        .md-math-block {
-            width: 100%;
-        }
-
-        .md-math-block:not(:empty)::after {
-            display: none;
-        }
-
-        .MathJax_ref {
-            fill: currentcolor;
-        }
-
-        [contenteditable="true"]:active,
-        [contenteditable="true"]:focus,
-        [contenteditable="false"]:active,
-        [contenteditable="false"]:focus {
-            outline: 0px;
-            box-shadow: none;
-        }
-
-        .md-task-list-item {
-            position: relative;
-            list-style-type: none;
-        }
-
-        .task-list-item.md-task-list-item {
-            padding-left: 0px;
-        }
-
-        .md-task-list-item>input {
-            position: absolute;
-            top: 0px;
-            left: 0px;
-            margin-left: -1.2em;
-            margin-top: calc(1em - 10px);
-            border: medium;
-        }
-
-        .math {
-            font-size: 1rem;
-        }
-
-        .md-toc {
-            min-height: 3.58rem;
-            position: relative;
-            font-size: 0.9rem;
-            border-radius: 10px;
-        }
-
-        .md-toc-content {
-            position: relative;
-            margin-left: 0px;
-        }
-
-        .md-toc-content::after,
-        .md-toc::after {
-            display: none;
-        }
-
-        .md-toc-item {
-            display: block;
-            color: rgb(65, 131, 196);
-        }
-
-        .md-toc-item a {
-            text-decoration: none;
-        }
-
-        .md-toc-inner:hover {
-            text-decoration: underline;
-        }
-
-        .md-toc-inner {
-            display: inline-block;
-            cursor: pointer;
-        }
-
-        .md-toc-h1 .md-toc-inner {
-            margin-left: 0px;
-            font-weight: 700;
-        }
-
-        .md-toc-h2 .md-toc-inner {
-            margin-left: 2em;
-        }
-
-        .md-toc-h3 .md-toc-inner {
-            margin-left: 4em;
-        }
-
-        .md-toc-h4 .md-toc-inner {
-            margin-left: 6em;
-        }
-
-        .md-toc-h5 .md-toc-inner {
-            margin-left: 8em;
-        }
-
-        .md-toc-h6 .md-toc-inner {
-            margin-left: 10em;
-        }
-
-        @media screen and (max-width: 48em) {
-            .md-toc-h3 .md-toc-inner {
-                margin-left: 3.5em;
-            }
-
-            .md-toc-h4 .md-toc-inner {
-                margin-left: 5em;
-            }
-
-            .md-toc-h5 .md-toc-inner {
-                margin-left: 6.5em;
-            }
-
-            .md-toc-h6 .md-toc-inner {
-                margin-left: 8em;
-            }
-        }
-
-        a.md-toc-inner {
-            font-size: inherit;
-            font-style: inherit;
-            font-weight: inherit;
-            line-height: inherit;
-        }
-
-        .footnote-line a:not(.reversefootnote) {
-            color: inherit;
-        }
-
-        .md-attr {
-            display: none;
-        }
-
-        .md-fn-count::after {
-            content: ".";
-        }
-
-        code,
-        pre,
-        samp,
-        tt {
-            font-family: var(--monospace);
-        }
-
-        kbd {
-            margin: 0px 0.1em;
-            padding: 0.1em 0.6em;
-            font-size: 0.8em;
-            color: rgb(36, 39, 41);
-            background: rgb(255, 255, 255);
-            border: 1px solid rgb(173, 179, 185);
-            border-radius: 3px;
-            box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset;
-            white-space: nowrap;
-            vertical-align: middle;
-        }
-
-        .md-comment {
-            color: rgb(162, 127, 3);
-            opacity: 0.6;
-            font-family: var(--monospace);
-        }
-
-        code {
-            text-align: left;
-            vertical-align: initial;
-        }
-
-        a.md-print-anchor {
-            white-space: pre !important;
-            border-width: medium !important;
-            border-style: none !important;
-            border-color: currentcolor !important;
-            display: inline-block !important;
-            position: absolute !important;
-            width: 1px !important;
-            right: 0px !important;
-            outline: 0px !important;
-            background: 0px 0px !important;
-            text-decoration: initial !important;
-            text-shadow: initial !important;
-        }
-
-        .os-windows.monocolor-emoji .md-emoji {
-            font-family: "Segoe UI Symbol", sans-serif;
-        }
-
-        .md-diagram-panel>svg {
-            max-width: 100%;
-        }
-
-        [lang="flow"] svg,
-        [lang="mermaid"] svg {
-            max-width: 100%;
-            height: auto;
-        }
-
-        [lang="mermaid"] .node text {
-            font-size: 1rem;
-        }
-
-        table tr th {
-            border-bottom-width: 0px;
-            border-bottom-style: none;
-            border-bottom-color: currentcolor;
-        }
-
-        video {
-            max-width: 100%;
-            display: block;
-            margin: 0px auto;
-        }
-
-        iframe {
-            max-width: 100%;
-            width: 100%;
-            border: medium;
-        }
-
-        .highlight td,
-        .highlight tr {
-            border: 0px;
-        }
-
-        mark {
-            background: rgb(255, 255, 0);
-            color: rgb(0, 0, 0);
-        }
-
-        .md-html-inline .md-plain,
-        .md-html-inline strong,
-        mark .md-inline-math,
-        mark strong {
-            color: inherit;
-        }
-
-        .md-expand mark .md-meta {
-            opacity: 0.3 !important;
-        }
-
-        mark .md-meta {
-            color: rgb(0, 0, 0);
-        }
-
-        @media print {
-
-            .typora-export h1,
-            .typora-export h2,
-            .typora-export h3,
-            .typora-export h4,
-            .typora-export h5,
-            .typora-export h6 {
-                break-inside: avoid;
-            }
-        }
-
-        .md-diagram-panel .messageText {
-            stroke: none !important;
-        }
-
-        .md-diagram-panel .start-state {
-            fill: var(--node-fill);
-        }
-
-        .md-diagram-panel .edgeLabel rect {
-            opacity: 1 !important;
-        }
-
-        .md-fences.md-fences-math {
-            font-size: 1em;
-        }
-
-        .md-fences-advanced:not(.md-focus) {
-            padding: 0px;
-            white-space: nowrap;
-            border: 0px;
-        }
-
-        .md-fences-advanced:not(.md-focus) {
-            background: inherit;
-        }
-
-        .typora-export-show-outline .typora-export-content {
-            max-width: 1440px;
-            margin: auto;
-            display: flex;
-            flex-direction: row;
-        }
-
-        .typora-export-sidebar {
-            width: 300px;
-            font-size: 0.8rem;
-            margin-top: 80px;
-            margin-right: 18px;
-        }
-
-        .typora-export-show-outline #write {
-            --webkit-flex: 2;
-            flex: 2 1 0%;
-        }
-
-        .typora-export-sidebar .outline-content {
-            position: fixed;
-            top: 0px;
-            max-height: 100%;
-            overflow: hidden auto;
-            padding-bottom: 30px;
-            padding-top: 60px;
-            width: 300px;
-        }
-
-        @media screen and (max-width: 1024px) {
-
-            .typora-export-sidebar,
-            .typora-export-sidebar .outline-content {
-                width: 240px;
-            }
-        }
-
-        @media screen and (max-width: 800px) {
-            .typora-export-sidebar {
-                display: none;
-            }
-        }
-
-        .outline-content li,
-        .outline-content ul {
-            margin-left: 0px;
-            margin-right: 0px;
-            padding-left: 0px;
-            padding-right: 0px;
-            list-style: none;
-        }
-
-        .outline-content ul {
-            margin-top: 0px;
-            margin-bottom: 0px;
-        }
-
-        .outline-content strong {
-            font-weight: 400;
-        }
-
-        .outline-expander {
-            width: 1rem;
-            height: 1.428571rem;
-            position: relative;
-            display: table-cell;
-            vertical-align: middle;
-            cursor: pointer;
-            padding-left: 4px;
-        }
-
-        .outline-expander::before {
-            content: "";
-            position: relative;
-            font-family: Ionicons;
-            display: inline-block;
-            font-size: 8px;
-            vertical-align: middle;
-        }
-
-        .outline-item {
-            padding-top: 3px;
-            padding-bottom: 3px;
-            cursor: pointer;
-        }
-
-        .outline-expander:hover::before {
-            content: "";
-        }
-
-        .outline-h1>.outline-item {
-            padding-left: 0px;
-        }
-
-        .outline-h2>.outline-item {
-            padding-left: 1em;
-        }
-
-        .outline-h3>.outline-item {
-            padding-left: 2em;
-        }
-
-        .outline-h4>.outline-item {
-            padding-left: 3em;
-        }
-
-        .outline-h5>.outline-item {
-            padding-left: 4em;
-        }
-
-        .outline-h6>.outline-item {
-            padding-left: 5em;
-        }
-
-        .outline-label {
-            cursor: pointer;
-            display: table-cell;
-            vertical-align: middle;
-            text-decoration: none;
-            color: inherit;
-        }
-
-        .outline-label:hover {
-            text-decoration: underline;
-        }
-
-        .outline-item:hover {
-            border-color: rgb(245, 245, 245);
-            background-color: var(--item-hover-bg-color);
-        }
-
-        .outline-item:hover {
-            margin-left: -28px;
-            margin-right: -28px;
-            border-left-width: 28px;
-            border-left-style: solid;
-            border-left-color: transparent;
-            border-right-width: 28px;
-            border-right-style: solid;
-            border-right-color: transparent;
-        }
-
-        .outline-item-single .outline-expander::before,
-        .outline-item-single .outline-expander:hover::before {
-            display: none;
-        }
-
-        .outline-item-open>.outline-item>.outline-expander::before {
-            content: "";
-        }
-
-        .outline-children {
-            display: none;
-        }
-
-        .info-panel-tab-wrapper {
-            display: none;
-        }
-
-        .outline-item-open>.outline-children {
-            display: block;
-        }
-
-        .typora-export .outline-item {
-            padding-top: 1px;
-            padding-bottom: 1px;
-        }
-
-        .typora-export .outline-item:hover {
-            margin-right: -8px;
-            border-right-width: 8px;
-            border-right-style: solid;
-            border-right-color: transparent;
-        }
-
-        .typora-export .outline-expander::before {
-            content: "+";
-            font-family: inherit;
-            top: -1px;
-        }
-
-        .typora-export .outline-expander:hover::before,
-        .typora-export .outline-item-open>.outline-item>.outline-expander::before {
-            content: "−";
-        }
-
-        .typora-export-collapse-outline .outline-children {
-            display: none;
-        }
-
-        .typora-export-collapse-outline .outline-item-open>.outline-children,
-        .typora-export-no-collapse-outline .outline-children {
-            display: block;
-        }
-
-        .typora-export-no-collapse-outline .outline-expander::before {
-            content: "" !important;
-        }
-
-        .typora-export-show-outline .outline-item-active>.outline-item .outline-label {
-            font-weight: 700;
-        }
-
-        .md-inline-math-container mjx-container {
-            zoom: 0.95;
-        }
-
-
-        .CodeMirror {
-            height: auto;
-        }
-
-        .CodeMirror.cm-s-inner {
-            background: inherit;
-        }
-
-        .CodeMirror-scroll {
-            overflow: auto hidden;
-            z-index: 3;
-        }
-
-        .CodeMirror-gutter-filler,
-        .CodeMirror-scrollbar-filler {
-            background-color: rgb(255, 255, 255);
-        }
-
-        .CodeMirror-gutters {
-            border-right-width: 1px;
-            border-right-style: solid;
-            border-right-color: rgb(221, 221, 221);
-            background: inherit;
-            white-space: nowrap;
-        }
-
-        .CodeMirror-linenumber {
-            padding: 0px 3px 0px 5px;
-            text-align: right;
-            color: rgb(153, 153, 153);
-        }
-
-        .cm-s-inner .cm-keyword {
-            color: rgb(119, 0, 136);
-        }
-
-        .cm-s-inner .cm-atom,
-        .cm-s-inner.cm-atom {
-            color: rgb(34, 17, 153);
-        }
-
-        .cm-s-inner .cm-number {
-            color: rgb(17, 102, 68);
-        }
-
-        .cm-s-inner .cm-def {
-            color: rgb(0, 0, 255);
-        }
-
-        .cm-s-inner .cm-variable {
-            color: rgb(0, 0, 0);
-        }
-
-        .cm-s-inner .cm-variable-2 {
-            color: rgb(0, 85, 170);
-        }
-
-        .cm-s-inner .cm-variable-3 {
-            color: rgb(0, 136, 85);
-        }
-
-        .cm-s-inner .cm-string {
-            color: rgb(170, 17, 17);
-        }
-
-        .cm-s-inner .cm-property {
-            color: rgb(0, 0, 0);
-        }
-
-        .cm-s-inner .cm-operator {
-            color: rgb(152, 26, 26);
-        }
-
-        .cm-s-inner .cm-comment,
-        .cm-s-inner.cm-comment {
-            color: rgb(170, 85, 0);
-        }
-
-        .cm-s-inner .cm-string-2 {
-            color: rgb(255, 85, 0);
-        }
-
-        .cm-s-inner .cm-meta {
-            color: rgb(85, 85, 85);
-        }
-
-        .cm-s-inner .cm-qualifier {
-            color: rgb(85, 85, 85);
-        }
-
-        .cm-s-inner .cm-builtin {
-            color: rgb(51, 0, 170);
-        }
-
-        .cm-s-inner .cm-bracket {
-            color: rgb(153, 153, 119);
-        }
-
-        .cm-s-inner .cm-tag {
-            color: rgb(17, 119, 0);
-        }
-
-        .cm-s-inner .cm-attribute {
-            color: rgb(0, 0, 204);
-        }
-
-        .cm-s-inner .cm-header,
-        .cm-s-inner.cm-header {
-            color: rgb(0, 0, 255);
-        }
-
-        .cm-s-inner .cm-quote,
-        .cm-s-inner.cm-quote {
-            color: rgb(0, 153, 0);
-        }
-
-        .cm-s-inner .cm-hr,
-        .cm-s-inner.cm-hr {
-            color: rgb(153, 153, 153);
-        }
-
-        .cm-s-inner .cm-link,
-        .cm-s-inner.cm-link {
-            color: rgb(0, 0, 204);
-        }
-
-        .cm-negative {
-            color: rgb(221, 68, 68);
-        }
-
-        .cm-positive {
-            color: rgb(34, 153, 34);
-        }
-
-        .cm-header,
-        .cm-strong {
-            font-weight: 700;
-        }
-
-        .cm-del {
-            text-decoration: line-through;
-        }
-
-        .cm-em {
-            font-style: italic;
-        }
-
-        .cm-link {
-            text-decoration: underline;
-        }
-
-        .cm-error {
-            color: red;
-        }
-
-        .cm-invalidchar {
-            color: red;
-        }
-
-        .cm-constant {
-            color: rgb(38, 139, 210);
-        }
-
-        .cm-defined {
-            color: rgb(181, 137, 0);
-        }
-
-        div.CodeMirror span.CodeMirror-matchingbracket {
-            color: rgb(0, 255, 0);
-        }
-
-        div.CodeMirror span.CodeMirror-nonmatchingbracket {
-            color: rgb(255, 34, 34);
-        }
-
-        .cm-s-inner .CodeMirror-activeline-background {
-            background: inherit;
-        }
-
-        .CodeMirror {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .CodeMirror-scroll {
-            height: 100%;
-            outline: 0px;
-            position: relative;
-            box-sizing: content-box;
-            background: inherit;
-        }
-
-        .CodeMirror-sizer {
-            position: relative;
-        }
-
-        .CodeMirror-gutter-filler,
-        .CodeMirror-hscrollbar,
-        .CodeMirror-scrollbar-filler,
-        .CodeMirror-vscrollbar {
-            position: absolute;
-            z-index: 6;
-            display: none;
-            outline: 0px;
-        }
-
-        .CodeMirror-vscrollbar {
-            right: 0px;
-            top: 0px;
-            overflow: hidden;
-        }
-
-        .CodeMirror-hscrollbar {
-            bottom: 0px;
-            left: 0px;
-            overflow: auto hidden;
-        }
-
-        .CodeMirror-scrollbar-filler {
-            right: 0px;
-            bottom: 0px;
-        }
-
-        .CodeMirror-gutter-filler {
-            left: 0px;
-            bottom: 0px;
-        }
-
-        .CodeMirror-gutters {
-            position: absolute;
-            left: 0px;
-            top: 0px;
-            padding-bottom: 10px;
-            z-index: 3;
-            overflow-y: hidden;
-        }
-
-        .CodeMirror-gutter {
-            white-space: normal;
-            height: 100%;
-            box-sizing: content-box;
-            padding-bottom: 30px;
-            margin-bottom: -32px;
-            display: inline-block;
-        }
-
-        .CodeMirror-gutter-wrapper {
-            position: absolute;
-            z-index: 4;
-            background: 0px 0px !important;
-            border: medium !important;
-        }
-
-        .CodeMirror-gutter-background {
-            position: absolute;
-            top: 0px;
-            bottom: 0px;
-            z-index: 4;
-        }
-
-        .CodeMirror-gutter-elt {
-            position: absolute;
-            cursor: default;
-            z-index: 4;
-        }
-
-        .CodeMirror-lines {
-            cursor: text;
-        }
-
-        .CodeMirror pre {
-            border-radius: 0px;
-            border-width: 0px;
-            background: 0px 0px;
-            font-family: inherit;
-            font-size: inherit;
-            margin: 0px;
-            white-space: pre;
-            overflow-wrap: normal;
-            color: inherit;
-            z-index: 2;
-            position: relative;
-            overflow: visible;
-        }
-
-        .CodeMirror-wrap pre {
-            overflow-wrap: break-word;
-            white-space: pre-wrap;
-            word-break: normal;
-        }
-
-        .CodeMirror-code pre {
-            border-right-width: 30px;
-            border-right-style: solid;
-            border-right-color: transparent;
-            width: fit-content;
-        }
-
-        .CodeMirror-wrap .CodeMirror-code pre {
-            border-right-width: medium;
-            border-right-style: none;
-            border-right-color: currentcolor;
-            width: auto;
-        }
-
-        .CodeMirror-linebackground {
-            position: absolute;
-            inset: 0px;
-            z-index: 0;
-        }
-
-        .CodeMirror-linewidget {
-            position: relative;
-            z-index: 2;
-            overflow: auto;
-        }
-
-        .CodeMirror-wrap .CodeMirror-scroll {
-            overflow-x: hidden;
-        }
-
-        .CodeMirror-measure {
-            position: absolute;
-            width: 100%;
-            height: 0px;
-            overflow: hidden;
-            visibility: hidden;
-        }
-
-        .CodeMirror-measure pre {
-            position: static;
-        }
-
-        .CodeMirror div.CodeMirror-cursor {
-            position: absolute;
-            visibility: hidden;
-            border-right-width: medium;
-            border-right-style: none;
-            border-right-color: currentcolor;
-            width: 0px;
-        }
-
-        .CodeMirror div.CodeMirror-cursor {
-            visibility: hidden;
-        }
-
-        .CodeMirror-focused div.CodeMirror-cursor {
-            visibility: inherit;
-        }
-
-        .cm-searching {
-            background: rgba(255, 255, 0, 0.4);
-        }
-
-        span.cm-underlined {
-            text-decoration: underline;
-        }
-
-        span.cm-strikethrough {
-            text-decoration: line-through;
-        }
-
-        .cm-tw-syntaxerror {
-            color: rgb(255, 255, 255);
-            background-color: rgb(153, 0, 0);
-        }
-
-        .cm-tw-deleted {
-            text-decoration: line-through;
-        }
-
-        .cm-tw-header5 {
-            font-weight: 700;
-        }
-
-        .cm-tw-listitem:first-child {
-            padding-left: 10px;
-        }
-
-        .cm-tw-box {
-            border-style: solid;
-            border-right-width: 1px;
-            border-bottom-width: 1px;
-            border-left-width: 1px;
-            border-color: inherit;
-            border-top-width: 0px !important;
-        }
-
-        .cm-tw-underline {
-            text-decoration: underline;
-        }
-
-        @media print {
-            .CodeMirror div.CodeMirror-cursor {
-                visibility: hidden;
-            }
-        }
-
-        @font-face {
-            font-family: 'ChillKai';
-            src: url("https://lzliangzh.github.io/fonts/ChillKai.ttf");
-        }
-        @font-face {
-            font-family: '思源宋体 CN';
-            src: url("https://lzliangzh.github.io/fonts/SourceHanSerifCN-Regular.otf");
-            font-weight: 400;
-        }
-        @font-face {
-            font-family: '思源宋体 CN';
-            src: url("https://lzliangzh.github.io/fonts/SourceHanSerifCN-Bold.otf");
-            font-weight: 700;
-        }
-
-        @font-face {
-            font-family: '思源宋体 CN';
-            src: url("https://lzliangzh.github.io/fonts/SourceHanSerifCN-Medium.otf");
-            font-weight: 500;
-        }
-
-        @font-face {
-            font-family: 'Karma';
-            src: url("https://lzliangzh.github.io/fonts/Karma-Regular.ttf");
-            font-weight: 400;
-        }
-
-        @font-face {
-            font-family: 'Karma';
-            src: url("https://lzliangzh.github.io/fonts/Karma-Bold.ttf");
-            font-weight: 700;
-        }
-
-        @font-face {
-            font-family: 'Karma';
-            src: url("https://lzliangzh.github.io/fonts/Karma-Medium.ttf");
-            font-weight: 600;
-        }
-
-        :root {
-            --main-color: #444444;
-            /* == 字体设置 == */
-            /* 基准字体 */
-            /* 备选：Times, "Times New Roman" */
-            /* --base-Latin-font: "Latin Modern Roman", "Latin Modern Roman 10", Times; */
-            --base-Latin-font: "Karma";
-            --base-Chinese-font: "思源宋体 CN";
-            --base-font-size: 16pt;
-            /* 引言字体 */
-            --quote-font: "Karma", "ChillKai";
-            /* em单位为一个正文字符（--base-font-size）大小，
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; --title-bar-height: 20px; }
+.mac-os-11 { --title-bar-height: 28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.428571; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 0em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font-style: inherit; font-variant-caps: inherit; font-weight: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; font-size-adjust: inherit; font-kerning: inherit; font-variant-alternates: inherit; font-variant-ligatures: inherit; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-variant-position: inherit; font-feature-settings: inherit; font-optical-sizing: inherit; font-variation-settings: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right-width: 0px; border-right-style: none; border-right-color: currentcolor; background-color: inherit; }
+.CodeMirror-linenumber { }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: medium; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: medium !important; border-style: none !important; border-color: currentcolor !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom-width: 0px; border-bottom-style: none; border-bottom-color: currentcolor; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: medium; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex: 2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.428571rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left-width: 28px; border-left-style: solid; border-left-color: transparent; border-right-width: 28px; border-right-style: solid; border-right-color: transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right-width: 8px; border-right-style: solid; border-right-color: transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+
+
+:root {
+  --main-color: #444444;
+  /* == 字体设置 == */
+  /* 基准字体 */
+  /* 备选：Times, "Times New Roman" */
+  /* --base-Latin-font: "Latin Modern Roman", "Latin Modern Roman 10", Times; */
+  --base-Latin-font: "Karma";
+  --base-Chinese-font: "思源宋体 CN";
+  --base-font-size: 16pt;
+  /* 引言字体 */
+  --quote-font: "Karma", "ChillKai";
+  /* em单位为一个正文字符（--base-font-size）大小，
   例如，如果您设置 --base-font-size 为 9.5pt，那么 1.05em = 1.05*9.5pt ≈ 10pt。下面的标题字体等设置也遵循该规则。
   这样，您就可以仅通过调整基准字体大小，而动态对其他元素大小做出调整。
   当然，您也可以直接设置以pt或px为单位的数值，将元素的大小固定下来，如 --quote-font-size: 10pt; */
-            --quote-font-size: 0.9em;
-            /* 代码字体（代码中的中文会调用 ui-font） */
-            /* "Courier New" 从 Windows 3.1 起成为 Windows 官方提供的字体 */
-            /* "Consolas" 从 Windows Vista 起成为 Windows 官方提供的字体 */
-            --code-font: "Latin Modern Mono", "Latin Modern Mono 10", "Consolas", "Courier New";
-            /* 侧边栏字体 */
-            --ui-font: "苹方-简";
-            /* source mode 字体 */
-            /* 默认调用 code-font 和 ui-font */
-            --sourceMode-font: "SF Mono", "苹方-简";
-            /* 目录字体 */
-            /* 默认调用 base-font */
-            --toc-font: "";
-            /* 默认调用 base-font-size */
-            --toc-font-size: "";
-            /* 公式字体 */
-            --math-font-size: 1em;
-            /* 表格字体 */
-            /* 默认调用 heading-font */
-            --table-title-font: "";
-            /* 默认调用 base-font */
-            --table-font: "";
-            /* 标题字体（总设置） */
-            /* 注意，如果您使用macOS系统并更改了英文字体，请在此处更换标题英文字体粗体字重的postscript值 */
-            --heading-Latin-font: "Karma";
-            --heading-Chinese-font: "ChillKai";
-            /* 非大标题(h1_h2)的英文数字字体设置 */
-            --h-Latin-font: "Karma";
-            /* 标题字体分别设置 */
-            /* 大标题（h1）字体 */
-            --title-Chinese-font: "Karma", "ChillKai";
-            --title-font-size: 2.5em;
-            /* h2字体 */
-            --h2-Chinese-font: "Karma", "ChillKai";
-            --h2-font-size: 1.5em;
-            /* h3字体 */
-            --h3-Chinese-font: "Karma", "思源宋体 CN";
-            --h3-font-size: 1.25em;
-            /* h4字体 */
-            --h4-Chinese-font: "Karma", "ChillKai";
-            --h4-font-size: 1.15em;
-            /* h5字体 */
-            --h5-Chinese-font: "Karma", "思源宋体 CN";
-            --h5-font-size: 1.10em;
-            /* h6字体 */
-            --h6-Chinese-font: "Karma", "思源宋体 CN";
-            --h6-font-size: 1.05em;
-            /* 粗体、斜体样式设置 */
-            /* 加粗风格时使用的字重；400等同于 normal，700等同于 bold，900等同于 heavy */
-            --strong-font: "FiraSans-Medium", "NotoSansHans-Medium";
-            --em-font: "Karma", "ChillKai";
-            /* 基础行距 */
-            --base-line-height: 1.5em;
-            /* == 页面设置 == */
-            /* 打印页边距 */
-            --set-margin: 2.2cm 2.7cm 2.2cm 2.7cm !important;
-            /* == 控制设置 == */
-            /* 目录中是否显示一级标题 */
-            --toc-show-title: none;
-            /* == 颜色设置 == */
-            /* 超链接颜色 */
-            --link-color-light: #2E67D3;
-            --link-color-dark: #8bb1f9;
-        }
+  --quote-font-size: 0.9em;
+  /* 代码字体（代码中的中文会调用 ui-font） */
+  /* "Courier New" 从 Windows 3.1 起成为 Windows 官方提供的字体 */
+  /* "Consolas" 从 Windows Vista 起成为 Windows 官方提供的字体 */
+  --code-font: "Latin Modern Mono", "Latin Modern Mono 10", "Consolas", "Courier New";
+  /* 侧边栏字体 */
+  --ui-font: "苹方-简";
+  /* source mode 字体 */
+  /* 默认调用 code-font 和 ui-font */
+  --sourceMode-font: "SF Mono", "苹方-简";
+  /* 目录字体 */
+  /* 默认调用 base-font */
+  --toc-font: "";
+  /* 默认调用 base-font-size */
+  --toc-font-size: "";
+  /* 公式字体 */
+  --math-font-size: 1em;
+  /* 表格字体 */
+  /* 默认调用 heading-font */
+  --table-title-font: "";
+  /* 默认调用 base-font */
+  --table-font: "";
+  /* 标题字体（总设置） */
+  /* 注意，如果您使用macOS系统并更改了英文字体，请在此处更换标题英文字体粗体字重的postscript值 */
+  --heading-Latin-font: "Karma";
+  --heading-Chinese-font: "ChillKai";
+  /* 非大标题(h1_h2)的英文数字字体设置 */
+  --h-Latin-font: "Karma";
+  /* 标题字体分别设置 */
+  /* 大标题（h1）字体 */
+  --title-Chinese-font: "Karma", "ChillKai";
+  --title-font-size: 2.5em;
+  /* h2字体 */
+  --h2-Chinese-font: "Karma", "ChillKai";
+  --h2-font-size: 1.5em;
+  /* h3字体 */
+  --h3-Chinese-font: "Karma", "思源宋体 CN";
+  --h3-font-size: 1.25em;
+  /* h4字体 */
+  --h4-Chinese-font: "Karma", "ChillKai";
+  --h4-font-size: 1.15em;
+  /* h5字体 */
+  --h5-Chinese-font: "Karma", "思源宋体 CN";
+  --h5-font-size: 1.10em;
+  /* h6字体 */
+  --h6-Chinese-font: "Karma", "思源宋体 CN";
+  --h6-font-size: 1.05em;
+  /* 粗体、斜体样式设置 */
+  /* 加粗风格时使用的字重；400等同于 normal，700等同于 bold，900等同于 heavy */
+  --strong-font: "FiraSans-Medium", "NotoSansHans-Medium";
+  --em-font: "Karma", "ChillKai";
+  /* 基础行距 */
+  --base-line-height: 1.618em;
+  /* == 页面设置 == */
+  /* 打印页边距 */
+  --set-margin: 2.2cm 2.7cm 2.2cm 2.7cm !important;
+  /* == 控制设置 == */
+  /* 目录中是否显示一级标题 */
+  --toc-show-title: none;
+  /* == 颜色设置 == */
+  /* 超链接颜色 */
+  --link-color-light: #2E67D3;
+  --link-color-dark: #8bb1f9;
+}
 
-        body {
-            padding: 0 !important;
-            margin: 0 !important;
-            /* counter-reset: tableHead 0 imgHead 0; */
-        }
+body {
+  padding: 0 !important;
+  margin: 0 !important;
+  /* counter-reset: tableHead 0 imgHead 0; */
+}
 
-        @media print {
-            #write {
-                padding: 0 !important;
-            }
+@media print {
+  #write {
+    padding: 0 !important;
+  }
 
-            @page {
-                margin: 2.2cm 2.7cm 2.2cm 2.7cm !important;
-                /* 页边距 */
-            }
-        }
-
-        #write {
-            font-family: var(--base-Latin-font), var(--base-Chinese-font), serif;
-            font-size: var(--base-font-size);
-            /* A4标准宽度 */
-            max-width: 21cm;
-            background-color: white;
-            /* column-count: 2;
+  @page {
+    margin: 2.2cm 2.7cm 2.2cm 2.7cm !important;
+    /* 页边距 */
+  }
+}
+#write {
+  font-family: var(--base-Latin-font), var(--base-Chinese-font), serif;
+  font-size: var(--base-font-size);
+  /* A4标准宽度 */
+  max-width: 84.1%;
+  background-color: white;
+  /* column-count: 2;
     column-gap: 25px;
     column-width: 8cm; 
     display: inline-block; */
-            /* 这里可以试分栏的，但确实不适合实现 */
-        }
+  /* 这里可以试分栏的，但确实不适合实现 */
+}
+#write .md-math-block,
+#write .md-rawblock,
+#write p {
+  margin-top: 0.305em;
+  margin-bottom: 0.305em;
+  Letter-spacing: 0.25px;
+}
+#write p {
+  text-align: justify;
+  line-height: var(--base-line-height);
+  font-synthesis: style;
+  font-feature-settings: 'halt';
+}
 
-        #write .md-math-block,
-        #write .md-rawblock,
-        #write p {
-            margin-top: 0em;
-            margin-bottom: 0em;
-            Letter-spacing: 0.25px;
-        }
+#write a {
+  color: var(--link-color-light);
+}
 
-        #write p {
-            text-align: justify;
-            line-height: var(--base-line-height);
-            font-synthesis: style;
-            font-feature-settings: 'halt';
-        }
+hr {
+  border-top: solid 1px #ffffff;
+  margin-top: 1em;
+  margin-bottom: 1em; 
+  margin: 0.25em 0
+}
 
-        #write a {
-            color: var(--link-color-light);
-        }
+img {
+  /* 避免图片在导出时被断开 */
+  page-break-inside: avoid;
+  box-shadow: 1px 1px 3px 0px #DDDDDD;
+  border-radius: 5px 5px 5px 5px;
+  margin: 5px 5px 5px 5px;
+}
 
-        hr {
-            border-top: solid 1px #ffffff;
-            margin-top: 1em;
-            margin-bottom: 1em;
-            margin: 0.25em 0
-        }
-
-        img {
-            /* 避免图片在导出时被断开 */
-            page-break-inside: avoid;
-        }
-
-        /*strong {
-            font-weight: var(--strong-weight);
-        }*/
-
-        em {
-            font-family: var(--em-font);
-            font-style: normal;
-        }
-
-
-        @media screen {
-            #write {
-                padding: var(--set-margin);
-                /* 添加一个淡蓝色的边框 */
-                /* border: 0.8px solid #AAC ; */
-                /* 页边阴影 */
-                /* box-shadow: 0 0 24px 12px #cccccc; */
-            }
-        }
-
-        .MathJax {
-            font-size: var(--math-font-size);
-        }
-
-        /* typora 编写模式 */
-        #typora-source {
-            font-family: var(--sourceMode-font), var(--code-font), var(--ui-font), monospace;
-            line-height: 2em;
-        }
-
-        /* 侧边大纲标题 */
-        .sidebar-content .outline-h1 {
-            counter-reset: outline-h2;
-        }
-
-        .sidebar-content .outline-h2 {
-            counter-reset: outline-h3;
-        }
-
-        .sidebar-content .outline-h2 .outline-label:before {
-            counter-increment: outline-h2;
-            content: counter(outline-h2) " ";
-        }
-
-        .sidebar-content .outline-h3 {
-            counter-reset: outline-h4;
-        }
-
-        .sidebar-content .outline-h3 .outline-label:before {
-            counter-increment: outline-h3;
-            content: counter(outline-h2) "." counter(outline-h3) "  ";
-        }
-
-        .sidebar-content .outline-h4 {
-            counter-reset: outline-h5;
-        }
-
-        .sidebar-content .outline-h4 .outline-label:before {
-            counter-increment: outline-h4;
-            content: counter(outline-h2) "." counter(outline-h3) "." counter(outline-h4) "  ";
-        }
-
-        .sidebar-content .outline-h5 {
-            counter-reset: outline-h6;
-        }
-
-        .sidebar-content .outline-h5 .outline-label:before {
-            counter-increment: outline-h5;
-            content: counter(outline-h2) "." counter(outline-h3) "." counter(outline-h4) "." counter(outline-h5) "  ";
-        }
-
-        .sidebar-content {
-            /* 侧边栏的字体修改 */
-            font-family: var(--ui-font);
-            list-style: none;
-        }
-
-        /* 元数据（如 YAML front matter）的背景框 */
-        pre.md-meta-block {
-            background: #cccccc;
-            padding: 1.4em;
-            font-family: var(--code-font), var(--ui-font), monospace;
-            font-size: 0.8em;
-        }
-
-        #write>h3.md-focus:before,
-        #write>h4.md-focus:before,
-        #write>h5.md-focus:before,
-        #write>h6.md-focus:before,
-        h3.md-focus:before,
-        h4.md-focus:before,
-        h5.md-focus:before,
-        h6.md-focus:before {
-            color: inherit;
-            border: inherit;
-            border-radius: inherit;
-            position: inherit;
-            left: initial;
-            float: none;
-            top: initial;
-            font-size: inherit;
-            padding-left: inherit;
-            padding-right: inherit;
-            vertical-align: inherit;
-            font-weight: inherit;
-            line-height: inherit;
-        }
-
-        #write {
-            counter-reset: h2 0 h3 0 h4 0 h5 0 h6 0;
-        }
-
-        #write h1,
-        #write h2,
-        #write h3,
-        #write h4,
-        #write h5,
-        #write h6 {
-            font-weight: normal;
-            page-break-after: avoid !important;
-            font-feature-settings: 'halt';
-        }
-
-        #write h1 {
-            font-family: var(--heading-Latin-font), var(--title-Chinese-font), serif;
-            font-weight: normal;
-            text-align: left;
-            column-span: all;
-            font-size: var(--title-font-size);
-            padding-top: 2em;
-            padding-bottom: 1em;
-            color: var(--main-color);
-        }
-
-        #write h2 {
-            font-family: var(--heading-Latin-font), var(--h2-Chinese-font), serif;
-            font-size: var(--h2-font-size);
-            text-align: left;
-            padding-top: 1em;
-            padding-bottom: 0.5em;
-        }
-
-        #write h3 {
-            font-family: var(--h-Latin-font), var(--h3-Chinese-font), serif;
-            font-size: var(--h3-font-size);
-            line-height: var(--h3-font-size)*1.5;
-            padding-top: 0.5em;
-            padding-bottom: 0.5em;
-        }
-
-        #write h4 {
-            font-family: var(--h-Latin-font), var(--h4-Chinese-font), serif;
-            font-size: var(--h4-font-size);
-            line-height: var(--h4-font-size);
-        }
-
-        #write h5 {
-            font-family: var(--h-Latin-font), var(--h5-Chinese-font), serif;
-            font-size: var(--h5-font-size);
-            line-height: var(--h5-font-size);
-        }
-
-        #write h6 {
-            font-family: var(--h-Latin-font), var(--h6-Chinese-font), serif;
-            font-size: var(--h6-font-size);
-            /* 没有写错，为了避免行距太小才这么写 */
-            line-height: var(--h5-font-size);
-        }
+/* strong {
+  font-family: var(--strong-font);
+  font-weight: var(--strong-weight);
+}
+*/
+em {
+  font-family: var(--em-font);
+  font-style: normal;
+}
 
 
-        /* #write h1 {
+@media screen {
+  #write {
+    padding: var(--set-margin);
+    /* 添加一个淡蓝色的边框 */
+    /* border: 0.8px solid #AAC ; */
+    /* 页边阴影 */
+    /* box-shadow: 0 0 15px 12px #cccccc; */
+  }
+}
+.MathJax {
+  font-size: var(--math-font-size);
+}
+
+/* typora 编写模式 */
+#typora-source {
+  font-family: var(--sourceMode-font), var(--code-font), var(--ui-font), monospace;
+  line-height: 2em;
+}
+
+/* 侧边大纲标题 */
+.sidebar-content .outline-h1 {
+  counter-reset: outline-h2;
+}
+.sidebar-content .outline-h2 {
+  counter-reset: outline-h3;
+}
+.sidebar-content .outline-h2 .outline-label:before {
+  counter-increment: outline-h2;
+  content: counter(outline-h2) " ";
+}
+.sidebar-content .outline-h3 {
+  counter-reset: outline-h4;
+}
+.sidebar-content .outline-h3 .outline-label:before {
+  counter-increment: outline-h3;
+  content: counter(outline-h2) "." counter(outline-h3) "  ";
+}
+.sidebar-content .outline-h4 {
+  counter-reset: outline-h5;
+}
+.sidebar-content .outline-h4 .outline-label:before {
+  counter-increment: outline-h4;
+  content: counter(outline-h2) "." counter(outline-h3) "." counter(outline-h4) "  ";
+}
+.sidebar-content .outline-h5 {
+  counter-reset: outline-h6;
+}
+.sidebar-content .outline-h5 .outline-label:before {
+  counter-increment: outline-h5;
+  content: counter(outline-h2) "." counter(outline-h3) "." counter(outline-h4) "." counter(outline-h5) "  ";
+}
+
+.sidebar-content {
+  /* 侧边栏的字体修改 */
+  font-family: var(--ui-font);
+  list-style: none;
+}
+
+/* 元数据（如 YAML front matter）的背景框 */
+pre.md-meta-block {
+  background: #cccccc;
+  padding: 1.4em;
+  font-family: var(--code-font), var(--ui-font), monospace;
+  font-size: 0.8em;
+}
+
+#write > h3.md-focus:before,
+#write > h4.md-focus:before,
+#write > h5.md-focus:before,
+#write > h6.md-focus:before,
+h3.md-focus:before,
+h4.md-focus:before,
+h5.md-focus:before,
+h6.md-focus:before {
+  color: inherit;
+  border: inherit;
+  border-radius: inherit;
+  position: inherit;
+  left: initial;
+  float: none;
+  top: initial;
+  font-size: inherit;
+  padding-left: inherit;
+  padding-right: inherit;
+  vertical-align: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+}
+
+#write {
+  counter-reset: h2 0 h3 0 h4 0 h5 0 h6 0;
+}
+#write h1,
+#write h2,
+#write h3,
+#write h4,
+#write h5,
+#write h6 {
+  font-weight: normal;
+  page-break-after: avoid !important;
+  font-feature-settings: 'halt';
+}
+#write h1 {
+  font-family: var(--heading-Latin-font), var(--title-Chinese-font), serif;
+  font-weight: normal;
+  text-align: left;
+  column-span: all;
+  font-size: var(--title-font-size);
+  padding-top: 2em;
+  padding-bottom: 1em;
+  color: var(--main-color);
+}
+#write h2 {
+  font-family: var(--heading-Latin-font), var(--h2-Chinese-font), serif;
+  font-size: var(--h2-font-size);
+  text-align: center;
+}
+#write h3 {
+  font-family: var(--h-Latin-font), var(--h3-Chinese-font), serif;
+  font-size: var(--h3-font-size);
+  line-height: var(--h3-font-size)*1.5;
+}
+#write h4 {
+  font-family: var(--h-Latin-font), var(--h4-Chinese-font), serif;
+  font-size: var(--h4-font-size);
+  line-height: var(--h4-font-size);
+}
+#write h5 {
+  font-family: var(--h-Latin-font), var(--h5-Chinese-font), serif;
+  font-size: var(--h5-font-size);
+  line-height: var(--h5-font-size);
+}
+#write h6 {
+  font-family: var(--h-Latin-font), var(--h6-Chinese-font), serif;
+  font-size: var(--h6-font-size);
+  /* 没有写错，为了避免行距太小才这么写 */
+  line-height: var(--h5-font-size);
+}
+
+
+/* #write h1 {
   counter-reset: h2;
 }
 #write h2 {
@@ -1850,369 +540,336 @@
 }
 
 */
-        /* 参考文献（脚注）块 */
-        .footnotes {
-            font-size: 0.95em;
-        }
+/* 参考文献（脚注）块 */
+.footnotes {
+  font-size: 0.95em;
+}
 
-        .footnotes-area .footnote-line {
-            color: var(--text-color);
-        }
+.footnotes-area .footnote-line {
+  color: var(--text-color);
+}
+.footnotes-area hr {
+  border: 0;
+  color: #00000000;
+}
 
-        .footnotes-area hr {
-            border: 0;
-            color: #00000000;
-        }
+/* 无序列表 */
+ul {
+  list-style: disc;
+  Margin-top: 0;
+  Margin-bottom: 0;
+}
+ul ul {
+  /*list-style: circle;*/
+  /* 请勿删除“–”后的空格, 他们对缩进有一定影响, 下同 */
+  list-style: "–   ";
+}
+ul ul ul {
+  list-style: "◦  ";
+}
 
-        /* 无序列表 */
-        ul {
-            list-style: disc;
-            Margin-top: 0;
-            Margin-bottom: 0;
-        }
-
-        ul ul {
-            /*list-style: circle;*/
-            /* 请勿删除“–”后的空格, 他们对缩进有一定影响, 下同 */
-            list-style: "–   ";
-        }
-
-        ul ul ul {
-            list-style: "◦  ";
-        }
-
-        /* 有序列表 */
-        ol {
-            list-style: decimal;
-            Margin-top: 0;
-            Margin-bottom: 0;
-        }
-
-        ol ol {
-            counter-reset: liist;
-            list-style: none;
-        }
-
-        ol ol li {
-            counter-increment: liist;
-            position: relative;
-        }
-
-        ol ol li::before {
-            content: "(" counter(liist) ")";
-            position: absolute;
-            left: -1.8em;
-        }
-
-        ol ol ol {
-            counter-reset: liiist;
-            list-style: none;
-            margin: 0;
-        }
-
-        ol ol ol li {
-            counter-increment: liiist;
-            position: relative;
-        }
-
-        ol ol ol li::before {
-            content: counter(liiist, lower-roman) ".";
-            align-self: flex-end;
-            position: absolute;
-            left: -4.5em;
-            /* -moz-box-sizing: border-box;
+/* 有序列表 */
+ol {
+  list-style: decimal;
+  Margin-top: 0;
+  Margin-bottom: 0;
+}
+ol ol {
+  counter-reset: liist;
+  list-style: none;
+}
+ol ol li {
+  counter-increment: liist;
+  position: relative;
+}
+ol ol li::before {
+  content: "(" counter(liist) ")";
+  position: absolute;
+  left: -1.8em;
+}
+ol ol ol {
+  counter-reset: liiist;
+  list-style: none;
+  margin: 0;
+}
+ol ol ol li {
+  counter-increment: liiist;
+  position: relative;
+}
+ol ol ol li::before {
+  content: counter(liiist,lower-roman) ".";
+  align-self: flex-end;
+  position: absolute;
+  left: -4.5em;
+  /* -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;*/
-            /* 为了让项目编号是重新用句点对齐而不是左对齐 */
-            width: 4em;
-            text-align: right;
-        }
+  /* 为了让项目编号是重新用句点对齐而不是左对齐 */
+  width: 4em;
+  text-align: right;
+}
 
-        li {
-            position: relative;
-        }
+li {
+  position: relative;
+}
 
-        ol,
-        ul {
-            padding-inline-start: 0em;
-        }
+ol, ul {
+  padding-inline-start: 0em;
+}
 
-        /* task列表 */
-        .md-task-list-item>input {
-            margin-top: 0.42em;
-            margin-left: -1.5em;
-            width: 1em !important;
-            height: 1em !important;
-        }
+/* task列表 */
+.md-task-list-item > input {
+  margin-top: 0.42em;
+  margin-left: -1.5em;
+  width: 1em !important;
+  height: 1em !important;
+}
 
-        #write table {
-            /* 三线表第一条线宽度 */
-            border-top: 1.2pt solid;
-            /* 三线表第二条线宽度 */
-            border-bottom: 1.2pt solid;
-            font-family: var(--table-font), var(--base-Latin-font), var(--base-Chinese-font), serif;
-            /* font-size: var(--base-font-size); */
-            text-align: center;
-            page-break-inside: avoid;
-            border-spacing: 6px;
-            /* 自动布局表格宽度，如果有时内容太紧建议直接加空格吧，我自己看不惯和页面等宽的大表格 */
-            width: auto;
-            /* 使表格默认居中；虽然这个代码不好，但好像没别的实现办法 */
-            margin: 0 auto;
-        }
+#write table {
+  /* 三线表第一条线宽度 */
+  border-top: 1.2pt solid;
+  /* 三线表第二条线宽度 */
+  border-bottom: 1.2pt solid;
+  font-family: var(--table-font), var(--base-Latin-font), var(--base-Chinese-font), serif;
+  /* font-size: var(--base-font-size); */
+  text-align: center;
+  page-break-inside: avoid;
+  border-spacing: 6px;
+  /* 自动布局表格宽度，如果有时内容太紧建议直接加空格吧，我自己看不惯和页面等宽的大表格 */
+  width: auto;
+  /* 使表格默认居中；虽然这个代码不好，但好像没别的实现办法 */
+  margin: 0 auto;
+}
+#write table td {
+  padding: 2px;
+}
+#write table tr {
+  padding: 2px;
+}
+#write th {
+  padding: 0px 6px;
+}
+#write thead {
+  /* 表格标题（首行）样式 */
+  /* 三线表表头的线 */
+  border-bottom: 0.5pt solid;
+  font-family: var(--table-title-font), var(--heading-Latin-font), var(--heading-Chinese-font), serif !important;
+  /* font-size: var(--base-font-size); */
+  font-weight: var(--strong-weight); 
+  font-style: normal;
+  font-synthesis: style;
+}
 
-        #write table td {
-            padding: 2px;
-        }
+blockquote {
+  color: #222222;
+  /* background-color: var(--dark-color); */
 
-        #write table tr {
-            padding: 2px;
-        }
+  border-left: 3px solid var(--main-color);
+  border-right: 1px solid var(--main-color);
+  border-top: 1px solid var(--main-color);
+  border-bottom: 1px solid var(--main-color);
 
-        #write th {
-            padding: 0px 6px;
-        }
-
-        #write thead {
-            /* 表格标题（首行）样式 */
-            /* 三线表表头的线 */
-            border-bottom: 0.5pt solid;
-            font-family: var(--table-title-font), var(--heading-Latin-font), var(--heading-Chinese-font), serif !important;
-            /* font-size: var(--base-font-size); */
-            font-weight: var(--strong-weight);
-            font-style: normal;
-            font-synthesis: style;
-        }
-
-        blockquote {
-            color: #222222;
-            /* background-color: var(--dark-color); */
-
-            border-left: 3px solid var(--main-color);
-            border-right: 1px solid var(--main-color);
-            border-top: 1px solid var(--main-color);
-            border-bottom: 1px solid var(--main-color);
-
-            box-shadow: 1px 1px 2px 0px #DDDDDD;
-            box-sizing: border-box;
-            margin: 0.618em 2px 0.618em 2px;
-            padding: 0.5em 1em 0.5em 1em;
-            /* 圆角 */
-            border-radius: 5px 5px 5px 5px;
-        }
+  box-shadow: 1px 1px 2px 0px #DDDDDD;
+  box-sizing: border-box;
+  margin: 0.618em 2px 0.618em 2px;
+  padding: 0.5em 1em 0.5em 1em;
+  /* 圆角 */
+  border-radius: 5px 5px 5px 5px;
+}  
 
 
+  font-style: normal;
+  font-family: var(--quote-font);
+  font-size: var(--quote-font-size);
 
 
-        blockquote p:first-child {
-            padding-top: 0ch;
-        }
-
-        blockquote p:last-child {
-            padding-bottom: 0ch;
-        }
-
-        blockquote span {
-            font-style: normal;
-            font-family: var(--quote-font);
-            font-size: var(--quote-font-size);
-        }
-
-        blockquote blockquote span::before {
-            content: '✎ ';
-            font-size: 1.2em;
-            display: inline-block;
-        }
-
-        blockquote blockquote {
-            font-size: 0.9em;
-            font-weight: 700;
-
-            color: var(--light-color);
-
-            border-left: 0px solid #CDCD00;
-            border-right: 0px solid var(--normal-color);
-            border-top: 0px solid var(--normal-color);
-            border-bottom: 0px solid var(--normal-color);
-
-            box-shadow: 0 0 0 0 #141414;
-            border-radius: 0;
-            white-space: nowrap;
-            padding: 0em 0em 0em 0em;
-        }
-
-        blockquote blockquote span {
-            white-space: normal;
-            font-style: normal;
-            font-family: var(--quote-font);
-            font-size: var(--quote-font-size);
-        }
+  /* 文字离左边框的距离 */
+  /* 左边框离页面边的距离 */
+  margin-left: 0;
+}
 
 
-        /* 行内代码 */
-        code {
-            font-family: var(--code-font), var(--ui-font), monospace;
-        }
+blockquote p:first-child {
+  padding-top: 0ch;
+}
 
-        h1 code,
-        h2 code,
-        h3 code,
-        h4 code,
-        h5 code,
-        h6 code,
-        p code,
-        li code {
-            color: #3c70c6;
-            background-color: #fefefe;
-            /* 阴影 */
-            box-shadow: 0 0 1px 1px #c8d3df;
-            font-family: var(--code-font), var(--ui-font), monospace;
-            box-sizing: border-box;
-            border-right: 0px;
-            margin: 0 2px 0 2px;
-            padding: 0 2px 0 2px;
-            /* 圆角 */
-            border-radius: 2px 2px 2px 2px;
-        }
+blockquote p:last-child {
+  padding-bottom: 0ch;
+}
 
-        /* 代码块样式 */
-        .md-fences,
-        .CodeMirror pre {
-            font-size: 1em;
-        }
+blockquote span {
+  font-style: normal;
+  font-family: var(--quote-font);
+  font-size: var(--quote-font-size);
+}
 
-        .CodeMirror-wrap {
-            /* padding: 10px; */
-            font-size: 1em;
-        }
+blockquote blockquote span::before {
+  content: '✎ ';
+  font-size: 1.2em;
+  display: inline-block;
+}
 
-        .CodeMirror-code pre {
-            font-family: var(--code-font), var(--ui-font), monospace;
-        }
+blockquote blockquote {
+  font-size: 0.9em;
+  font-weight: 700;
 
-        /* 目录 */
-        .md-toc {
-            font-size: var(--toc-font-size);
-        }
+  color: var(--light-color);
 
-        .md-toc-content {
-            margin-left: 2em;
-            /* 修复缺失上级标题时无法递增 */
-            counter-reset: toc-h2 toc-h3 toc-h4;
-            page-break-after: always;
-        }
+  border-left: 0px solid #CDCD00;
+  border-right: 0px solid var(--normal-color);
+  border-top: 0px solid var(--normal-color);
+  border-bottom: 0px solid var(--normal-color);
 
-        .md-toc-inner {
-            margin-left: 0 !important;
-            color: var(--text-color) !important;
-        }
+  box-shadow: 0 0 0 0 #141414;
+  border-radius: 0;
+  white-space: nowrap;
+  padding: 0em 0em 0em 0em;
+}
 
-        .md-toc-item {
-            color: var(--text-color) !important;
-        }
-
-        /* 目录标题内容属性 */
-        .md-toc-h5,
-        .md-toc-h6 {
-            font-size: var(--toc-font-size);
-            font-family: var(--toc-font), var(--base-Latin-font), var(--base-Chinese-font), serif;
-        }
-
-        .md-toc-h1 {
-            font-family: "BodoniMT-Bold", "方正小标宋_GBK";
-            font-size: 1.2em;
-            font-weight: var(--strong-weight);
-            font-style: normal;
-            text-align: center;
-        }
-
-        .md-toc-h2 {
-            font-weight: var(--strong-weight);
-            font-family: "BodoniMT-Bold", "方正黑体_GBK";
-            font-size: 1.10em;
-        }
-
-        .md-toc-h3 {
-            font-family: "Bodoni MT", "方正书宋_GBK";
-        }
-
-        .md-toc-h4 {
-            font-family: "Bodoni MT", "方正楷体_GBK";
-        }
-
-        /* 目录标题前 */
-        .md-toc-content .md-toc-h1 {
-            /* display: var(--toc-show-title); */
-            counter-reset: toc-h2;
-        }
-
-        .md-toc-content .md-toc-h2 {
-            counter-reset: toc-h3;
-        }
-
-        .md-toc-content .md-toc-h3 {
-            counter-reset: toc-h4;
-        }
-
-        .md-toc-content .md-toc-h4 {
-            counter-reset: toc-h5;
-        }
-
-        .md-toc-content .md-toc-h5 {
-            counter-reset: toc-h6;
-        }
-
-        .md-toc-content .md-toc-h2:before {
-            counter-increment: toc-h2;
-            content: counter(toc-h2);
-            margin-right: 1em;
-        }
-
-        .md-toc-content .md-toc-h3:before {
-            counter-increment: toc-h3;
-            content: counter(toc-h2) "." counter(toc-h3);
-            margin-left: 1.5em;
-            margin-right: 0.5em;
-        }
-
-        .md-toc-content .md-toc-h4:before {
-            counter-increment: toc-h4;
-            content: counter(toc-h2) "." counter(toc-h3) "." counter(toc-h4);
-            margin-left: 3.5em;
-            margin-right: 0.5em;
-        }
-
-        .md-toc-content .md-toc-h5:before {
-            counter-increment: toc-h5;
-            content: counter(toc-h2) "." counter(toc-h3) "." counter(toc-h4) "." counter(toc-h5);
-            margin-left: 5.5em;
-            margin-right: 0.5em;
-        }
-
-        .md-toc-content .md-toc-h6:before {
-            counter-increment: toc-h6;
-            content: counter(toc-h2) "." counter(toc-h3) "." counter(toc-h4) "." counter(toc-h5) "." counter(toc-h6);
-            margin-left: 7.5em;
-            margin-right: 0.5em;
-        }
+blockquote blockquote span {
+  white-space: normal;
+  font-style: normal;
+  font-family: var(--quote-font);
+  font-size: var(--quote-font-size);
+}
 
 
-        @media print {
-            @page {
-                margin: 0 0 0 0;
-            }
+/* 行内代码 */
+code {
+  font-family: var(--code-font), var(--ui-font), monospace;
+}
 
-            body.typora-export {
-                padding-left: 0;
-                padding-right: 0;
-            }
+h1 code, h2 code, h3 code, h4 code, h5 code, h6 code,
+p code,
+li code {
+  color: #3c70c6;
+  background-color: #fefefe;
+  /* 阴影 */
+  box-shadow: 0 0 1px 1px #c8d3df;
+  font-family: var(--code-font), var(--ui-font), monospace;
+  box-sizing: border-box;
+  border-right: 0px;
+  margin: 0 2px 0 2px;
+  padding: 0 2px 0 2px;
+  /* 圆角 */
+  border-radius: 2px 2px 2px 2px;
+}
 
-            #write {
-                padding: 0;
-            }
-        }
-    </style>
-    <title>歡迎</title>
+/* 代码块样式 */
+.md-fences,
+.CodeMirror pre {
+  font-size: 1em;
+}
+
+.CodeMirror-wrap {
+  /* padding: 10px; */
+  font-size: 1em;
+}
+
+.CodeMirror-code pre {
+  font-family: var(--code-font), var(--ui-font), monospace;
+}
+
+/* 目录 */
+.md-toc {
+  font-size: var(--toc-font-size);
+}
+
+.md-toc-content {
+  margin-left: 2em;
+  /* 修复缺失上级标题时无法递增 */
+  counter-reset: toc-h2 toc-h3 toc-h4;
+  page-break-after: always;
+}
+
+.md-toc-inner {
+  margin-left: 0 !important;
+  color: var(--text-color) !important;
+}
+
+.md-toc-item {
+  color: var(--text-color) !important;
+}
+
+/* 目录标题内容属性 */
+.md-toc-h5,
+.md-toc-h6 {
+  font-size: var(--toc-font-size);
+  font-family: var(--toc-font), var(--base-Latin-font), var(--base-Chinese-font), serif;
+}
+
+.md-toc-h1 {
+  font-family: "BodoniMT-Bold", "方正小标宋_GBK";
+  font-size: 1.2em;
+  font-weight: var(--strong-weight);
+  font-style: normal;
+  text-align: center;
+}
+
+.md-toc-h2 {
+  font-weight: var(--strong-weight);
+  font-family: "BodoniMT-Bold", "方正黑体_GBK";
+  font-size: 1.10em;
+}
+
+.md-toc-h3 {
+  font-family: "Bodoni MT", "方正书宋_GBK";
+}
+
+.md-toc-h4 {
+  font-family: "Bodoni MT", "方正楷体_GBK";
+}
+
+/* 目录标题前 */
+.md-toc-content .md-toc-h1 {
+  /* display: var(--toc-show-title); */
+  counter-reset: toc-h2;
+}
+.md-toc-content .md-toc-h2 {
+  counter-reset: toc-h3;
+}
+.md-toc-content .md-toc-h3 {
+  counter-reset: toc-h4;
+}
+.md-toc-content .md-toc-h4 {
+  counter-reset: toc-h5;
+}
+.md-toc-content .md-toc-h5 {
+  counter-reset: toc-h6;
+}
+.md-toc-content .md-toc-h2:before {
+  counter-increment: toc-h2;
+  content: counter(toc-h2);
+  margin-right: 1em;
+}
+.md-toc-content .md-toc-h3:before {
+  counter-increment: toc-h3;
+  content: counter(toc-h2) "." counter(toc-h3);
+  margin-left: 1.5em;
+  margin-right: 0.5em;
+}
+.md-toc-content .md-toc-h4:before {
+  counter-increment: toc-h4;
+  content: counter(toc-h2) "." counter(toc-h3) "." counter(toc-h4);
+  margin-left: 3.5em;
+  margin-right: 0.5em;
+}
+.md-toc-content .md-toc-h5:before {
+  counter-increment: toc-h5;
+  content: counter(toc-h2) "." counter(toc-h3) "." counter(toc-h4) "." counter(toc-h5);
+  margin-left: 5.5em;
+  margin-right: 0.5em;
+}
+.md-toc-content .md-toc-h6:before {
+  counter-increment: toc-h6;
+  content: counter(toc-h2) "." counter(toc-h3) "." counter(toc-h4) "." counter(toc-h5) "." counter(toc-h6);
+  margin-left: 7.5em;
+  margin-right: 0.5em;
+}
+
+
+ @media print { @page {margin: 0 0 0 0;} body.typora-export {padding-left: 0; padding-right: 0;} #write {padding:0;}}
+</style><title>Charge into 2024</title>
 </head>
 
 <body class='typora-export'>
@@ -2221,7 +878,7 @@
             <h1>歡迎！</br>Welcome to Leo Liang's Home Page!</h1>
             <p><span>Created by lzliangzh, Jan 6, 2024</span>
             <h2>About Me/關於我</h2>
-            <p>北京大學中國語言文學係 lzliangzh</p>
+            <p>北京大學中國語言文學系 lzliangzh</p>
             <p><strong>Tel</strong> | 13800013800</p>
             <p><strong>Add</strong> | 中華人民共和國北京市海澱區燕園街道頤和園路 5 號</p>
             <p><strong>Postcode</strong> | 101000</p>
