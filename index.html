@@ -201,116 +201,86 @@ mark .md-meta { color: rgb(0, 0, 0); }
 .md-inline-math-container mjx-container { zoom: 0.95; }
 
 
- 
+
 :root {
-  /* 色调设置 */
-  --dark-color: rgb(150, 250, 255);
-  --normal-color: rgb(87, 107, 245);
-  --light-color: rgb(50, 75, 175);
-
-
-  /* mermaid 设置*/
-  /* mermaid-theme: base/default/dark/night/forest/neutral */
-  --mermaid-theme: default;
-  --mermaid-sequence-numbers: off;
-  --mermaid-flowchart-curve: natural;
-  --mermaid--gantt-left-padding: 50;
-  --sequence-theme: simple;
-
-  
-
+  --main-color: #444444;
   /* == 字体设置 == */
   /* 基准字体 */
-
-  --base-Latin-font: 'Fira Sans', sans-serif;
-  --base-Chinese-font: "NotoSansHans-Regular";
-  --base-font-size: 12pt;
-
-
+  /* 备选：Times, "Times New Roman" */
+  /* --base-Latin-font: "Latin Modern Roman", "Latin Modern Roman 10", Times; */
+  --base-Latin-font: "Karma";
+  --base-Chinese-font: "思源宋体 CN";
+  --base-font-size: 10.5pt;
   /* 引言字体 */
-  /* --quote-font: ;*/
+  --quote-font: "Karma", "ChillKai";
   /* em单位为一个正文字符（--base-font-size）大小，
   例如，如果您设置 --base-font-size 为 9.5pt，那么 1.05em = 1.05*9.5pt ≈ 10pt。下面的标题字体等设置也遵循该规则。
   这样，您就可以仅通过调整基准字体大小，而动态对其他元素大小做出调整。
   当然，您也可以直接设置以pt或px为单位的数值，将元素的大小固定下来，如 --quote-font-size: 10pt; */
-  --quote-font-size: 1em;
-
-
+  --quote-font-size: 0.9em;
   /* 代码字体（代码中的中文会调用 ui-font） */
   /* "Courier New" 从 Windows 3.1 起成为 Windows 官方提供的字体 */
   /* "Consolas" 从 Windows Vista 起成为 Windows 官方提供的字体 */
-  --code-font: "PT Mono", "Latin Modern Mono", "Latin Modern Mono 10", "Consolas", "Courier New";
-
-
+  --code-font: "Latin Modern Mono", "Latin Modern Mono 10", "Consolas", "Courier New";
   /* 侧边栏字体 */
   --ui-font: "苹方-简";
   /* source mode 字体 */
-  --sourceMode-font: "Latin Modern Mono", "Noto Sans S Chinese";
-
-
+  /* 默认调用 code-font 和 ui-font */
+  --sourceMode-font: "SF Mono", "苹方-简";
   /* 目录字体 */
   /* 默认调用 base-font */
   --toc-font: "";
   /* 默认调用 base-font-size */
   --toc-font-size: "";
-
-
   /* 公式字体 */
   --math-font-size: 1em;
-
-
   /* 表格字体 */
   /* 默认调用 heading-font */
   --table-title-font: "";
   /* 默认调用 base-font */
   --table-font: "";
-
-
   /* 标题字体（总设置） */
   /* 注意，如果您使用macOS系统并更改了英文字体，请在此处更换标题英文字体粗体字重的postscript值 */
-  --heading-Latin-font: 'FiraSans-Bold';
-  --heading-Chinese-font: "NotoSansHans-Bold";
+  --heading-Latin-font: "Karma";
+  --heading-Chinese-font: "ChillKai";
+  /* 非大标题(h1_h2)的英文数字字体设置 */
+  --h-Latin-font: "Karma";
   /* 标题字体分别设置 */
   /* 大标题（h1）字体 */
-  --title-Chinese-font: 'Fira Sans', "Noto Sans S Chinese";
-  --title-font-size: 1.15em;
+  --title-Chinese-font: "Karma", "ChillKai";
+  --title-font-size: 2.5em;
   /* h2字体 */
-  --h2-Chinese-font: 'Fira Sans', "Noto Sans S Chinese";
-  --h2-font-size: 2.25em;
+  --h2-Chinese-font: "Karma", "ChillKai";
+  --h2-font-size: 1.5em;
   /* h3字体 */
-  --h3-Chinese-font: 'Fira Sans', "Noto Sans S Chinese";
-  --h3-font-size: 1.5em;
+  --h3-Chinese-font: "Karma", "思源宋体 CN";
+  --h3-font-size: 1.25em;
   /* h4字体 */
-  --h4-Chinese-font: 'Fira Sans', "Noto Sans S Chinese";
-  --h4-font-size: 1.25em;
+  --h4-Chinese-font: "Karma", "ChillKai";
+  --h4-font-size: 1.15em;
   /* h5字体 */
-  --h5-Chinese-font: 'Fira Sans', "Noto Sans S Chinese";
+  --h5-Chinese-font: "Karma", "思源宋体 CN";
   --h5-font-size: 1.10em;
   /* h6字体 */
-  --h6-Chinese-font: 'Fira Sans', "Noto Sans S Chinese";
+  --h6-Chinese-font: "Karma", "思源宋体 CN";
   --h6-font-size: 1.05em;
-
-
-  /* 粗体样式设置 */
+  /* 粗体、斜体样式设置 */
   /* 加粗风格时使用的字重；400等同于 normal，700等同于 bold，900等同于 heavy */
-  --strong-weight: 700;
-
-
+  --strong-font: "FiraSans-Medium", "NotoSansHans-Medium";
+  --em-font: "Karma", "ChillKai";
   /* 基础行距 */
   --base-line-height: 1.5em;
   /* == 页面设置 == */
   /* 打印页边距 */
-  --set-margin: 1.8cm 2cm 1.2cm 2cm !important;
+  --set-margin: 2.2cm 2.7cm 2.2cm 2.7cm !important;
   /* == 控制设置 == */
   /* 目录中是否显示一级标题 */
   --toc-show-title: none;
   /* == 颜色设置 == */
   /* 超链接颜色 */
-  --link-color-light: var(--light-color);
-  --link-color-dark: var(--dark-color);
+  --link-color-light: #2E67D3;
+  --link-color-dark: #8bb1f9;
 }
-
-
 
 body {
   padding: 0 !important;
@@ -324,7 +294,7 @@ body {
   }
 
   @page {
-    margin: 1.8cm 2cm 1.2cm 2cm !important;
+    margin: 2.2cm 2.7cm 2.2cm 2.7cm !important;
     /* 页边距 */
   }
 }
@@ -332,7 +302,7 @@ body {
   font-family: var(--base-Latin-font), var(--base-Chinese-font), serif;
   font-size: var(--base-font-size);
   /* A4标准宽度 */
-  /* max-width: 21cm; */
+  max-width: 21cm;
   background-color: white;
   /* column-count: 2;
     column-gap: 25px;
@@ -343,42 +313,42 @@ body {
 #write .md-math-block,
 #write .md-rawblock,
 #write p {
-  margin-top: 0.618em;
-  margin-bottom: 0.618em;
+  margin-top: 0em;
+  margin-bottom: 0em;
+  Letter-spacing: 0.25px;
 }
 #write p {
   text-align: justify;
-  font-feature-settings: "halt";
   line-height: var(--base-line-height);
+  font-synthesis: style;
+  font-feature-settings: 'halt';
 }
-
-.kern { 
-  font-feature-settings: "kern";
-}
-
 
 #write a {
   color: var(--link-color-light);
 }
 
 hr {
-  border-top: solid 1px #ddd;
-  margin-top: 1.8em;
-  margin-bottom: 1.8em;
+  border-top: solid 1px #ffffff;
+  margin-top: 1em;
+  margin-bottom: 1em; 
+  margin: 0.25em 0
 }
 
 img {
   /* 避免图片在导出时被断开 */
   page-break-inside: avoid;
-  box-shadow: 1px 1px 3px 0px #DDDDDD;
-  border-radius: 5px 5px 5px 5px;
-
 }
 
-strong {
+/* strong {
+  font-family: var(--strong-font);
   font-weight: var(--strong-weight);
 }
-
+*/
+em {
+  font-family: var(--em-font);
+  font-style: normal;
+}
 
 
 @media screen {
@@ -387,7 +357,7 @@ strong {
     /* 添加一个淡蓝色的边框 */
     /* border: 0.8px solid #AAC ; */
     /* 页边阴影 */
-    /* box-shadow: 0 0 24px 12px #cccccc; */
+    box-shadow: 0 0 24px 12px #cccccc;
   }
 }
 .MathJax {
@@ -401,37 +371,6 @@ strong {
 }
 
 /* 侧边大纲标题 */
-.outline-h1 {
-  font-family: var(--heading-Latin-font), var(--title-Chinese-font), serif;
-  line-height: var(--title-font-size); 
-  font-weight: normal;
-  background: #DDDDDD;
-  color: #444444;
-  text-align: left;
-  column-span: all;
-  font-size: var(--title-font-size);
-  border-top: 0px solid rgb(0, 76, 153);
-  padding-top: 1em;
-  border-bottom: 0px solid rgb(0, 76, 153);
-  padding-bottom: 1em;
-  padding-left: 0em;
-  padding-right: 0em;
-  font-weight: 700;
-}
-.outline-h2 {
-  font-family: var(--h2-Chinese-font), serif;
-  font-size: 1em;
-  color: #222222;
-  font-weight: 500;
-  padding-top: 1em;
-  background: #FFFFFF;
-  border-top: 1px solid #DDDDDD;
-  Border-bottom: 0px solid #DDDDDD;
-  Width: 100%;
-}
-
-/* 侧边栏序号——不开启
-
 .sidebar-content .outline-h1 {
   counter-reset: outline-h2;
 }
@@ -463,8 +402,6 @@ strong {
   counter-increment: outline-h5;
   content: counter(outline-h2) "." counter(outline-h3) "." counter(outline-h4) "." counter(outline-h5) "  ";
 }
-
-*/
 
 .sidebar-content {
   /* 侧边栏的字体修改 */
@@ -514,67 +451,43 @@ h6.md-focus:before {
 #write h6 {
   font-weight: normal;
   page-break-after: avoid !important;
-  font-feature-settings: "halt";
+  font-feature-settings: 'halt';
 }
 #write h1 {
   font-family: var(--heading-Latin-font), var(--title-Chinese-font), serif;
-  line-height: var(--title-font-size); 
   font-weight: normal;
-  background: var(--normal-color);
-  color: #FFFFFF;
   text-align: left;
   column-span: all;
   font-size: var(--title-font-size);
-  border-top: 0px solid rgb(0, 76, 153);
-  padding-top: 1em;
-  border-bottom: 0px solid rgb(0, 76, 153);
+  padding-top: 2em;
   padding-bottom: 1em;
-  padding-left: 120px;
-  box-shadow: 4px 4px 8px 0px #DDDDDD;
-  font-weight: 700;
-  width: 175%;
-  margin-left: -100px;
-  top: 0;
-  z-index: 2;
-  position: sticky;
+  color: var(--main-color);
 }
 #write h2 {
-  font-family: var(--h2-Chinese-font), serif;
+  font-family: var(--heading-Latin-font), var(--h2-Chinese-font), serif;
   font-size: var(--h2-font-size);
-  background-color: #FFFFFF;
-  color: #888888;
-  font-weight: 300;
-  padding-top: 1em;
+  text-align: center;
 }
 #write h3 {
-  font-family: var(--h3-Chinese-font), serif;
+  font-family: var(--h-Latin-font), var(--h3-Chinese-font), serif;
   font-size: var(--h3-font-size);
-  line-height: var(--h3-font-size);
-  font-weight: 300;
-  padding-top: 1em;
+  line-height: var(--h3-font-size)*1.5;
 }
 #write h4 {
-  font-family: var(--h4-Chinese-font), serif;
+  font-family: var(--h-Latin-font), var(--h4-Chinese-font), serif;
   font-size: var(--h4-font-size);
   line-height: var(--h4-font-size);
-  color: var(--normal-color);
-  font-weight: 500;
-  padding-top: 1em;
 }
 #write h5 {
-  font-family: var(--h5-Chinese-font), serif;
+  font-family: var(--h-Latin-font), var(--h5-Chinese-font), serif;
   font-size: var(--h5-font-size);
   line-height: var(--h5-font-size);
-  font-weight: 500;
-  padding-top: 1em;
 }
 #write h6 {
-  font-family: var(--h6-Chinese-font), serif;
+  font-family: var(--h-Latin-font), var(--h6-Chinese-font), serif;
   font-size: var(--h6-font-size);
   /* 没有写错，为了避免行距太小才这么写 */
   line-height: var(--h5-font-size);
-  font-weight: 300;
-  padding-top: 1em;
 }
 #write h1 {
   counter-reset: h2;
@@ -592,7 +505,7 @@ h6.md-focus:before {
   counter-reset: h6;
 }
 
-/* #write h2:before {
+#write h2:before {
   counter-increment: h2;
   content: counter(h2);
   margin-right: 1.2em;
@@ -622,8 +535,6 @@ h6.md-focus:before {
   margin-right: 1.2em;
 }
 
-*/
-
 /* 参考文献（脚注）块 */
 .footnotes {
   font-size: 0.95em;
@@ -640,6 +551,8 @@ h6.md-focus:before {
 /* 无序列表 */
 ul {
   list-style: disc;
+  Margin-top: 0;
+  Margin-bottom: 0;
 }
 ul ul {
   /*list-style: circle;*/
@@ -653,6 +566,8 @@ ul ul ul {
 /* 有序列表 */
 ol {
   list-style: decimal;
+  Margin-top: 0;
+  Margin-bottom: 0;
 }
 ol ol {
   counter-reset: liist;
@@ -661,12 +576,9 @@ ol ol {
 ol ol li {
   counter-increment: liist;
   position: relative;
-
 }
 ol ol li::before {
   content: "(" counter(liist) ")";
-  line-height: var(--base-line-height);
-  Vertical-align: center;
   position: absolute;
   left: -1.8em;
 }
@@ -680,7 +592,7 @@ ol ol ol li {
   position: relative;
 }
 ol ol ol li::before {
-  content: "("counter(liiist,upper-roman)")";
+  content: counter(liiist,lower-roman) ".";
   align-self: flex-end;
   position: absolute;
   left: -4.5em;
@@ -697,7 +609,7 @@ li {
 }
 
 ol, ul {
-  padding-inline-start: 2em;
+  padding-inline-start: 0em;
 }
 
 /* task列表 */
@@ -709,27 +621,20 @@ ol, ul {
 }
 
 #write table {
-  Border-collapse: separate;
-  Border-radius: 5px 5px 5px 5px;
-  /* 三线表顶线 */
-  border-top: 0pt solid var(--light-color);
-  /* 三线表底线 */
-  border-bottom: 0pt solid var(--light-color);
-
-
-
+  /* 三线表第一条线宽度 */
+  border-top: 1.2pt solid;
+  /* 三线表第二条线宽度 */
+  border-bottom: 1.2pt solid;
   font-family: var(--table-font), var(--base-Latin-font), var(--base-Chinese-font), serif;
   /* font-size: var(--base-font-size); */
   text-align: center;
   page-break-inside: avoid;
   border-spacing: 6px;
   /* 自动布局表格宽度，如果有时内容太紧建议直接加空格吧，我自己看不惯和页面等宽的大表格 */
-  width: 100%;
+  width: auto;
   /* 使表格默认居中；虽然这个代码不好，但好像没别的实现办法 */
   margin: 0 auto;
 }
-
-/*
 #write table td {
   padding: 2px;
 }
@@ -738,40 +643,46 @@ ol, ul {
 }
 #write th {
   padding: 0px 6px;
-}*/
+}
 #write thead {
   /* 表格标题（首行）样式 */
   /* 三线表表头的线 */
-  Background-color: var(--dark-color);
-  color: var(--light-color);
+  border-bottom: 0.5pt solid;
   font-family: var(--table-title-font), var(--heading-Latin-font), var(--heading-Chinese-font), serif !important;
   /* font-size: var(--base-font-size); */
-  font-weight: 500;
+  font-weight: var(--strong-weight); 
+  font-style: normal;
+  font-synthesis: style;
 }
-
 
 blockquote {
   color: #222222;
-  background-color: var(--dark-color);
-  border-left: 4px solid var(--normal-color);
-  border-right: 1px solid var(--normal-color);
-  border-top: 1px solid var(--normal-color);
-  border-bottom: 1px solid var(--normal-color);
+  /* background-color: var(--dark-color); */
+
+  border-left: 3px solid var(--main-color);
+  border-right: 1px solid var(--main-color);
+  border-top: 1px solid var(--main-color);
+  border-bottom: 1px solid var(--main-color);
+
   box-shadow: 1px 1px 2px 0px #DDDDDD;
   box-sizing: border-box;
-  margin: 0 2px 0 2px;
+  margin: 0.618em 2px 0.618em 2px;
   padding: 0.5em 1em 0.5em 1em;
   /* 圆角 */
   border-radius: 5px 5px 5px 5px;
 }  
 
+
   font-style: normal;
-  font-family: var(--base-Latin-font), var(--base-Chinese-font), -apple-system, serif;
+  font-family: var(--quote-font);
   font-size: var(--quote-font-size);
+
+
   /* 文字离左边框的距离 */
   /* 左边框离页面边的距离 */
   margin-left: 0;
 }
+
 
 blockquote p:first-child {
   padding-top: 0ch;
@@ -781,6 +692,11 @@ blockquote p:last-child {
   padding-bottom: 0ch;
 }
 
+blockquote span {
+  font-style: normal;
+  font-family: var(--quote-font);
+  font-size: var(--quote-font-size);
+}
 
 blockquote blockquote span::before {
   content: '✎ ';
@@ -807,8 +723,10 @@ blockquote blockquote {
 
 blockquote blockquote span {
   white-space: normal;
+  font-style: normal;
+  font-family: var(--quote-font);
+  font-size: var(--quote-font-size);
 }
-
 
 
 /* 行内代码 */
@@ -819,10 +737,10 @@ code {
 h1 code, h2 code, h3 code, h4 code, h5 code, h6 code,
 p code,
 li code {
-  color: #666666;
-  background-color: #eeeeee;
+  color: #3c70c6;
+  background-color: #fefefe;
   /* 阴影 */
-  /* box-shadow: 0 0 1px 1px #c8d3df; */
+  box-shadow: 0 0 1px 1px #c8d3df;
   font-family: var(--code-font), var(--ui-font), monospace;
   box-sizing: border-box;
   border-right: 0px;
@@ -836,21 +754,15 @@ li code {
 .md-fences,
 .CodeMirror pre {
   font-size: 1em;
-
 }
 
 .CodeMirror-wrap {
-  padding: 10px;
+  /* padding: 10px; */
   font-size: 1em;
-  border-radius: 5px 5px 5px 5px;
-  border: 1px solid var(--normal-color);
-  box-shadow: 0 0 1px 1px #c8d3df;
-  z-index: 0;
 }
 
 .CodeMirror-code pre {
   font-family: var(--code-font), var(--ui-font), monospace;
-
 }
 
 /* 目录 */
@@ -875,21 +787,37 @@ li code {
 }
 
 /* 目录标题内容属性 */
-.md-toc-h2,
-.md-toc-h3,
-.md-toc-h4,
 .md-toc-h5,
 .md-toc-h6 {
   font-size: var(--toc-font-size);
   font-family: var(--toc-font), var(--base-Latin-font), var(--base-Chinese-font), serif;
 }
 
+.md-toc-h1 {
+  font-family: "BodoniMT-Bold", "方正小标宋_GBK";
+  font-size: 1.2em;
+  font-weight: var(--strong-weight);
+  font-style: normal;
+  text-align: center;
+}
+
 .md-toc-h2 {
   font-weight: var(--strong-weight);
+  font-family: "BodoniMT-Bold", "方正黑体_GBK";
+  font-size: 1.10em;
 }
+
+.md-toc-h3 {
+  font-family: "Bodoni MT", "方正书宋_GBK";
+}
+
+.md-toc-h4 {
+  font-family: "Bodoni MT", "方正楷体_GBK";
+}
+
 /* 目录标题前 */
 .md-toc-content .md-toc-h1 {
-  display: var(--toc-show-title);
+  /* display: var(--toc-show-title); */
   counter-reset: toc-h2;
 }
 .md-toc-content .md-toc-h2 {
@@ -906,49 +834,39 @@ li code {
 }
 .md-toc-content .md-toc-h2:before {
   counter-increment: toc-h2;
-  content: '';
-  /* content: counter(toc-h2); */
+  content: counter(toc-h2);
   margin-right: 1em;
-  font-weight: var(--strong-weight);
 }
 .md-toc-content .md-toc-h3:before {
   counter-increment: toc-h3;
-  /* content: counter(toc-h2) "." counter(toc-h3); */
-  content: '';
+  content: counter(toc-h2) "." counter(toc-h3);
   margin-left: 1.5em;
   margin-right: 0.5em;
 }
 .md-toc-content .md-toc-h4:before {
   counter-increment: toc-h4;
-  /* content: counter(toc-h2) "." counter(toc-h3) "." counter(toc-h4); */
-  content: '';
+  content: counter(toc-h2) "." counter(toc-h3) "." counter(toc-h4);
   margin-left: 3.5em;
   margin-right: 0.5em;
 }
 .md-toc-content .md-toc-h5:before {
   counter-increment: toc-h5;
-  /* content: counter(toc-h2) "." counter(toc-h3) "." counter(toc-h4) "." counter(toc-h5); */
-  content: '';
+  content: counter(toc-h2) "." counter(toc-h3) "." counter(toc-h4) "." counter(toc-h5);
   margin-left: 5.5em;
   margin-right: 0.5em;
 }
 .md-toc-content .md-toc-h6:before {
   counter-increment: toc-h6;
-  /* content: counter(toc-h2) "." counter(toc-h3) "." counter(toc-h4) "." counter(toc-h5) "." counter(toc-h6); */
-  content: '';
+  content: counter(toc-h2) "." counter(toc-h3) "." counter(toc-h4) "." counter(toc-h5) "." counter(toc-h6);
   margin-left: 7.5em;
   margin-right: 0.5em;
 }
 
 
-
-
-
  @media print { @page {margin: 0 0 0 0;} body.typora-export {padding-left: 0; padding-right: 0;} #write {padding:0;}}
 </style><title></title>
 </head>
-<body class='typora-export typora-export-show-outline typora-export-collapse-outline'><div class='typora-export-content'>
-<div class="typora-export-sidebar"><div class="outline-content"><li class="outline-item-wrapper outline-h1 outline-item-open"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#lzliangzhs-website">Lzliangzh’s Website</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h2 outline-item-single"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#home">Home</a></div><ul class="outline-children"></ul></li></ul></li></div></div><div id='write'  class=' first-line-indent'><h1 id='lzliangzhs-website'><span>Lzliangzh’s Website</span></h1><h2 id='home'><span>Home</span></h2><p><span>歡迎訪問 Lzliangzh’s Website！</span></p><p><span>這是一個個人網站。網站之運營者將在本網站不定期更新一些東西。</span></p></div></div>
-
-<script>(function (){var t=document.body.parentElement,e=[],n=null,i=document.body.classList.contains("typora-export-collapse-outline"),r=function(t,e,n){document.addEventListener(t,function(t){if(!t.defaultPrevented)for(var i=t.target;i&&i!=this;i=i.parentNode)if(i.matches(e)){!1===n.call(i,t)&&(t.preventDefault(),t.stopPropagation());break}},!1)};function o(){return t.scrollTop}r("click",".outline-expander",function(t){var e=this.closest(".outline-item-wrapper").classList;return e.contains("outline-item-open")?e.remove("outline-item-open"):e.add("outline-item-open"),c(),!1}),r("click",".outline-item",function(t){var e=this.querySelector(".outline-label");if(location.hash="#"+e.getAttribute("href"),i){var n=this.closest(".outline-item-wrapper").classList;n.contains("outline-item-open")||n.add("outline-item-open"),l(),n.add("outline-item-active")}});var a,s,u=function(){var t=o();n=null;for(var i=0;i<e.length&&e[i][1]-t<60;i++)n=e[i]},l=function(){document.querySelectorAll(".outline-item-active").forEach(t=>t.classList.remove("outline-item-active")),document.querySelectorAll(".outline-item-single.outline-item-open").forEach(t=>t.classList.remove("outline-item-open"))},c=function(){if(n){l();var t=document.querySelector('.outline-label[href="#'+(CSS.escape?CSS.escape(n[0]):n[0])+'"]');if(t)if(i){var e=t.closest(".outline-item-open>ul>.outline-item-wrapper");if(e)e.classList.add("outline-item-active");else{for(var r=(t=t.closest(".outline-item-wrapper")).parentElement.closest(".outline-item-wrapper");r;)r=(t=r).parentElement.closest(".outline-item-wrapper");t.classList.add("outline-item-active")}}else t.closest(".outline-item-wrapper").classList.add("outline-item-active")}};window.addEventListener("scroll",function(t){a&&clearTimeout(a),a=setTimeout(function(){u(),c()},300)});var f=function(){s=setTimeout(function(){!function(){e=[];var t=o();document.querySelector("#write").querySelectorAll("h1, h2, h3, h4, h5, h6").forEach(n=>{var i=n.getAttribute("id");e.push([i,t+n.getBoundingClientRect().y])})}(),u(),c()},300)};window.addEventListener("resize",function(t){s&&clearTimeout(s),f()}),f()})();</script></body>
+<body class='typora-export'><div class='typora-export-content'>
+<div id='write'  class=' first-line-indent'><h1 id='lzliangzh-的網站'><span>Lzliangzh 的網站</span></h1><h2 id='主頁'><span>主頁</span></h2><p><span>歡迎訪問 Lzliangzh’s Website！</span></p><p><span>這是一個個人網站。網站之運營者將在本網站不定期更新一些東西。</span></p></div></div>
+</body>
 </html>
