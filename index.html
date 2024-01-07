@@ -340,9 +340,9 @@ body {
   /* A4标准宽度 */
   max-width: 84.1%;
   background-color: white;
-  /* column-count: 2;
+  /* column-count: 3;
     column-gap: 25px;
-    column-width: 8cm; 
+    column-width: 45%; 
     display: inline-block; */
   /* 这里可以试分栏的，但确实不适合实现 */
 }
@@ -905,7 +905,13 @@ li code {
   margin-right: 0.5em;
 }
 
-
+.container {
+    padding: 10px;
+    column-count: 3;
+}
+.column {
+    flex: 1;
+}
  @media print { @page {margin: 0 0 0 0;} body.typora-export {padding-left: 0; padding-right: 0;} #write {padding:0;}}
 </style><title>歡迎 Welcome</title>
 </head>
@@ -915,13 +921,15 @@ li code {
         <div id='write' class=' first-line-indent'>
             <h1>歡迎！</br>Welcome to lzliangzh's Home Page!</h1>
             <p><span>Created by lzliangzh, Jan 6, 2024</span>
-            <h2>Operator's Memo/建站碎碎唸</h2>
-            <p>這個網站可能什麼都會有。總體上，我還是希望把這個網站作為自己寫作記錄的一個平台，把它當作一本無窮大的筆記本。因此這個網站的版式是相對文藝的，網站的內容也採用了更有文化底蘊的正體字來呈現。從記錄的目的出發，我可能會在此處不定期更新一些生活隨筆/讀書筆記等文章，當然歡迎諸賢斧正。</p>
-            <p>除此之外，拜倒於一個“Website”的強大力量，我還十分願意把諸多學習資料上傳於此，也歡迎大家取用。</p>
-            <p>2024 年 1 月 6 日，其實還在期末考試期。但在整理期末考試筆記的過程中，抱著讓筆記更加賞心悅目的宗旨，我時常爆改 Typora 的 CSS 主題和輸出，並且在碼 Markdown 的過程中又頻繁地借 HTML 助力。作為一個排印愛好者，雖然 HTML 的中文排版有諸多問題，但我還是歎服於其功能之強大。網站不也是用 HTML 編寫的嘛！我逐漸按耐不住擁有一個網站的衝動。於是便乘興而發，白手起家，魔改手頭上現有的文字材料，讓腦子裡不多的 Thinking 與強大的搜索引擎與 AI 結合，從 2024/1/6 的晚上開始，到翌日夜分讓網站基本成了形。</p>
-            <p>我下一步的想法，一是多把寒假裡的感悟與收穫，放到網站上來；二是鑒於寒假回中學看望的行程，在此處盡力搜羅陳列應試資料、招考時訊，以裨益後學。倘若那日審美疲勞，又適得閒暇，將此站重新修葺一番，亦未可知。</p>
-            <p style='text-align: right;'> 2024 年 1 月 7 日</p>
-            <section name="preview-14" style="-webkit-touch-callout:none;user-select:text;overflow: hidden;text-align: center;line-height: 0;margin-bottom: 0px;">
+              <h2>Operator's Memo/建站碎碎唸</h2>
+              <div class="container">
+                <p>這個網站可能什麼都會有。總體上，我還是希望把這個網站作為自己寫作記錄的一個平台，把它當作一本無窮大的筆記本。因此這個網站的版式是相對文藝的，網站的內容也採用了更有文化底蘊的正體字來呈現。從記錄的目的出發，我可能會在此處不定期更新一些生活隨筆/讀書筆記等文章，當然歡迎諸賢斧正。</p>
+                <p>除此之外，拜倒於一個“Website”的強大力量，我還十分願意把諸多學習資料上傳於此，也歡迎大家取用。</p>
+                <p>2024 年 1 月 6 日，其實還在期末考試期。但在整理期末考試筆記的過程中，抱著讓筆記更加賞心悅目的宗旨，我時常爆改 Typora 的 CSS 主題和輸出，並且在碼 Markdown 的過程中又頻繁地借 HTML 助力。作為一個排印愛好者，雖然 HTML 的中文排版有諸多問題，但我還是歎服於其功能之強大。網站不也是用 HTML 編寫的嘛！我逐漸按耐不住擁有一個網站的衝動。於是便乘興而發，白手起家，魔改手頭上現有的文字材料，讓腦子裡不多的 Thinking 與強大的搜索引擎與 AI 結合，從 2024/1/6 的晚上開始，到翌日夜分讓網站基本成了形。</p>
+                <p>我下一步的想法，一是多把寒假裡的感悟與收穫，放到網站上來；二是鑒於寒假回中學看望的行程，在此處盡力搜羅陳列應試資料、招考時訊，以裨益後學。倘若那日審美疲勞，又適得閒暇，將此站重新修葺一番，亦未可知。</p>
+                <p style='text-align: right;'> 2024 年 1 月 7 日</p></div>
+            
+            <section name="preview-14" style="-webkit-touch-callout:none;user-select:text;overflow: hidden;text-align: center;line-height: 0;margin-bottom: 0px;column-span:all;">
               <section powered-by="e2.cool" label="404.tech_svg_E2编辑器_款款而来_默认4图" copyright="E2.COOL 新媒体编辑器版权所有 模板禁止任何个人、机构、第三方编辑器出于商业目的案例化引用和复用以及二次模板化行为 违者必究" style="overflow: hidden;line-height:0;margin-top: -1px">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 809" style="display: block; margin: 0 auto;" width="100%" powered-by="e2.cool" label="404.tech_svg_E2编辑器_款款而来_默认4图" copyright="E2.COOL 新媒体编辑器版权所有 模板禁止任何个人、机构、第三方编辑器出于商业目的案例化引用和复用以及二次模板化行为 违者必究">
                   <g>
@@ -966,25 +974,28 @@ li code {
                 <section style="height: 0 !important; margin-top: 0 !important; overflow: hidden;" powered-by="e2.cool" label="404.tech_svg_E2编辑器_款款而来_默认4图">如页面未加载，请刷新重试</section>
               </section>
             </section>
+            
+            <table><tr style="vertical-align: top;"><td style="width:50%;">
             <h2>About Me/關於我</h2>
-            <p>北京大學中國語言文學系 lzliangzh</p>
-            <p><strong>E-mail</strong> | leo_liangz@163.com</p>
-            <p><strong>QQ</strong> | 3319601943</p>
-            <p><strong>Address</strong> | 中華人民共和國北京市海澱區燕園街道頤和園路 5 號北京大學</p>
-            <p><strong>Postcode</strong> | 101000</p>
+              <p>北京大學中國語言文學系 lzliangzh</p>
+              <p><strong>E-mail</strong> </br>leo_liangz@163.com</p>
+              <p><strong>QQ</strong> </br>3319601943</p>
+              <p><strong>Address</strong> </br>中華人民共和國北京市海澱區燕園街道頤和園路 5 號北京大學</p>
+              <p><strong>Postcode</strong> </br>101000</p></td>
 
-            <h2>Home/萬維網之家</h2>
-            <h3>Essays/隨筆</h3>
-            <p><a href="https://lzliangzh.github.io/essays/charge-into-2024.html">Charge into 2024/衝向 2024</a></p>
-
-            <h3>Reading Notes/讀書筆記</h3>
-
-            <h3>Academic Resources/學術資料</h3>
-            <p>以下內容僅供學習參考，不可用于商業用途。</p>
-
-            <p><a href="https://lzliangzh.github.io/academic-resources/contemporary-chinese.html">現代漢語（上）筆記，2024/1/6 更新</a></p>
-            <p><a href="">古代漢語（上）筆記，2024/1/6 更新</a></p>
-            <p><a href="https://lzliangzh.github.io/academic-resources/advanced-math-C-I.html">高等數學C（上）筆記，2024/1/7 更新</a></p>
-</body>
+            <td style="width:50%;"><h2>Home/萬維網之家</h2>
+              <h3>Essays/隨筆</h3>
+              <p><a href="https://lzliangzh.github.io/essays/charge-into-2024.html">Charge into 2024/衝向 2024</a></p>
+  
+              <h3>Reading Notes/讀書筆記</h3>
+  
+              <h3>Academic Resources/學術資料</h3>
+              <p>以下內容僅供學習參考，不可用于商業用途。</p>
+  
+              <p><a href="https://lzliangzh.github.io/academic-resources/contemporary-chinese.html">現代漢語（上）筆記，2024/1/6 更新</a></p>
+              <p><a href="">古代漢語（上）筆記，2024/1/6 更新</a></p>
+              <p><a href="https://lzliangzh.github.io/academic-resources/advanced-math-C-I.html">高等數學C（上）筆記，2024/1/7 更新</a></p>
+            </td></tr></table>
+            </body>
 
 </html>
