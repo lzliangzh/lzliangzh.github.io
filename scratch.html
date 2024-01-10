@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+        /* 设置标签页外层容器样式 */
+        .tab-container {
+            width: 100%;
+            background-color: #f1f1f1;
+            overflow: hidden;
+        }
+ 
+        /* 设置标签页选项卡的样式 */
+        .tab {
+            float: left;
+            padding: 8px 16px;
+            background-color: #ccc;
+            cursor: pointer;
+        }
+ 
+        /* 设置选中的标签页样式 */
+        .active {
+            background-color: #aaa;
+        }
+ 
+        /* 设置标签页内容的样式 */
+        .tab-content {
+            display: none;
+            padding: 16px;
+            background-color: #fff;
+        }
+    </style>
+    </head>
+    <body>
+        <div class="tab-container">
+            <!-- 标签页选项卡 -->
+            <div class="tab active" onclick="openTab(event,'tab1')">标签页1</div>
+            <div class="tab" onclick="openTab(event,'tab2')">标签页2</div>
+            <div class="tab" onclick="openTab(event,'tab3')">标签页3</div>
+ 
+            <!-- 标签页内容 -->
+            <div id="tab1" class="tab-content" style="display:block;">
+                <h3>标签页1内容</h3>
+                <p>这是标签页1的内容。</p>
+            </div>
+            <div id="tab2" class="tab-content">
+                <h3>标签页2内容</h3>
+                <p>这是标签页2的内容。</p>
+            </div>
+            <div id="tab3" class="tab-content">
+                <h3>标签页3内容</h3>
+                <p>这是标签页3的内容。</p>
+            </div>
+        </div>
+ 
+        <script>
+        function openTab(event, tabName) {
+            // 获取所有标签页内容元素
+            var tabContent = document.getElementsByClassName("tab-content");
+ 
+            // 隐藏所有标签页内容
+            for (var i = 0; i < tabContent.length; i++) {
+                tabContent[i].style.display = "none";
+            }
+ 
+            // 移除所有标签页选项卡的 active 类
+            var tabs = document.getElementsByClassName("tab");
+            for (var i = 0; i < tabs.length; i++) {
+                tabs[i].className = tabs[i].className.replace(" active", "");
+            }
+ 
+            // 显示当前选中标签页内容
+            document.getElementById(tabName).style.display = "block";
+ 
+            // 添加 active 类到当前选中标签页选项卡
+            event.currentTarget.className += " active";
+        }
+    </script>
+    </body>
+</html>
+
+</style><title>古代漢語（上）筆記</title>
+</head>
+
+</style><title></title>
+</head>
+<body class='typora-export'><div class='typora-export-content'>
+<div id='write'  class=' first-line-indent'><div class="hanging-top"><a class="hanging-top-href" href="https://lzliangzh.github.io">←返回</a> / <a
+    class="hanging-top-href" href="#">↑頂部</a> ｜ 學術資源/古代漢語（上）筆記 </div>
+    
+
+    <div class="manualContent">
+        
+        <div class="manualTitle">要點</div>
+
+        <input id="check" type="checkbox">
+            <label for="check" class="check-in"><span>▸</span></label>
+            <label for="check" class="check-out"><span>▾</span></label>
+        <div class="manualItem">（1）即、既；（2）邑、都、國、家；（3）國之大事，在祀與戎。</div>    
+       
+    </div>
+
+    

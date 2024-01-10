@@ -211,7 +211,7 @@ mark .md-meta { color: rgb(0, 0, 0); }
   /* --base-Latin-font: "Latin Modern Roman", "Latin Modern Roman 10", Times; */
   --base-Latin-font: "Karma";
   --base-Chinese-font: "思源宋体 CN";
-  --base-font-size: 12pt;
+  --base-font-size: 16pt;
   /* 引言字体 */
   --quote-font: "Karma", "ChillKai";
   /* em单位为一个正文字符（--base-font-size）大小，
@@ -467,7 +467,6 @@ h6.md-focus:before {
   padding-top: 2em;
   padding-bottom: 1em;
   color: var(--main-color);
-  text-shadow: 2px 2px 0px#dddddd;
 }
 #write h2 {
   font-family: var(--heading-Latin-font), var(--h2-Chinese-font), serif;
@@ -682,6 +681,17 @@ blockquote {
 }  
 
 
+  font-style: normal;
+  font-family: var(--quote-font);
+  font-size: var(--quote-font-size);
+
+
+  /* 文字离左边框的距离 */
+  /* 左边框离页面边的距离 */
+  margin-left: 0;
+}
+
+
 blockquote p:first-child {
   padding-top: 0ch;
 }
@@ -860,287 +870,12 @@ li code {
   margin-right: 0.5em;
 }
 
-.container-3c {
-      padding: 10px;
-      column-count: 3;
-      text-align: justify;
-    }
-
-    .container-mb {
-      vertical-align: top;
-      display: inline-block;
-      margin: 0.3em;
-      width: 100%;
-
-    }
-
-    .container-pi {
-      vertical-align: top;
-      display: inline-block;
-      margin: 0.3em;
-      width: 100%;
-    }
-
-
-    @keyframes slide-out-top {
-      90% {
-        background-color: #ffffff;
-        color: #000000;
-
-      }
-
-      100% {
-        background-color: rgba(0, 0, 0, 0);
-        color: rgba(0, 0, 0, 0);
-      }
-    }
-
-    .hanging-top {
-      top: 0;
-      z-index: 99;
-      position: sticky;
-      padding: 1em;
-      animation: slide-out-top 3s;
-      background-color: rgba(0, 0, 0, 0);
-      color: rgba(0, 0, 0, 0);
-    }
-
-    .hanging-top:hover {
-      background-color: #ffffff;
-      color: #000000;
-      transition: 250ms;
-    }
-
-    .hanging-top-href {
-      display: inline-block;
-      background-color: rgba(255, 255, 255, 0.7);
-      padding-left: 0.2em;
-      padding-right: 0.2em;
-      padding-top: 0.2em;
-      border-radius: 20px;
-    }
-
-
-    .article-layout {
-      background-color: #ffffff;
-      width: 224px;
-      height: auto;
-      box-shadow: 0px 0px 4px 0px #888888;
-      border-radius: 10px;
-      padding: 0.5em;
-      text-align: center;
-      display: inline-block;
-      text-shadow: 0 0 10px #ffffff;
-      font-feature-settings: 'halt';
-    }
-
-    .article-layout:hover {
-        box-shadow: 0px 0px 6px #CDCD00;
-
-    }
-    .upd {
-      font-size: 0.6em;
-      color: #888888;
-      text-shadow: 0 0 0px #dddddd;
-      font-weight: 400;
-    }
-
-    @media (min-width: 1000px) {
-      .container-3c {
-        padding: 10px;
-        column-count: 3;
-        text-align: justify;
-      }
-
-      .container-mb {
-        vertical-align: top;
-        width: 55.8vw;
-        display: inline-block;
-        margin: 0.3em;
-
-      }
-
-      .container-pi {
-        vertical-align: top;
-        width: 18vw;
-        display: inline-block;
-        margin: 0.3em;
-      }
-
-
-    }
-
-    mjx-container[jax="SVG"] {
-      direction: ltr;
-    }
-
-    mjx-container[jax="SVG"]>svg {
-      overflow: visible;
-      min-height: 1px;
-      min-width: 1px;
-    }
-
-    mjx-container[jax="SVG"]>svg a {
-      fill: blue;
-      stroke: blue;
-    }
-
-    mjx-assistive-mml {
-      position: absolute !important;
-      top: 0px;
-      left: 0px;
-      clip: rect(1px, 1px, 1px, 1px);
-      padding: 1px 0px 0px 0px !important;
-      border: 0px !important;
-      display: block !important;
-      width: auto !important;
-      overflow: hidden !important;
-      -webkit-touch-callout: none;
-      -webkit-user-select: none;
-      -khtml-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-    }
-
-    mjx-assistive-mml[display="block"] {
-      width: 100% !important;
-    }
-
-    mjx-container[jax="SVG"][display="true"] {
-      display: block;
-      text-align: center;
-      margin: 1em 0;
-    }
-
-    mjx-container[jax="SVG"][display="true"][width="full"] {
-      display: flex;
-    }
-
-    mjx-container[jax="SVG"][justify="left"] {
-      text-align: left;
-    }
-
-    mjx-container[jax="SVG"][justify="right"] {
-      text-align: right;
-    }
-
-    g[data-mml-node="merror"]>g {
-      fill: red;
-      stroke: red;
-    }
-
-    g[data-mml-node="merror"]>rect[data-background] {
-      fill: yellow;
-      stroke: none;
-    }
-
-    g[data-mml-node="mtable"]>line[data-line],
-    svg[data-table]>g>line[data-line] {
-      stroke-width: 70px;
-      fill: none;
-    }
-
-    g[data-mml-node="mtable"]>rect[data-frame],
-    svg[data-table]>g>rect[data-frame] {
-      stroke-width: 70px;
-      fill: none;
-    }
-
-    g[data-mml-node="mtable"]>.mjx-dashed,
-    svg[data-table]>g>.mjx-dashed {
-      stroke-dasharray: 140;
-    }
-
-    g[data-mml-node="mtable"]>.mjx-dotted,
-    svg[data-table]>g>.mjx-dotted {
-      stroke-linecap: round;
-      stroke-dasharray: 0, 140;
-    }
-
-    g[data-mml-node="mtable"]>g>svg {
-      overflow: visible;
-    }
-
-    [jax="SVG"] mjx-tool {
-      display: inline-block;
-      position: relative;
-      width: 0;
-      height: 0;
-    }
-
-    [jax="SVG"] mjx-tool>mjx-tip {
-      position: absolute;
-      top: 0;
-      left: 0;
-    }
-
-    mjx-tool>mjx-tip {
-      display: inline-block;
-      padding: .2em;
-      border: 1px solid #888;
-      font-size: 70%;
-      background-color: #F8F8F8;
-      color: black;
-      box-shadow: 2px 2px 5px #AAAAAA;
-    }
-
-    g[data-mml-node="maction"][data-toggle] {
-      cursor: pointer;
-    }
-
-    mjx-status {
-      display: block;
-      position: fixed;
-      left: 1em;
-      bottom: 1em;
-      min-width: 25%;
-      padding: .2em .4em;
-      border: 1px solid #888;
-      font-size: 90%;
-      background-color: #F8F8F8;
-      color: black;
-    }
-
-    foreignObject[data-mjx-xml] {
-      font-family: initial;
-      line-height: normal;
-      overflow: visible;
-    }
-
-    mjx-container[jax="SVG"] path[data-c],
-    mjx-container[jax="SVG"] use[data-c] {
-      stroke-width: 3;
-    }
-
-    g[data-mml-node="xypic"] path {
-      stroke-width: inherit;
-    }
-
-    .MathJax g[data-mml-node="xypic"] path {
-      stroke-width: inherit;
-    }
-
-    mjx-container[jax="SVG"] path[data-c],
-    mjx-container[jax="SVG"] use[data-c] {
-      stroke-width: 0;
-    }
-
-    @media print {
-      @page {
-        margin: 0 0 0 0;
-      }
-
-      body.typora-export {
-        padding-left: 0;
-        padding-right: 0;
-      }
-
-      #write {
-        padding: 0;
-      }
-    }
-    @font-face {
+ruby {
+  text-align: left;
+  display: inline;
+  
+}
+@font-face {
     font-family: 'ChillKai';
     src: url("https://lzliangzh.github.io/fonts/ChillKai.ttf");
 }
@@ -1179,77 +914,200 @@ li code {
     font-weight: 600;
 }
 
-.manualContent{
-  color: #222222;
-  /* background-color: var(--dark-color); */
-
-  border-left: 3px solid var(--main-color);
-  border-right: 1px solid var(--main-color);
-  border-top: 1px solid var(--main-color);
-  border-bottom: 1px solid var(--main-color);
-
-  box-shadow: 1px 1px 2px 0px #DDDDDD;
-  box-sizing: border-box;
-  margin: 0.618em 2px 0.618em 2px;
-  padding: 0.5em 1em 0.5em 1em;
-  /* 圆角 */
-  border-radius: 5px 5px 5px 5px;
-}
-
-.manualItem {
-  text-align: left;
-  max-height:0;
-  overflow:hidden;
-  transition:max-height .3s;
-  font-family: "Karma", "ChillKai";
-}
-:checked ~ .manualItem {
-  max-height:666px;
-}
-input[type="checkbox"] {
-  position:fixed;
-  clip:rect(0 0 0 0);
-}
-:checked ~ .check-in {
-  display:none;
-}
-:checked ~ .check-out {
-  display:inline-block;
-}
-.check-out {
-  display:none;
-}
-.check-in,.check-out {
-  color: #444444;
-  cursor:pointer;
-}
-
-.manualTitle{
-  font-family: "Karma", "思源宋体 CN";
-  font-weight: 700;
-  color: #333333;
+.article-layout {
+  background-color: #ffffff;
+  width: 84px;
+  height: auto;
+  border-radius: 10px;
+  border-left: 3px solid rgb(139, 0, 18);
+  border-right: 3px solid rgb(139, 0, 18);
+  padding: 0.5em;
+  text-align: center;
   display: inline-block;
+  text-shadow: 0.5px 0.5px 0px #ffffff;
+  font-feature-settings: 'halt';
+}
+.article-layout:hover {
+  box-shadow: 0px 0px 6px #CDCD00;
+  transition: 250ms;
 }
 
-  </style><title>古代漢語（上）筆記</title>
-</head>
+.article-layout:active{
+  box-shadow: inset 0px 0px 10px #888;
+  transition: 250ms;
+}
 
-</style><title></title>
+.upd {
+   font-size: 0.6em;
+   color: #888888;
+   text-shadow: 0.5px 0.5px 0px #dddddd;
+   font-weight: 400;
+}
+
+
+
+
+
+.tab-container {
+            width: 100%;
+            background-color: #ffffff;
+            overflow: hidden;
+        }
+ 
+        /* 设置标签页选项卡的样式 */
+        .tab {
+            float: left;
+            padding: 8px 16px;
+            background-color: #fff;
+            cursor: pointer;
+        }
+
+        .tab:hover{
+          box-shadow: 0px 0px 30px #CDCD00 inset;
+          transition: 250ms;
+          border-radius: 30px;
+        }
+ 
+        /* 设置选中的标签页样式 */
+        .active {
+            border-left: 4px solid rgb(139, 0, 18);
+            border-right: 4px solid rgb(139, 0, 18);
+            font-weight: 700;
+            border-radius: 30px;
+        }
+ 
+        /* 设置标签页内容的样式 */
+        .tab-content {
+            display: none;
+            padding: 16px;
+            background-color: #fff;
+        }
+
+    .hanging-top {
+      top: 0;
+      z-index: 99;
+      position: sticky;
+      padding: 1em;
+      animation: slide-out-top 3s;
+      background-color: rgba(0, 0, 0, 0);
+      color: rgba(0, 0, 0, 0);
+    }
+
+    .hanging-top:hover {
+      background-color: #ffffff;
+      color: #000000;
+      transition: 250ms;
+    }
+
+    .hanging-top-href {
+      display: inline-block;
+      background-color: rgba(255, 255, 255, 0.7);
+      padding-left: 0.2em;
+      padding-right: 0.2em;
+      padding-top: 0.2em;
+      border-radius: 20px;
+    }
+
+
+
+        
+
+
+
+
+
+ @media print { @page {margin: 0 0 0 0;} body.typora-export {padding-left: 0; padding-right: 0;} #write {padding:0;}}
+</style><title>古代漢語（上）文選複習</title>
 </head>
 <body class='typora-export'><div class='typora-export-content'>
-<div id='write'  class=' first-line-indent'><div class="hanging-top"><a class="hanging-top-href" href="https://lzliangzh.github.io">←返回</a> / <a
+<div id='write'  class=' first-line-indent'>
+  
+  <div class="hanging-top"><a class="hanging-top-href" href="https://lzliangzh.github.io">←返回</a> / <a
     class="hanging-top-href" href="#">↑頂部</a> ｜ 學術資源/古代漢語（上）筆記 </div>
+
     
+  <div class="tab-container">
+    <!-- 标签页选项卡 -->
+    <div class="tab active" onclick="openTab(event,'tab1')">文選</div>
+    <div class="tab" onclick="openTab(event,'tab2')">通論部分綜述</div>
+    <div class="tab" onclick="openTab(event,'tab3')">詞類活用</div>
+    <div class="tab" onclick="openTab(event,'tab4')">詞序</div>
+    <div class="tab" onclick="openTab(event,'tab5')">判斷句</div>
+    <div class="tab" onclick="openTab(event,'tab6')">被動表示法</div>
+    <div class="tab" onclick="openTab(event,'tab7')">虛詞</div>
+    <div class="tab" onclick="openTab(event,'tab8')">漢字結構與詞義分析</div>
 
-    <div class="manualContent">
-        
-        <div class="manualTitle">要點</div>
 
-        <input id="check" type="checkbox">
-            <label for="check" class="check-in"><span>▸</span></label>
-            <label for="check" class="check-out"><span>▾</span></label>
-        <div class="manualItem">（1）即、既；（2）邑、都、國、家；（3）國之大事，在祀與戎。</div>    
-       
+    <!-- 标签页内容 -->
+    <div id="tab1" class="tab-content" style="display:block;">
+
+      <h1 style="display: inline-block;">古代漢語（上）文選</h1>
+      <p>以下是課內講授篇目。</p><h2 id='鄭伯克段於鄢'>鄭伯克段於鄢</h2><blockquote><blockquote><p>常識</p></blockquote><p>春秋三傳：《左傳》（左丘明），《公羊傳》（公羊高），《榖梁傳》（榖梁赤）</p></blockquote><p>初，鄭武公娶于申，曰武姜。生莊公及共叔段。莊公寤生，驚 <em>（使動）</em>姜氏，故名曰寤生，遂惡之。愛共叔段，欲立之。<ruby>亟<rt>qì</ruby></ruby><em>（屢次）</em>請於武公，公弗許。</p><p>及莊公即位，為之請制。公曰：「制，巖邑 <em>（險要的城邑）</em>也，虢叔死焉，佗<em>（他）</em>邑唯命<em>（唯命是聽的省略。唯是語氣詞）</em>。」請京，使居之，謂之「京城大<em>（太）</em>叔」。祭仲曰：「都城<em>（城墻）</em>過百雉，國之害也，先王之制：大都不過參國<em>（國都）</em>之一；中，五之一；小，九之一。今京不度<em>（合乎法度）</em>，非制也，君將不堪。」公曰：「姜氏欲之，焉辟<em>（後作“避”）</em>害？」對曰：「姜氏何厭之有！不如早為<em>（安排）</em>之<mark>所<em>（處所）</em></mark>，無使滋蔓。<mark>蔓，難圖<em>（圖謀、謀劃，想辦法對付）</em>也<em>（緊縮復句，根據上下文理解）</em></mark>。蔓草猶不可除，況君之寵弟乎！」公曰：「多行不義，必自斃<em>（頓僕，倒地）</em>，子姑待之。」</p><blockquote><blockquote><p>補充</p></blockquote><ol><li>邑、都、國、家。</li></ol><ol start='2' ><li>文題白身</li><li>國之大事，在祀與戎。</li></ol></blockquote><p>既而大叔命西鄙<em>（邊邑）</em>、北鄙貳於己。公子呂曰：「國不堪貳，君將若之何？欲與大叔，臣請事之；若弗與，則請除之，無生<em>（使動）</em>民心。」公曰：「無庸，將自<mark>及<em>（及的賓語往往省略，表示“及於難也”。及：趕上）</em></mark>。」大叔又收貳<em>（二的地方）</em>以為己邑，至于廩延。子封曰：「可矣，厚<em>（土地廣大）</em>將得眾。」公曰：「不義不暱，厚將崩。」</p><blockquote><blockquote><p>補充</p></blockquote><p>也、矣</p></blockquote><hr /><p>大叔<mark>完<em>（使城墻完好，修葺）</em>聚<em>（聚集民眾）</em></mark>，繕甲兵，<mark>具<em>（準備）</em></mark>卒乘，將襲鄭。夫人將啟之。公聞其期，曰：「可矣。」命子封帥<em>（率領）</em>車二百乘以伐京。京叛大叔段，段入于鄢，公伐諸鄢。五月辛丑，大叔出奔共。書曰：「鄭伯克段于鄢。」段不弟，故不言弟。如二君，故曰克。稱鄭伯，譏失教也。謂之鄭志，不言出奔，難之也。</p><p>遂寘姜氏于城潁，而誓之曰：「不及黃泉，無相見也！」既而悔之。</p><p>潁考叔為潁谷封<em>（疆界）</em>人<em>（掌管邊界的官）</em>，聞之，有獻於公。公賜之食。食舍肉，公問之，對曰：「小人有母，皆嘗小人之食矣，未嘗君之<mark>羹<em>（帶汁的肉食）</em></mark>。請以遺之。」公曰：「爾有母遺，繄我獨無！」潁考叔曰：「敢問何謂也？」公語之故，且告之悔，對曰：「君何患焉？若闕地及泉，隧而相見，其誰曰不然？」公從之。公入而賦：「大隧之中，其樂也融融。」姜出而賦：「大隧之外，其樂也洩洩。」遂為母子如初。</p><p>君子曰：「潁考叔純孝也，愛其母，施及莊公。《詩》曰：『孝子不匱，永錫爾類。』其是之謂乎！」</p><blockquote><blockquote><p>補充</p></blockquote><ol><li>昏婚，取娶</li></ol><ol start='2' ><li><p>羹：（帶汁的）肉食。幸分我一杯羹（肉食，紅樓夢）</p><p>羹膷臐膮：膷，牛羹；臐，羊羹；膮，豬羹</p><p>羹vs臛：白水肉vs加調料的紅燒肉</p><p>羹vs炙：烤肉</p><p>羞羹vs太羹：用正鼎裝</p></li></ol><p>藜藿之羹（菜多湯少的食物，韓非）</p></blockquote><h2 id='齊桓公伐楚'>齊桓公伐楚</h2><blockquote><blockquote><p>常識</p></blockquote><ol><li>謚號：上謚、中謚、下謚</li></ol><ol start='2' ><li><p>征、伐、侵、襲（齊桓公伐楚也有）</p><p>凡師，有鐘鼓（進軍、撤軍的號令）曰伐（有道伐無道），無曰侵（非正義），輕（偷摸，暗中）曰襲。</p></li></ol></blockquote><p>四年，春，齊侯以諸侯之師侵蔡，蔡潰，遂伐楚。楚子使與師言曰：君處<em>（居）</em>北海，寡人處南海，唯是風馬牛不相及也。不虞<em>（料想）</em>君之涉<em>（趟水過河→進入）</em>吾地也，何故，管仲對曰，昔召康公命我先君大公曰，五侯九伯，女實<em>（語氣詞，表命令祈使）</em>征之，以夾輔周室，賜我先君履<em>（vs屨）</em>。東至于海，西至于河，南至于穆陵，北至于無棣。爾貢包茅不入，王祭不共<em>（供給供應）</em>，無以縮酒，寡人是<mark>徵<em>（問，責問）</em>。</mark>昭王南征<em>（出行）</em>而不復，寡人是問。對曰，貢之不入，寡君之罪也，敢不共給，昭王之不復，君<em>（委婉語氣）</em>其問諸水濱。師進，<mark>次<em>（舍、信、次）</em></mark>于陘。</p><p>夏，楚子使屈完如師。師退，次于召陵，齊侯<mark>陳<em>（陳陣，古今字）</em></mark>諸侯之師，與屈完乘而觀之，齊侯曰，豈不穀是為，先君之好是繼，與不穀同好如何？對曰，君惠<em>（敬辭，對我的恩惠）</em><ruby>徼<rt>yāo</ruby><em>（求）</em>福於敝邑之社稷，辱收寡君，寡君之願也，齊侯曰，以此眾戰，誰能禦之，以此攻城，何城不克，對曰，君若以德綏<em>（安撫）</em>諸侯，誰敢不服，君若以力，楚國方城以為城，漢水以為<mark>池<em>（護城河，別處還有水塘義）</em></mark>，雖眾，無所用之，屈完及諸侯盟。</p><h2 id='鞌之戰'>鞌之戰</h2><blockquote><ol><li><p>乘：3甲士、4馬，72步卒</p><p>古代車戰時，尊者居車左，禦者居中，驂乘居右。（但君主或主帥居中，則禦者居左）</p></li></ol><ol start='2' ><li><p>疾、病：病是重病/受傷，危及生命</p><p>飢、饑：飢是肚餓；榖不熟曰飢，菜不熟曰饉。</p></li></ol><ol start='3' ><li>左耳旁是“阜（山）”,右耳旁是“邑（城邑）”</li></ol></blockquote><p>癸酉，師陳于鞍，邴夏<mark>御<em>（駕車）</em></mark>齊侯，逢丑父為右，晉解張御郤克，鄭丘緩為右，齊侯曰，余姑翦<em>（歬、歬刂=前、翦、剪）</em>滅此而朝食，不<mark>介<em>（甲，介胄之士）</em></mark>馬而馳之。郤克傷於矢。流血及屨，未絕鼓音。曰：余病<em>（疾、病；饑、飢）</em>矣。張侯曰：自始合，而矢貫余手及肘，余折以御，左輪朱殷<em>（黑紅）</em>，豈敢言病，吾子忍之。緩曰，自始合，苟有險<em>（不平坦的路，阝=阜）</em>，余必下推車，子豈識之，然子病矣，張侯曰，<mark>師之耳目，在吾旗鼓，進退從之<em>（合敘=並提、互文=屬文互見）</em></mark>，此車，一人殿之，可以集事，若之何其以病，敗君之大事也，擐<em>（穿上）</em>甲執兵，固即<em>（走向）</em>死也，病未及死，吾子勉<em>（努力）</em>之，左并轡，右援枹而鼓，馬逸<em>（狂奔）</em>不能止，師從之。齊師敗績，逐之，三周華不注。</p><p>韓厥夢子輿謂己曰：旦辟左右。故中御而從齊侯，邴夏曰，射其御者，君子也，公曰，謂之君子而射之，非禮也，射其左，越于車下，射其右，斃于車中，綦毋張喪車，從韓厥曰，請寓乘，從左右，皆肘之，使立於後，韓厥俛<em>（通“俯”，低下身子）</em>定其右。</p><p>逢丑父與公易位，將及華泉，驂絓於木而止。丑父寢於轏中，蛇出於其下，以肱擊之，傷而匿之，故不能推車而及<em>（被趕上）</em>。韓厥執縶馬前，再拜稽首，奉觴加璧以進，曰，寡君使群臣為魯衛請，曰，無令輿師，陷入君地，下臣不幸，屬當戎行，無所逃隱，且懼奔辟，而忝兩君，臣辱戎士，敢告不敏，攝官承乏，丑父使公下如華泉取飲，鄭周父御佐車，宛茷為右，載齊侯以免，韓厥獻丑父，郤獻子將戮之，呼曰，自今無有代其君任<em>（本義“抱”，引申為負荷、負擔）</em>患者，有一於此，將為戮乎，郤子曰，人不難以死免其君，我戮之不祥，赦之以勸事君者，乃免之。</p><h2 id='觸龍ruby說rtshuìrt用話勸說別人）趙太後'>觸龍<ruby>說<rt>shuì</ruby><em>（用話勸說別人）</em>趙太後</h2><blockquote><blockquote><p>常識</p></blockquote><ol><li>《戰國策》（又名《國策》《國事》《短長》）國別體斷代史，西漢劉向編訂成書。全書分十二國：東周、西周、秦、齊、楚、趙、魏、韓、宋、衛、燕、中山。</li><li>《左傳》編年體通史，《國語》國別體通史，《史記》紀傳體通史。</li><li>趙國國君世系：韓趙魏三家分晉→趙烈侯→趙武公→趙敬侯→趙成侯→趙肅侯→趙武靈王→惠文王→孝成王。</li></ol></blockquote><p>趙太后新用事，秦急攻之。趙氏求救於齊。齊曰：「必以長安君為質，兵乃<em>（副詞，才）</em>出。」太后不肯，大臣<ruby>強<rt>qiǎng</ruby><em>（盡力、竭力）</em>諫。太后明謂左右：「有復言令長安君為質者，老婦必唾其面！」</p><p>左師觸龍言：愿<em>（希望）</em>見太后。<mark>太后盛氣而揖之<em>（怒氣衝衝地行拱手禮。或為形近訛誤，《史記·趙世家》本作“胥”通“須”，等待，怒氣衝衝地等著觸龍。“日雲暮矣，寡君須矣，吾子其入之！”）</em>。</mark>入而徐趨，至而自謝，曰：「老臣病足，曾<em>（副詞，加強語氣）</em>不能疾走，不得見久矣。竊自恕，而恐太后玉體之有所郄<em>（“卻”異體字，縫隙）</em>也，故愿<mark>望<em>（謙辭。望，人站在高處向遠處眺望）</em></mark>見太后。」太后曰：「老婦恃輦而行。」曰：「日食飲得無衰乎？」曰：「恃鬻<em>（通“粥”（俗字）。弓，熱氣上升之樣；鬲，鍋）</em>耳。」曰：「老臣今者<em>（近來）</em>殊<em>（很）</em>不欲食，乃自強步，日三四里，少益<em>（稍微漸漸地）</em>耆<em>（喜愛）</em>食，和於<em>（介詞，介紹涉及的對象，意義比較虛，不好翻譯）</em>身也。」太后曰：「老婦不能。」太后之色少解。</p><blockquote><blockquote><p>補充</p></blockquote><p>徐趨、疾趨：徐趨，步小而腳跟不抬起；疾趨，臣見君，步大而腳跟離地。</p></blockquote><p>左師公曰：「老臣賤息舒祺，最少，<mark>不肖<em>（原意是不像父親，後來泛指兒子不成材，或用於自我謙稱（多用於父母去世後））</em></mark>。而臣衰，竊愛憐之。願令得補黑衣之面，以衛王官，沒死<em>（冒死，“沒”，《史記·趙世家》作“昧”。）</em>以聞<em>（使動用法，使聞）</em>。」太后：「敬<em>（表示客氣）</em>諾。年幾何矣？」對曰：「十五歲矣。雖少，願及未填溝壑而托之。」太后曰：「丈夫亦愛憐其少子乎？」對曰：「甚於婦人。」太后笑曰：「婦人異<em>（特別）</em>甚。」對曰：「老臣竊以為媼之<em>（連詞（郭錫良觀點））</em>愛燕后賢於長安君。」曰：「君過矣，不若長安君之甚。」</p><blockquote><blockquote><p>補充</p></blockquote><ol><li><a href='https://humanum.arts.cuhk.edu.hk/Lexis/lexi-mf/search.php?word=息'>息</a>：消息→孳息→後代</li></ol><ol start='2' ><li>公車一日晏駕（君主—山陵崩）、君卒然捐館舍（重臣）、使臣卒然填溝壑（平民）</li></ol></blockquote><p>左師公曰：「父母之愛子，則為之計深遠<em>（動補結構）</em>。媼之送燕后也，持其踵而為之泣，念悲其遠<em>（到遠方去）</em>也，亦哀之矣。已行，非弗思也，祭祀必祝<em>（爲…禱告）</em>之，祝曰：『必勿使反。』豈非計久長，有子孫相繼為王也哉？」太后曰：「然。」左師公曰：「今三世以前，至於趙之為趙，趙主之子孫侯者，其繼有在者乎？」曰：「無有。」曰：「微獨<em>（不只是）</em>趙，諸侯有在者乎？」曰：「老婦不聞也。」「此其近者禍及身，遠者及其子孫<em>（（1）主謂謂語句；（2）其：特指代詞，特指“近者”“遠者”）</em>。豈人主之子孫則必不善哉？位尊而無功，奉厚而無勞<em>（功勞）</em>，而挾重器多<em>（擁有權力很多，“多”回指“重器”。區別“挾重器過”）</em>也。今媼尊長安君之位，而封之以膏腴之地，多予之重器，而不及令有功於國。一旦山陵崩，長安君何以自托於趙？老臣以媼為長安君計短也，故以為其愛不若燕后。」太后曰：「諾，恣君之所使之<em>（支使他的方式）</em>。」於是為長安君約車<em>（準備車。約，套、繩約→約束、限制→盟約）</em>百乘質於齊，齊兵乃出。</p><blockquote><blockquote><p>補充</p></blockquote><ol><li>媼之送燕后也：狀語性成分（「狀語從句」）。「鵬之徙於南冥也」。</li><li><a href='https://humanum.arts.cuhk.edu.hk/Lexis/lexi-mf/search.php?word=祝'>祝</a>、<a href='https://humanum.arts.cuhk.edu.hk/Lexis/lexi-mf/search.php?word=奉'>奉</a>（奉→捧&amp;俸）、<a href='https://humanum.arts.cuhk.edu.hk/Lexis/lexi-mf/search.php?word=尊'>尊</a></li></ol></blockquote><p>子義聞之曰：「人主之子也，骨肉之親猶不能恃無功之尊，無勞之奉，而守金玉之重也，而況人臣乎？」</p><h2 id='韓信破趙之戰'>韓信破趙之戰</h2><blockquote><blockquote><p>常識</p></blockquote><ol><li>前四史：《史記》《漢書》《後漢書》（南朝宋范曄著）《三國志》（西晉陳壽著）。</li><li>《史記上》，漢以前部分，多二手材料，參照《左傳》《國語》《戰國策》，可對勘；《史記下》。</li><li>《史記索隱》［唐］司馬貞著，《史記集解》［南朝］裴駰著，《史記正義》［唐］張守節著。</li><li>韓信：（1）軍事才能：垓下之戰，出陳倉，定三秦；井陘之戰，背水戰，出奇制勝。（2）政治野心、功名利祿之心：破趙，封張耳為趙王；破齊，劉邦被圍陘陽，韓信以“齊假攝王”為條件解圍。這為後來韓信→楚王→淮陰侯→“蕭何月下追韓信”埋下伏筆。</li></ol></blockquote><p>信與張耳以兵數萬，欲東下井陘擊趙。趙王、成安君陳餘聞漢且襲之也，聚兵井陘口，號稱二十萬。廣武君李左車說成安君曰：「聞漢將韓信涉<em>（趟水過河）</em>西河，虜魏王，禽夏說，新<em>（剛才）</em>喋血閼與<em>（地名）</em>，今乃輔以張耳，議欲下趙，此乘勝而去國遠鬬，其鋒不可當。臣聞千里餽<em>（從千里之外運送。通“饋”，送）</em>糧，士有饑色，樵蘇<em>（砍柴、打草）</em>後爨，師不宿<em>（常）</em>飽。今井陘之道，車不得方軌<em>（兩車並行。方，並；軌，車轍。）</em>，騎不得成列，行數百里，其勢糧食必在其後。願足下假臣奇<em>（不常見）</em>兵三萬人，從閒道絕其輜重<em>（軍需物資）</em>；足下深溝高壘，堅營<em>（深、高、堅均作使動）</em>勿與戰。彼前不得鬬，退不得還，吾奇兵絕其後，使野無所掠，不至十日，而兩將之頭可致於戲<em>（通“麾”，主將的大旗）</em>下。願君留意臣之計。否，必為二子所禽矣。」成安君，儒者也，常稱<em>（？）</em>義兵不用詐謀奇計，曰：「吾聞兵法十則圍之，倍則戰。今韓信兵號數萬，其實不過數千。能千里而襲我，亦已罷<em>（通“疲”）</em>極。今如此避而不擊，後有大者，何以加<em>（勝）</em>之！則諸侯謂吾怯，而輕來伐我。」不聽廣武君策，廣武君策不用。</p><blockquote><blockquote><p>補充</p></blockquote><ol><li><a href='https://humanum.arts.cuhk.edu.hk//Lexis/lexi-mf/search.php?word=以'>以</a>：凡師能左右之曰“以”。</li><li><a href='https://humanum.arts.cuhk.edu.hk//Lexis/lexi-mf/search.php?word=鬥'>鬥鬭閗</a>：</li><li>糧：外出食用的乾糧。</li><li>喋血、蹀血</li></ol></blockquote><p>韓信使人閒<em>（暗中地）</em>視，知其不用，還報，則大喜，乃敢引兵遂<em>（徑直地）</em>下。未至井陘口三十里，止舍<mark><em>（凡師一宿爲舍，再宿爲信，過信爲次）</em></mark>。夜半傳發<em>（傳令出發）</em>，選輕騎二千人，人持一赤幟，從閒道萆<em>（隱蔽）</em>山而望趙軍，誡曰：「趙見我走，必空<mark>壁<em>（營壘）</em></mark>逐我，若疾入趙壁，拔趙幟，立漢赤幟。」令其裨將傳<em>（分發）</em>飱<em>（cān，通“湌”，小飯曰湌，非正餐）</em>，曰：「今日破趙會食！」諸將皆莫信，詳應曰：「諾。」謂軍吏曰：「趙已先據便<em>（有利地形）</em>地為壁，且彼未見吾大將旗鼓，未肯擊前<ruby>行<rt>háng</ruby><em>（前行，先頭部隊）</em>，恐吾至阻險而還。」信乃使萬人先行，出，背水<ruby>陳<rt>zhèn</ruby>。趙軍望見而大笑。平旦，信建大將之旗鼓，鼓行<em>（擂鼓而行）</em>出井陘口，趙開壁擊之，大戰良久。於是信、張耳詳棄鼓旗，走水上軍<em>（退逃至水邊的軍隊）</em>。水上軍開入<em>（使之入）</em>之，復<mark>疾<em>（猛烈）</em></mark>戰。趙果空壁爭漢鼓旗，逐韓信、張耳。韓信、張耳已入水上軍，軍皆殊死戰，不可敗。信所出奇兵二千騎，共候趙空壁逐利，則馳入趙壁，皆<em>（多？）</em>拔趙旗，立漢赤幟二千。趙軍已不<ruby>勝<rt>shēng</ruby><em>（堪，能）</em>，不能得信等，欲還歸壁，壁皆漢赤幟，而大驚，以為漢皆已得趙王將矣，兵遂亂，遁走，趙將雖斬之，不能禁也。於是漢兵夾擊，大破虜趙軍，斬成安君泜水上，禽趙王歇。</p><blockquote><blockquote><p>補充</p></blockquote><p>辨析：看、觀、望、視、覩、察</p></blockquote><p>信乃令軍中毋殺廣武君，有能生得者購千金。於是有縛廣武君而致戲下者，信乃解其縛，東鄉坐，西鄉對<em>（讓廣武君面朝東邊坐，漢初以東向為尊。韓信面向西對著。鄉，向）</em>，師事之<em>（像對待老師一樣事奉他）</em>。</p><p>諸將效首虜，休，畢<em>（全，皆）</em>賀，因問信曰：「兵法『右倍<em>（同“背”，右面和背面要靠山）</em>山陵，前左水澤』，今者將軍令臣等反背水陳，曰破趙會食，臣等不服。然竟以勝，此何術也？」信曰：「此在<em>（存在於）</em>兵法，顧<em>（連詞，只是）</em>諸君不察耳。兵法不曰『陷之死地而後生，置之亡地而後存』？且信<mark>非得<em>（不能）</em></mark>素<em>（平日）</em>拊循<em>（撫慰）</em>士大夫<em>（諸將士）</em>也，此所謂『驅市人<em>（烏合之眾）</em>而戰之』，其勢<mark>非<em>（非……不可）</em></mark>置之死地，使人人自為戰；今予之生地，皆走，寧<em>（難道）</em>尚可得而用之乎！」諸將皆服曰：「善。非臣所及也。」</p><blockquote><blockquote><p>補充</p></blockquote><ol><li>效：攵，即攴，手拿斧頭之樣。</li><li>鄉嚮響饗曏向</li><li>望洋興歎</li></ol></blockquote><p>於是信問廣武君曰：「僕欲北攻燕，東伐齊，何若而有功？」廣武君辭謝曰：「臣聞敗軍之將，不可以言勇，亡國之大夫，不可以圖存。今臣敗亡之虜，何足以權<em>（謀劃）</em>大事乎！」信曰：「僕聞之，百里奚居虞而<em>（轉接）</em>虞亡，在秦而<em>（順接）</em>秦霸，非愚於虞而智於秦也，用與不用，聽與不聽也。誠令成安君聽足下計，若信者亦已為禽矣。以不用足下，故信得侍<em>（侍奉（足下））</em>耳。」因固<em>（於是堅決地）</em>問曰：「僕委<em>（託付、傾）</em>心歸<em>（聽從）</em>計，願足下勿辭。」廣武君曰：「臣聞智者千慮<em>（反復地思考，與“思”微殊）</em>，必有一失；愚者千慮，必有一得。故曰『狂夫之言，聖人擇焉』。顧恐臣計未必足用，願效愚忠。夫成安君有百戰百勝之計，一旦而失之，軍敗鄗下，身死泜上。今將軍涉西河，虜魏王，禽夏說閼與，一舉而下井陘，不終朝<em>（不到一個上午）</em>破趙二十萬眾，誅成安君。名聞海內，威震天下，農夫莫不輟耕釋耒，褕衣甘食，傾耳以待命者。若此，將軍之所長也。然而眾勞卒罷，其實難用。今將軍欲舉倦獘之兵，頓<em>（使敵軍困頓）</em>之燕堅城之下，欲戰恐久，力不能拔，情見<mark>勢屈<em>（真情暴露（給敵方），戰爭的態勢不利於自己。屈，虧）</em></mark>，曠日糧竭，而弱燕不服，齊必距境<em>（拒守於邊境）</em>以自彊也。燕齊相持而不<mark>下<em>（投降）</em></mark>，則劉項之<mark>權<em>（秤錘。用權以知輕重，這裡指勝負）</em></mark>未有所分也。若此者，將軍所短也。臣愚，竊以為亦<mark>過<em>（錯）</em></mark>矣。故善用兵者不以短擊長，而以長擊短。」韓信曰：「然則何由？」廣武君對曰：「方今為將軍計，莫如案甲休兵<em>（案，通“按”，停）</em>，鎮趙，撫其孤，百里之內，牛酒日至，以饗<em>（犒賞）</em>士大夫醳<em>（醇酒，用作使動，使之酒醉）</em>兵，北首<em>（向。作出北向燕國的態勢）</em>燕路，而後遣辯士奉咫尺之書，暴其所長於燕，燕必不敢不聽從。燕已從，使諠言<em>（長於詭辯的人，“諠”，通“諼”，詭詐）</em>者東告齊，齊必從風<em>（像隨著風一樣（倒下））</em>而服，雖有智者，亦不知為齊計矣。如是，則天下事皆可圖也。兵固有先聲而後實<em>（先虛張聲勢，後採取行動）</em>者，此之謂也。」韓信曰：「善。」從其策，發使使燕，燕從風而靡。乃遣使報漢，因請立張耳為趙王，以鎮撫其國。漢王許之，乃立張耳為趙王。</p><blockquote><blockquote><p>補充</p></blockquote><p>暴、曝</p></blockquote><h2 id='張騫傳節錄）'>張騫傳（節錄）</h2><p>張騫，漢中人也，建元中為郎。時匈奴降者言匈奴破月<ruby>氏<rt>zhī</ruby>王，以其頭為飲器<em>（《淮南書》：“言溺器，受水之器也。”《說文通訓定聲》：“‘漆其頭以為飲器’，注：溺器也。”）</em>，月氏遁而怨匈奴，無與共擊之。漢方欲事滅胡，聞此言，欲通使，道必<mark>更<em>（經過）</em></mark>匈奴中，乃募能使者。騫以郎應募，使月氏，與堂邑氏奴甘父俱出隴西。徑<em>（途徑，用作動詞，取道）</em>匈奴，匈奴得之，傳詣單于。單于曰：「月氏在吾北，漢何以得往使？吾欲使越，漢肯聽我乎？」留騫十餘歲，予妻，有子，然騫持漢節不失。</p><p>居匈奴西，騫因與其屬亡鄉月氏，西走數十日，至大宛。大宛聞漢之饒財，欲通<em>（交往）</em>不得，見騫，喜，問欲何之。騫曰：「為漢使月氏而為匈奴所閉道，今亡，唯<em>（句首語氣詞，表示希望、祈求）</em>王使人道<em>（“引導”的“導”）</em>送我。誠得至，反漢，漢之賂遺王財物不可<ruby>勝<rt>shēng</ruby><em>（盡、堪）</em>言。」大宛以為然，遣騫，為發譯道，抵康<ruby>居<rt>qú</ruby>。康居傳致大月氏。大月氏王已為胡所殺，立其夫人為王。既臣<em>（使動）</em>大夏而君<em>（做君主）</em>之，地肥饒，少寇，志安樂，又自以<mark>遠<em>（遙遠）</em><ruby>遠<rt>舊讀yuàn</ruby><em>（離開）</em>漢</mark>，殊無<em>（全沒有，殊，甚、極）</em>報胡之心。騫從月氏至大夏，竟不能得月氏要領<em>（問題的關鍵，這裡指明確的表示。要，今作“腰”）</em>。</p><p>留歲餘，還，並<em>（通“傍”，沿著）</em>南山，欲從羌中歸，復為匈奴所得。留歲餘，單于死，國內<em>（作狀語）</em>亂，騫與胡妻及堂邑父俱亡歸漢。拜騫太中大夫，堂邑父為奉使君。</p><p>騫為人彊力，寬大信人，蠻夷愛之。堂邑父胡人，善射，窮急射禽獸給<em>（供給）</em>食。初，騫行時百餘人，去十三歲，唯二人得還。</p><p>騫身<em>（親身）</em>所至者，大宛、大月氏、大夏、康居，而傳聞<em>（聽說）</em>其旁大國五六，具為天子言其地形所有，語皆在《西域傳》。</p><p>騫曰：「臣在大夏時，見<ruby>邛<rt>qióng</ruby>竹杖、蜀布<em>（麻布）</em>，問安得此，大夏國人曰：『吾賈人往市之身毒國。身毒國在大夏東南可<em>（大約）</em>數千里。其俗土著，與大夏同，同卑溼暑熱。其民乘象以戰。其國臨大水焉。』以騫度之，大夏去漢萬二千里，居西南。今身毒又居大夏東南數千里，有蜀物，此其<em>（身毒，一說為表推測的語氣詞）</em>去蜀不遠矣。今使大夏，從羌中，險，羌人惡之；少北，則為匈奴所得；從蜀，宜徑，又無寇。」天子既聞大宛及大夏、安息之屬皆大國，多奇物，土著，頗與中國同俗，而兵弱，貴漢財物；其北則大月氏、康居之屬，兵彊，可以賂遺設利朝也<em>（可用贈送財物、施之以利的辦法，讓他們來朝見）</em>。誠得而以義<em>（不用武力而施用恩誼使之歸附於漢）</em>屬之，則廣地萬里，重九譯<em>（經過多次輾轉的翻譯，重，重疊，多次）</em>，<mark>致<em>（招致，招引，使到來）</em></mark>殊俗，威德遍於四海。天子欣欣以騫言為然。乃令因<em>（由）</em>蜀犍為<em>（蜀地的犍為郡）</em>發間使，四道並出：出駹，出莋，出徙、邛，出僰，皆各行一二千里。其北方閉<em>（攔住）</em><ruby>氐<rt>dǐ</ruby>、莋，南方閉<ruby>巂<rt>xī</ruby>、昆明。昆明之屬無君長，善寇盜，輒殺略漢使，終莫得通。然聞其西可千餘里，有乘象國，名滇越，而蜀賈<mark>間出<em>（私自運出）</em></mark>物者或至焉，於是漢以<mark><em>（省略賓語“消息”）</em></mark>求大夏道始通滇國。初，漢欲通西南夷，費多，罷之。及騫言可以通大夏，乃復事西南夷。</p><p>騫以校尉從大將軍擊匈奴，知水草處，軍得以<em>（能夠因此，得，動詞性更強）</em>不乏，乃封騫為博望侯。是歲元朔六年也。後二年，騫為衛尉，與李廣俱出右北平擊匈奴。匈奴圍李將軍，軍失亡多，而騫後期當斬，贖為庶人。是歲驃騎將軍<em>（霍去病）</em>破匈奴西邊，殺數萬人，至祁連山。其秋，渾邪王率眾降漢，而金城、河西西並南山至鹽澤，空無匈奴。匈奴時有候<em>（斥候，偵察的人）</em>者到，而希矣。後二年，漢擊走單于於幕<em>（漠）</em>北。</p><p>天子數問騫大夏之屬。騫既失侯，因曰：「臣居匈奴中，聞烏孫王號昆莫。昆莫父難兜靡本與大月氏俱在祁連、焞煌間，小國也。大月氏攻殺難兜靡，奪其地，人民亡走匈奴。子昆莫新生，傅父布就<ruby>翖<rt>xī</ruby>侯抱亡置草中，為求食，還，見狼乳之，又烏銜肉翔其旁，以為神，遂持歸匈奴，單于愛養之。及壯，以其父民眾與昆莫，使將兵，數有功。時，月氏已為匈奴所破，西擊塞王。塞王南走遠徙，月氏居其地。昆莫既健，自請單于報父怨，遂西攻破大月氏。大月氏復西走，徙大夏地。昆莫略其眾，因留居，兵稍彊，會單于死，不肯復朝事匈奴。匈奴遣兵擊之，不勝，益以為神而遠之。今單于新困於漢，而昆莫地<em>（烏孫故地）</em>空。蠻夷戀故地，又貪漢物，誠以此時厚賂烏孫，招以東居故地，漢遣公主為夫人，結昆弟，其勢宜聽<em>（根據他們的形勢，應當聽從）</em>，則是斷匈奴右臂也。既連烏孫，自其西大夏之屬皆可招來而為外臣。」天子以為然，拜騫為中郎將，將三百人，馬各二匹，牛羊以萬數，<ruby>齎<rt>jī</ruby><em>（攜帶）</em>金幣帛<em>（禮品）</em>直<em>（通“值”）</em>數千鉅萬，多持節副使，道可，便遣之旁國。騫既至烏孫，致賜<em>（把漢武帝賞賜的東西交給烏孫王）</em>諭指<em>（把漢武帝的意旨告訴烏孫王。諭，告知。指，意圖，多寫作“旨”。“指、旨、恉”的關係？）</em>，未能得其決。語在西域傳。騫即分遣副使使大宛、康居、月氏、大夏。烏孫發譯道送騫，與烏孫使數十人，馬數十匹，報謝<em>（到漢朝中央政府來答謝。報，報聘，國與國之間交往表示回訪）</em>，因令窺<em>（私下探視）</em>漢，知其廣大。</p><p>騫還，拜為大行。歲餘，騫卒。後歲餘，其所遣副使通大夏之屬者皆頗<em>（？）</em>與其人俱來，於是西北國始通於漢矣。然騫鑿空<em>（凿开孔道，空，通“孔”）</em>，諸後使往者皆稱博望侯，以為質<em>（取信）</em>於外國，外國由是信之。其後，烏孫竟與漢結婚<em>（通婚）</em>。</p><h2 id='孫臏'>孫臏</h2><p>孫武既死，後百餘歲有孫臏。臏生阿鄄之閒，臏亦孫武之後世子孫也。孫臏嘗與龐涓俱學兵法。龐涓既事魏，得為惠王將軍，而自以為能不及孫臏，乃陰使召孫臏。臏至，龐涓恐其賢於己，疾之，則以法刑斷其兩足而黥之，欲隱勿見。齊使者如梁，孫臏以刑徒陰見，說齊使。齊使以為奇，竊載與之齊。齊將田忌善而客待之。</p><p>忌數與齊諸公子馳逐重射。孫子見其馬足不甚相遠，馬有上、中、下、輩。於是孫子謂田忌曰：「君弟重射，臣能令君勝。」田忌信然之，與王及諸公子逐射千金。及臨質，孫子曰：「今以君之下駟與彼上駟，取君上駟與彼中駟，取君中駟與彼下駟。」既馳三輩畢，而田忌一不勝而再勝，卒得王千金。於是忌進孫子於威王。威王問兵法，遂以為師。</p><p>其後魏伐趙，趙急，請救於齊。齊威王欲將孫臏，臏辭謝曰：「刑餘之人不可。」於是乃以田忌為將，而孫子為師，居輜車中，坐為計謀。田忌欲引兵之趙，孫子曰：「夫解雜亂紛糾者不控棬，救鬬者不搏撠，批亢擣虛，形格勢禁，則自為解耳。今梁趙相攻，輕兵銳卒必竭於外，老弱罷於內。君不若引兵疾走大梁，據其街路，衝其方虛，彼必釋趙而自救。是我一舉解趙之圍而收獘於魏也。」田忌從之，魏果去邯鄲，與齊戰於桂陵，大破梁軍。</p><p>後十三歲，魏與趙攻韓，韓告急於齊。齊使田忌將而往，直走大梁。魏將龐涓聞之，去韓而歸，齊軍既已過而西矣。孫子謂田忌曰：「彼三晉之兵素悍勇而輕齊，齊號為怯，善戰者因其勢而利導之。兵法，百里而趣利者蹶上將，五十里而趣利者軍半至。使齊軍入魏地為十萬灶，明日為五萬灶，又明日為三萬灶。」龐涓行三日，大喜，曰：「我固知齊軍怯，入吾地三日，士卒亡者過半矣。」乃棄其步軍，與其輕銳倍日并行逐之。孫子度其行，暮當至馬陵。馬陵道陜，而旁多阻隘，可伏兵，乃斫大樹白而書之曰「龐涓死于此樹之下」。於是令齊軍善射者萬弩，夾道而伏，期曰「暮見火舉而俱發」。龐涓果夜至斫木下，見白書，乃鉆火燭之。讀其書未畢，齊軍萬弩俱發，魏軍大亂相失。龐涓自知智窮兵敗，乃自剄，曰：「遂成豎子之名！」齊因乘勝盡破其軍，虜魏太子申以歸。孫臏以此名顯天下，世傳其兵法。</p></div>
+
     </div>
 
     
+    <div id="tab2" class="tab-content">
+        <h1>古代漢語語法</h1>
+        <p>中國古代没有專門的語法研究，古代對語法問題的認識主要反映在對虚詞的研究上。</p><p>1898年馬建忠首次借用西方傳統的拉丁語法體系對古漢語語法作了全面的描寫分析（《馬氏文通》），之後有陳承澤的《國文法草創》、杨樹達的《高等國文法》等古漢語語法專著出現。</p><p>“古代漢語語法”是個泛時概念，即使從《詩經》、《論語》時代算起，到通常所說的上古漢語的下限東漢，也有近千年的歷史，其間漢語的語法系統有過許多重要的變化。</p>
+<p>《古代漢語》課程語法部分講授的主要内容是，<strong>着重就古漢語與現代漢語在語法方面的主要差别作概括的介紹，從而解决閱讀古書時遇到的一些難點。</strong></p>
+<p>本標簽右側的諸標籤為課程將要介紹的五個專題：（一）詞類的活用；（二）古代漢語的詞序；（三）古代漢語的判斷句； （四）古代漢語的被動表示法；（五）古代漢語虚詞。</p>
+    </div>
+    
+    
+    <div id="tab3" class="tab-content">
+      <h1 id='詞類的活用'><span>詞類的活用</span></h1>
+      <p><span>詞類的活用主要讨论七個問题：</span></p><p><span>1、古代漢語的詞類劃分；</span></p><p><span>2、什麼是古代漢語的詞類活用；</span></p><p><span>3、使動用法；</span></p><p><span>4、意動用法；</span></p><p><span>5、名詞用爲動詞；</span></p><p><span>6、名詞作狀語；【嚴格說不屬於詞類活用】</span></p><p><span>7、詞類活用的條件。</span></p><p><span> 拓展閱讀：《古漢語詞類活用淺談》（《湖北电大学刊》；《汉语史论集》郭錫良）</span></p><h2 id='古代漢語的詞類劃分'><span>古代漢語的詞類劃分</span></h2><h3 id='古代漢語的詞類系統------實詞和虚詞'><span>古代漢語的詞類系統——實詞和虚詞</span></h3><p><strong><span>實詞</span></strong><span>包括名詞、動詞、形容詞、數詞和代詞五類；</span></p><p><strong><span>虚詞</span></strong><span>包括副詞、介詞、連詞、語氣詞和嘆詞五類。</span></p><p><span>（缺乏量词、助詞）</span></p><h3 id='劃分詞彙的依據目的範圍'><span>劃分詞彙的依據、目的、範圍</span></h3><ol start='' ><li><span>劃分詞類的</span><strong><span>依據</span></strong><span>是</span><strong><span>詞的意义</span></strong><span>和</span><strong><span>語法功能</span></strong><span>两個標准，相應地，所謂詞類，就是依據詞的意義和語法功能劃分出來的詞的類別。</span></li></ol><blockquote><p><span>黎錦熙：依句辨品，離句無品。（有人批評：詞無定類）</span></p></blockquote><ol start='2' ><li><span>劃分詞類的</span><strong><span>目的</span></strong><span>：是爲了說明古代漢語</span><strong><span>句子的組织規則</span></strong><span>，即句法結構。</span></li><li><span>劃分詞類的</span><strong><span>範圍</span></strong><span>：詞類活用主要涉及實詞中的名詞、動詞和形容詞三類。下面我們分别說明這三類詞的語法功能。</span></li></ol><p><span>語法功能指一個詞在句中主要擔任什麼句子成分。一般地說，某一詞類在句子中的語法功能應該是比較固定的。如名詞、動詞和形容詞三類詞的語法功能可以概括爲下表：</span></p><p><img src="/Users/liangzhong/Library/Application Support/typora-user-images/image-20231124141244349.png" referrerpolicy="no-referrer" alt="image-20231124141244349"></p><p>&nbsp;</p><p><span>漢語的詞類與語法功能之間并不存在一一對應的關係。詞類活用實際上是爲了處理上述框架中的矛盾而提出的。</span></p><h2 id='詞-類-活-用'><span>詞 類 活 用</span></h2><p><strong><span>詞類活用</span></strong><span>就是某個有固定屬類的詞在一定的語言環境中</span><strong><mark><span>臨時</span></mark></strong><span>改變其基本功能而充當别的詞類使用。</span></p><p><strong><span>注意與詞的兼類區別</span></strong><span>：所謂兼類，是指一個詞同時兼屬两種以上的詞類。兼類是一個詞</span><u><span>詞義引申發展</span></u><span>的結果，因此在詞典中列爲不同的義項（現代漢語：鎖1，鎖2，把意義和語法功能都不同的詞看成兩個詞）；詞類活用與詞義的引申发展無關，在詞典中</span><u><span>一般不單獨列義項</span></u><span>。試比較：</span></p><figure><table><thead><tr><th>&nbsp;</th><th style='text-align:left;' ><span>詞的兼類現象</span></th></tr></thead><tbody><tr><td><span>書</span></td><td style='text-align:left;' ><span>(1)龐涓果夜至斫木下，見白書。→名詞，字。</span><sup><span>今天的孫子兵法是孫武寫的。</span></sup><br><span>(2)乃斫大樹白而書之日。→動詞,寫。</span></td></tr><tr><td><span>素</span></td><td style='text-align:left;' ><span>(1) 素柰朱李,枝條入檐。→形容詞白色。</span></td></tr><tr><td>&nbsp;</td><td style='text-align:left;' ><span>(2) 彼三晉之兵素悍勇而輕齊。→副詞，一向（白色纯色，有引申关系）。</span></td></tr><tr><td><span>知</span></td><td style='text-align:left;' ><span>(1)燕雀安知鴻鴿之志哉!</span><br><span>(2)草木有生而無知。→名詞，知覺</span></td></tr><tr><td><span>益</span></td><td style='text-align:left;' ><span>(1)灌水暴益,莉人弗知。（涨水→溢）</span><br><span>(2)人或益之，人或損之，胡可得而法?（增加）</span><br><span>(3)其家必日益。（富裕）</span><br><span>(4)吾嘗終日不食，終夜不寝，以思，無益，不如學也。（好处）</span></td></tr></tbody></table></figure><p><span>現代漢語里也有詞類活用的現象，如“豐富、巩固”等詞都有所謂的使動用法</span></p><p><span>在與漢語没有任何親緣關係的語言（如英語、拉丁語系）也經常有詞類活用的現象。</span></p><p><span>對所謂的詞類活用的問題，我們當然也可以不從語法的角度去處理，而是放到詞彙里去解决。比如前面提到的“目”“肘”等我們完全可以不看作名詞活用爲動詞，而是看作詞的兼類；或者更彻底一些，干脆看作意義和語法功能都不相同的同音詞。</span></p><p><span>李行健 語文出版社 查《規範字典》</span></p><h3 id='使動用法'><span>使動用法</span></h3><h4 id='不及物動詞的使動用法'><span>不及物動詞的使動用法</span></h4><p><span>分析用例:</span></p><blockquote><p><span>（1）莊公寤生,驚姜氏。(鄭伯克段於鄢）</span></p><p><span>（2）百里而趣利者蹶上將。(孙膑)</span></p></blockquote><p><span> 不及物動詞用作使動，後面的賓語可以省略：</span></p><blockquote><p><span>（3）願令得補黑衣之數，以衛王宫，没死以聞。（觸龍說趙太后）</span></p><p><span>（4）則以法刑斷其两足而霖之，欲隱勿見。（孫膻）</span></p><p><span>（5）養備而動時，則天不能病。（荀子《天論》 ）</span></p></blockquote><h4 id='及物動詞的使動用法'><span>及物動詞的使動用法</span></h4><p><span>實例分析:</span></p><blockquote><p><span>(1) 故民盡死力以從其上。(韓非子《五毒》）</span></p><p><span>(2) 沛公旦日從百余騎來見項王。（瀉門宴）（使······跟从）</span></p></blockquote><h4 id='形容詞的使動用法'><span>形容詞的使動用法</span></h4><p><span>形容詞作谓語，一般構成描寫句，描寫事物是什麼樣子。如：</span></p><blockquote><p><span>（1）位尊而無功，奉厚而無劳。（觸龍說趙太后）【这是形容词作谓语的一般用法】</span></p></blockquote><p><span>形容詞帶賓語的情況：</span></p><blockquote><p><span>（2）親親而仁民，仁民而愛物。（孟子·盡心上）</span></p><p><span>（3）今婦尊長安君之位。（觸龍說趙太后）</span></p><p><span>（4）君子不以天下俭其貌。（孟子·公孫丑下）</span></p></blockquote><h4 id='名詞的使動用法'><span>名詞的使動用法</span></h4><blockquote><p><span>(1) 魏惠王起境内衆,将太子申而攻齊。(戰國策·魏策二)</span></p><p><span>(2) 項羽爲西楚霸王,主命分天下王諸侯。(史記·秦始皇本紀)</span></p><p><span>(3) 而自子之,乃變其名日楚。(戰國策·秦策五）</span></p></blockquote><h3 id='意動用法'><span>意動用法</span></h3><p><span>首先，意動用法只限於名詞和形容詞，動詞不存在意動用法的問題。</span></p><p><span>使動用法是使實語怎麽樣，是客觀的結果，而意動用法則表示認爲實語怎麼樣或把賓語看作什麽，是一種主觀看法，即主体对客体的主观认识。</span></p><blockquote><p><span>於是乘其車，揭其劍，過其友曰：“孟嘗君客我。” （《戰國策·馮諼</span><sup><span>雞鳴狗盜的典故；給孟嘗君打廣告，有治政才能</span></sup><span>客孟嘗君》）（以我為客。南宋鲍彪注：“待我以客。”）</span></p><p><span>斫而小之 （客观，使······小）</span></p><p><span>孔子登东山而小鲁，登太山而小天下 （主观，孔子的主观看法，认为······小）</span></p></blockquote><h4 id='形容詞的意動用法'><span>形容詞的意動用法</span></h4><blockquote><p><span>(1) 齊將田忌善而客待之。(孫廣) 【主客观相符合。田忌确实善；多数情况主客观不一致：“上老之”（认为······老，只是表达主体的看法，不在意主客观是否一致）；但也存在主客观符合的少数情况。】</span></p><p><span>(2) 人不難以死免其君，我戮之不祥。(《殽之战》)</span></p><p><span>《戰國策·楚策三》 :“夫進賢之難者,賢者用且使已废,貴且使已賤,故人難之。”</span></p><p><span>(3) 今棄是州也,農夫渔父過而陋之。(《鈷鉧</span><sup><span>熨斗</span></sup><span>潭西小丘記》) （以······为陋）</span></p></blockquote><h4 id='名詞的意動用法'><span>名詞的意動用法</span></h4><p><span>(1) 今君有區區之薛,不抚愛子其民,因而質利之。(馮證客孟當君)</span></p><p><span>(2) 夫人之,我可以不夫人之乎? (穀梁傳·售公8年)</span></p><p><span>名詞性成分出現於“而”的前後項，則必然活用；副詞亦然</span></p><p><span>而：聯結兩個謂詞性成分；與：聯結兩個名詞性成分。</span></p><h3 id='名詞作状語詳見課本）'><span>名詞作状語（詳見課本）</span></h3><p><span>名詞作状語的現象在現代漢語的許多成語里也很常見。例如“虎距龍盘” （龍腾虎躍、龍吟虎啸、龍争虎斗、龍躍鳳鳴）、“火耕水癖”、“刀耕火種”、“鬼哭狼嚎”、“束奔西跑”、“水運”、“手寫”、“夜行”、“目送”，等等。</span></p><p><span>上古漢語普通名詞作狀語本不是詞類活用，是名詞的本用。</span></p><p><span>名詞作状語所表達的語法意義是多種多樣的。</span></p><ol start='' ><li><span>方位名詞、地點名詞、時間名詞用作状語，表示行爲動作的方位、處所或時間等。</span></li><li><span>表示工具或依據</span></li><li><span>表示對人的態度</span></li><li><span>表示比喻</span></li></ol><h2 id='詞類活用的主要條件'><span>詞類活用的主要條件</span></h2><ol start='' ><li><span>名詞連用，不構成并列結構或偏正結構，其中一個名詞可能活用爲動詞。</span></li></ol><blockquote><p><span>魏桓子肘韓康子，康子履魏桓子。（《戰國策·秦策四》）</span></p><p><span>遂王天下/面山而居/陳勝王/子房前</span></p></blockquote><ol start='2' ><li><span>形容詞+名詞，若非修飾關係，則為支配關係。（</span><em><span>素善留侯張良</span></em><span>）</span></li><li><span>名詞、形容詞放在“所”字後面，活用為動詞。（</span><em><span>乃丹書帛曰：“陳勝王”，置人所罾魚腹中</span></em><span>，網→用網撈）</span></li><li><span>名詞、形容詞放在“能”“可”“足”“欲”等能願動詞（助動詞）後面，活用為動詞。（</span><em><span>反古者不可非，而循禮者不足多。</span></em><span>）</span></li><li><span>名詞放在副詞後面活用為動詞。（</span><em><span>秦師遂東</span></em><span>）</span></li><li><span>名詞、形容詞放在“之”“我”等代詞前面，活用為動詞。（</span><em><span>非能耕而食之，織而衣之也。</span></em><span>）</span></li><li><span>名詞後面用介賓結構作補語，這個名詞活用為動詞。（</span><em><span>請句踐女女於王</span></em><span>）</span></li><li><span>名詞用“而”聯結時，活用為動詞。（</span><em><span>保民而王，莫之能御也</span></em><span>）</span></li></ol><h2 id='如何看待詞的活用兼類與活用的界限'><span>如何看待詞的活用？兼類與活用的界限？</span></h2><p><mark><span>注意：動詞、形容詞放在主賓語位置，是否應當算作詞類活用，應當具體分析下列情況：</span></mark></p><blockquote><p><span>樂民之樂者，民亦樂其樂；憂民之憂者，民亦憂其憂。（孟子·梁惠王下）</span></p><p><span>【有人认为后面的忧和乐是动词活用作名词，不应该同意】</span></p><p><span>異於白馬之白也，無以異於白人之白也！（孟子·告子下）</span></p></blockquote><p><span>形容詞表性質狀態、動詞表動作行為，在上面兩句話中，形容詞、動詞仍然分別表性質狀態、行為，因此不算做詞類活用。動詞、形容詞不能做主賓語，這是印歐語法的限制，漢語無此限制。不應照搬印歐語法的框架，避免擴大詞類活用的範圍。</span></p><blockquote><p><span>勞苦不撫循，憂悲不哀憐。（韓非子·用人）</span></p><p><span>事死如事生，禮也。（左傳·哀公15年）</span></p><p><span>然則小固不可以敵大，寡固不可以敵眾，弱固不可以敵強。（孟子·梁惠王上）</span></p><p><span>死者、生者、小者、大者：形容词作名词，转指，是词类活用</span></p></blockquote><p><span>此處動詞、形容詞已經名物化了，形容詞表性質狀態/動詞表行為，均變成表人或事物，這個算作詞類活用。</span></p><p><span>英語形態變化→漢語動態助詞/副詞（都是動詞以外的成分），漢語是缺乏形態變化的語言，不能靠詞形本身的變化來表達。</span></p><p><span>此外，不能用現代的詞義詞類系統去替代上古漢語的詞義詞類系統。一定要用歷時的觀點看。</span></p><p><span>樹藝五谷。友：以手相助之義；同志為友，同門為朋（就已經是東漢後起義了）</span></p></div>
+
+    
+    <div id="tab4" class="tab-content">
+      <h1 id='古代漢語的詞序'><span>古代漢語的詞序</span></h1>
+      <p><span>詞序是漢語的重要表達手段之一。</span></p><p><span>漢語是一種沒有詞形變化的語言，詞序是漢語的一種重要表達手段，詞語在句中的語法功能，主要靠詞語的組合順序來表現。</span></p><p><span>無論古代漢語還是現代漢語，充當句子成分的詞語在句中的</span><strong><span>次序都是比較固定</span></strong><span>的。例如：</span></p><blockquote><p><span>十年春，齊師伐我。公將戰。曹劇請見。(《左傳·莊公10年》)</span></p></blockquote><p><span>以上三句話反映了漢語的一般詞序。【时间状语；主谓宾；齐师又是定语】</span></p><p><span>有時謂語可以放在主語之前，例如：</span></p><blockquote><p><span>甚矣，汝之不惠！(《列子·愚公移山》)【描写句】</span></p><p><span>誰与，哭者？ (《禮記·檀弓(苛政猛於虎)》)【疑问句】</span></p></blockquote><p><span>謂語前置是爲了突出謂語，加強語氣，是一種有條件的修辭。</span></p><h2 id='賓語前置的三種情况'><span>賓語前置的三種情况</span></h2><h3 id='疑問代詞誰孰何奚安等等充當動詞或介詞的賓語必須前置'><span>疑問代詞“誰、孰、何、奚、安”等等充當動詞或介詞的賓語，必須前置</span></h3><blockquote><p><span>(1)吾誰欺？欺天乎？(論語·子罕)</span></p><p><span>(2)項王曰：“沛公安在？”(鴻門宴)【“在”在此是动词】</span></p><p><span>(3)良問：“大王來何操？”(同上)</span></p><p><span>(4)王送知罃，曰：“子其怨我乎？”對曰：“二國治戎，臣不才，不勝其任，……臣實不才，又誰敢怨？”(左傳·成公3年)</span></p></blockquote><p><span>疑問代詞作賓語時，如果動詞前面還有助動詞。那麽這個疑問代詞不僅要放在動詞的前面，還要放在助動詞的前面，見例(4)(又誰敢怨？)。能願動詞一般在動詞前面。</span></p><blockquote><p><span>翻譯的原則：直譯與意譯，信、達、雅。</span></p><p><span>現代漢語：構詞法、定狀補等附加成分的豐富以便於表達復雜語義。</span></p><p><span>翻譯時，新加動詞要非常小心謹慎。</span></p><p><span>對譯：找到落腳點。</span></p></blockquote><p><span>如果動詞前面是用副詞作狀語時，疑問代詞賓語一般是放在副詞和動詞中間。例如：</span></p><blockquote><p><span>(5)子將何乘？</span></p></blockquote><p><span>疑問代詞作介詞賓語時，也要放在介詞前面，例如：</span></p><blockquote><p><span>(6) 子歸,何以報我? (左傳·成公3年)</span></p><p><span>(7) 水奚自至? (居氏春秋·貴直)</span></p><p><span>(8) 許子奚爲不自織? (《孟子·許行》——諸子文獻中唯一一篇完整記載儒家和農家思想辯論的文章；各食其力、親自勞動 vs 社會分工)</span></p><p><span>(9) 君子去仁,惡乎成名? (論語·里仁)</span></p></blockquote><p><span>疑問代詞作賓語，無論是作動詞還是介詞賓語，一般都要前置，這條規律在先秦是比較嚴格的。極少例外。例外的如：</span></p><blockquote><p><span>(10)桀溺曰：“子爲誰”曰：“仲由”(論語·微子)</span></p></blockquote><p><span>此外，只有“何如”常說成“如何”(也可說成“若何”“奈何”)，但這兩種格式在先秦就已經是凝固形式，意思不是“像什麼”，而是“怎麼樣”或“怎樣”了。</span></p><blockquote><p><span>君子不重傷，不禽二毛(白髮見于黑髮者)……傷未及死，如何勿重？(《左傳·僖公二十二年》)楚宋泓水之戰</span></p></blockquote><p><span>如何、若和、奈何當中還可以插入代詞、名詞或其他詞語，成為“如……何”等格式，意思是“對……怎麼樣”。（虞兮虞兮奈若何、寇深矣，若之何）</span></p><h3 id='否定句代詞作賓語宾语前置'><span>否定句</span><strong><span>代詞作賓語，</span></strong><span>宾语前置</span></h3><p><span>否定副词：不、否、非、无、勿、毋、非、弗、微</span></p><p>&nbsp;</p><p><span>現代漢語虛詞大大簡化了</span></p><p><span>並存是因為差異(沒有差異會引起言語社團的混淆)，差異如下：</span></p><p><span>不/弗：泛化，帶不帶賓語都行</span></p><p><span>否：不+动词，有一定的指代</span></p><p><span>非：判断句中，名詞謂語的否定</span></p><p><span>不—弗 相对 带不带宾语？</span></p><p><span>毋—勿 相对 靜止性的否定 否定的時候往往動詞後不出現賓語</span></p><p><span>未：对未然状态的否定，常带宾语</span></p><p><span>莫：否定副词，不</span></p><p><span> </span></p><p><span>在由否定副詞“不、未、毋”或表否定的無定代詞“莫”構成的否定句中，如果賓語是代詞，包括人稱代詞“我、妆”之類和指示代詞“之、是、此”之類，那麽代詞賓語應該放到動詞的前面。</span></p><p><span>這種句式需要同時具有兩個條件：</span></p><ol start='' ><li><span>句子必須是否定句，必須有表示否定的副詞或代詞“不、未、無(毋)、莫＂等。</span></li><li><span>賓語必須是代詞。</span></li></ol><blockquote><p><span>(11)以爲蓬莱仙室，亦不是過。(王子坊)</span></p><p><span>(12)三歲貫汝，莫我肯顧。(詩經·碩鼠)</span></p></blockquote><p><span>否定句代詞作賓語前置的規則不象疑問代詞作賓語前置的規則那樣嚴格，先秦就有不少否定句代詞作賓語後置的情況，比較:</span></p><blockquote><p><span>(13) 不我知者，謂我士也驕。(詩經·魏風園·有桃)</span></p><p><span>(14) 不知我者，謂我何求? (詩經·王風·黍離)</span></p></blockquote><p><span>又：</span></p><blockquote><p><span>(15)《論語·憲問》: “何爲其莫知子乎? ”</span></p><p><span>(16) 《論語·陽貨》: “其未得之也,患得之。” </span></p></blockquote><p><span>代詞賓語前置，為什麼要限定為必須用了“不、未、毋(無)、莫”四個否定詞的否定句？</span></p><p><span>所謂否定詞是指在句中表示否定的詞，它涉及三類詞：表否定的動詞、副詞和代詞。</span></p><p><strong><span>1、動詞中表示否定詞彙意義的是“無”</span></strong></p><p><span>它是及物動詞，詞義是“沒有”，與動詞“有”相對，表示對“有”的否定，能帶名詞賓語、代詞實語。但是由於否定句賓語前置的格式要求否定詞必須直接用在代詞賓語前面，而“無”是個表示否定的動詞，它可以帶代詞賓語，但本身無法使代詞實語前置，因為代詞賓語前面要有否定詞，才可前置。</span></p><p><span>不過，“無”有時用作副詞“未” ，義為“沒有”，這時句中的代詞實語可以置於動詞前面。例如《荀子·正名》： “行離理而不外危者，無之有也。”(行為背離義理而在外不遭受危險的人，是沒有這種事情的)。</span></p><p><span>“無”還經常通用為副詞“毋”(不要)，句中如果有代詞賓語，也可以前置。例如“我無爾詐，爾無我虞(欺騙)。”(《左傳·宜公十五年》)</span></p><p><strong><span>2、否定副詞，包括“不、弗、毋(無)、勿、未、非、否、微”等</span></strong></p><p><span>(1) “不”用法最廣，可以在動詞(包括及物和不及物)和形容詞前面表示否定。當它用來否定帶了代詞賓語的及物動詞時，就構成了“不+代詞賓語+及物動詞”的格式。例如：</span></p><blockquote><p><span>日月逝矣，歲不我與(給)。(《論語·陽貨欲見孔子》 )</span></p><p><span>不患人之不己知，患不知人也。(《論語·學而》 )</span></p></blockquote><p><span>後一例典型， “己”是代詞賓語，在“不”字式中前置，“人”是名詞賓語，在“不”字式中後置。</span></p><p><span>(2)“弗”在先秦用法較窄，只用於否定及物動詞。而“弗”在及物動詞前表示否定時，動詞的賓語(名／代)一般不出現(有人認為“弗”有指代動詞賓語的作用)，所以避免了代詞賓語前置的情況。不過，也有少數例外，“弗”後的動詞帶了代詞賓語，其中賓語多為不前置，個別的卻置於動詞前面。例如：</span></p><blockquote><p><span>亟請于武公，公弗許</span><sup><span>(之)</span></sup><span>。(《左傳·鄭伯克段于鄢》 )</span></p><p><span>雖與之俱學，弗若之矣。(《孟子·告子·奕秋》 )</span></p><p><span>大國亦弗之從而愛利。( 《墨子·非攻中》 )</span></p></blockquote><p><span>第一例是“弗”後的動詞賓語不出現，第二例是代詞賓語“之”沒有前置，第三例是代詞賓語“之”前置了。 </span></p><p><span>(3)“勿”的詞義(禁止)和“毋”相同，而用法和“弗”相當，即“勿”所否定的及物動詞一般不帶賓語，例如： “王請勿疑。”(《孟子·梁惠王上》 )，這樣， “勿”字句中，動詞的代詞賓語一般也就不出了。</span></p><p><span>有少數“勿”字句動詞帶了代詞賓語，不過沒有前置。例如： “勿言之矣。”(《莊子·人間世》 ) “願王勿易之也。”(《韓非子·難三》 )</span></p><p><span>(4)“未”意思是沒有，表示事情還沒有實現。“未”字句中及物動詞所帶的代詞實語一般是前置的，當然沒有置的代詞語也是有的。例如：</span></p><blockquote><p><span>然而不王者，未之有也。(《孟子·寡人之于國也》 )</span></p><p><span>其未得之也，患不得之。(《論語·陽貨》 )</span></p></blockquote><p><span>(5) “毋”表示禁止，意思是“不要”。在語法意義上，“毋”和“不”相當。“毋”字後面的及物動詞一般要帶賓語。其中代詞賓語可以前置，但後置的用例更常見。</span></p><p><span>另外，“毋”常用通假字“無”（不要）表示，例如：</span></p><blockquote><p><span>漢毋攻我，我盡出善馬。（《史記·大宛列傳》）</span></p><p><span>予乃大罰殛女，毋予怨。（《史記·殷本記》）</span></p><p><span>我無爾詐，爾無我虞。（《左傳·宣公十五年》）</span></p></blockquote><p><span>第一例賓語“我”沒有前置，後二例因為用了否定副詞“毋”和它的通假字“無”，代詞賓語“予”、“爾”就前置了。</span></p><p><span>(6) “非”(匪)的意思相當於“不是”，通常用在判斷句主語俊面，表示否定整個名詞謂語，構成否定判斷句，而判斷句中是沒有任何實語成分的。在敘述句中，“非”表示對事實的否定，即所否定的是整個謂語部分(包括實語等)，而不單是動詞。這種情況下即使謂語中有代詞實語，也不前置。例如:</span></p><blockquote><p><span>非能耕田而食之，織而衣之也。(《論貴栗疏》)</span></p></blockquote><p><span>(7)“否”的用法較特殊，它或者用在謂語後表示否定與調語相迭，成了肯定與否定相迭的是非問句；或者單獨成句，否定前面所說的事實。這都與代詞賓語前置的題，不能構成代词宾語前置的條件。</span></p><p><span>(8) “微”用在句首，表示對整個句子所說情況的否定意思相當於“非” (不是)；又可用在句首，表示對假設性的否定，意思是“假若不是”。它的否定都不直接與動詞相聯繫，所以也不構成代詞賓語前置的條件。</span></p><h4 id='代詞中表否定的是莫'><span>代詞中表否定的是“莫”</span></h4><p><span>它是個否定性的無定代詞，意思是“沒有誰”、“沒有哪個東西”(或“沒有哪件事”)，在句中充當主語。當“莫，用於指人，表示“沒有誰”的時候，動詞謂語所帶的代詞賓語，就可前置。“莫”既作主語施事者，又表示否定意義，形成＂莫+代詞賓語+連帶成分(語氣詞／助動詞)+動詞＂的格式，例如：</span></p><blockquote><p><span>(1)莫之或欺。(《孟子·許行》 )</span></p><p><span>(2)莫我肯顧。(《詩經·碩鼠》 )</span></p><p><span>(3)身死，莫之養也。(《非子·五蠢》 )</span></p></blockquote><p><strong><span>總結</span></strong><span>：在古代漢語裡，否定句中代詞賓語前置的前提條件是：要用否定副詞“不”、“毋(無)”、“未”和否定性的無定代詞“莫”在句中作否定詞。 </span></p><p><span>“未”字句、“莫”字句代詞實語前置占較大優勢。</span></p><p><span>“不”字句、“毋”字句代詞賓語前置和後置都較常見。</span></p><p><span>“弗”字代詞賓語前置用例極少，因為一般不加賓語。</span></p><p><span>“無”只有通用作副詞“未”和“毋”時，才可使代詞賓語前置。</span></p><h3 id='一般名詞或名詞性詞組作賓語前置賓語用代詞複指'><span>一般名詞或名詞性詞組作賓語前置(賓語用代詞複指)</span></h3><p><strong><span>古代漢語中爲了強調賓語(前置的語用功能)</span></strong><span>，使賓語前置以後，還可以借助指示代詞“是、之”復前置的賓語。句子格式為：賓語+是(之) +謂語動詞。例：</span></p><blockquote><p><span>(17)將號是滅，何愛於虞？ (左傳·僖公五年)</span></p><p><span>(18)秉國之均，四方是維。(詩經·小雅·節南山)</span></p><p><span>(19)豈不穀是爲？先君之好是繼。(齊桓公伐楚)</span></p><p><span>(20)姜氏何厭之有？ (鄭伯克段於)</span></p><p><span>(21)公室之卑，其何日之有？ (晏婴論季世)</span></p></blockquote><p><span>這種賓語前置再用代詞複指的格式，實語本身也可以是代詞，遇到這種情況，複指的代詞只用“之”而不用“是”。如：</span></p><blockquote><p><span>(26) “我之懷矣，自論伊感”，其我之謂矣！ (左傅·宜公2年)</span></p><p><span>(27)語曰“唇亡則齒寒＂ ，其斯之謂與？ (穀梁傳·僖公2年)</span></p><p><span>(28)太上有立德，其次有立功，其次有立言，雖久不廢，此之謂不朽。(左傳·襄公24年) </span></p></blockquote><p><span>代詞“是”作賓語時，有時不需要複指就可以放到動詞前。如：</span></p><blockquote><p><span>(29)王祭不共，無以缩酒，寡人是徵；昭王南征而不復，寡人是問。(齊桓公伐楚)</span></p></blockquote><p><span>其他：</span></p><blockquote><p><span>(30)君若以力，楚國方城以爲城，漢水以爲池。(同上)</span></p></blockquote><p><span>語用上表示强調的語氣。</span></p><p>&nbsp;</p><h2 id='與表行爲動作的數量有關的詞序問題'><span>與表行爲動作的數量有關的詞序問題</span></h2><p><span>名量表達：數詞+量詞+名詞——一本書、一個人、一只鳥、一把花生米……</span></p><p><span>動量表達：動詞+數詞+量詞——去一次、踢一腳、跑一圈、打一下……</span></p><p><span>現代漢語里表示行爲動作的數量一般用“動詞+數詞+動量詞”的格式來完成，如“走一趟，跑十圈，打一下”等等。</span></p><p><span>——————————————</span></p><p><span>漢代以前，上古漢語中没有動量詞，因此表示行爲動作的數量都是在動詞的前面直接加上數詞作状語。</span></p><p><span>举例：</span></p><blockquote><p><span>(31) 逐之，三周華不注。(殽之戰)</span></p><p><span>(32) 澤雉十步一啄，百步一飲。(莊子·养生主)</span></p><p><span>(33) 即鞭十下，如是五人各打十下。(百喻經·五人買婢共使作喻)[六朝]</span></p><p><span>(34) 五百青雀飛來，繞菩薩三匝西去。(水經注·河水)[六朝]</span></p><p><span>(35) 巡曰: “吾於書讀不過三遍，終身不忘也。” (韩愈)[唐]</span></p></blockquote><p><span>數詞作謂語，舉例:(這樣的格式非常罕見，為了表達對數詞的強調——強調多次)</span></p><blockquote><p><span>(36) 不匝旬而得異地者二。(柳宗元《鉆鍋潭西小丘記》)</span></p><p><span>(37) 於是平原君欲封魯仲連。魯仲連辭讓者三，終不肯受。(戰國策·趙策)</span></p><p><span>(38) 范增數目項王，舉所佩玉玦以示之者三(“三”是谓语，强调),項王默然不應。(史記·鴻門宴)</span></p></blockquote><p>&nbsp;</p><p><span> </span></p></div>
+    
+    <div id="tab5" class="tab-content">
+      <h1 id='判斷句'><span>判斷句</span></h1>
+      <p><strong><span>要點：</span></strong></p><p><span>（一）句子的分類</span></p><p><span>（二）古漢語判斷句的形式</span></p><p><span>（三）“為”“惟（維）”“乃”“即”等詞在判断句中的詞性和作用</span></p><p><span>（四）指示代詞“是”和判斷詞“是”</span></p><p><span>（五）古汉语判斷句的表達功能</span></p><p><span> </span></p><p><span>古代漢語中，按照謂語的性質分類，句子可分為判斷句、敘述句、描寫句。</span></p><ul><li><span>判斷句：陳勝者，陽城人也。</span></li><li><span>敘述句：郤克傷於矢，流血及履。</span></li><li><span>描寫句（对事物的状态进行描写和说明，一般用形容词）：君子坦蕩蕩，小人長戚戚。</span></li></ul><p><span>判斷句是根據謂語的性質給句子分類得出的一種句型。從形式上看，判斷句的謂語一般是</span><strong><span>名詞性成分</span></strong><span>；從意義上看，判斷句是對事物的屬性作出判斷，表示主語</span><strong><span>是</span></strong><span>什麼，或</span><strong><span>不是</span></strong><span>什麼。即：</span><strong><span>判断句是谓语对主语所代表的人、物或所属性质、类别等进行判断的句子。</span></strong></p><p><span>現代漢語中判斷句的主要標志是使用判断詞“是”。但在古代漢語中， “是”作爲一個指示代詞，不能用來表示判断，因此需要使用其他的語法形式表示判斷。</span></p><p><span> </span></p><h2 id='判斷句的類型'><span>判斷句的類型</span></h2><p><strong><span>甲、主語+謂語+也。</span></strong><span>此種句式中“也”是句尾語氣詞，用來幫助表示判断。例如：</span></p><blockquote><p><span>（1）制，巖邑也。《鄭伯克段於鄢》</span></p><p><span>（2）劫天子，惡名也。《戰國策·司馬錯論伐蜀》</span></p><p><span>（3）董狐，古之良史也。《左传·宣公二年》</span></p><p><span>（4）贡之不入，寡君之罪也。《左传·停公四年》</span></p><p><span>（5）夫轸，天下之辩士也。 《战国策秦第一·陳軫去楚之秦》</span></p></blockquote><p><strong><span>乙、主語+者+謂語+也。</span></strong><span>此種句式中“者”是代詞，用來復指主語（起强调作用）。例如：</span></p><blockquote><p><span>（6）兵者，凶器也。（韓非子·存韓）</span></p><p><span>按：在主語“兵”的後面加上“者”，意思是“兵器這種東西。”</span></p><p><span>（7）陳勝者，陽城人也。（史記陳涉世家）</span></p><p><span>（8）南冥者，天池也。（莊子·逍遥遊）</span></p><p><span>（9）君者，舟也；庶人者，水也。水则载舟，水则覆舟。《荀子·王制》</span></p><p><span>（10）吾所欲者，土地也。《韩非子·王蠢》</span></p><p><span>（11）廉颇者，赵之良将也。《史记·廉颇蔺相如列传》</span></p></blockquote><p><strong><span>丙、主語+者+謂語。</span></strong><span>【带“也”的语气更强烈】</span></p><blockquote><p><span>（12）兵者，器。 （史記·酷吏列傳）</span></p><p><span>（13）天下者，高祖天下。《史记·魏其武安侯列传》</span></p><p><span>（14）陈轸者，游说之士。 《史记·张仪列传》 </span></p></blockquote><p><strong><span>丁、主語+謂語</span></strong><span> </span></p><blockquote><p><span>(15) 是炎帝之少女。 (精衛填海)</span></p><p><span>(16) 堂邑父，胡人。(漢書·張骞傳)</span></p><p><span>(17) 秦，虎狼之国。《史记·屈原列传》</span></p><p><span>(18) 荀卿，赵人。 《史记·孟荀卿列传》</span></p></blockquote><h2 id='判斷句的特點'><span>判斷句的特點</span></h2><ol start='' ><li><span>名詞性成分作謂語（名詞謂語句）；</span></li><li><span>不用係詞，用“者”“也”幫助表示判断。</span></li></ol><p><span>判斷功能由誰承擔？——句式本身</span></p><p><strong><span>“者”“也”的功能及詞性</span></strong><span> “者”起復指主語和提頓引出調語的作用。如果看重它的復指作用，就可以認爲它是代詞，並與其他情況下“者”的詞性統一起來【復指功能的代词，不能单独使用】；若看重它提頓引出謂語的作用，可以認爲它是表提頓的語氣詞。</span></p><p><span>“也”是語氣詞，對句式所表達的判斷語氣進行肯定強調。</span></p><h2 id='判斷句中的副詞語氣詞'><span>判斷句中的副詞、語氣詞</span></h2><h3 id='否定判斷的表達方式'><span>否定判斷的表達方式</span></h3><p><span>古代漢語中表示否定判断的方式是在判断謂語的前面加上否定副詞“非”。例如:</span></p><blockquote><p><span>(19) 今京不度，非制也。(鄭伯克段於鄢)</span></p><p><span>(20) 謂之君子而射之，非禮也。(牽之戰)</span></p></blockquote><p><span>“非”本身并非判斷詞，而是一個副詞。</span></p><h3 id='其他副詞'><span>其他副詞</span></h3><p><span>古代漢語的判斷句中經常出現類似於“非”的副詞，例如:</span></p><blockquote><p><span>(21)丹山西</span><u><span>即</span></u><span>巫山者也。(巫山巫峡)</span></p><p><span>(22)若此者甚衆，</span><u><span>皆</span></u><span>崩崖所陨。(同上)</span></p><p><span>(23) 亡鄧國者</span><u><span>必</span></u><span>此人也。(左傳·莊6)</span></p><p><span>(24)其北</span><u><span>則</span></u><span>大月氏、康居之屬。(漢書·張骞傳)</span></p><p><span>(25)</span><u><span>乃</span></u><span>歌夫&quot;長缺歸來”者也。(馮設客孟嘗君)</span></p><p><span>(26)相如</span><u><span>素</span></u><span>賤人。(廉頗萄相如列傳)</span></p></blockquote><p><span>  这些是副词，不是判断词</span></p><h3 id='語氣詞'><span>語氣詞</span></h3><p><span>“維”、“惟”是句中語氣詞，起引出谓語的作用。【往往有凑足音节的作用】</span></p><blockquote><p><span>(27)我馬維麒。(詩經)</span></p><p><span>(28)爾惟舊人。(尚書) </span></p></blockquote><h2 id='爲的問題'><span>“爲”的問題</span></h2><p><span>古代漢語里的“爲”是一個意義十分廣泛的動詞，在有些情况下，“爲”的用法接近現代漢語的“是”。例如：</span></p><blockquote><p><span>（29）余爲伯條。（左傳）</span></p></blockquote><p><span>“爲”並不是真正的判斷詞。動詞“爲”的本義是“做”，容易引申爲多種意義，甚至引申爲近似係詞“是”的意義。但這只能說明“爲”是個意義豐富的多詞， “是”是其中的一個義項。因爲它與具有幫助表示判斷功能的語氣詞“也”形成互補分佈，一般不在同一判断句中共現。（王力，1980）</span></p><p><strong><span>假系詞、準系詞</span></strong><span> 由“爲”構成的判斷句與其他類判斷句不同，它的謂語不是名詞性的，而是由“爲”構成的動實結構。此類用例在先秦漢語裏很少見。</span></p><p><span>比較：</span></p><blockquote><p><span>（30）潁考叔爲潁谷封人。（鄭伯克段於鄙）</span></p><p><span>翻譯：潁考叔作潁谷管理邊界的小官。（为：担任）</span></p><p><span>（31）四體不勤，五穀不分，孰爲夫子？ （論語·微子）</span></p><p><span>翻譯：……誰能算作夫子</span></p><p><span>（29）余爲伯條，余而祖也。（左傳）</span></p></blockquote><p><span>前二例中的“爲”都不是係詞，而是動詞，所在句子是叙述句。</span></p><p><span>第三例“爲”引申有近似係詞“是”的意義。這種“爲”不是一個專職的判斷詞，意義和用法不像後來的係詞“是”那樣單純，所在句子介於敘述句和判斷句之間，可以看作準係詞。</span></p><h2 id='是的問題'><span>“是”的問題</span></h2><p><span>古代漢語里的“是”不能表示判斷，不過判斷詞（系詞）“是”却是由代詞“是”演變而來的。這些上古漢語中常常出現的“是”字，從翻譯角度看，很象判斷詞。</span></p><blockquote><p><span>（32）是社稷之臣也。（論語）</span></p><p><span>（33）公曰： “是吾實也。” （左傳）</span></p></blockquote><p><span>這些“是”，都是指示代詞，相當於“此” ，正確的翻譯都應該有指示代詞“這”， “這個”，譯文中雖然有“是”字，但那是翻譯加上去的【一定不能从翻译、训诂的角度来代替语法】，不是原句固有的。</span></p><p><span>又如：</span></p><blockquote><p><span>（34）至攘人犬豕雞豚者，其不義又甚入人園圃竊桃李，是何故也？ （墨子）</span></p><p><span>（35）至入人欄廠，取人馬生者，其不仁義，又甚攘人犬豕雞豚，此何故也？ （墨子）</span></p></blockquote><p><span>比較二例，顯然“是”“此”，都是複指前文所說的内容，“是”複指性較輕，“此”較重。 </span></p><p>&nbsp;</p><p><img src="/Users/liangzhong/Library/Application Support/typora-user-images/image-20231124111530152.png" alt="image-20231124111530152" style="zoom:40%;" /></p><p><span> </span></p><p><strong><span>“是”作爲代詞，經常用來複指前文。</span></strong><span>例如：</span></p><blockquote><p><span>（36）德之不修，學之不講，聞義不能徙，不善不能改，是吾憂也。（論語·述而）</span></p><p><span>（37）知之爲知之，不知爲不知，是知也。（論語·爲政）</span></p><p><span>（38）富與貴，是人之所欲也。（論語·里仁）</span></p></blockquote><p><span>這是“是”在上古最重要的語法作用之一。“是”複指前文所敘述的内容，在句中作主語，後面用一個名詞性詞組加“也”構成判斷句。從翻譯的角度出發，把這類句子看成判斷句是不妥的。</span></p><p><strong><span>係詞“是”的來源</span></strong><span> 係詞“是”是從複指前文的指示代詞演變來的。一般認爲，“是”作爲判斷詞産生於西漢時期，到六朝時期判斷詞“是”取代了其他形式成爲口語里表示判斷的主要形式。例如：</span></p><blockquote><p><span>（39）此必是豫讓也。（史記·刺客列傳）</span></p><p><span>（40）客人不知其是商君也。（史記·商君列傳）</span></p></blockquote><p><strong><span>產生時代</span></strong><span> 有關“是”作爲判斷詞的產生時代，如下四例先秦語料中，“是”疑似作為判斷詞：</span></p><blockquote><p><span>（41）谓彼是是也，不可。（墨子）</span></p><p><span>（42）此是何种也？（韩非子）</span></p><p><span>（43）是鲁孔丘之徒与？（论语）</span></p><p><span>（44）韩是魏之县也。（战国策）（名+是+名 代+是+名）</span></p></blockquote><p><span>王力和郭錫良反復討論，認為：①（41）（42）確實是无法否認的（目前無法確認是否為傳抄之誤）。②可以用“此”替换（43）中的“是”。③（44）很难否定，但是《战国策》是西汉时期刘向整理的，語料不純淨。</span></p><blockquote><p><span>（45）是是帚彗，有内兵，年大孰。</span></p><p><span>（46）是是竹彗，人主有死者。</span></p><p><span>（47）果是伪书</span></p><p><span>（48）朱家心知是季布</span></p><p><span>（49）龟者是天下之宝也 【系词“是”，又是“此”（龟者，是天下之宝也）】</span></p></blockquote><p><span>这样的例子在《史记》的时代則很多。綜上，郭老师认为萌芽于战国末期，形成于《史记》时代。</span></p><p><strong><span>產生原因</span></strong><span> 先秦判斷句一般不用係詞，當主語太長且結構複雜時，主、謂語的界限往往不太清楚，於是産生了用代詞複指主語的必要。如：</span></p><blockquote><p><span>（50）知之爲知之，不知爲不知，是知也。（論語）</span></p></blockquote><p><span>同樣，結構簡短的主語有時也用“是”複指：</span></p><blockquote><p><span>（51）富與貴，是人之所欲也。（論語）</span></p></blockquote><p><span>主語太短，複指的必要性不大，“是”的複指意味隨之減弱，主要起聯繫主、謂語的作用。再進一步，句末表示判斷語氣的“也”去掉，“是”就變成表判斷的純粹係詞了。</span></p><p><span> 與“是”處於相同地位的還有“此” ，爲何“是”會變係詞，而“此”不變？如：</span></p><blockquote><p><span>（52）朝菌不知晦朔，聽蛄不知春秋，此小年也。</span></p></blockquote><p><span>因為“此”是指代性強的近指代詞，與遠指性強的“彼”相對，故未變化。“是”，是指示性較弱的代詞（承指、中指） ，它有一個同形的形容詞“是”，（</span><em><span>“魏其言是也”</span></em><span> （史記），</span><em><span>“‘是鲁孔丘與？’曰：‘是也。’”</span></em><span>（論语））， 這種形容詞“是”，虚化後就成爲表示確認、肯定的語氣副詞。複指代詞“是”，受同形表確認意義的副詞“是”的影響，類化成表判斷的係詞。</span></p><p><span>所以，從句法結構言，係詞“是”是從表複指的代詞演變來的；從辭彙意義上說，是受形容詞“是”的影響：是兩方面因素共同作用的結果。</span></p><p><span>（王力，1980《中國文法中的係詞》 ，《龍蟲並雕蔡文集》第一冊，中華書局；郭錫良，1990《關於係詞“是”産生時代和來源論爭的幾點認識》 ，《漢語史論集》 ，商務印書館，1997）</span></p><h2 id='判斷句的表達功能'><span>判斷句的表達功能</span></h2><p><span>判斷句主要有五種表達功能 </span></p><ol start='' ><li><span>表示類屬關係。</span></li></ol><blockquote><p><span>（53）兵者，咒器也。（韓非子）</span></p><p><span>（54）制，岩邑也。（左傳）</span></p></blockquote><ol start='2' ><li><span>表示等同關係。</span></li></ol><blockquote><p><span>（55）余爲伯條。（左傳）</span></p><p><span>（56）亞父者，范增也。（史記·鴻門宴） </span></p></blockquote><p><span>以上是判断句表達的基本意义。從邏輯關係上，主語跟謂語構成判斷關係，即謂語對主語進行解釋或分類，主語表達的事物屬於謂語所表達事物的同類或就是謂語所表達的事物。</span></p><p><span>以下屬於判断句的活用：</span></p><ol start='3' ><li><span>表示比喻關係。</span></li></ol><blockquote><p><span>（57）曹公，豺虎也。（左傅）</span></p><p><span>（58）君者，舟也；庶人者，水也。（荀子·王制）。</span></p></blockquote><ol start='4' ><li><span>用判断句的形式表示比較複雜的内容，表示某種緊密複雜的邏輯關係。</span></li></ol><blockquote><p><span>（59）夫戰，勇氣也。（左傳·莊10）【战争，靠的是勇气】</span></p><p><span>（60）百乘，顯使也。（戰國策·齊策四）</span></p></blockquote><ol start='5' ><li><span>表示造成某種結果的原因，用判斷句的形式解释原因。例如：</span></li></ol><blockquote><p><span>（61）良庖歲更刀，割也；族庖月更刀，折也。（莊子·養生主）</span></p><p><span>（62）孟嘗君爲相數十年，無纖介之禍者，馮證之計也。（戦國策）</span></p></blockquote></div>
+    <div id="tab6" class="tab-content">
+      <h1 id='古代漢語的被動表示法'><span>古代漢語的被動表示法</span></h1>
+      <p><span>一、意念被動句和語法被動句</span></p><p><span>二、被動句的産生</span></p><p><span>三、被動句的各種形式及其發展</span></p><p><span>1.“於／于”字被動句</span></p><p><span>2.“为”字被動句</span></p><p><span>3.“見”字被動句</span></p><p><span>4.“見…於…”式被動句</span></p><p><span>5.“为…所…”式被動句</span></p><p><span>6.“被”字被動句</span></p><p><span>四、小結</span></p><p><span> </span></p><h2 id='被動句'><span>被動句</span></h2><p><span>被動是就主語和謂語之間的關係來說的。</span></p><p><strong><span>主謂之間的語義關係</span></strong><span> 漢語敘述句主語跟謂語之間的語義關係是多種多樣的，主要有兩種語義關係：</span></p><ol start='' ><li><span>主語是施事（A）：鄭武公娶於申</span></li><li><span>主語是受事（P）：蔓草猶不可除 </span></li></ol><p><span>受事主語句可以直接用“主語+謂語”的形式，也可以用一定的語法形式表示被動的意義或引出行爲動作的施事。</span></p><blockquote><p><span>《韓非子·飾邪》：“先令者毅，後令者斬。”</span></p><p><span>《孟子·盡心下》：“盆成括見殺。”</span></p><p><span>《左傳·定4》：“伍子胥父诛乎楚。”</span></p></blockquote><p><span>一般把帶有表被動關係的專用語法標記的被動句式稱爲</span><strong><span>被動句（語法被動句）</span></strong><span>；把沒有特殊語法標記、但表示被動意義的句式，稱爲</span><strong><span>概念或意念上的被動句</span></strong><span>。</span></p><h2 id='意念被動句'><span>意念被動句</span></h2><p><span>意念被動句歷史悠久，早在甲骨文時代就已經出现了，如：</span></p><blockquote><p><span>(1)鹿禽。（粹953）</span></p></blockquote><p><span>這種句子出現於各時代文獻中，直到現代漢語中仍有。如：</span></p><blockquote><p><span>(2)麥易赤金。（麦方鼎）【麦被赏赐】</span></p><p><span>(3)故不能推車而及。(左傳·窒之戰) 【被追赶上】</span></p><p><span>(4)文王拘而演周易,…屈原放逐,乃賦離骚。（报任安書）【被拘禁，被放逐】</span></p><p><span>(5) 箱子抬出了,器具抬出了。(阿Q正传)</span></p></blockquote><p><span>如何識別意念(語義)被動句?</span></p><blockquote><p><span>蔓草猶不</span><u><span>可</span></u><span>除……（左傅）</span></p><p><span>則文王不</span><u><span>足</span></u><span>法與? (孟子)</span></p><p><span>吾老矣,不</span><u><span>能</span></u><span>用也。(論語)</span></p><p><span>文王拘而演局易……屈原放逐，乃賦離骚。（報任安書）</span></p><p><span>孫子臏腳，兵法修列。(報任安書)</span></p></blockquote><ol start='' ><li><span>可、足、能：助动词+谓语，常常表示被动语意。</span></li><li><span>謂語是不及物動詞且不能補充賓語，則可判斷被動句。</span></li><li><span>当然，一定还要结合上下文的语意。（“除”是人的行为，而“蔓草”不是人；结合具体的语意）</span></li></ol><p><span>及物動詞（語法）又稱為他動詞（語義），不及物動詞又稱為自動詞，既可及物又可不及物又稱為作格動詞（非賓格動詞）。</span></p><h2 id='古漢語被動句的産生'><span>古漢語被動句的産生</span></h2><p><span>被動句使用範圍的廣狹，在不同語言中或者同一語言的不同歷史時期中是不同的。漢語被動句的使用比西方某些語言少，而古漢語又比現代漢語用得少。</span></p><p><span>殷商甲骨文時代沒有發現被動句，西周金文裏已經出現了。如：</span></p><blockquote><p><span>（9）侯乍冊麥易金于辟侯。（麥尊）</span></p></blockquote><p><span>不過，西周金文中被動句還很少，但春秋戰國時期已經用得相當普遍了，而且有多種形式。</span></p><p><span> </span></p><h2 id='被動句的各種形式及其發展'><span>被動句的各種形式及其發展</span></h2><ol start='' ><li><span>V/VP－於／于A；</span></li><li><span>为A－V/VP</span></li><li><span>見V/VP</span></li><li><span>見V/VP－於／于A</span></li><li><span>爲A－所V/VP</span></li><li><span>被</span></li></ol><h3 id='於于字被動句'><span>“於/于”字被動句</span></h3><p><span>先秦漢語中，介詞“於／于”可以表示多種語法意義，比如表處所、時間、比較、對象等等。其中“於／于”可以用來引出行爲動作的施事者，構成被動句。例如：</span></p><blockquote><p><span>（10）郤克傷於矢，流血及履。（左傅·肖之戰）</span></p><p><span>（11）韓厥辭，曰：“昔吾畜於趟氏。”（左傅·成17）</span></p></blockquote><p><span>于：受事+动+介（于）+施事</span></p><p><span>被：受事+介（被）</span><u><span>+施事</span></u><span>+动（补）</span></p><p><span> </span></p><p><span>“於／于”字引出行爲動作的施事，由“於／于”構成的介詞結構都是放在動詞之後，作動词的補語。</span></p><p><span>古漢語里“乎”字作介詞的時候用法相當於“於／于”，因此“乎”字也可以用在被動句里引出行爲動作的施事者：</span></p><blockquote><p><span>（12）刑賞已諾，信乎天下矣。（荀子·王霸）</span></p></blockquote><p><strong><span>舊式被動句先後消亡探因</span></strong><span> “於／于”字句的局限——表被動的“於／于”字句與表處所、時間等的“於／于”字句完全同形。如：</span></p><blockquote><p><span>（31）孫嘉聘於齊。（左傳·襄公26） （在齐国聘问，於齊：处所补语）</span></p><p><span>（32）及寡人之身，束敗於齊，長子死焉；西丧地於秦七百里；南辱於楚。（孟子·梁惠王上）（被動）</span></p></blockquote><p><span>介詞“於／于”在以上兩例分別引出處所和施事，（31）不是被動句，（32）是被動句。</span></p><blockquote><p><span>吾围于陈蔡之间。（在陈、蔡之间被人包围。）</span></p><p><span>百里奚举于市。（百里奚从市场上被提拔上来。）</span></p></blockquote><p><span>介词“于”在以上两例是引出处所而不是引出施事，但是整个句子是意念被动句。</span></p><p><span>※“于”早在甲骨文時代就出現了，最早是“去、到”的意思，至晚東周以來即虛化為介詞（“至于”）。如： </span></p><blockquote><p><span>壬寅卜，王于商。（王去到商地）</span></p><p><span>辛卯卜，王入商。 </span></p></blockquote><p><span>“於”戰國時出現，“烏”西周金文出現。認為“於”是“烏”的借型變體分化字。“於”與“于”音有別，為何能假借不得而知。※綜合語→分析語的發展趨勢；綜合語、分析語、黏著語</span></p><h3 id='爲字被動句'><span>“爲”字被動句</span></h3><p><span>介詞“爲”可以表示對象、原因、目的等多種語法意義。“爲”也可以引出行爲動作的施事者，構成被動句。例如：</span></p><blockquote><p><span>（13）兔不可复得，而身爲宋國笑。（韓非子·五囊）</span></p><p><span>（14）吾子，白帝子也，化爲蛇，當道，今属赤帝子斬之。（史記·高祖本紀）</span></p></blockquote><p><span>由介詞“爲”構成的介詞結構放在動詞前面作状語。</span></p><p><strong><span>“爲”的賓語省略</span></strong><span> 在“爲”的其他用法中，經常會遇到“爲”的實語省略的現象。“爲”在用作被動句的標記時，有時并不引出行爲動作的施事者（介詞），而是放在動詞的前面，作為表示被動關係的標誌（助動詞）。例如：</span></p><blockquote><p><span>（15）有一於此，將爲戮乎？ （左傳·窜之战）</span></p><p><span>（16）吴广素愛人，士卒多爲用者。（史記·陳涉世家）</span></p></blockquote><p><span>不宜把這類情况處理爲賓語省略，這種“爲”應該看作助動詞。</span></p><p><strong><span>“爲”字句的局限</span></strong><span> （一）“爲”本身有豐富的內涵，包括實義動詞、助動詞、介詞等。有些“爲N+V”式既可看成被動句，又可看成“動+賓”結構，有時可能發生誤解，如：</span></p><blockquote><p><span>（33）若信者亦已爲禽矣。（史記·韓信破趙之戰）</span></p></blockquote><p><span>此句可能把“爲”當作動詞，誤解爲“象我韓信也早已</span><u><span>成爲</span></u><span>俘虜了。”</span></p><blockquote><p><span>（34）民不爲己用，不爲已死，而求兵之勁，城之固，不可得也。（荀子·君道）</span></p></blockquote><p><span>民不爲己用：老百姓不被我信用／老百姓不替我出力</span></p><p><span>（二）“爲”字用作被動關係的標記，就有两種用法：</span></p><p><span>①作介詞，其語法功能是引出行爲動作的施事者；</span></p><p><span>②用作助動詞，放在動詞前面作爲表示被動關係的一種標志。</span></p><p><span>不够明晰，因此消失。</span></p><h3 id='見字被動句'><span>“見”字被動句</span></h3><p><span>在上古漢語里， “見”字曾用來放在動詞的前面幫助表示被動。例如：</span></p><blockquote><p><span>（17）厚者爲戮，薄者見疑。（韓非子·說難）</span></p><p><span>（18）舉世皆濁我獨清，衆人皆醉我獨醒，是以見放。（楚辭·渔父）</span></p></blockquote><p><span>漢代以後， 由於漢語中表被動關係的形式逐步完善，“見”字不再表示被動關係，而是發展出一種新的用法，即用在主動句的動詞前面，表示别人對自己怎麽樣。例如：</span></p><blockquote><p><span>（19）生孩六月，慈父見背。（李密《陳情表》）【见背：相背，偏指一方，弃我而去，“死”的委婉表示】</span></p><p><span>卓几见杀状。《后汉书·吕布传》</span><mark><span>【存疑】</span></mark><span>见字表被动，立场不坚定，汉代以后发生变化</span></p><p><span>（20）故今具道所以，冀君實或見恕也。（王安石《答司馬諫議書》）</span></p><p><span>見怪、見笑、見教</span></p></blockquote><h3 id='見於于式被動句'><span>“見…於/于..”式被動句</span></h3><p><span>【杂糅句式出现：之前的句式的局限性】</span></p><blockquote><p><span>（21）臣就恐見欺於王而負趟。（史記·廉頗蔺相如列傳）</span></p><p><span>（22）以四百里之地見信於天下。（吕氏春秋·貴信）</span></p></blockquote><p><span>助動詞“見”表示被動關係，介詞“於／于”用來引出動作的主動者。這一形式在戰國至漢代使用得較多，六朝以後由於“被”字的興起才在口語里逐渐被淘汰。</span></p><p><span>這種格式的淘汰大約是因爲：</span></p><p><span>1.介詞“於／于”的消亡；</span></p><p><span>2.“見”轉爲表委婉語氣的副詞；</span></p><p><span>3.“被”字式和“爲…所…”式的使用。</span></p><h3 id='爲所式被動句'><span>“爲…所…”式被動句</span></h3><blockquote><p><span>（23) 大月氏已爲胡所殺。(漢書·张骞傳)</span></p><p><span>（24) 爲漢使月氏,而爲胡所閉道。(漠書·张骞傳)</span></p></blockquote><p><span>這種句式中,介詞“爲”引出行爲動作的主動者,用“所”字幫助表示被動,這種“所”可看作表被動的動詞詞頭。</span></p><p><span>“爲…所…”式產生於戰國後期，但這一時期使用频率還很低。到了漢代這種格式開始盛行。六朝以後，漢語中出現了“被”字式和“爲所”式共同用來表被動的局面；唐代以後，口語中一般只使用“被”字式，不用“爲…所…”式。但在書面語中，“爲…所…”式一直保留到今天，尤其在比較莊重典雅的文體中，一般使用“爲…所…”式，可見這種句式具有强大的生命力。 </span></p><blockquote><p><span>父母之于子也,岂可坐观其为寇贼之所屠剥，立观其为狗豕之所啖食乎？（為…之所）</span></p><p><span>有为法者，为生老病死所见逼迫。（為…所見）</span></p></blockquote><p><span>由於佛經翻譯等原因，產生了“為…之所”“為…所見”這種雜糅句式來表示被動。但基於語言的經濟原則，它們都不如“爲…所…”和“被”來得經濟，因此慢慢被棄用了。</span></p><h3 id='被字被動句'><span>“被”字被動句</span></h3><p><span>《說文解字》 : “被,寝衣,長一身有半,從衣,皮聲。” “被”的本義是被子。引申爲“覆蓋”義,如《尚書·堯典》 :“光被四表。”由“覆蓋”義又引申出“承受”“蒙受”的意思。如《墨子·尚賢下》 : “下施萬民，萬民被其利。” </span></p><p><span>戰國末期， “被”可以带動詞實語，例如《戰國策·齊策》：“國一日被攻，雖欲事秦，不可得也。”當“被”字後經常出現動詞時，“被”字組合就有了重新分析的可能。上述例子可以重新分析，“攻”可以分析為NP，也可以分析為VP，在“攻”是VP的情況下，“被”就有了從動詞轉化為被動標記的可能。</span></p><p><span>“被”的後面带上及物動詞作賓語，就使“被”的虛化有了可能；同時，這種用法的“被”往往表示不好的事情，相當於現代漢語的“蒙受”或“遭受”這一類意思，這一點對後來“被”的用法很有影響。 </span></p><p><span>漢代的“被”字一般都可以理解爲動詞，但在有些句子中， “被”也可以理解爲表被動關係的助動詞。例如：</span></p><blockquote><p><span>（25）信而見疑，忠而被謗，能無怨乎？（史記·屈原列傳）</span></p></blockquote><p><span>這一時期“被”一直不能作爲介詞引出行爲動作的施事者。</span></p><p><span> “被”作介詞用於引出施事的用法出現於東漢末年。目前見到的最早的例子是蔡邕《被收時表》里的一個句子：</span></p><blockquote><p><span>（26） 今月十三日，臣被尚書召問。</span></p></blockquote><p><span>魏晉以後， “被”字句在口語中逐漸取代了其他几種表被動的形式，成爲漢語中表示被動關係的主要句式。</span></p><p><span>“被”字句完全成熟的標誌是“被”字之後開始插入</span><u><span>關係語（關係詞）</span></u><span>。【什麼是關係語？】這種句式出現於漢末，六朝以後逐漸多見，例如：</span></p><blockquote><p><span>（29）今月十三日，臣被尚書召問。（蔡邕《被收時表》）</span></p><p><span>（30）如彼愚人，被他打頭，不知避去。（百喻經·以梨打破頭喻）</span></p></blockquote><p><span>由“被”字的演變過程可知，被動句一般用來表示對說話人來說是不幸的或不好的事情，原因就在於表被動的“被”是由“遭到”“蒙受”的意思虚化而來的，而遭到、蒙受的事情通常都是不幸的或不好的。試比較： “遭受損失”“遭到打擊”“遭到勝利”、“遭受表揚”等等。</span></p><p><span>八十年代中期以後，被動句逐漸變爲一個中性色彩的句式，出現了“他被評爲三好學生”“被群衆誉爲神醫”“被選為國家主席”之類的說法。</span></p><p>&nbsp;</p><p><strong><span>小結：</span></strong><span>六種被動表示法。依據其形式標記的詞性和特點可分爲三類：</span></p><ol start='' ><li><span>於／于、爲①、被：介詞，其語法作用是引出行爲動作的施事者。</span></li><li><span>爲②、見（於/于）</span></li><li><span>爲…所…</span></li></ol><p><span>“被”字被動式的形成過程：</span></p><p><span>東漢末年産生了一個新的表示被動關係的介詞“被”。</span></p><p><span>“被”字被動式的產生是動詞“被”經歷了詞義演變和語法化過程的結果。“被”字被動式大約萌芽於戰國末期，形成過程如下：</span></p><p><span>（1）“被”本是動詞，是“覆蓋”“施及”義，一般用於好事的語境，表示主動地覆蓋或施及某一事物。例如：</span></p><blockquote><p><span>功被天下。（荀子）</span></p></blockquote><p><span>又引申出“蒙受”“遭受”義，表示被動地蒙受或遭受某一事物，多用於表示不幸、不愉快的語境。例如：</span></p><blockquote><p><span>秦王復擊柯，被八創。（戰國策）</span></p></blockquote><p><span>（2）當“被”字後經常出現動詞時，“被”字組合就有了重新分析的可能。例如：</span></p><blockquote><p><span>國一日被攻。（戰國策）</span></p></blockquote><p><span>上述例子可以重新分析，“攻”可以分析為NP，也可以分析為VP，在“攻”是VP的情況下，“被”就有了從動詞轉化為被動標記的可能。</span></p><p><span>（3）“被”字被動式剛產生時，“被”字後不能出現施事，漢末出現了帶施事者的用例。六朝以後，帶施事者的“被”字式逐漸增加，施事者的出現使得句式所表達的施受關系明確，促進了“被”字被動式的穩固定型。例如：</span></p><blockquote><p><span>五月二十日，臣被尚書召問。（蔡邕《被收時表》）</span></p><p><span>亮子被蘇峻害。（世說新語）</span></p></blockquote><p><span>（4）不過，如果用“被”後出現施事者作為界定“被”字被動式產生的標準，未免晚了。《戰國策》中有如下例：</span></p><blockquote><p><span>萬乘之國，被圍於趙。（戰國策）（語料的純淨度問題、王力備考欄）</span></p></blockquote><p><span>從上下文看，介詞“於”引企的不是“被圍”的處所，而是動詞“圍”的施事者。動補結構具有極強的陳述性，一般不能夠在無標記的情況下指稱化（名詞化），所以“圍於趙”是謂語的核心，這樣“被”就從主要動詞的地位演變成了被動式的標記。“被”字後出現述補結構可以作為判定“被”字被動式完成重新分析的標志。</span></p></div>
+    <div id="tab7" class="tab-content">
+      <h1 id='古代漢語虛詞'><span>古代漢語虛詞</span></h1><p><span>詞序和虚詞是漢語两種重要的語法手段，漢語的許多語法意義是通過虚詞來表現的。</span></p><blockquote><p><span>例如，</span><strong><span>時態</span></strong><span>在西方語言里通過動詞的形態變化而體現出來。</span></p><p><span>漢語使用副詞、動態助词（後期）等來表達。</span></p></blockquote><p><strong><mark><span>實詞</span></mark></strong><span>——有實在的詞彙意義，在句子中能夠獨立充當句法成分的。</span></p><p><strong><mark><span>虛詞</span></mark></strong><span>——沒有實在的詞彙意義，不能在句子中獨立充當句法成分的。</span></p><p><span>古代漢語實詞包括名詞、動詞、形容詞；虚詞大致包括</span><strong><span>副詞、代詞、介詞、連詞、語氣詞和詞頭詞尾</span></strong><span>等六類。副詞和代詞又稱爲半實半虚詞。</span></p><blockquote><p><span>注意：虛詞有語法意義</span></p></blockquote><h2 id='副詞'><span>副詞</span></h2><p><span>主要歸納两個方面的内容：什麼是副詞？古代漢語幾個有特點的副詞。</span></p><h3 id='什麽是副詞'><span>什麽是副詞</span></h3><p><strong><span>一、副詞是一種半實半虛的詞。</span></strong><span>（1）①從功能上說，副詞用來修飾動詞和形容詞，在句子中充當状語。能獨立作句中的次要成分；②從意義上說，副詞不僅具有語法意義，同時具有一定的詞彙意義。（2）但是，副詞不能單獨表示一種實物、實情或實事，同時又不能用做句子的主要成分（主/謂/賓/定）。因此，副詞是一類半虚半實的詞。</span></p><p><strong><span>二、副詞的分類</span></strong><span>。</span><em><span>為了教學的方便</span></em><span>，根據意義，把副詞分為：</span><strong><span>程度</span></strong><span>、</span><strong><span>範圍</span></strong><span>、</span><strong><span>時間</span></strong><span>、</span><strong><span>情態</span></strong><span>、</span><strong><span>否定</span></strong><span>和</span><strong><span>表敬</span></strong><span>六類。</span></p><p><span>為什麼這麼做？——一般而言，我們根據根據詞類的語法功能（語法分佈的總和）來劃分詞類；然而，副詞在句子中只能充當狀語。顯然，副詞詞類的劃分不能以此為依據。因此，我們按照語義來對副詞進行分類。</span></p><p><strong><span>三、在理解對副詞的定義時，需要注意两個問題。</span></strong></p><ol start='' ><li><span>在判斷句中，修飾判斷謂語的副詞，如“非、亦、即、乃、必”等，從形式上看是修飾名詞，這一點與現代漢語不同。</span></li><li><span>并非能作状語的都是副詞。形容詞、名詞都經常用來作状語。只不過副詞</span><strong><span>只能</span></strong><span>作状語，在這一點上與形容詞和名詞不同。</span></li></ol><h3 id='程度副詞'><span>程度副詞</span></h3><p><span>在先秦漢語中，表示程度低一般用“少”，漢代以後開始用“略、微、頗”等；而“稍”表示程度低的意思是唐宋以後的事情了，</span></p><p><span>古代漢語程度副詞“少”是“稍微，略微”的意思，相當於現代的“稍”（古代的“稍”是時間副詞，有“逐漸”的意思）。</span></p><p><span>古代漢語程度副詞“頗”有兩個意思。一般說來，“頗”在古代多作“稍、略”解。《廣雅·釋誌三》：“頗，少也。”王念孫《疏證》：“颇者，略之少也。”兩個意思：①程度偏高，“很，甚”；②稍、略。——“頗”的本義是頭偏，《說文》：“頗，頭偏也。”先秦漢語中“頗”一般表示“偏斜”意思，如《尚書·洪范》：“無偏無頗，遵王之義。”</span></p><p><span>古代漢語程度副詞“甚”在六朝以前既作状語,也作謂語和定語。</span></p><blockquote><ul><li><span>項羽乃疑范增與漢有私，</span><strong><span>稍</span></strong><span>奪其權。（史記.項羽本紀）</span></li><li><span>（徐）裹，其天姿善爲容，不能通《禮經》，（徐）延</span><strong><span>頗</span></strong><span>能，未善也。（《史記·儒林列傳》）</span></li><li><span>太后曰:“丈夫亦愛憐其少子乎?”對曰:“</span><strong><span>甚</span></strong><span>於婦人。”(觸龍說趙太后)</span></li><li><span>涉於魚齒之下，</span><strong><span>甚</span></strong><span>雨及之，楚師多凍。（左傳襄18)</span></li></ul></blockquote><h3 id='範圍副詞'><span>範圍副詞</span></h3><p><span>範圍副詞如“纔（才）、皆、盡”等古今變化不大。</span></p><p><span>古代漢語“但、徒、特、第/弟、直、顧”等，是表示範圍的副詞，和現代的“衹”意思相當。現代漢語的“但”是表轉折的連詞。</span></p><p><span>“獨”原是“獨自”的意思，也可以引申為“只”。但是在反問句中，“獨”字主要是表達反問語氣，屬於情態副詞，不能按此義理解。</span></p><p><span>古代漢語“僅”表示“只”“纔”“剛夠”的意思，言其少，是古今一致的。但在唐代詩文中“僅”還可以言其多，有“幾乎”“將近”“差不多達到”的意思。這類“僅”一般只用在數目字前，讀作jìn。</span></p><h3 id='時間副詞'><span>時間副詞</span></h3><p><span>時間副詞如“將、正、已、常”等古今變化不大。</span></p><blockquote><p><strong><span>已然</span></strong><span>|既、已、向、鄉、雅、素、嘗</span></p><p><strong><span>進行</span></strong><span>|方、適、會</span></p><p><strong><span>將來</span></strong><span>|行、將、久</span></p><p><strong><span>暫止</span></strong><span>|俄、暫、姑</span></p></blockquote><p><span>古代“嘗”更經常用來表示“曾經”。“曾”在古代漢語中一般作情態副詞，用來加強否定語氣，表示“居然”。有時也可以表示時間，此時古今用法一致。</span></p><p><span>古代漢語“復”指的是“又一次”，這個意義與現代漢語副詞“再”相同。古代漢語的“再”是數量詞，一般專指兩次。到了唐代，也可以專指“第二次”。</span></p><p><span>古代表示頻繁、不斷重復出現的副詞還有“仍”，不能理解為現代漢語“仍舊”的意思。</span></p><h3 id='情態副詞'><span>情態副詞</span></h3><p><span>情態副詞放在動詞或形容詞之前表示一定的情態或語氣。</span></p><p><span>“且”作情態副詞時，有“姑且”“尚且”義。此外，作時間副詞時，有“將要”義；作連詞時，相當於現代漢語“而且”。</span></p><p><span>“固”作情態副詞時，是“本來，當然”的意思，表示語氣之肯定、態度之堅決、情形之當然，與現代漢語“固然”的意思完全不同。凝固形式“固也”意思大致相當於“本來/當然如此”，常為對話式的應答。</span></p><p><span>“蓋”是表示語氣的情態副詞。①常放在句首表示提示和推測性判斷的語氣，起引出下文的作用。②有時只表示不肯定的論斷語氣，不一定放在句首，有“大概”的意思。③除了表示語氣的作用，在句中同時還有連接前後文句的作用——同時“蓋”後句子又表示前面句子原因的，就仍然起著推測性論斷語氣的作用。</span></p><blockquote><p><span>君子不患寡而患不均，不患貧而患不安，</span><strong><span>蓋</span></strong><span>①③均無貧，和無寡，安無傾。（《論語·季氏將伐顓臾》）</span></p><p><strong><span>蓋</span></strong><span>①天下萬物之萌生，靡不有死。（《史記·孝文本紀》）</span></p><p><strong><span>蓋</span></strong><span>②有之矣，我未之見也。（《論語·裡仁》）</span></p><p><span>余登箕山，其上</span><strong><span>蓋</span></strong><span>②有許由塚雲。（《史記·伯夷列傳》）</span></p></blockquote><h3 id='否定副詞'><span>否定副詞</span></h3><p><span>古代漢語常用的否定副詞有“不、弗、毋、勿、未、非、否”。它們意義比較單純，用法比較復雜。</span></p><p><span>“不”“弗”表示一般的否定。（1）“不”的用法基本和現代相同：既可以否定副詞，又可以否定形容詞；既可以否定及物動詞，又可以否定不及物動詞。（2）在秦漢以前，“弗”的使用范圍非常狹窄，其後只能是不帶賓語的及物動詞，“弗”的存在使其得補出賓語。</span></p><p><span>“毋”“勿”相當於“不要”“別”，常用於祈使句，表示禁止或勸阻。“毋”還常寫成“無”。①先秦時，這兩個字的情況很像“不”“弗”，但“勿”後動詞不帶賓語的規則在先秦時期就不是很嚴格了。②漢魏以後，“勿”的使用範圍逐漸擴大，上述分別消失，“勿”還代替了“毋”。③勸阻義：“毋（無）”“勿”有時並不完全表示禁止，而是帶勸勉、約束義。④用於陳述句：此時“毋（無）”“勿”和“不”差不多，不再表示禁止，但漢代以後這種用法逐漸被“不”取代而消失。</span></p><blockquote><p><span>①</span><strong><span>勿</span></strong><span>殺急擊</span><strong><span>勿</span></strong><span>失</span></p><p><span>③王請</span><strong><span>勿</span></strong><span>疑（勸勉）子</span><strong><span>無</span></strong><span>敢食我也（約束）</span></p><p><span>④欲無獲民，將焉避之（《左傳·晏嬰論季世》）</span></p><p><span>文公非不欲得原也，以不信得原不若勿得也。（《呂氏春秋·為慾》）</span></p></blockquote><p><span>“未”①表示事情還沒有實現，等於現代漢語“沒有”，是對現在情況的否定。②凝固形式“未嘗”表示“不曾、沒有過”，是對從過去到現在的情況的否定。③有時候“未”只是一種委婉的否定，和“不”的意義相近。</span></p><p><strong><span>用法比較特殊的否定副詞：</span></strong></p><p><span>“非”（在上古也可以寫成“匪”）否定的不只是後面的動詞，而是後面整個謂語——①否定判斷句中謂語和主語的</span><strong><span>關係</span></strong><span>；②否定敘述句中的謂語，表示對某一事實的否認，往往具有撇開的作用——③由撇開進一步引申有假設的意思，等於“若無”“若非”。</span></p><blockquote><p><span>①</span></p><p><span>②</span></p><p><span>③</span></p></blockquote><p><span>“否”①和表肯定的應答之辭“然”對立，經常用於單詞句，相當於“不”“不是的”；②有時還用於對假設的否定，相當於“如果不這樣”（</span><em><span>否則</span></em><span>）。③還經常用於肯定否定迭用的句子，表示否定的一面</span></p><blockquote><p><span>③吾得見與否，在此歲也。（《左傳·襄公三十年》）</span></p></blockquote><p><span>除以上否定副詞外，古代漢語還常用“微”字表示否定。①凝固結構“微獨”相當於“不但、非但”；②此外多用於事後的假設，相當於“如果不是”。</span></p><h3 id='表敬副詞'><span>表敬副詞</span></h3><p><span>這類副詞原來一般有具體的意義，用坐表敬副詞後，原來的具體意義就變得很不明顯甚至消失。</span></p><blockquote><p><span>尊人的表敬副詞|幸謹敬惠辱</span></p><p><span>自謙的表敬副詞|竊忝猥伏（臣對皇帝尚書表示敬意）</span></p></blockquote><h2 id='代詞'><span>代詞</span></h2><p><span>代詞是虛詞。代詞的功能是稱代作用，具有“指代義”的語法意義。古代漢語代詞主要分為以下三類：</span><strong><span>人稱代詞</span></strong><span>、</span><strong><span>指示代詞</span></strong><span>和</span><strong><span>疑問代詞</span></strong><span>。還有兩類比較特殊的代詞：</span><strong><span>無定代詞“或”“莫”</span></strong><span>、</span><strong><span>輔助性代詞“者”“所”</span></strong><span>。</span></p><blockquote><p><span>不完備——沒有第三人稱代詞——作指示代詞還是第三人稱代詞</span></p><p><span>哪裡——指示代詞、指示代詞兼任第三人稱代詞、活譯不能代替語法</span></p></blockquote><h3 id='人稱代詞'><span>人稱代詞</span></h3><p><span>古代漢語的人稱代詞系統比現代漢語更加復雜，許多人稱代詞之所以能夠並存，是因為它們的</span><strong><span>句法功能有別</span></strong><span>。</span></p><figure><table><thead><tr><th><span>第一人稱代詞</span></th><th><span>主</span></th><th><span>謂</span></th><th><span>賓</span></th><th><span>定</span></th><th><span>狀</span></th><th><span>補</span></th><th><span>第二人稱代詞</span></th><th><span>主</span></th><th><span>謂</span></th><th><span>賓</span></th><th><span>定</span></th><th><span>狀</span></th><th><span>補</span></th></tr></thead><tbody><tr><td><span>吾</span></td><td><span>○</span></td><td>&nbsp;</td><td><span>×</span><span>*</span></td><td><span>○</span></td><td>&nbsp;</td><td>&nbsp;</td><td><span>女（汝）、爾、若</span></td><td><span>○</span></td><td>&nbsp;</td><td><span>○</span></td><td><span>○</span></td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td><span>我</span></td><td><span>○</span></td><td>&nbsp;</td><td><span>○</span></td><td><span>○</span></td><td>&nbsp;</td><td>&nbsp;</td><td><span>而、乃</span></td><td><span>○</span><sup><span>偶爾</span></sup></td><td>&nbsp;</td><td><span>×</span></td><td><span>○</span></td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td><span>予/余</span></td><td><span>○</span></td><td>&nbsp;</td><td><span>○</span></td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr></tbody></table></figure><p><span>嚴格說來，先秦沒有真正的第三人稱代詞，本來是指示代詞的“其”“之”可以起第三人稱代詞的作用。“其”只作定語，“之”只作賓語。注意，“他”在上古的意義是“其他，別的”（</span><em><span>“他山之石，可以攻玉”</span></em><span>），從唐代開始才發展成為第三人稱代詞，且古文中也少用。現代漢語第三人稱做主語的地方，古代漢語要麼直接重複前面出現的名詞，要麼省略主語。</span></p><p><span>古代漢語的人稱代詞是</span><strong><span>單復數同形</span></strong><span>的。不過，也可後加“儕、屬、曹”等字，表示不止一個人。</span></p><p><span>此外，部分謙稱可替代作第一、第二人稱代詞（見課本321頁），由於它們都是名詞，不是代詞，不適用“否定句中代詞作賓語前置”等與代詞相關的倒裝規律的約束。如：</span></p><blockquote><p><span>第一人稱｜臣、妾、寡人、愚</span></p><p><span>第二人稱｜先生、足下（以腳下土地代稱，不直呼其名）、大王</span></p><p><span>自稱其名、稱人之字，均是尊稱。</span></p></blockquote><h3 id='指示代詞'><span>指示代詞</span></h3><p><span>現代漢語中的指示代詞是近指（“這”）、遠指（“那”）二分的。古代漢語的指示代詞系統比較複雜。</span></p><figure><table><thead><tr><th><span>指代意味</span></th><th><span>強</span></th><th>&nbsp;</th><th>&nbsp;</th><th>&nbsp;</th><th><span>弱</span></th></tr></thead><tbody><tr><td><span>近指</span></td><td><span>此</span></td><td><span>斯</span><br><span>（後有連詞“就”義）</span></td><td><span>是</span><br><span>（中指/承指代詞，有強調意味）</span><br><span>（後成係詞）</span></td><td><span>茲</span></td><td><span>之</span><br><span>（泛指代詞）</span></td></tr><tr><td><span>遠指</span></td><td><span>彼</span></td><td><span>夫</span><br><span>（後成發語詞）</span></td><td>&nbsp;</td><td>&nbsp;</td><td><span>其</span><br><span>（特指代詞）</span></td></tr></tbody></table></figure><p><span>茲、之都可作定語或賓語。“之”是最早的指示代詞。非近非遠，是一種泛指代詞。之、其、茲，古之部字，體現了語法功能與語音的對應關係。</span></p><p><span>此外還有兼詞“焉”（“於是”）“諸”（“之於”），是比較特殊的代詞。注意，“焉”作兼詞與作語氣詞的界限不十分清楚，不要輕易把其看做語氣詞。</span></p><h3 id='疑問代詞'><span>疑問代詞</span></h3><p><strong><span>指人</span></strong><span>的疑問代詞有“誰”“孰”，可作主語、賓語、定語、謂語。“誰”與現代漢語用法一致。①“孰”主要用於選擇問句，但不能出現在賓語位置，②也有不表示選擇的，和“誰”用法一致。③“孰”也能指事物，仍是表示選擇。④凝固結構“孰與”同“何如”的意思相近，用來比較人物的高下或事情的得失。</span></p><blockquote><p><span>①吾與城北徐公孰美？父與夫孰親？√吾誰欺</span><span>*</span><span>吾孰欺</span></p><p><span>②孰可以代之？孰為夫子？</span></p><p><span>③天下之害孰為大？膾（形容很細的肉）炙與羊棗孰美？</span></p><p><span>④從天而頌之，孰與製（掌握,控制）天命而用之？（《荀子·天論》）——新儒學的代表荀子是樸素唯物論的集大成者</span></p><p><span>④公之視廉將軍孰與秦王？</span></p></blockquote><p><strong><span>指事物</span></strong><span>的疑問代詞有“何、胡、曷、奚”，相當於“什麼”。“何”可作謂語（</span><em><span>“是何也？”</span></em><span>）、賓語、定語、狀語（</span><em><span>“夫子何哂由也？”“何至於此？”</span></em><span>），“胡、曷、奚”一般作狀語、賓語（常見“胡為”“何為”表示“為什麼”，</span><em><span>“曷為久居此圍城之中而不去”</span></em><span>）。</span></p><p><strong><span>指處所</span></strong><span>的疑問代詞有“安、惡、焉”，相當於“哪裡”，一般做狀語表示反問，用於賓語的情況相對少（莊子“彼且惡呼待哉”，孟子“天下之父歸之，其子焉往”）。</span></p><h3 id='無定代詞或莫'><span>無定代詞“或”“莫”</span></h3><p><span>這是古代漢語特有的一類代詞，現代漢語沒有。</span></p><p><span>“或”是肯定性無定代詞，一般指人，相當於現代漢語的“有的人”，只作主語。①有時候“或”字前面出現先行詞，“或”指代其中的某些人或某一個人。②“或”還常常前後呼應，表示列舉不同的情況，仍然是無定代詞，既可以指人，也可以指物。注意：這些用法的“或”不是表選擇的連詞“或者”</span></p><blockquote><p><span>①或百步而後止，或五十步而後止。（《孟子·梁惠王上》）</span></p><p><span>②夫物之不齊，物之情也。或相倍蓯，或相什伯，或相千萬。（《孟子·許行》）</span></p></blockquote><p><span>“莫”是否定性無定代詞，相當於現代漢語“沒有誰”“沒有什麼東西”。“莫”字所否定的①可以有范圍，②也可以沒有范圍或不指出範圍，是最廣泛的否定。</span></p><blockquote><p><span>①群臣莫封（《戰國策·楚策一》）·殺臣，宋莫能守，乃可攻也（《墨子·公輸》）</span></p><p><span>②虎負隅，莫之敢攖（《孟子·盡心下》）·吾盾之堅，物莫能陷也（《韓非子·歷山之農者侵畔》）</span></p></blockquote><p><span>“莫”在先秦作品中，都可以解釋為無定代詞，漢以後逐漸產生否定副詞的新用法，常用於祈使句中表示禁止，相當於“勿”（不要）；有時也用於陳述句中，相當於“不”。</span></p><h3 id='輔助性代詞者所'><span>輔助性代詞“者”“所”</span></h3><p><span>郭錫良認為是“輔助性代詞”，朱德熙認為是名物化標記。參見朱德熙《自指和轉指》（1983）、陳平有關“指稱”與“陳述”的論述。</span></p><p><span>“者”①放在謂詞性（動詞、形容詞）詞（組）後構成“者”字結構，使整個結構具有名詞性（</span><em><span>大者、先破秦入咸陽者</span></em><span>）。②放在數詞或時間詞之後表示一定的范圍和種類（</span><em><span>二者、古者</span></em><span>）。③還可以用來復指主語、引出謂語，常見於判斷句式。</span></p><blockquote><p><span>思考：</span></p><p><span>（1）智者樂(yào)水，仁者樂山。（轉指）</span></p><p><span>（2）仁者人也。（自指）</span></p></blockquote><p><span>“所”①代指某種動作的對象，位於動詞或動詞性詞組之前（且往往及物，如果是形容詞或不及物動詞，也都變得具有及物動詞的性質）構成“所”字結構（“所……者”結構與“所”字結構作用相同），使整個結構具有名詞性。②“所”字結構前面還可以用行為主動者作定語來修飾它，一般在定語之後要用“之”字。③“所”字結構雖然指代行為的對象，但不能具體表示是什麼人或什麼事物，因此，還可以在“所”字結構後加上名詞，舉出人或事物的名稱，“所”字結構放在前面作為它的定語。④“所”如果不再作為代詞替代動作的對象（如解釋為“所由”“所以”），後面的動詞就不一定是及物動詞；如果是及物動詞，可以另帶賓語；在“所謂”後也可以另帶賓語。</span></p><p><span>“所”字常見用法：從“所食”到“所食者”“民之所食”“（民）所食之粟”，“所”的指代義越來越弱。“所”常見“所謂”“所以”“所由”“所為”等凝固格式，和被動句式中虛化成表被動的動詞詞頭“所”。</span></p><p><span>“所以”①用來……的辦法，憑它來……，說明“怎樣”。②表示原因，大致和現代漢語的“導致……的原因”相當，說明“為什麼”。</span></p><h2 id='介詞'><span>介詞</span></h2><h3 id='介詞綜述'><span>介詞綜述</span></h3><p><strong><span>介詞的特徵</span></strong><span>（1）补宾则介词，不补则连词。介词都有宾语，宾语通常由其他成分（代、形、动词、主谓结构等）充当。“介宾”一般是不可分的短语，虽然古汉语有些介词可以省略宾语，但省略不等于无宾语。</span></p><p><span>（2）介宾短语的位置：位于谓语的前或后面，在前时，介词宾语有时可以承上省略，在后时宾语不能省略。</span></p><p><span>（3）介词一般不作谓语的中心，不能出现在谓词的位置上。介宾短语一般不能脱离谓词而独立成句，这是介词与动词的主要区别。</span></p><p><strong><span>介詞的功能</span></strong></p><p><span>（1）语义上，介词功能主要在于</span><strong><span>引进</span></strong><span>与动作（或状态）相关的</span><u><span>时间</span></u><span>、</span><u><span>处所</span></u><span>、</span><u><span>对象</span></u><span>、</span><u><span>工具</span></u><span>、</span><u><span>方式</span></u><span>、</span><u><span>条件</span></u><span>、</span><u><span>原因</span></u><span>或</span><u><span>目的</span></u><span>等。</span></p><p><span>（2）语法上，介宾短语的增添是句子结构扩展的重要手段，可</span><u><span>作状语</span></u><span>、</span><u><span>作补语</span></u><span>、作定语（少，“沿江一带、自此之后”）、作谓语（少，“国家之败，由官邪也”（左传·桓2））</span></p><p><strong><span>介詞的分類</span></strong><span>何乐士《古汉语语法及其发展》分7类：</span></p><p><span>1、引进与动作（状态）相关的时间</span></p><p><span>2、引进与动作（状态）相关的对象</span></p><p><span>3、引进与动作（状态）相关的处所</span></p><p><span>4、引进动作行为的工具</span></p><p><span>5、引进动作行为的原因或目的</span></p><p><span>6、引进训告或言谈的内容</span></p><p><span>7、引进动作行为处置的对象（认为仅限于“复以弟子一人投河中”）（大部分还是引介动作行为的工具，但后来与上古的工具介词也有一定距离（史记时代））</span></p><h3 id='介詞舉例分析'><span>介詞舉例分析</span></h3><p><strong><span>（一）于（於、乎）</span></strong></p><p><span>最早動詞義“往、去”（</span><em><span>“之子於歸，宜其室家”</span></em><span>《詩·周南·桃夭》）、“取”（</span><em><span>“晝爾於茅，宵爾索綯”</span></em><span>《詩·豳風·七月》），但早在甲骨文時代就已經虛化為介詞了（郭錫良）。</span></p><p><strong><span>字形問題</span></strong><span>“于”“於”上古不同音，“乎”的上古音與“于”相近，也常和“于”一樣作介詞用。甲骨文中只用“于”，先秦一些古籍如《左傳》《荀子》二字並用，戰國後多寫作“於”，漢字簡化後又為“于”。</span></p><p><strong><span>用法</span></strong><span>（1）表示處所和時間；（2）介紹涉及的對象；（3）表示比較；（4）用在表被動的句子中。</span></p><p><strong><span>（二）以</span></strong></p><p><span>最早動詞義“用”（“夏后氏以松，殷人以柏，周人以栗，曰：使民战栗。”《論語·八佾》）。</span></p><p><strong><span>用法</span></strong><span>（1）表示動作行為以某物為工具或憑藉，相當於現代漢語的“用”或“拿”。“以”的賓語所表示的事物，可以是具體的，也可以是比較抽象的。</span></p><blockquote><p><span>蛇出於其下，以肱擊之。(《左傅·鞌之戰》)</span></p><p><span>以羽爲巢，而編之以髮。(《荀子·勸學》)</span></p><p><span>儒以文亂法，俠以武犯禁。(《韓非子·五蠹》)</span></p></blockquote><p><span>（2）表憑藉。①表示憑着某種資格、身份或地位，②有時是表示率領或依照的意思（帶有動詞意味的介詞）。</span></p><blockquote><p><span>①騫以郎應募使月氏。（《漢書·張騫傳》）</span></p><p><span>②項梁乃以八千人渡江而西。(《史記·項羽本紀》)</span></p><p><span>②餘船以次俱進。(《資治通鑑·漢紀五十七》)</span></p></blockquote><p><span>（3）表原因，相當於“因”“因為”。</span></p><blockquote><p><span>大韓魏滅亡，而安陵以五十里之地存者，徒以有先生也。(《戰國策·魏策四》）</span></p><p><span>扶蘇以數諫故，上使外將兵。(《史記·陳涉起義》)</span></p></blockquote><p><span>（4）是表示時間，相當于“于”“在”。但“于”只作補語（所謂“後置”），“以”只作狀語。</span></p><blockquote><p><span>文(指田文，即孟嘗君)以五月五日生。(《史記·孟嘗君列傳》)</span></p><p><span>韓說(yue)以太初二年爲游擊將軍。(《史記·衛將軍驃騎列傅》)</span></p><p><span>子厚以元和十四年十一月八日卒。(韓愈《柳子厚墓志銘》)</span></p></blockquote><p><span>以上四種用法關係非常密切，實際上後三種用法都是從第一種用法表示“憑藉”的意義引申出來的。</span></p><p><span>（5）“無以(亡以)”是一個凝固結構，“以”字後面也不帶賓語。“無以&quot;是没有什麽可以拿來的意思。</span></p><p><span>（6）“以”字選可以用作連詞，①作用略同于“而”，下舉示例；②目的連詞，相當於“來”（</span><em><span>焉用亡鄭以倍鄰</span></em><span>）。</span></p><blockquote><p><span>齊因乘勝盡破其軍，虜魏太子申以歸。（《史記·孫臏》）</span></p></blockquote><blockquote><p><span>酌貪泉而覺爽，處涸轍以猶歡。(王勃《滕王闆序》)</span></p></blockquote><blockquote><p><span>大夷以近，則遊者衆；險以遠，則至者少。(王安石《遊褒禪山記》）</span></p><p><span>狐晏其舅也，而惠亦有謀。（</span><u><span>在“而”後連詞用“以”</span></u><span>）</span></p></blockquote><p><span>例一“以”字連接兩種行爲動作(“虜太子申”和“歸”)，表示它們在時間上一先一後的聯繫。例二“以”和“而”並用;都是連接兩種在意義上相對的行為，更能說明“以”的作用和“而”相似。例三“以”字連接兩個形容詞，表示兩種性質的聯繫(“夷”和“近”，“險”和“遠”)。</span></p><p><strong><span>用法注意</span></strong><span>“以”字的用法還有兩點值得注意。</span></p><p><span>一是它在句中的位置。（1）“以”可以用在謂語動詞之前，也可以用在謂語動詞之後，上邊舉的《荀子·勸學》“以羽為巢，而编之以髮”一例，兩個“以”字的位置就不同。（2）但在表示時間時，就只能放在謂語動詞之前。</span></p><p><span>二是它的賓語的位置。（1）為了强調“以”的賓語，可以把這個賓語放到“以”的前面。例如：</span></p><blockquote><p><span>楚國方城以為城，漢水以為池。(《左傅·齊桓公伐楚》)</span></p><p><span>一以當十。(《史記·項羽本紀》)</span></p></blockquote><p><span>（2）如果“以”的賓語在上文已經出現過，這個寶語有時還可以省略。例如:</span></p><blockquote><p><span>小人有母，皆嘗小人之食矣，未嘗君之羹。請以遺之。(《左傅·鄭伯克段於鄢》，“以”後省略“君之羹”)</span></p></blockquote><p><strong><span>关于介词“以”表处置的问题</span></strong><span>处置式是汉语的一种重要的句法结构。最早提出这一概念的是王力（1943）：“凡用助动词把目的位提到叙述词的前面以表示一种处置者，叫做处置式”。现代汉语里，联动式发展为处置式，处置式常用“把”字来引出被处置的对象，所以又称作“把”字句。</span></p><p><span>处置式的作用：提前宾语，强调对宾语的处置。处置式里的介词宾语角色重要，是被强调的对象。“把”提前的宾语是有定的，听话者是知道的（把栏杆拍遍、但愿春官</span><strong><span>把</span></strong><span>卷</span><strong><span>看</span></strong><span>），因此这个宾语是不能省略的。</span></p><p><u><span>“以”字结构不是处置式，</span></u><span>“以”字结构与“将／把”处置式(从联动式发展而来)不是一种结构，无论是语法意义还是句法结构，二者都有相当大的差异。</span></p><p><span>（1）语法意义上的差异是：</span></p><p><span>以《孟子》为例，《孟子》里表“处置（给）”、“处置（到）”的“以”字结构中，“以”的宾语</span><u><span>均为无生的事物，并且都是泛义宾语，是不定指的</span></u><span>（</span><em><span>尧以不得舜为己忧</span></em><span>）。</span></p><p><span>（2）结构上的差异是：</span></p><p><span>A、“以”字结构在动词前后的位置灵活，既可放在动词前，也可放在动词后，如：</span></p><blockquote><p><span>陈子以时子之言告子。（孟子103）／子路，人告之以有过，则喜。（孟子82）</span></p></blockquote><p><span>B、“以”的宾语常常省略，如：</span></p><blockquote><p><span>小人有母，皆尝小人之食矣，未尝君之羹，请以遗之。（左传15）</span></p></blockquote><p><span>处置介词×，工具介词√</span></p><p><span>C、“以”的宾语可以前置，如：</span></p><blockquote><p><span>君若以力，楚国方城以为城，汉水以为池，虽众，无所用之。（左传292）</span></p></blockquote><p><span>D、“以”字结构中不仅可以省略直接宾语，还能省略间接宾语，如：</span></p><blockquote><p><span>明日，子路行，以告。（论语203）</span></p></blockquote><p><span>E、有时连动词都可以省略，如：</span></p><blockquote><p><span>书曰“崔氏”，非其罪也；且以告族，不以名。（左传706）</span></p></blockquote><p><span>F、就是汉代产生的“处置（到）”，也有与之相应的“以”字结构置于动词之后的例子。如：</span></p><blockquote><p><span>树吾墓上以梓，令可为器。（史记1472）／必树吾墓上以梓，令可以为器。（同上2180）</span></p></blockquote><blockquote><p><span>（坟，高土丘。尔墓之木拱矣（以树标木风俗——老不死的））</span></p></blockquote><p><span>六朝（“以”逐渐退出介词系统历史舞台）时，“以”的宾语仍然可以省略，同时，宾语的位置也可以居前，如：</span></p><blockquote><p><span>臣曰：“斯杀不酷，唯以投大海中。”（六度28）</span></p><p><span>其城纵广四百八十里，皆以七宝作城，其城七重，其间皆有七宝琦树，城上皆有七宝，</span><strong><span>罗毅缇缦以</span></strong><span>覆城上。（道行471）</span></p></blockquote><p><strong><span>（三）為</span></strong></p><p><span>（wèi）經常和它後面的賓語一起放在謂語動詞前面作狀語，表示對象、目的、原因等關係。例如:</span></p><blockquote><p><span>為長安君約車百乘。(《戰國策•觸龍說趙太后》)</span></p></blockquote><blockquote><p><span>苦爲河伯娶婦。(《史記•西門豹治鄴》)</span></p></blockquote><blockquote><p><span>天行有常，不為堯存，不爲桀亡。(《荀子•天論》)</span></p></blockquote><blockquote><p><span>漢卒十餘萬人皆入睢水，睢水為之不流。(《史記•項羽本紀》)</span></p></blockquote><p><span>例一和例二表示對象或目的，“為”字略等于現代的“替”、“給”；例三和例四表示原因，“為”字可譯属“因為”“因”。</span></p><p><span>介詞“為”後面的賓語，有時也可以省略。例如:</span></p><blockquote><p><span>禹之時，十年九澇，而水弗為加益;湯之時，八年七旱，而崖不為加損。(《莊子•秋水》)</span></p><p><span>居輜車中，坐為計謀。(《史記•孫臏》)</span></p><p><span>煩大巫嫗為入報河伯。(《史記•西門豹治鄴》）</span></p></blockquote><p><span>這種省略了的賓語，從上下文看，常常是“之”、“我”、“此”之類的代詗。</span></p><p><span>介詞“為”還可以表示被動，讚wéi，這在《古代漢語的被動表示法》一節裹已經介紹過，不再重複。</span></p><h2 id='連詞'><span>連詞</span></h2><p><span>連詞是連接詞、詞組或句子的虚詞。古代漢語常用的連詞有“與、及、而、則、且、況、但、抑、雖、然、故、苟、倘、令、第令、藉使、之”等等，其中有不少在現代漢語書面語言裹還常常使用。幾個比較重要的連詞：</span></p><p><strong><span>（一）與</span></strong></p><p><span>“與”字和現代漠語的“和(跟、同)”一樣，分屬兩種詞類：①連詞，②介詞。</span></p><blockquote><p><span>我跟你講vs我跟他去看電影</span></p><p><span>如何區別？看能否前後調換順序。</span></p></blockquote><p><span>1、連詞“與”一般用來連接並列的名詞、代詞或名詞性詞組。（</span><em><span>蜩與學鳩笑之。</span></em><span>《莊子•逍遙遊》｜</span><em><span>畦留夷與揭車兮，雜杜衡與芳芷。</span></em><span>屈原《離騷》）</span></p><p><span>“與”字可以用兩次，連接二個名詞性詞組。“有爵者”、“七十者(上了七十歲的老人)”和“未齔者(還没有换牙的兒童)”，“與”用了兩次。現代漢語建詞“和”如果連接三個以上的並列成分，一般只在末一項前面用一次。</span></p><p><span>2、介詞“與“前後的成份不是並列的，而是和它後面的賓語組成介詞結構，在句中作狀語。例如：</span></p><blockquote><p><span>公與之乘，戰于長勺。（《左傅•莊公十年》）</span></p><p><span>夸父與日逐走。（《山海經•夸父逐日》）</span></p><p><span>君安與項伯有故?（《史記·鸿門宴》）</span></p></blockquote><p><span>上面例句中，“公”“夸父”“君”在句中作主語，“與”和它後邊的名詞組成介詞結構，在句中作狀語。例三“與”字前邊還有“安”作狀語，更表明它只能是介詞，因為這樣“君”和“項伯”不能再是並列關係。</span></p><p><span>介調“與”的賓語可以省略。</span><strong><u><span>介詞可省略賓語，連詞不可以省略賓語。</span></u></strong></p><p><strong><span>（二）而</span></strong></p><p><span>從上下文看，有兩個大的類型。</span></p><ol><li><p><span>順接——語義順承</span></p><ol><li><p><span>用於聯合結構（時間順承：</span><em><span>賣油翁釋擔而立</span></em><span>｜性質狀態並列：</span><em><span>美而艷</span></em><span>｜遞進：</span><em><span>敏於事而慎於言</span></em><span>｜因果：</span><em><span>令尹誅而楚姦不上聞，仲尼賞而魯民易降北；臣死而秦治</span></em><span>。等）</span></p></li><li><p><span>用於偏正結構（語義順承，前項修飾後項）</span></p><blockquote><p><span>一鼓作氣，再而衰，三而竭。（《左傳•莊公十年》）</span></p><p><span>吾嘗終日而思矣，不如須臾之所學也。（《荀子·勸學》）</span></p><p><span>太后盛氣而揖之。（《戰國策•觸龍說趙太后》）</span></p></blockquote></li></ol></li><li><p><span>逆接——語義轉折</span></p><ol><li><p><span>用於聯合結構</span></p><blockquote><p><span>不戰而屈人之兵，善之善者也。（《孫子兵法·謀攻》）</span>
+<span>水淺而舟大也。（《莊子•逍遥遊》）</span></p></blockquote></li><li><p><span>用於主謂結構。</span></p><ol><li><p><span>在意思上是一種逆接。有時候表示似乎不應有而有的事。</span></p><blockquote><p><span>先生獨未見夫僕乎？十人而從一人者，寧力不勝，智不若耶？畏之也。（《戰國策·趙策三》）</span></p><p><span>【是說本來十個人不應該服從一個人，而現在却服從一個人，“而”含轉折意味。】</span></p></blockquote></li><li><p><span>“而”字放在主語謂語之間，有時含有假設的意思。例如：</span></p><blockquote><p><span>意而安之，願假冠以見；意如不安，願無變國俗。(《說苑。奉使》）</span></p><p><span>【這種“而”字相當于“如果”、“假如”。】</span></p></blockquote></li></ol></li></ol></li></ol><p><span>在古代漢語裹，“而”字一般不連接</span><u><span>名詞或名詞性詞組</span></u><span>。《荀子•勸學》“蟹六跪而二螯”中“而”字之所以能連接“六跪”和“二鳌”，是因爲它們在這裹用作謂語而帶有描寫的性質。</span></p><p><strong><span>（三）則、然則</span></strong></p><p><span>1、表示兩事在時間上相承，有“就”或“便”的意思。（</span><em><span>戰則請從</span></em><span>）</span></p><p><span>2、表示因果或情理上的聯繫。有“那麼”或“那麼就”的意思。這種“則”宇，如果用於平行的两個分句，那就形成對比。</span></p><blockquote><p><span>風 之 積 也 不 厚 ， 則 其 負 大 翼 也 無 力。（《莊子·逍遙遊》）</span></p><p><span>內則百姓疾（恨）之，外則諸侯叛之。（《荀子》）【這裡的“則”幾乎沒有任何意義了】</span></p></blockquote><p><span>3、表示假設，有“如果”“假如”的意思。（</span><em><span>時則不至，而控於地而已矣。</span></em><span>《莊子• 逍遙遊》）</span></p><p><span>4、表示發現，有“原來已經”的意思。這種“則”字多用在有兩個以上分句的複句中（兩例都是三個分句），前面的分句表示的事情發生在後，後面的分句表示的事情發生在前。“則”字用在後面的分句裏表示發現了早已發生的事情。</span></p><blockquote><p><span>公使陽感父追之，及諸河，則在舟中矣。(《左傅•僖33》) </span></p><p><span>使子路反見之，至則行矣。(《論語•子路從而後》 )</span></p></blockquote><p><span>此外，“則&quot;選可以表示讓步，有“雖然”、“倒是的意思（</span><em><span>善則善矣，未可以戰也。</span></em><span>《國語 •吳語》）。這種“則”字，有人認為是副詞，其實它用來表示讓步時，仍然起連接作用，跟一般副詞的作用是不同的。</span></p><p><span>“然則”，①本來是指示代詞“然”和連詞“則”的連用，意思是“這樣就”或“既然如此，那麽”，多用於對話。用“然則”的句子往往是順着上文的語意，申說應有的後果。②後來“然則”變為凝固的形式，可以認為是一個詞，相當于“那麽”。</span></p><p><strong><span>（四）雖、雖然</span></strong></p><p><span>1、連詞“雖”一般表示讓步，相當于現代漢語的“雖然”。</span></p><p><span>2、有時還可以兼有“假使”的意思，是</span><u><span>假設的讓步</span></u><span>，作用和“縱”“縱然”、“即使”相同。</span></p><p><span>古代也有“雖然”，但那是連詞“雖”和指示代詞“然”的連用，是“雖然如此”的意思。</span></p><p><strong><span>（五）然、然而</span></strong></p><p><span>“然”字作爲連詞，表示轉折，相當于現代漢語的“可是”“但是”或“然而”。</span></p><p><strong><span>（六）之</span></strong></p><p><span>“之”字分屬兩個詞類：一是代詞，一是連詞。代詞“之”已在“代詞”一節裏介紹過了，這裹只談連詞“之&quot;。</span></p><p><span>助詞（</span><em><span>“的地得着了過”</span></em><span>）到近代漢語時期才出現。“之”，王力認為是介詞，郭錫良認為是連詞。</span><u><strong><span>不立助詞的原因：</span></strong></u><span>①從語法的結構係統角度關照（否則代價太大）；②從詞類的語法功能角度（其實也有差別）。</span></p><p><span>連詞“之”的作用主要有兩種。</span></p><p><span>第一，連接定語和中心語，表示領屬關係或修飾關係。</span></p><p><span>這種“之“字一般都可以譯成現代漢語的“的”字，但是二者</span><mark><strong><span>詞類不同</span></strong></mark><span>。“的”字在現代漢語是結構助詞，</span><u><span>它和前邊的詞或詞組結合成</span><strong><span>名詞性詞組</span></strong></u><span>(例如“我的”、“紅的”、“寫的”、“人民的”“羣衆擁護的”)，可以作句中的各種成份用，并不限于定語。</span><u><span>古代漢語“之”則只能和它前面的詞或詞組一起作定語用，“之”的後面必須有中心語，“之”所起的是連接定語和中心語的作用，因此是連詞</span></u><span>。</span></p><p><span>第二，插在主謂結構中間，使這個主謂結構變爲名詞性的偏正結構，用來充當句子的主語、賓語或狀語。</span></p><h2 id='語氣詞和詞頭詞尾'><span>語氣詞和詞頭詞尾</span></h2><blockquote><ol><li><span>什麽是語氣詞？古代漢語的語氣詞有什麽特點？</span></li><li><span>古代漢語常見的几個語氣詞；</span></li><li><span>關於詞頭詞尾的問題。</span></li></ol><p><span>切韻增廣切韻集韻</span></p></blockquote><p>&nbsp;</p><p><span>語調也可以表達語氣，但聲調、平調、降調只能通過上下文判斷，不一定符合邏輯。語氣詞的存在為書面語中語氣的判斷提供了方便。語調在書面語中表現的可能性極小。重要手段。</span></p><h3 id='句尾語氣詞'><span>句尾語氣詞</span></h3><p><span>古代漢語常見的句尾語氣詞有“也、矣、乎、哉”等，</span></p><p><strong><span>（一）也</span></strong></p><p><span>唯一的功能是：在複句中，常用于最後一個分句的句尾，表示對前面論斷的肯定和確認，</span><strong><span>加彊全句的語氣</span></strong><span>。</span></p><blockquote><p><span>如必自為而後用之，是率天下而路也。（《孟子·許行》）</span></p><p><span>雖殺臣，不能絕也。（《墨子·公輸》）</span></p><p><span>禹以治，桀以亂，治亂非天也。（《荀子·天論》）</span></p></blockquote><p><span>例一“如必自為而後用之”是先假設，“是率天下而路也”是對這種假設所產生的結果的肯定論斷。例二“雖殺臣”是先讓步，“不能絕也”是在這種讓步條件下對事情結果的肯定判斷。例三的前兩分句是陳述客觀事實，“治亂非天也”是對事實的結果做出論斷。</span></p><p><span>在因果複句中，“也”字的作用最值得注意。試比較下列兩例：</span></p><blockquote><p><span>賞罰不信，故士民不死也。（《韓非子·初見秦》）</span></p><p><span>蚓無爪牙之利，筋骨之強，上食埃土，下飲黃泉，用心一也。（《荀子·勸學》）</span></p></blockquote><p><span>上例是肯定結果，下例是肯定原因。結果和原因看來相反，但都帶有肯定和確認的語氣，因此最後都能用“也”字煞句（參看《古代漢語的判斷句》一節）。</span></p><p><span>由以上各例可以看出，用于複句句尾的&quot;也&quot;字都帶有肯定。確認或深信不疑的語氣，和牠表示判斷語氣的基本用法密切相關，是從牠的基本用法引申發展來的。</span></p><p><span>古代漢語表示命令或疑問的句子也往往用“也”字煞尾。</span></p><p><span>表示命令的如：</span></p><blockquote><p><span>不及黃泉，無相見也！（《左傅·鄭伯克段於鄢》）</span></p><p><span>欲呼張良與俱去，曰：“毋從俱死也！”（《史記·鴻門宴》）</span></p></blockquote><p><span>表示命令的句子加上“也”字就有了確定的語氣，不再是單純地表示命令。“也”字的這種用法，和前面的用法仍然是相通的。</span></p><p><span>表示疑問的如:</span></p><blockquote><p><span>南冠而縶（被拘禁）者，誰也？（《左傅·成公九年》）</span></p><p><span>不識臣之力也，君之力也?（《韓非子·難二》）</span></p></blockquote><p><span>例一是特指問，例二是選擇問。這兩種疑問句本身疑問性都很強：特指問句有疑問代詞；選擇問句是列舉出可能的回笞，要求回答問題的人作出抉擇。“也”字用於疑問句句尾時，主要就只出現在這兩種疑問句中，牠所錶示的主要仍是肯定、判斷語氣，和純粹表示疑問語氣的“邪”所起的作用顯然很不一樣。以上兩例，如果把“也”換成“邪”，疑問語氣就顯然加強，而不再帶有一點肯定、判斷的語氣了。</span></p><p><strong><span>（二）矣</span></strong></p><p><span>“矣”字也是古代漢語常用的一個語氣詞，牠和“也”的區別是：“也”字表靜態，“矣”字表動態。</span></p><p><span>“也”字的基本作用是把對事物進行的判斷告訴別人，現代漢語沒有和牠相當的語氣詞；“矣”字的基本作用則是把事物發展的現階段作為新情況告訴別人，現代漢語語氣詞“了”的作用大致和牠相當。</span></p><p><span>例如:</span></p><blockquote><p><span>雞既鳴矣。（《詩經·齊風·雞鳴》）</span></p><p><span>（原來沒有鳴，現在鳴了。）</span></p><p><span>余病（受重傷）矣。（《左傳·鞌之戰》）</span></p><p><span>（原來沒病，現在病了。）</span></p><p><span>此迫矣！臣請入，與之同命。（《史記·鴻門宴》）</span></p><p><span>（原來不緊迫，現在緊迫了。）</span></p></blockquote><p><span>以上三例都表示已然，即事情已經發生。</span></p><p><span>“矣”有時候還</span><strong><span>可以表示將然</span></strong><span>，即預料將要發生某些情況，把牠當作新情況告訴別人。例如:</span></p><blockquote><p><span>有吳則無越，有越則無吳矣（《國語·句踐滅吳》）</span></p><p><span>吾屬今為之虜矣。（《史記·鴻門宴》）</span></p></blockquote><p><span>上舉兩例都是還沒有發生的事情，只是說話人把牠作為必將出現的新情況提示出來。</span></p><p><span>用“矣”表示將然，在表示假設和條件的複句中看得最清楚。例如：</span></p><blockquote><p><span>君能補過，袞不廢矣。（《左傳·宣公二年》）</span></p><p><span>天下必以王為能市馬，馬今至矣。（《戰國策·燕昭王求士》）</span></p><p><span>嚮吾不為斯役，則久已病矣。（柳宗元《捕蛇者說》）</span></p></blockquote><p><span>上舉三例情況相同，前面的分句表示假設或條件，後面的分句表示在這種假設或條件下一定要發生某種情況，用“矣”煞尾，就強調了牠的將然性質。</span></p><p><span>以形容詞為謂語的描寫句同樣可以用“矣”字，因為描寫句同樣可以報導新的情況。例如：</span></p><blockquote><p><span>吾君已老矣，已昏矣。（《穀梁傳·僖公十年》）</span></p><p><span>王之蔽甚矣。（《戰國策·齊策一》）</span></p><p><span>天下苦秦久矣。（《史記·陳涉起義》）</span></p></blockquote><p><span>“矣”字用於描寫句時，往往使全句語氣略帶感嘆意味。有時把這種帶“矣”的謂語提前，這種感嘆語氣就更為明顯。例如:</span></p><blockquote><p><span>甚矣，汝之不惠。（《列子·湯問》）</span></p><p><span>遠矣，全德之君子。（《莊子·田子方》）</span></p></blockquote><p><span>祈使句也可以用“矣”字。例如：</span></p><blockquote><p><span>善哉，吾請無攻宋矣！（《墨子·公輸》）</span></p><p><span>諾。先生休矣！（《戰國策·齊策四》）</span></p><p><span>若皆罷去歸矣。（《史記·西門豹治鄴》）</span></p></blockquote><p><span>這一般是說話人希望實現某種行為或完成某種事情，和“矣”表示將然的作用仍是息息相通的。</span></p><p><span>“矣”字還可以用于疑問句，這種疑問句中必然還另有專門表示疑問的詞。例如：</span></p><blockquote><p><span>危而不持，顛而不扶，則將焉用彼相矣?（《論語·季氏將伐顓臾》）</span></p><p><span>年几何矣？（《戰國策·觸龍說趙太后》）</span></p></blockquote><p><span>在這種疑問句中，</span><strong><span>起疑問作用</span></strong><span>的主要仍然是</span><strong><span>專門表示疑問的詞</span></strong><span>，“矣”雖然也幫助表示疑問語氣，但主要作用仍是表示某一情況將要如此或已經如此。</span></p><p><span>和“矣”作用相似的語氣詞還有“已”字。例如：</span></p><blockquote><p><span>吾生也有涯，而知也無涯。以有涯隨無涯，殆已。（《莊子·養生主》）</span></p><p><span>夫神農以前，吾不知已。（《史記·貨殖列傅》）</span></p></blockquote><p><span>“已”字放在句尾時，雖然同“矣”都是表示陳述語氣，但“已”</span><strong><span>不是報導新情況</span></strong><span>，而是</span><strong><span>偏重限制的語氣</span></strong><span>。</span></p><h3 id='语氣词及其特點'><span>语氣词及其特點</span></h3><p><span>語氣詞是表示說話時各種不同的語氣的一類詞。句子各種不同的語氣包括陳述、祈使、疑問、感嘆、提顿、擬测等等。</span></p><p><span>有没有語氣詞，有什麽樣的語氣詞，對句子的意義影響很大。</span></p><h3 id='古代漢語語氣詞系統的特點'><span>古代漢語語氣詞系統的特點：</span></h3><p><span>甲、首先，從語氣詞在句中所處的位置，可以將語氣詞分爲</span><strong><span>句首語氣詞、句中語氣詞和句尾語氣詞（最為重要）</span></strong><span>。（現代漢語沒有句首、句中語氣詞了。）</span></p><p><span>乙、教材有一段表述：</span><del><span>“語氣詞的數目是有限的，句子所能表達的語氣是多種多樣的，一個語氣詞所表達的語氣往往是複雜多變化的。一個語氣詞除了它的基本用法之外，在不同類型的句子中所表達的語氣也往往有所不同。”</span></del><span>怎麼認識？一個語氣詞的基本功能是一致的，不是多功能。（vs楊樹達）</span></p><p><span>結論：</span></p><p><span>第一、我們不能根據句子的性質去判断一個句尾語氣詞所表示的語氣；换句話說，句子的性質不能作爲判定一個句尾語氣詞的語法作用的標准。</span></p><p><span>第二、古代漢語每一個句尾語氣詞都只表達一種特定的語氣。</span></p><p><span>語氣詞的連用：</span></p><p><span>幾個語氣詞連用，在次序上有一定之規，一般是：也／矣／乎／哉；</span></p><p><span>幾個語氣詞連用，整個句子的語氣的重點一般是落在最後一個語氣詞上。</span></p><p><img src="/Users/liangzhong/Desktop/personal_website/lzliangzh.github.io/academic-resources/pic/contemporary-chinese/image-20240109152128138.png" alt="image-20240109152128138" style="zoom:50%;" /></p><p><span>是非問：句子結構中無疑問代詞，答復為是/否</span></p><p><span>特指問：往往有疑問代詞，針對這個疑問代詞的提問做出回答</span></p><p><span>選擇問：兩種選擇。</span></p><h3 id='詞頭和詞尾'><span>詞頭和詞尾</span></h3><p><span>真正的發展在近代漢語時期</span></p><p><span>詞頭和詞尾都屬於構詞成分，屬於構詞法方面的問題。</span></p><p><span>詞頭又叫前缀，比如“老虎”的“老”；詞尾又叫後綴，比如“刀子”的“子”。詞頭和詞尾都是附加在其他詞的前面或後面，表示這個詞的詞性，或增加一定的詞彙意義。</span></p><p><span>公認的詞頭詞尾極少。詞頭只有一個“有（詩經）”字（有夏一代），詞尾只有形容詞詞尾“爾、若、然、如”。（</span><em><span>空空</span><strong><span>如</span></strong><span>也、突</span><strong><span>如</span></strong><span>其來</span></em><span>）</span></p><p>&nbsp;</p></div>
+
+</div>
+
+
+
+<script>
+function openTab(event, tabName) {
+    // 获取所有标签页内容元素
+    var tabContent = document.getElementsByClassName("tab-content");
+
+    // 隐藏所有标签页内容
+    for (var i = 0; i < tabContent.length; i++) {
+        tabContent[i].style.display = "none";
+    }
+
+    // 移除所有标签页选项卡的 active 类
+    var tabs = document.getElementsByClassName("tab");
+    for (var i = 0; i < tabs.length; i++) {
+        tabs[i].className = tabs[i].className.replace(" active", "");
+    }
+
+    // 显示当前选中标签页内容
+    document.getElementById(tabName).style.display = "block";
+
+    // 添加 active 类到当前选中标签页选项卡
+    event.currentTarget.className += " active";
+}
+</script>
+
+
+
+    </div>
+</div>
+
+
+
+   </body>
+</html>
