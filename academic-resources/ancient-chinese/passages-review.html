@@ -1,0 +1,886 @@
+<!doctype html>
+<html style='font-size:12px !important'>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; --title-bar-height: 20px; }
+.mac-os-11 { --title-bar-height: 28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.428571; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font-style: inherit; font-variant-caps: inherit; font-weight: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; font-size-adjust: inherit; font-kerning: inherit; font-variant-alternates: inherit; font-variant-ligatures: inherit; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-variant-position: inherit; font-feature-settings: inherit; font-optical-sizing: inherit; font-variation-settings: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right-width: 0px; border-right-style: none; border-right-color: currentcolor; background-color: inherit; }
+.CodeMirror-linenumber { }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: medium; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: medium !important; border-style: none !important; border-color: currentcolor !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom-width: 0px; border-bottom-style: none; border-bottom-color: currentcolor; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: medium; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex: 2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.428571rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left-width: 28px; border-left-style: solid; border-left-color: transparent; border-right-width: 28px; border-right-style: solid; border-right-color: transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right-width: 8px; border-right-style: solid; border-right-color: transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+
+
+
+
+:root {
+  --main-color: #444444;
+  /* == 字体设置 == */
+  /* 基准字体 */
+  /* 备选：Times, "Times New Roman" */
+  /* --base-Latin-font: "Latin Modern Roman", "Latin Modern Roman 10", Times; */
+  --base-Latin-font: "Karma";
+  --base-Chinese-font: "思源宋体 CN";
+  --base-font-size: 16pt;
+  /* 引言字体 */
+  --quote-font: "Karma", "ChillKai";
+  /* em单位为一个正文字符（--base-font-size）大小，
+  例如，如果您设置 --base-font-size 为 9.5pt，那么 1.05em = 1.05*9.5pt ≈ 10pt。下面的标题字体等设置也遵循该规则。
+  这样，您就可以仅通过调整基准字体大小，而动态对其他元素大小做出调整。
+  当然，您也可以直接设置以pt或px为单位的数值，将元素的大小固定下来，如 --quote-font-size: 10pt; */
+  --quote-font-size: 0.9em;
+  /* 代码字体（代码中的中文会调用 ui-font） */
+  /* "Courier New" 从 Windows 3.1 起成为 Windows 官方提供的字体 */
+  /* "Consolas" 从 Windows Vista 起成为 Windows 官方提供的字体 */
+  --code-font: "Latin Modern Mono", "Latin Modern Mono 10", "Consolas", "Courier New";
+  /* 侧边栏字体 */
+  --ui-font: "苹方-简";
+  /* source mode 字体 */
+  /* 默认调用 code-font 和 ui-font */
+  --sourceMode-font: "SF Mono", "苹方-简";
+  /* 目录字体 */
+  /* 默认调用 base-font */
+  --toc-font: "";
+  /* 默认调用 base-font-size */
+  --toc-font-size: "";
+  /* 公式字体 */
+  --math-font-size: 1em;
+  /* 表格字体 */
+  /* 默认调用 heading-font */
+  --table-title-font: "";
+  /* 默认调用 base-font */
+  --table-font: "";
+  /* 标题字体（总设置） */
+  /* 注意，如果您使用macOS系统并更改了英文字体，请在此处更换标题英文字体粗体字重的postscript值 */
+  --heading-Latin-font: "Karma";
+  --heading-Chinese-font: "ChillKai";
+  /* 非大标题(h1_h2)的英文数字字体设置 */
+  --h-Latin-font: "Karma";
+  /* 标题字体分别设置 */
+  /* 大标题（h1）字体 */
+  --title-Chinese-font: "Karma", "ChillKai";
+  --title-font-size: 2.5em;
+  /* h2字体 */
+  --h2-Chinese-font: "Karma", "ChillKai";
+  --h2-font-size: 1.5em;
+  /* h3字体 */
+  --h3-Chinese-font: "Karma", "思源宋体 CN";
+  --h3-font-size: 1.25em;
+  /* h4字体 */
+  --h4-Chinese-font: "Karma", "ChillKai";
+  --h4-font-size: 1.15em;
+  /* h5字体 */
+  --h5-Chinese-font: "Karma", "思源宋体 CN";
+  --h5-font-size: 1.10em;
+  /* h6字体 */
+  --h6-Chinese-font: "Karma", "思源宋体 CN";
+  --h6-font-size: 1.05em;
+  /* 粗体、斜体样式设置 */
+  /* 加粗风格时使用的字重；400等同于 normal，700等同于 bold，900等同于 heavy */
+  --strong-font: "FiraSans-Medium", "NotoSansHans-Medium";
+  --em-font: "Karma", "ChillKai";
+  /* 基础行距 */
+  --base-line-height: 1.618em;
+  /* == 页面设置 == */
+  /* 打印页边距 */
+  --set-margin: 2.2cm 2.7cm 2.2cm 2.7cm !important;
+  /* == 控制设置 == */
+  /* 目录中是否显示一级标题 */
+  --toc-show-title: none;
+  /* == 颜色设置 == */
+  /* 超链接颜色 */
+  --link-color-light: #2E67D3;
+  --link-color-dark: #8bb1f9;
+}
+
+body {
+  padding: 0 !important;
+  margin: 0 !important;
+  /* counter-reset: tableHead 0 imgHead 0; */
+}
+
+@media print {
+  #write {
+    padding: 0 !important;
+  }
+
+  @page {
+    margin: 2.2cm 2.7cm 2.2cm 2.7cm !important;
+    /* 页边距 */
+  }
+}
+#write {
+  font-family: var(--base-Latin-font), var(--base-Chinese-font), serif;
+  font-size: var(--base-font-size);
+  /* A4标准宽度 */
+  max-width: 84.1%;
+  background-color: white;
+  /* column-count: 2;
+    column-gap: 25px;
+    column-width: 8cm; 
+    display: inline-block; */
+  /* 这里可以试分栏的，但确实不适合实现 */
+}
+#write .md-math-block,
+#write .md-rawblock,
+#write p {
+  margin-top: 0.305em;
+  margin-bottom: 0.305em;
+  Letter-spacing: 0.25px;
+}
+#write p {
+  text-align: justify;
+  line-height: var(--base-line-height);
+  font-synthesis: style;
+  font-feature-settings: 'halt';
+}
+
+#write a {
+  color: var(--link-color-light);
+}
+
+hr {
+  border-top: solid 1px #ffffff;
+  margin-top: 1em;
+  margin-bottom: 1em; 
+  margin: 0.25em 0
+}
+
+img {
+  /* 避免图片在导出时被断开 */
+  page-break-inside: avoid;
+  box-shadow: 1px 1px 3px 0px #DDDDDD;
+  border-radius: 5px 5px 5px 5px;
+  margin: 5px 5px 5px 5px;
+}
+
+/* strong {
+  font-family: var(--strong-font);
+  font-weight: var(--strong-weight);
+}
+*/
+em {
+  font-family: var(--em-font);
+  font-style: normal;
+}
+
+
+@media screen {
+  #write {
+    padding: var(--set-margin);
+    /* 添加一个淡蓝色的边框 */
+    /* border: 0.8px solid #AAC ; */
+    /* 页边阴影 */
+    /* box-shadow: 0 0 15px 12px #cccccc; */
+  }
+}
+.MathJax {
+  font-size: var(--math-font-size);
+}
+
+/* typora 编写模式 */
+#typora-source {
+  font-family: var(--sourceMode-font), var(--code-font), var(--ui-font), monospace;
+  line-height: 2em;
+}
+
+/* 侧边大纲标题 */
+.sidebar-content .outline-h1 {
+  counter-reset: outline-h2;
+}
+.sidebar-content .outline-h2 {
+  counter-reset: outline-h3;
+}
+.sidebar-content .outline-h2 .outline-label:before {
+  counter-increment: outline-h2;
+  content: counter(outline-h2) " ";
+}
+.sidebar-content .outline-h3 {
+  counter-reset: outline-h4;
+}
+.sidebar-content .outline-h3 .outline-label:before {
+  counter-increment: outline-h3;
+  content: counter(outline-h2) "." counter(outline-h3) "  ";
+}
+.sidebar-content .outline-h4 {
+  counter-reset: outline-h5;
+}
+.sidebar-content .outline-h4 .outline-label:before {
+  counter-increment: outline-h4;
+  content: counter(outline-h2) "." counter(outline-h3) "." counter(outline-h4) "  ";
+}
+.sidebar-content .outline-h5 {
+  counter-reset: outline-h6;
+}
+.sidebar-content .outline-h5 .outline-label:before {
+  counter-increment: outline-h5;
+  content: counter(outline-h2) "." counter(outline-h3) "." counter(outline-h4) "." counter(outline-h5) "  ";
+}
+
+.sidebar-content {
+  /* 侧边栏的字体修改 */
+  font-family: var(--ui-font);
+  list-style: none;
+}
+
+/* 元数据（如 YAML front matter）的背景框 */
+pre.md-meta-block {
+  background: #cccccc;
+  padding: 1.4em;
+  font-family: var(--code-font), var(--ui-font), monospace;
+  font-size: 0.8em;
+}
+
+#write > h3.md-focus:before,
+#write > h4.md-focus:before,
+#write > h5.md-focus:before,
+#write > h6.md-focus:before,
+h3.md-focus:before,
+h4.md-focus:before,
+h5.md-focus:before,
+h6.md-focus:before {
+  color: inherit;
+  border: inherit;
+  border-radius: inherit;
+  position: inherit;
+  left: initial;
+  float: none;
+  top: initial;
+  font-size: inherit;
+  padding-left: inherit;
+  padding-right: inherit;
+  vertical-align: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+}
+
+#write {
+  counter-reset: h2 0 h3 0 h4 0 h5 0 h6 0;
+}
+#write h1,
+#write h2,
+#write h3,
+#write h4,
+#write h5,
+#write h6 {
+  font-weight: normal;
+  page-break-after: avoid !important;
+  font-feature-settings: 'halt';
+}
+#write h1 {
+  font-family: var(--heading-Latin-font), var(--title-Chinese-font), serif;
+  font-weight: normal;
+  text-align: left;
+  column-span: all;
+  font-size: var(--title-font-size);
+  padding-top: 2em;
+  padding-bottom: 1em;
+  color: var(--main-color);
+}
+#write h2 {
+  font-family: var(--heading-Latin-font), var(--h2-Chinese-font), serif;
+  font-size: var(--h2-font-size);
+  text-align: center;
+}
+#write h3 {
+  font-family: var(--h-Latin-font), var(--h3-Chinese-font), serif;
+  font-size: var(--h3-font-size);
+  line-height: var(--h3-font-size)*1.5;
+}
+#write h4 {
+  font-family: var(--h-Latin-font), var(--h4-Chinese-font), serif;
+  font-size: var(--h4-font-size);
+  line-height: var(--h4-font-size);
+}
+#write h5 {
+  font-family: var(--h-Latin-font), var(--h5-Chinese-font), serif;
+  font-size: var(--h5-font-size);
+  line-height: var(--h5-font-size);
+}
+#write h6 {
+  font-family: var(--h-Latin-font), var(--h6-Chinese-font), serif;
+  font-size: var(--h6-font-size);
+  /* 没有写错，为了避免行距太小才这么写 */
+  line-height: var(--h5-font-size);
+}
+
+
+/* #write h1 {
+  counter-reset: h2;
+}
+#write h2 {
+  counter-reset: h3;
+}
+#write h3 {
+  counter-reset: h4;
+}
+#write h4 {
+  counter-reset: h5;
+}
+#write h5 {
+  counter-reset: h6;
+}
+
+#write h2:before {
+  counter-increment: h2;
+  content: counter(h2);
+  margin-right: 1.2em;
+}
+
+#write h3:before, h3.md-focus.md-heading:before {
+  counter-increment: h3;
+  content: counter(h2) "." counter(h3);
+  margin-right: 1.2em;
+}
+
+#write h4:before, h4.md-focus.md-heading:before {
+  counter-increment: h4;
+  content: counter(h2) "." counter(h3) "." counter(h4);
+  margin-right: 1.2em;
+}
+
+#write h5:before, h5.md-focus.md-heading:before {
+  counter-increment: h5;
+  content: counter(h2) "." counter(h3) "." counter(h4) "." counter(h5);
+  margin-right: 1.2em;
+}
+
+#write h6:before, h6.md-focus.md-heading:before {
+  counter-increment: h6;
+  content: counter(h2) "." counter(h3) "." counter(h4) "." counter(h5) "." counter(h6);
+  margin-right: 1.2em;
+}
+
+*/
+/* 参考文献（脚注）块 */
+.footnotes {
+  font-size: 0.95em;
+}
+
+.footnotes-area .footnote-line {
+  color: var(--text-color);
+}
+.footnotes-area hr {
+  border: 0;
+  color: #00000000;
+}
+
+/* 无序列表 */
+ul {
+  list-style: disc;
+  Margin-top: 0;
+  Margin-bottom: 0;
+}
+ul ul {
+  /*list-style: circle;*/
+  /* 请勿删除“–”后的空格, 他们对缩进有一定影响, 下同 */
+  list-style: "–   ";
+}
+ul ul ul {
+  list-style: "◦  ";
+}
+
+/* 有序列表 */
+ol {
+  list-style: decimal;
+  Margin-top: 0;
+  Margin-bottom: 0;
+}
+ol ol {
+  counter-reset: liist;
+  list-style: none;
+}
+ol ol li {
+  counter-increment: liist;
+  position: relative;
+}
+ol ol li::before {
+  content: "(" counter(liist) ")";
+  position: absolute;
+  left: -1.8em;
+}
+ol ol ol {
+  counter-reset: liiist;
+  list-style: none;
+  margin: 0;
+}
+ol ol ol li {
+  counter-increment: liiist;
+  position: relative;
+}
+ol ol ol li::before {
+  content: counter(liiist,lower-roman) ".";
+  align-self: flex-end;
+  position: absolute;
+  left: -4.5em;
+  /* -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;*/
+  /* 为了让项目编号是重新用句点对齐而不是左对齐 */
+  width: 4em;
+  text-align: right;
+}
+
+li {
+  position: relative;
+}
+
+ol, ul {
+  padding-inline-start: 0em;
+}
+
+/* task列表 */
+.md-task-list-item > input {
+  margin-top: 0.42em;
+  margin-left: -1.5em;
+  width: 1em !important;
+  height: 1em !important;
+}
+
+#write table {
+  /* 三线表第一条线宽度 */
+  border-top: 1.2pt solid;
+  /* 三线表第二条线宽度 */
+  border-bottom: 1.2pt solid;
+  font-family: var(--table-font), var(--base-Latin-font), var(--base-Chinese-font), serif;
+  /* font-size: var(--base-font-size); */
+  text-align: center;
+  page-break-inside: avoid;
+  border-spacing: 6px;
+  /* 自动布局表格宽度，如果有时内容太紧建议直接加空格吧，我自己看不惯和页面等宽的大表格 */
+  width: auto;
+  /* 使表格默认居中；虽然这个代码不好，但好像没别的实现办法 */
+  margin: 0 auto;
+}
+#write table td {
+  padding: 2px;
+}
+#write table tr {
+  padding: 2px;
+}
+#write th {
+  padding: 0px 6px;
+}
+#write thead {
+  /* 表格标题（首行）样式 */
+  /* 三线表表头的线 */
+  border-bottom: 0.5pt solid;
+  font-family: var(--table-title-font), var(--heading-Latin-font), var(--heading-Chinese-font), serif !important;
+  /* font-size: var(--base-font-size); */
+  font-weight: var(--strong-weight); 
+  font-style: normal;
+  font-synthesis: style;
+}
+
+blockquote {
+  color: #222222;
+  /* background-color: var(--dark-color); */
+
+  border-left: 3px solid var(--main-color);
+  border-right: 1px solid var(--main-color);
+  border-top: 1px solid var(--main-color);
+  border-bottom: 1px solid var(--main-color);
+
+  box-shadow: 1px 1px 2px 0px #DDDDDD;
+  box-sizing: border-box;
+  margin: 0.618em 2px 0.618em 2px;
+  padding: 0.5em 1em 0.5em 1em;
+  /* 圆角 */
+  border-radius: 5px 5px 5px 5px;
+}  
+
+
+  font-style: normal;
+  font-family: var(--quote-font);
+  font-size: var(--quote-font-size);
+
+
+  /* 文字离左边框的距离 */
+  /* 左边框离页面边的距离 */
+  margin-left: 0;
+}
+
+
+blockquote p:first-child {
+  padding-top: 0ch;
+}
+
+blockquote p:last-child {
+  padding-bottom: 0ch;
+}
+
+blockquote span {
+  font-style: normal;
+  font-family: var(--quote-font);
+  font-size: var(--quote-font-size);
+}
+
+blockquote blockquote span::before {
+  content: '✎ ';
+  font-size: 1.2em;
+  display: inline-block;
+}
+
+blockquote blockquote {
+  font-size: 0.9em;
+  font-weight: 700;
+
+  color: var(--light-color);
+
+  border-left: 0px solid #CDCD00;
+  border-right: 0px solid var(--normal-color);
+  border-top: 0px solid var(--normal-color);
+  border-bottom: 0px solid var(--normal-color);
+
+  box-shadow: 0 0 0 0 #141414;
+  border-radius: 0;
+  white-space: nowrap;
+  padding: 0em 0em 0em 0em;
+}
+
+blockquote blockquote span {
+  white-space: normal;
+  font-style: normal;
+  font-family: var(--quote-font);
+  font-size: var(--quote-font-size);
+}
+
+
+/* 行内代码 */
+code {
+  font-family: var(--code-font), var(--ui-font), monospace;
+}
+
+h1 code, h2 code, h3 code, h4 code, h5 code, h6 code,
+p code,
+li code {
+  color: #3c70c6;
+  background-color: #fefefe;
+  /* 阴影 */
+  box-shadow: 0 0 1px 1px #c8d3df;
+  font-family: var(--code-font), var(--ui-font), monospace;
+  box-sizing: border-box;
+  border-right: 0px;
+  margin: 0 2px 0 2px;
+  padding: 0 2px 0 2px;
+  /* 圆角 */
+  border-radius: 2px 2px 2px 2px;
+}
+
+/* 代码块样式 */
+.md-fences,
+.CodeMirror pre {
+  font-size: 1em;
+}
+
+.CodeMirror-wrap {
+  /* padding: 10px; */
+  font-size: 1em;
+}
+
+.CodeMirror-code pre {
+  font-family: var(--code-font), var(--ui-font), monospace;
+}
+
+/* 目录 */
+.md-toc {
+  font-size: var(--toc-font-size);
+}
+
+.md-toc-content {
+  margin-left: 2em;
+  /* 修复缺失上级标题时无法递增 */
+  counter-reset: toc-h2 toc-h3 toc-h4;
+  page-break-after: always;
+}
+
+.md-toc-inner {
+  margin-left: 0 !important;
+  color: var(--text-color) !important;
+}
+
+.md-toc-item {
+  color: var(--text-color) !important;
+}
+
+/* 目录标题内容属性 */
+.md-toc-h5,
+.md-toc-h6 {
+  font-size: var(--toc-font-size);
+  font-family: var(--toc-font), var(--base-Latin-font), var(--base-Chinese-font), serif;
+}
+
+.md-toc-h1 {
+  font-family: "BodoniMT-Bold", "方正小标宋_GBK";
+  font-size: 1.2em;
+  font-weight: var(--strong-weight);
+  font-style: normal;
+  text-align: center;
+}
+
+.md-toc-h2 {
+  font-weight: var(--strong-weight);
+  font-family: "BodoniMT-Bold", "方正黑体_GBK";
+  font-size: 1.10em;
+}
+
+.md-toc-h3 {
+  font-family: "Bodoni MT", "方正书宋_GBK";
+}
+
+.md-toc-h4 {
+  font-family: "Bodoni MT", "方正楷体_GBK";
+}
+
+/* 目录标题前 */
+.md-toc-content .md-toc-h1 {
+  /* display: var(--toc-show-title); */
+  counter-reset: toc-h2;
+}
+.md-toc-content .md-toc-h2 {
+  counter-reset: toc-h3;
+}
+.md-toc-content .md-toc-h3 {
+  counter-reset: toc-h4;
+}
+.md-toc-content .md-toc-h4 {
+  counter-reset: toc-h5;
+}
+.md-toc-content .md-toc-h5 {
+  counter-reset: toc-h6;
+}
+.md-toc-content .md-toc-h2:before {
+  counter-increment: toc-h2;
+  content: counter(toc-h2);
+  margin-right: 1em;
+}
+.md-toc-content .md-toc-h3:before {
+  counter-increment: toc-h3;
+  content: counter(toc-h2) "." counter(toc-h3);
+  margin-left: 1.5em;
+  margin-right: 0.5em;
+}
+.md-toc-content .md-toc-h4:before {
+  counter-increment: toc-h4;
+  content: counter(toc-h2) "." counter(toc-h3) "." counter(toc-h4);
+  margin-left: 3.5em;
+  margin-right: 0.5em;
+}
+.md-toc-content .md-toc-h5:before {
+  counter-increment: toc-h5;
+  content: counter(toc-h2) "." counter(toc-h3) "." counter(toc-h4) "." counter(toc-h5);
+  margin-left: 5.5em;
+  margin-right: 0.5em;
+}
+.md-toc-content .md-toc-h6:before {
+  counter-increment: toc-h6;
+  content: counter(toc-h2) "." counter(toc-h3) "." counter(toc-h4) "." counter(toc-h5) "." counter(toc-h6);
+  margin-left: 7.5em;
+  margin-right: 0.5em;
+}
+
+ruby {
+  text-align: left;
+  display: inline;
+  
+}
+
+
+
+ @media print { @page {margin: 0 0 0 0;} body.typora-export {padding-left: 0; padding-right: 0;} #write {padding:0;}}
+</style><title>古代漢語（上）文選複習</title>
+</head>
+<body class='typora-export'><div class='typora-export-content'>
+<div id='write'  class=' first-line-indent'><h1 id='古代漢語上）文選'>古代漢語（上）文選</h1><p>以下是課內講授篇目。</p><h2 id='鄭伯克段於鄢'>鄭伯克段於鄢</h2><blockquote><blockquote><p>常識</p></blockquote><p>春秋三傳：《左傳》（左丘明），《公羊傳》（公羊高），《榖梁傳》（榖梁赤）</p></blockquote><p>初，鄭武公娶于申，曰武姜。生莊公及共叔段。莊公寤生，驚 <em>（使動）</em>姜氏，故名曰寤生，遂惡之。愛共叔段，欲立之。<ruby>亟<rt>qì</ruby></ruby><em>（屢次）</em>請於武公，公弗許。</p><p>及莊公即位，為之請制。公曰：「制，巖邑 <em>（險要的城邑）</em>也，虢叔死焉，佗<em>（他）</em>邑唯命<em>（唯命是聽的省略。唯是語氣詞）</em>。」請京，使居之，謂之「京城大<em>（太）</em>叔」。祭仲曰：「都城<em>（城墻）</em>過百雉，國之害也，先王之制：大都不過參國<em>（國都）</em>之一；中，五之一；小，九之一。今京不度<em>（合乎法度）</em>，非制也，君將不堪。」公曰：「姜氏欲之，焉辟<em>（後作“避”）</em>害？」對曰：「姜氏何厭之有！不如早為<em>（安排）</em>之<mark>所<em>（處所）</em></mark>，無使滋蔓。<mark>蔓，難圖<em>（圖謀、謀劃，想辦法對付）</em>也<em>（緊縮復句，根據上下文理解）</em></mark>。蔓草猶不可除，況君之寵弟乎！」公曰：「多行不義，必自斃<em>（頓僕，倒地）</em>，子姑待之。」</p><blockquote><blockquote><p>補充</p></blockquote><ol><li>邑、都、國、家。</li></ol><ol start='2' ><li>文題白身</li><li>國之大事，在祀與戎。</li></ol></blockquote><p>既而大叔命西鄙<em>（邊邑）</em>、北鄙貳於己。公子呂曰：「國不堪貳，君將若之何？欲與大叔，臣請事之；若弗與，則請除之，無生<em>（使動）</em>民心。」公曰：「無庸，將自<mark>及<em>（及的賓語往往省略，表示“及於難也”。及：趕上）</em></mark>。」大叔又收貳<em>（二的地方）</em>以為己邑，至于廩延。子封曰：「可矣，厚<em>（土地廣大）</em>將得眾。」公曰：「不義不暱，厚將崩。」</p><blockquote><blockquote><p>補充</p></blockquote><p>也、矣</p></blockquote><hr /><p>大叔<mark>完<em>（使城墻完好，修葺）</em>聚<em>（聚集民眾）</em></mark>，繕甲兵，<mark>具<em>（準備）</em></mark>卒乘，將襲鄭。夫人將啟之。公聞其期，曰：「可矣。」命子封帥<em>（率領）</em>車二百乘以伐京。京叛大叔段，段入于鄢，公伐諸鄢。五月辛丑，大叔出奔共。書曰：「鄭伯克段于鄢。」段不弟，故不言弟。如二君，故曰克。稱鄭伯，譏失教也。謂之鄭志，不言出奔，難之也。</p><p>遂寘姜氏于城潁，而誓之曰：「不及黃泉，無相見也！」既而悔之。</p><p>潁考叔為潁谷封<em>（疆界）</em>人<em>（掌管邊界的官）</em>，聞之，有獻於公。公賜之食。食舍肉，公問之，對曰：「小人有母，皆嘗小人之食矣，未嘗君之<mark>羹<em>（帶汁的肉食）</em></mark>。請以遺之。」公曰：「爾有母遺，繄我獨無！」潁考叔曰：「敢問何謂也？」公語之故，且告之悔，對曰：「君何患焉？若闕地及泉，隧而相見，其誰曰不然？」公從之。公入而賦：「大隧之中，其樂也融融。」姜出而賦：「大隧之外，其樂也洩洩。」遂為母子如初。</p><p>君子曰：「潁考叔純孝也，愛其母，施及莊公。《詩》曰：『孝子不匱，永錫爾類。』其是之謂乎！」</p><blockquote><blockquote><p>補充</p></blockquote><ol><li>昏婚，取娶</li></ol><ol start='2' ><li><p>羹：（帶汁的）肉食。幸分我一杯羹（肉食，紅樓夢）</p><p>羹膷臐膮：膷，牛羹；臐，羊羹；膮，豬羹</p><p>羹vs臛：白水肉vs加調料的紅燒肉</p><p>羹vs炙：烤肉</p><p>羞羹vs太羹：用正鼎裝</p></li></ol><p>藜藿之羹（菜多湯少的食物，韓非）</p></blockquote><h2 id='齊桓公伐楚'>齊桓公伐楚</h2><blockquote><blockquote><p>常識</p></blockquote><ol><li>謚號：上謚、中謚、下謚</li></ol><ol start='2' ><li><p>征、伐、侵、襲（齊桓公伐楚也有）</p><p>凡師，有鐘鼓（進軍、撤軍的號令）曰伐（有道伐無道），無曰侵（非正義），輕（偷摸，暗中）曰襲。</p></li></ol></blockquote><p>四年，春，齊侯以諸侯之師侵蔡，蔡潰，遂伐楚。楚子使與師言曰：君處<em>（居）</em>北海，寡人處南海，唯是風馬牛不相及也。不虞<em>（料想）</em>君之涉<em>（趟水過河→進入）</em>吾地也，何故，管仲對曰，昔召康公命我先君大公曰，五侯九伯，女實<em>（語氣詞，表命令祈使）</em>征之，以夾輔周室，賜我先君履<em>（vs屨）</em>。東至于海，西至于河，南至于穆陵，北至于無棣。爾貢包茅不入，王祭不共<em>（供給供應）</em>，無以縮酒，寡人是<mark>徵<em>（問，責問）</em>。</mark>昭王南征<em>（出行）</em>而不復，寡人是問。對曰，貢之不入，寡君之罪也，敢不共給，昭王之不復，君<em>（委婉語氣）</em>其問諸水濱。師進，<mark>次<em>（舍、信、次）</em></mark>于陘。</p><p>夏，楚子使屈完如師。師退，次于召陵，齊侯<mark>陳<em>（陳陣，古今字）</em></mark>諸侯之師，與屈完乘而觀之，齊侯曰，豈不穀是為，先君之好是繼，與不穀同好如何？對曰，君惠<em>（敬辭，對我的恩惠）</em><ruby>徼<rt>yāo</ruby><em>（求）</em>福於敝邑之社稷，辱收寡君，寡君之願也，齊侯曰，以此眾戰，誰能禦之，以此攻城，何城不克，對曰，君若以德綏<em>（安撫）</em>諸侯，誰敢不服，君若以力，楚國方城以為城，漢水以為<mark>池<em>（護城河，別處還有水塘義）</em></mark>，雖眾，無所用之，屈完及諸侯盟。</p><h2 id='鞌之戰'>鞌之戰</h2><blockquote><ol><li><p>乘：3甲士、4馬，72步卒</p><p>古代車戰時，尊者居車左，禦者居中，驂乘居右。（但君主或主帥居中，則禦者居左）</p></li></ol><ol start='2' ><li><p>疾、病：病是重病/受傷，危及生命</p><p>飢、饑：飢是肚餓；榖不熟曰飢，菜不熟曰饉。</p></li></ol><ol start='3' ><li>左耳旁是“阜（山）”,右耳旁是“邑（城邑）”</li></ol></blockquote><p>癸酉，師陳于鞍，邴夏<mark>御<em>（駕車）</em></mark>齊侯，逢丑父為右，晉解張御郤克，鄭丘緩為右，齊侯曰，余姑翦<em>（歬、歬刂=前、翦、剪）</em>滅此而朝食，不<mark>介<em>（甲，介胄之士）</em></mark>馬而馳之。郤克傷於矢。流血及屨，未絕鼓音。曰：余病<em>（疾、病；饑、飢）</em>矣。張侯曰：自始合，而矢貫余手及肘，余折以御，左輪朱殷<em>（黑紅）</em>，豈敢言病，吾子忍之。緩曰，自始合，苟有險<em>（不平坦的路，阝=阜）</em>，余必下推車，子豈識之，然子病矣，張侯曰，<mark>師之耳目，在吾旗鼓，進退從之<em>（合敘=並提、互文=屬文互見）</em></mark>，此車，一人殿之，可以集事，若之何其以病，敗君之大事也，擐<em>（穿上）</em>甲執兵，固即<em>（走向）</em>死也，病未及死，吾子勉<em>（努力）</em>之，左并轡，右援枹而鼓，馬逸<em>（狂奔）</em>不能止，師從之。齊師敗績，逐之，三周華不注。</p><p>韓厥夢子輿謂己曰：旦辟左右。故中御而從齊侯，邴夏曰，射其御者，君子也，公曰，謂之君子而射之，非禮也，射其左，越于車下，射其右，斃于車中，綦毋張喪車，從韓厥曰，請寓乘，從左右，皆肘之，使立於後，韓厥俛<em>（通“俯”，低下身子）</em>定其右。</p><p>逢丑父與公易位，將及華泉，驂絓於木而止。丑父寢於轏中，蛇出於其下，以肱擊之，傷而匿之，故不能推車而及<em>（被趕上）</em>。韓厥執縶馬前，再拜稽首，奉觴加璧以進，曰，寡君使群臣為魯衛請，曰，無令輿師，陷入君地，下臣不幸，屬當戎行，無所逃隱，且懼奔辟，而忝兩君，臣辱戎士，敢告不敏，攝官承乏，丑父使公下如華泉取飲，鄭周父御佐車，宛茷為右，載齊侯以免，韓厥獻丑父，郤獻子將戮之，呼曰，自今無有代其君任<em>（本義“抱”，引申為負荷、負擔）</em>患者，有一於此，將為戮乎，郤子曰，人不難以死免其君，我戮之不祥，赦之以勸事君者，乃免之。</p><h2 id='觸龍ruby說rtshuìrt用話勸說別人）趙太後'>觸龍<ruby>說<rt>shuì</ruby><em>（用話勸說別人）</em>趙太後</h2><blockquote><blockquote><p>常識</p></blockquote><ol><li>《戰國策》（又名《國策》《國事》《短長》）國別體斷代史，西漢劉向編訂成書。全書分十二國：東周、西周、秦、齊、楚、趙、魏、韓、宋、衛、燕、中山。</li><li>《左傳》編年體通史，《國語》國別體通史，《史記》紀傳體通史。</li><li>趙國國君世系：韓趙魏三家分晉→趙烈侯→趙武公→趙敬侯→趙成侯→趙肅侯→趙武靈王→惠文王→孝成王。</li></ol></blockquote><p>趙太后新用事，秦急攻之。趙氏求救於齊。齊曰：「必以長安君為質，兵乃<em>（副詞，才）</em>出。」太后不肯，大臣<ruby>強<rt>qiǎng</ruby><em>（盡力、竭力）</em>諫。太后明謂左右：「有復言令長安君為質者，老婦必唾其面！」</p><p>左師觸龍言：愿<em>（希望）</em>見太后。<mark>太后盛氣而揖之<em>（怒氣衝衝地行拱手禮。或為形近訛誤，《史記·趙世家》本作“胥”通“須”，等待，怒氣衝衝地等著觸龍。“日雲暮矣，寡君須矣，吾子其入之！”）</em>。</mark>入而徐趨，至而自謝，曰：「老臣病足，曾<em>（副詞，加強語氣）</em>不能疾走，不得見久矣。竊自恕，而恐太后玉體之有所郄<em>（“卻”異體字，縫隙）</em>也，故愿<mark>望<em>（謙辭。望，人站在高處向遠處眺望）</em></mark>見太后。」太后曰：「老婦恃輦而行。」曰：「日食飲得無衰乎？」曰：「恃鬻<em>（通“粥”（俗字）。弓，熱氣上升之樣；鬲，鍋）</em>耳。」曰：「老臣今者<em>（近來）</em>殊<em>（很）</em>不欲食，乃自強步，日三四里，少益<em>（稍微漸漸地）</em>耆<em>（喜愛）</em>食，和於<em>（介詞，介紹涉及的對象，意義比較虛，不好翻譯）</em>身也。」太后曰：「老婦不能。」太后之色少解。</p><blockquote><blockquote><p>補充</p></blockquote><p>徐趨、疾趨：徐趨，步小而腳跟不抬起；疾趨，臣見君，步大而腳跟離地。</p></blockquote><p>左師公曰：「老臣賤息舒祺，最少，<mark>不肖<em>（原意是不像父親，後來泛指兒子不成材，或用於自我謙稱（多用於父母去世後））</em></mark>。而臣衰，竊愛憐之。願令得補黑衣之面，以衛王官，沒死<em>（冒死，“沒”，《史記·趙世家》作“昧”。）</em>以聞<em>（使動用法，使聞）</em>。」太后：「敬<em>（表示客氣）</em>諾。年幾何矣？」對曰：「十五歲矣。雖少，願及未填溝壑而托之。」太后曰：「丈夫亦愛憐其少子乎？」對曰：「甚於婦人。」太后笑曰：「婦人異<em>（特別）</em>甚。」對曰：「老臣竊以為媼之<em>（連詞（郭錫良觀點））</em>愛燕后賢於長安君。」曰：「君過矣，不若長安君之甚。」</p><blockquote><blockquote><p>補充</p></blockquote><ol><li><a href='https://humanum.arts.cuhk.edu.hk/Lexis/lexi-mf/search.php?word=息'>息</a>：消息→孳息→後代</li></ol><ol start='2' ><li>公車一日晏駕（君主—山陵崩）、君卒然捐館舍（重臣）、使臣卒然填溝壑（平民）</li></ol></blockquote><p>左師公曰：「父母之愛子，則為之計深遠<em>（動補結構）</em>。媼之送燕后也，持其踵而為之泣，念悲其遠<em>（到遠方去）</em>也，亦哀之矣。已行，非弗思也，祭祀必祝<em>（爲…禱告）</em>之，祝曰：『必勿使反。』豈非計久長，有子孫相繼為王也哉？」太后曰：「然。」左師公曰：「今三世以前，至於趙之為趙，趙主之子孫侯者，其繼有在者乎？」曰：「無有。」曰：「微獨<em>（不只是）</em>趙，諸侯有在者乎？」曰：「老婦不聞也。」「此其近者禍及身，遠者及其子孫<em>（（1）主謂謂語句；（2）其：特指代詞，特指“近者”“遠者”）</em>。豈人主之子孫則必不善哉？位尊而無功，奉厚而無勞<em>（功勞）</em>，而挾重器多<em>（擁有權力很多，“多”回指“重器”。區別“挾重器過”）</em>也。今媼尊長安君之位，而封之以膏腴之地，多予之重器，而不及令有功於國。一旦山陵崩，長安君何以自托於趙？老臣以媼為長安君計短也，故以為其愛不若燕后。」太后曰：「諾，恣君之所使之<em>（支使他的方式）</em>。」於是為長安君約車<em>（準備車。約，套、繩約→約束、限制→盟約）</em>百乘質於齊，齊兵乃出。</p><blockquote><blockquote><p>補充</p></blockquote><ol><li>媼之送燕后也：狀語性成分（「狀語從句」）。「鵬之徙於南冥也」。</li><li><a href='https://humanum.arts.cuhk.edu.hk/Lexis/lexi-mf/search.php?word=祝'>祝</a>、<a href='https://humanum.arts.cuhk.edu.hk/Lexis/lexi-mf/search.php?word=奉'>奉</a>（奉→捧&amp;俸）、<a href='https://humanum.arts.cuhk.edu.hk/Lexis/lexi-mf/search.php?word=尊'>尊</a></li></ol></blockquote><p>子義聞之曰：「人主之子也，骨肉之親猶不能恃無功之尊，無勞之奉，而守金玉之重也，而況人臣乎？」</p><h2 id='韓信破趙之戰'>韓信破趙之戰</h2><blockquote><blockquote><p>常識</p></blockquote><ol><li>前四史：《史記》《漢書》《後漢書》（南朝宋范曄著）《三國志》（西晉陳壽著）。</li><li>《史記上》，漢以前部分，多二手材料，參照《左傳》《國語》《戰國策》，可對勘；《史記下》。</li><li>《史記索隱》［唐］司馬貞著，《史記集解》［南朝］裴駰著，《史記正義》［唐］張守節著。</li><li>韓信：（1）軍事才能：垓下之戰，出陳倉，定三秦；井陘之戰，背水戰，出奇制勝。（2）政治野心、功名利祿之心：破趙，封張耳為趙王；破齊，劉邦被圍陘陽，韓信以“齊假攝王”為條件解圍。這為後來韓信→楚王→淮陰侯→“蕭何月下追韓信”埋下伏筆。</li></ol></blockquote><p>信與張耳以兵數萬，欲東下井陘擊趙。趙王、成安君陳餘聞漢且襲之也，聚兵井陘口，號稱二十萬。廣武君李左車說成安君曰：「聞漢將韓信涉<em>（趟水過河）</em>西河，虜魏王，禽夏說，新<em>（剛才）</em>喋血閼與<em>（地名）</em>，今乃輔以張耳，議欲下趙，此乘勝而去國遠鬬，其鋒不可當。臣聞千里餽<em>（從千里之外運送。通“饋”，送）</em>糧，士有饑色，樵蘇<em>（砍柴、打草）</em>後爨，師不宿<em>（常）</em>飽。今井陘之道，車不得方軌<em>（兩車並行。方，並；軌，車轍。）</em>，騎不得成列，行數百里，其勢糧食必在其後。願足下假臣奇<em>（不常見）</em>兵三萬人，從閒道絕其輜重<em>（軍需物資）</em>；足下深溝高壘，堅營<em>（深、高、堅均作使動）</em>勿與戰。彼前不得鬬，退不得還，吾奇兵絕其後，使野無所掠，不至十日，而兩將之頭可致於戲<em>（通“麾”，主將的大旗）</em>下。願君留意臣之計。否，必為二子所禽矣。」成安君，儒者也，常稱<em>（？）</em>義兵不用詐謀奇計，曰：「吾聞兵法十則圍之，倍則戰。今韓信兵號數萬，其實不過數千。能千里而襲我，亦已罷<em>（通“疲”）</em>極。今如此避而不擊，後有大者，何以加<em>（勝）</em>之！則諸侯謂吾怯，而輕來伐我。」不聽廣武君策，廣武君策不用。</p><blockquote><blockquote><p>補充</p></blockquote><ol><li><a href='https://humanum.arts.cuhk.edu.hk//Lexis/lexi-mf/search.php?word=以'>以</a>：凡師能左右之曰“以”。</li><li><a href='https://humanum.arts.cuhk.edu.hk//Lexis/lexi-mf/search.php?word=鬥'>鬥鬭閗</a>：</li><li>糧：外出食用的乾糧。</li><li>喋血、蹀血</li></ol></blockquote><p>韓信使人閒<em>（暗中地）</em>視，知其不用，還報，則大喜，乃敢引兵遂<em>（徑直地）</em>下。未至井陘口三十里，止舍<mark><em>（凡師一宿爲舍，再宿爲信，過信爲次）</em></mark>。夜半傳發<em>（傳令出發）</em>，選輕騎二千人，人持一赤幟，從閒道萆<em>（隱蔽）</em>山而望趙軍，誡曰：「趙見我走，必空<mark>壁<em>（營壘）</em></mark>逐我，若疾入趙壁，拔趙幟，立漢赤幟。」令其裨將傳<em>（分發）</em>飱<em>（cān，通“湌”，小飯曰湌，非正餐）</em>，曰：「今日破趙會食！」諸將皆莫信，詳應曰：「諾。」謂軍吏曰：「趙已先據便<em>（有利地形）</em>地為壁，且彼未見吾大將旗鼓，未肯擊前<ruby>行<rt>háng</ruby><em>（前行，先頭部隊）</em>，恐吾至阻險而還。」信乃使萬人先行，出，背水<ruby>陳<rt>zhèn</ruby>。趙軍望見而大笑。平旦，信建大將之旗鼓，鼓行<em>（擂鼓而行）</em>出井陘口，趙開壁擊之，大戰良久。於是信、張耳詳棄鼓旗，走水上軍<em>（退逃至水邊的軍隊）</em>。水上軍開入<em>（使之入）</em>之，復<mark>疾<em>（猛烈）</em></mark>戰。趙果空壁爭漢鼓旗，逐韓信、張耳。韓信、張耳已入水上軍，軍皆殊死戰，不可敗。信所出奇兵二千騎，共候趙空壁逐利，則馳入趙壁，皆<em>（多？）</em>拔趙旗，立漢赤幟二千。趙軍已不<ruby>勝<rt>shēng</ruby><em>（堪，能）</em>，不能得信等，欲還歸壁，壁皆漢赤幟，而大驚，以為漢皆已得趙王將矣，兵遂亂，遁走，趙將雖斬之，不能禁也。於是漢兵夾擊，大破虜趙軍，斬成安君泜水上，禽趙王歇。</p><blockquote><blockquote><p>補充</p></blockquote><p>辨析：看、觀、望、視、覩、察</p></blockquote><p>信乃令軍中毋殺廣武君，有能生得者購千金。於是有縛廣武君而致戲下者，信乃解其縛，東鄉坐，西鄉對<em>（讓廣武君面朝東邊坐，漢初以東向為尊。韓信面向西對著。鄉，向）</em>，師事之<em>（像對待老師一樣事奉他）</em>。</p><p>諸將效首虜，休，畢<em>（全，皆）</em>賀，因問信曰：「兵法『右倍<em>（同“背”，右面和背面要靠山）</em>山陵，前左水澤』，今者將軍令臣等反背水陳，曰破趙會食，臣等不服。然竟以勝，此何術也？」信曰：「此在<em>（存在於）</em>兵法，顧<em>（連詞，只是）</em>諸君不察耳。兵法不曰『陷之死地而後生，置之亡地而後存』？且信<mark>非得<em>（不能）</em></mark>素<em>（平日）</em>拊循<em>（撫慰）</em>士大夫<em>（諸將士）</em>也，此所謂『驅市人<em>（烏合之眾）</em>而戰之』，其勢<mark>非<em>（非……不可）</em></mark>置之死地，使人人自為戰；今予之生地，皆走，寧<em>（難道）</em>尚可得而用之乎！」諸將皆服曰：「善。非臣所及也。」</p><blockquote><blockquote><p>補充</p></blockquote><ol><li>效：攵，即攴，手拿斧頭之樣。</li><li>鄉嚮響饗曏向</li><li>望洋興歎</li></ol></blockquote><p>於是信問廣武君曰：「僕欲北攻燕，東伐齊，何若而有功？」廣武君辭謝曰：「臣聞敗軍之將，不可以言勇，亡國之大夫，不可以圖存。今臣敗亡之虜，何足以權<em>（謀劃）</em>大事乎！」信曰：「僕聞之，百里奚居虞而<em>（轉接）</em>虞亡，在秦而<em>（順接）</em>秦霸，非愚於虞而智於秦也，用與不用，聽與不聽也。誠令成安君聽足下計，若信者亦已為禽矣。以不用足下，故信得侍<em>（侍奉（足下））</em>耳。」因固<em>（於是堅決地）</em>問曰：「僕委<em>（託付、傾）</em>心歸<em>（聽從）</em>計，願足下勿辭。」廣武君曰：「臣聞智者千慮<em>（反復地思考，與“思”微殊）</em>，必有一失；愚者千慮，必有一得。故曰『狂夫之言，聖人擇焉』。顧恐臣計未必足用，願效愚忠。夫成安君有百戰百勝之計，一旦而失之，軍敗鄗下，身死泜上。今將軍涉西河，虜魏王，禽夏說閼與，一舉而下井陘，不終朝<em>（不到一個上午）</em>破趙二十萬眾，誅成安君。名聞海內，威震天下，農夫莫不輟耕釋耒，褕衣甘食，傾耳以待命者。若此，將軍之所長也。然而眾勞卒罷，其實難用。今將軍欲舉倦獘之兵，頓<em>（使敵軍困頓）</em>之燕堅城之下，欲戰恐久，力不能拔，情見<mark>勢屈<em>（真情暴露（給敵方），戰爭的態勢不利於自己。屈，虧）</em></mark>，曠日糧竭，而弱燕不服，齊必距境<em>（拒守於邊境）</em>以自彊也。燕齊相持而不<mark>下<em>（投降）</em></mark>，則劉項之<mark>權<em>（秤錘。用權以知輕重，這裡指勝負）</em></mark>未有所分也。若此者，將軍所短也。臣愚，竊以為亦<mark>過<em>（錯）</em></mark>矣。故善用兵者不以短擊長，而以長擊短。」韓信曰：「然則何由？」廣武君對曰：「方今為將軍計，莫如案甲休兵<em>（案，通“按”，停）</em>，鎮趙，撫其孤，百里之內，牛酒日至，以饗<em>（犒賞）</em>士大夫醳<em>（醇酒，用作使動，使之酒醉）</em>兵，北首<em>（向。作出北向燕國的態勢）</em>燕路，而後遣辯士奉咫尺之書，暴其所長於燕，燕必不敢不聽從。燕已從，使諠言<em>（長於詭辯的人，“諠”，通“諼”，詭詐）</em>者東告齊，齊必從風<em>（像隨著風一樣（倒下））</em>而服，雖有智者，亦不知為齊計矣。如是，則天下事皆可圖也。兵固有先聲而後實<em>（先虛張聲勢，後採取行動）</em>者，此之謂也。」韓信曰：「善。」從其策，發使使燕，燕從風而靡。乃遣使報漢，因請立張耳為趙王，以鎮撫其國。漢王許之，乃立張耳為趙王。</p><blockquote><blockquote><p>補充</p></blockquote><p>暴、曝</p></blockquote><h2 id='張騫傳節錄）'>張騫傳（節錄）</h2><p>張騫，漢中人也，建元中為郎。時匈奴降者言匈奴破月<ruby>氏<rt>zhī</ruby>王，以其頭為飲器<em>（《淮南書》：“言溺器，受水之器也。”《說文通訓定聲》：“‘漆其頭以為飲器’，注：溺器也。”）</em>，月氏遁而怨匈奴，無與共擊之。漢方欲事滅胡，聞此言，欲通使，道必<mark>更<em>（經過）</em></mark>匈奴中，乃募能使者。騫以郎應募，使月氏，與堂邑氏奴甘父俱出隴西。徑<em>（途徑，用作動詞，取道）</em>匈奴，匈奴得之，傳詣單于。單于曰：「月氏在吾北，漢何以得往使？吾欲使越，漢肯聽我乎？」留騫十餘歲，予妻，有子，然騫持漢節不失。</p><p>居匈奴西，騫因與其屬亡鄉月氏，西走數十日，至大宛。大宛聞漢之饒財，欲通<em>（交往）</em>不得，見騫，喜，問欲何之。騫曰：「為漢使月氏而為匈奴所閉道，今亡，唯<em>（句首語氣詞，表示希望、祈求）</em>王使人道<em>（“引導”的“導”）</em>送我。誠得至，反漢，漢之賂遺王財物不可<ruby>勝<rt>shēng</ruby><em>（盡、堪）</em>言。」大宛以為然，遣騫，為發譯道，抵康<ruby>居<rt>qú</ruby>。康居傳致大月氏。大月氏王已為胡所殺，立其夫人為王。既臣<em>（使動）</em>大夏而君<em>（做君主）</em>之，地肥饒，少寇，志安樂，又自以<mark>遠<em>（遙遠）</em><ruby>遠<rt>舊讀yuàn</ruby><em>（離開）</em>漢</mark>，殊無<em>（全沒有，殊，甚、極）</em>報胡之心。騫從月氏至大夏，竟不能得月氏要領<em>（問題的關鍵，這裡指明確的表示。要，今作“腰”）</em>。</p><p>留歲餘，還，並<em>（通“傍”，沿著）</em>南山，欲從羌中歸，復為匈奴所得。留歲餘，單于死，國內<em>（作狀語）</em>亂，騫與胡妻及堂邑父俱亡歸漢。拜騫太中大夫，堂邑父為奉使君。</p><p>騫為人彊力，寬大信人，蠻夷愛之。堂邑父胡人，善射，窮急射禽獸給<em>（供給）</em>食。初，騫行時百餘人，去十三歲，唯二人得還。</p><p>騫身<em>（親身）</em>所至者，大宛、大月氏、大夏、康居，而傳聞<em>（聽說）</em>其旁大國五六，具為天子言其地形所有，語皆在《西域傳》。</p><p>騫曰：「臣在大夏時，見<ruby>邛<rt>qióng</ruby>竹杖、蜀布<em>（麻布）</em>，問安得此，大夏國人曰：『吾賈人往市之身毒國。身毒國在大夏東南可<em>（大約）</em>數千里。其俗土著，與大夏同，同卑溼暑熱。其民乘象以戰。其國臨大水焉。』以騫度之，大夏去漢萬二千里，居西南。今身毒又居大夏東南數千里，有蜀物，此其<em>（身毒，一說為表推測的語氣詞）</em>去蜀不遠矣。今使大夏，從羌中，險，羌人惡之；少北，則為匈奴所得；從蜀，宜徑，又無寇。」天子既聞大宛及大夏、安息之屬皆大國，多奇物，土著，頗與中國同俗，而兵弱，貴漢財物；其北則大月氏、康居之屬，兵彊，可以賂遺設利朝也<em>（可用贈送財物、施之以利的辦法，讓他們來朝見）</em>。誠得而以義<em>（不用武力而施用恩誼使之歸附於漢）</em>屬之，則廣地萬里，重九譯<em>（經過多次輾轉的翻譯，重，重疊，多次）</em>，<mark>致<em>（招致，招引，使到來）</em></mark>殊俗，威德遍於四海。天子欣欣以騫言為然。乃令因<em>（由）</em>蜀犍為<em>（蜀地的犍為郡）</em>發間使，四道並出：出駹，出莋，出徙、邛，出僰，皆各行一二千里。其北方閉<em>（攔住）</em><ruby>氐<rt>dǐ</ruby>、莋，南方閉<ruby>巂<rt>xī</ruby>、昆明。昆明之屬無君長，善寇盜，輒殺略漢使，終莫得通。然聞其西可千餘里，有乘象國，名滇越，而蜀賈<mark>間出<em>（私自運出）</em></mark>物者或至焉，於是漢以<mark><em>（省略賓語“消息”）</em></mark>求大夏道始通滇國。初，漢欲通西南夷，費多，罷之。及騫言可以通大夏，乃復事西南夷。</p><p>騫以校尉從大將軍擊匈奴，知水草處，軍得以<em>（能夠因此，得，動詞性更強）</em>不乏，乃封騫為博望侯。是歲元朔六年也。後二年，騫為衛尉，與李廣俱出右北平擊匈奴。匈奴圍李將軍，軍失亡多，而騫後期當斬，贖為庶人。是歲驃騎將軍<em>（霍去病）</em>破匈奴西邊，殺數萬人，至祁連山。其秋，渾邪王率眾降漢，而金城、河西西並南山至鹽澤，空無匈奴。匈奴時有候<em>（斥候，偵察的人）</em>者到，而希矣。後二年，漢擊走單于於幕<em>（漠）</em>北。</p><p>天子數問騫大夏之屬。騫既失侯，因曰：「臣居匈奴中，聞烏孫王號昆莫。昆莫父難兜靡本與大月氏俱在祁連、焞煌間，小國也。大月氏攻殺難兜靡，奪其地，人民亡走匈奴。子昆莫新生，傅父布就<ruby>翖<rt>xī</ruby>侯抱亡置草中，為求食，還，見狼乳之，又烏銜肉翔其旁，以為神，遂持歸匈奴，單于愛養之。及壯，以其父民眾與昆莫，使將兵，數有功。時，月氏已為匈奴所破，西擊塞王。塞王南走遠徙，月氏居其地。昆莫既健，自請單于報父怨，遂西攻破大月氏。大月氏復西走，徙大夏地。昆莫略其眾，因留居，兵稍彊，會單于死，不肯復朝事匈奴。匈奴遣兵擊之，不勝，益以為神而遠之。今單于新困於漢，而昆莫地<em>（烏孫故地）</em>空。蠻夷戀故地，又貪漢物，誠以此時厚賂烏孫，招以東居故地，漢遣公主為夫人，結昆弟，其勢宜聽<em>（根據他們的形勢，應當聽從）</em>，則是斷匈奴右臂也。既連烏孫，自其西大夏之屬皆可招來而為外臣。」天子以為然，拜騫為中郎將，將三百人，馬各二匹，牛羊以萬數，<ruby>齎<rt>jī</ruby><em>（攜帶）</em>金幣帛<em>（禮品）</em>直<em>（通“值”）</em>數千鉅萬，多持節副使，道可，便遣之旁國。騫既至烏孫，致賜<em>（把漢武帝賞賜的東西交給烏孫王）</em>諭指<em>（把漢武帝的意旨告訴烏孫王。諭，告知。指，意圖，多寫作“旨”。“指、旨、恉”的關係？）</em>，未能得其決。語在西域傳。騫即分遣副使使大宛、康居、月氏、大夏。烏孫發譯道送騫，與烏孫使數十人，馬數十匹，報謝<em>（到漢朝中央政府來答謝。報，報聘，國與國之間交往表示回訪）</em>，因令窺<em>（私下探視）</em>漢，知其廣大。</p><p>騫還，拜為大行。歲餘，騫卒。後歲餘，其所遣副使通大夏之屬者皆頗<em>（？）</em>與其人俱來，於是西北國始通於漢矣。然騫鑿空<em>（凿开孔道，空，通“孔”）</em>，諸後使往者皆稱博望侯，以為質<em>（取信）</em>於外國，外國由是信之。其後，烏孫竟與漢結婚<em>（通婚）</em>。</p><h2 id='孫臏'>孫臏</h2><p>孫武既死，後百餘歲有孫臏。臏生阿鄄之閒，臏亦孫武之後世子孫也。孫臏嘗與龐涓俱學兵法。龐涓既事魏，得為惠王將軍，而自以為能不及孫臏，乃陰使召孫臏。臏至，龐涓恐其賢於己，疾之，則以法刑斷其兩足而黥之，欲隱勿見。齊使者如梁，孫臏以刑徒陰見，說齊使。齊使以為奇，竊載與之齊。齊將田忌善而客待之。</p><p>忌數與齊諸公子馳逐重射。孫子見其馬足不甚相遠，馬有上、中、下、輩。於是孫子謂田忌曰：「君弟重射，臣能令君勝。」田忌信然之，與王及諸公子逐射千金。及臨質，孫子曰：「今以君之下駟與彼上駟，取君上駟與彼中駟，取君中駟與彼下駟。」既馳三輩畢，而田忌一不勝而再勝，卒得王千金。於是忌進孫子於威王。威王問兵法，遂以為師。</p><p>其後魏伐趙，趙急，請救於齊。齊威王欲將孫臏，臏辭謝曰：「刑餘之人不可。」於是乃以田忌為將，而孫子為師，居輜車中，坐為計謀。田忌欲引兵之趙，孫子曰：「夫解雜亂紛糾者不控棬，救鬬者不搏撠，批亢擣虛，形格勢禁，則自為解耳。今梁趙相攻，輕兵銳卒必竭於外，老弱罷於內。君不若引兵疾走大梁，據其街路，衝其方虛，彼必釋趙而自救。是我一舉解趙之圍而收獘於魏也。」田忌從之，魏果去邯鄲，與齊戰於桂陵，大破梁軍。</p><p>後十三歲，魏與趙攻韓，韓告急於齊。齊使田忌將而往，直走大梁。魏將龐涓聞之，去韓而歸，齊軍既已過而西矣。孫子謂田忌曰：「彼三晉之兵素悍勇而輕齊，齊號為怯，善戰者因其勢而利導之。兵法，百里而趣利者蹶上將，五十里而趣利者軍半至。使齊軍入魏地為十萬灶，明日為五萬灶，又明日為三萬灶。」龐涓行三日，大喜，曰：「我固知齊軍怯，入吾地三日，士卒亡者過半矣。」乃棄其步軍，與其輕銳倍日并行逐之。孫子度其行，暮當至馬陵。馬陵道陜，而旁多阻隘，可伏兵，乃斫大樹白而書之曰「龐涓死于此樹之下」。於是令齊軍善射者萬弩，夾道而伏，期曰「暮見火舉而俱發」。龐涓果夜至斫木下，見白書，乃鉆火燭之。讀其書未畢，齊軍萬弩俱發，魏軍大亂相失。龐涓自知智窮兵敗，乃自剄，曰：「遂成豎子之名！」齊因乘勝盡破其軍，虜魏太子申以歸。孫臏以此名顯天下，世傳其兵法。</p></div></div>
+</body>
+</html>
