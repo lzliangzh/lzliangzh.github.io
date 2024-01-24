@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        intro {
+            padding: 1em;
+            border-left: 3px solid darkkhaki;
+            border-radius: 3px;
+            margin: 1em;
+            display: block;
+            background-color: blanchedalmond;
+            font-size: 12px;
+            font-family: 'Source Han Serif CN';
+            cursor: pointer;
+        }
+
+        intro::before {
+            content: '☞ 簡介';
+            font-weight: bold;
+            display: block;
+        }
+
+        .flexcontent {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="flexcontent" id="fc" onclick="toggleContent()">《關雎》簡介</div>
+
+    <script>
+        function toggleContent() {
+            var content = document.getElementById('fc');
+            if (content.style.display === "none") {
+                content.style.display = "block";
+            } else {
+                content.style.display = "none";
+            }
+        }
+        
+    </script> 
+</body>
+</html>

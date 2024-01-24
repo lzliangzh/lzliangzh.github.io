@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<style>
+
+body {
+    margin: 3em;
+    font-feature-settings: "halt";
+}
+
+h1 {
+    text-align: center;
+    /* position: sticky;
+    z-index: 99;
+    top: 1em; */
+    font-family: "ChillKai";
+    font-weight: 400;
+}
+
+h2 {
+    text-align: center;
+    font-size: 2em;
+    font-family: 'STFangSong';
+    font-weight: 400;
+}
+
+h3 {
+    letter-spacing: 4px;
+}
+
+div {
+    font-size: 20px;
+    font-family: "Source Han Serif CN", "ChillKai";
+}
+
+p {
+    text-indent: 0em;
+}
+
+rt {
+    text-align: center;
+    font-size: 10px;
+    font-family: "Source Han Serif CN", "ChillKai";
+    font-feature-settings:"halt";
+    max-width: 10em;
+    display: none;
+}
+
+rt::before {
+    content:'　\a';
+    display:flexbox;
+    white-space: pre;
+}
+
+
+comment {
+    border: 2px solid darkkhaki;
+    border-radius: 3px;
+    box-shadow: 0 0 5px darkkhaki;
+    margin: 1em;
+    display: block;
+    background-color: blanchedalmond;
+    font-size: 12px;
+    cursor: pointer;
+    color: darkkhaki;
+}
+
+summary {
+    border: 2px solid cornflowerblue;
+    border-radius: 3px;
+    box-shadow: 0 0 5px cornflowerblue;
+    margin: 1em;
+    display: block;
+    background-color: rgb(161, 231, 255);
+    font-size: 12px;
+    cursor: pointer;
+    color: cornflowerblue;
+}
+
+rtbutton {
+    border: 2px solid darkgray;
+    border-radius: 3px;
+    box-shadow: 0 0 5px darkgray;
+    margin: 1em;
+    display: inline-block;
+    background-color: lightgray;
+    font-size: 12px;
+    cursor: pointer;
+    color: darkgray;
+
+    position: sticky;
+    z-index: 99;
+    top: 1em;
+}
+
+rtbutton::before {
+    content: "注釋未打開";
+    font-family: 'Noto Sans S Chinese';
+    font-size: 12px;
+    font-weight:bold;
+    letter-spacing: 2px;
+    padding:0.5em;
+}
+
+rtbutton.active {
+    border: 2px solid darkred;
+    background-color: darkred;
+    color: #fff
+}
+
+rtbutton.active::before {
+    content: "注釋已打開";
+}
+
+.flextitle {
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    font-family: 'Noto Sans S Chinese';
+    font-size: 12px;
+    font-weight:bold;
+    letter-spacing: 2px;
+}
+
+
+
+
+.flextitle:hover { 
+    border-radius: 3px;
+    opacity: 50%;
+    content: '点击打开';
+    transition: 250ms;
+}
+
+.flexcontent {
+    padding: 1em;
+    font-size: 12px;
+    display: none;
+    background-color: azure;
+    color: black;
+}
+
+
+ruby {
+    color: darkred;
+    border-bottom: 1px dotted;
+}
+
+ruby::after {
+    display: inline-block;
+    content: " ";
+}
+</style>
+<body>
+    <rtbutton onclick="toggleNotes(this)"></rtbutton><h1>詩　　經</h1>
+    <div><h2>周南、召南</h2><p>「二南」是<u>周王室東遷前後</u>的作品。治《毛詩》的學者固執地以為是西周初年歌頌「文王之化」、「後妃之德」的詩篇，實為膠柱鼓瑟的說法。</p><p><strong>「二南」產生地</strong>：<u>南郡</u>（湖北省江陵縣）、<u>南陽</u>（河南省西南部、湖北省北部）之間（《韓詩序》）。有觀點認為「南」是詩體，應當並列；但周南、召南都是地名，地方樂調應屬「風」。</p></div>
+
+    <div><h3>關雎</h3><p><ruby>關關<rt class='note'>形容水鳥雌雄和鳴的擬聲詞</rt></ruby><ruby>雎鳩<rt class='note'>水鳥，情意專一</rt></ruby>，在河之<ruby>洲<rt class='note'>水中的陸地。俗字。說文作“州”</rt></ruby>。<ruby>窈窕<rt class='note'>美好貌，兼指內心美好。疊韻詞。《方言》：“秦晉之間，美心為窈，美狀為窕。”</rt></ruby>淑女，<ruby>君子<rt class='note'>貴族男子</rt></ruby>好<ruby>逑<rt class='note'>仇的假借字，配偶</rt></ruby>。</p></div>
+    <div><p><ruby>參差<rt class='note'>雙聲詞。「椮」為「參」所假借。《說文》「椮，木長貌」，《廣雅釋詁》「差，次也」。謂木不齊</rt></ruby>荇菜，<ruby>左右<rt class='note'>為採荇菜女子的雙手（注意古文字字形）</rt></ruby><ruby>流<rt class='note'>「摎」的假借字，摘取。《廣雅》「摎，捋（luō）也」。《魯詩》訓為「擇」，亦通</rt></ruby>之。窈窕淑女，<ruby>寤寐<rt class='note'>陳奐《詩毛詩傳疏》：「寤猶晤訓覺，寐猶昧訓寢。」日日夜夜</rt></ruby>求之。</p></div>
+    <div><p>求之不得，寤寐<ruby>思<rt class='note'>語氣詞，可用於句首（《大雅·文王》「思皇多士」）、句中、句尾（《周南·漢廣》「不可求思」）。</rt></ruby><ruby>服<rt class='note'>思念。一說「思服」為同義復詞，通</rt></ruby>。<ruby>悠哉<rt class='note'>（思念）深長貌</rt></ruby>悠哉，<ruby>輾轉反側<rt class='note'>翻來覆去不能安眠。《說文》無「輾」，當本作「展」。展轉與反側互訓，展轉為雙聲詞。</rt></ruby>。</p></div>
+    <div><p>參差荇菜，左右采之。窈窕淑女，<ruby>琴瑟<rt class='note'>古琴七弦，古瑟二十五弦。「錦瑟無端五十弦」五十弦或為斷弦意。一說古瑟五十弦，《史記·封禪書》載瑟裂則二十五弦。</rt></ruby><ruby>友<rt class='note'>親愛</rt></ruby>之。</p></div>
+    <div><p>參差荇菜，左右<ruby>芼<rt class='note'>擇取。是覒的假借字，《說文》「覒，擇也」</rt></ruby>之，窈窕淑女，<ruby>鍾鼓<rt class='note'>經典通用「鍾」，應作「鐘」。</rt></ruby><ruby>樂<rt class='note'>《說文》「樂，五聲八音總名，象形兼會意」《通訓定聲》：白→鼓，四幺→鼙（軍用小鼓），木→虡（掛鐘鼓的木架）。</rt></ruby>之。</p></div>
+    <summary><div class="flextitle" onclick="toggleContent(this)">總結</div><div class="flexcontent">貴族「君子」愛而不得的失戀情歌。</div></summary>
+    <div><comment><div class="flextitle" onclick="toggleContent(this)"> 押韻</div><div class="flexcontent"><p>幽部——鳩、洲、逑；流，求</p>之部——得（丁力反，入聲）、服（扶逼反，入聲）、側（音淄，入聲）；采（此止反）、友（音以）</p><p>宵部——芼、樂</p></div></comment>
+
+    <div><h3>葛覃</h3><summary><div class="flextitle" onclick="toggleContent(this)"> 總結</div><div class="flexcontent">一首描寫女子準備回家探望爹娘的詩篇。詩中採葛、製衣、洗澣、歸寧等描寫，反映了當時婦女生活的一個方面。<p><strong>結構特點與創作手法——</strong>本詩結構很有特點。本義歸寧，可首章偏從中谷景物寫起，是「文家用逆之至奇者也」（吳闓生《詩義會通》）。</p><p>第一章全章是「興」：葛覃一興，黃鳥一興。第二、三章是「賦」（朱熹「敷陳其事而直言之者」，李仲蒙「敘物以言情謂之賦」，即敘事寫景以抒情的創作方法，對楚辭、漢賦影響很大）。</p></div></summary><div><comment><div class="flextitle" onclick="toggleContent(this)"> 押韻</div><div class="flexcontent"><p>第一章：谷、木屬候部，萋、飛、喈（音飢）屬脂部。</p><p>第二章：谷——侯部（與上章遙韻），莫（音模入聲）、濩（音胡入聲）、綌（音虛入聲）、斁（音余入聲）——魚部。</p><p>第三章：歸、私、衣——脂部，否（方鄙反）、母（滿以反）——之部</p></div></comment>
+
+    <div><p><ruby>葛<rt class='note'>葛藤，皮製成纖維可以織布，現在叫做夏布。</rt></ruby>之<ruby>覃<rt class='note'>延長。這裡是形容詞</rt></ruby>兮，<ruby>施<rt class='note'>yì，是「延」的假借字，蔓延</rt></ruby>于<ruby>中谷<rt class='note'>即谷中。倒句以成義。《詩經》中凡「中」字在上者皆同</rt></ruby>；<ruby>維<rt class='note'>句首語氣詞，含有「其」義</rt></ruby>葉<ruby>萋萋<rt class='note'>茂盛貌。馬瑞辰《通釋》：「詩以葛之生此而延彼，興女之自母家而適夫家。」</rt></ruby>。<ruby>黃鳥<rt class='note'>黃雀</rt></ruby><ruby>于<rt class='note'>動詞詞頭/助詞，有時含有「往」的意思</rt></ruby>飛，集<ruby>于<rt class='note'>介詞</rt></ruby>灌木，其鳴<ruby>喈喈<rt class='note'>形容黃鳥和鳴的擬聲詞</rt></ruby>。</p></div>
+    <div><p>葛之覃兮，施于中谷；維葉<ruby>莫莫<rt class='note'>本義形容植物茂盛貌，但此章「莫莫」與上章「萋萋」對用，且下面說「是刈是濩」，因此此處的「莫莫」還含有「成熟」之義</rt></ruby>。是<ruby>刈<rt class='note'>本義是小鐮刀，引申為收割</rt></ruby>是<ruby>濩<rt class='note'>huò，鑊的假借字。本義是煮物的器皿，引申為煮。將葛煮後取其纖維，用來織布</rt></ruby>，為<ruby>絺<rt class='note'>chī，細夏布</rt></ruby>為<ruby>綌<rt class='note'>xì，粗夏布</rt></ruby>；<ruby>服<rt class='note'>穿</rt></ruby>之無<ruby>斁<rt class='note'>yì，厭棄。三家《詩》作「射」，是假借字。「蓋親執其勞，而知其成之不易，所以心誠愛之，雖極垢弊而不忍厭棄也。」（朱熹《詩集傳》）</rt></ruby>。</p></div>
+    <div><p><ruby>言<rt class='note'>發語詞，無義，下同</rt></ruby>告<ruby>師氏<rt class='note'>保姆。《儀禮·昏禮》鄭玄注：「姆，婦人五十無子，【出】而不復嫁，能以婦道教人者」</rt></ruby>，言告<ruby>言歸<rt class='note'>歸寧，回娘家。「言、曰、云」均可作語氣詞</rt></ruby>。<ruby>薄<rt class='note'>語氣詞，有時含有勉勵義</rt></ruby><ruby>汙<rt class='note'>揉搓著洗</rt></ruby>我<ruby>私<rt class='note'>內衣</rt></ruby>，薄<ruby>澣<rt class='note'>huǎn，洗衣</rt></ruby>我<ruby>衣<rt class='note'>外衣，罩衫。姚際恆《詩經通論》「衣，蒙服」</rt></ruby>。<ruby>害<rt class='note'>是「曷」的假借字，何，哪些</rt></ruby>澣害<ruby>否<rt class='note'>不要</rt></ruby>，<ruby>歸寧父母。<rt class='note'>古代已婚女子回娘家省親叫歸寧。《左·莊27》杜預注：「寧，問父母安否。」這句是全詩的主旨</rt></ruby></p></div>
+
+    <div><h3>卷耳</h3><p><ruby>采采<rt class='note'>採了又採</rt></ruby><ruby>卷耳<rt class='note'>蒼耳</rt></ruby>，不盈<ruby>頃筐<rt class='note'>淺筐。詩人一直採卷耳卻不滿盈筐，可見心事重重、對遠行丈夫思念之深。《毛傳》「憂者之興」（實際上是兼賦的興）</rt></ruby>。<ruby>嗟<rt class='note'>語氣詞，不是歎詞。「我懷人」點明主題</rt></ruby>我懷人，<ruby>寘<rt class='note'>同置，放下</rt></ruby>彼<ruby>周行<rt class='note'>大道。「心適念其君子，故不能復采，而置大道之旁也」（朱熹）</rt></ruby>。</p></div>
+    <div></div></comment><p><ruby>陟<rt class='note'>登</rt></ruby>彼<ruby>崔巍<rt class='note'>疊韻詞。嚴石高低不平的土山</rt></ruby>，<ruby>我<rt class='note'>詩人想象中的丈夫自稱，下同</rt></ruby>馬<ruby>虺隤<rt class='note'>huī tuí，疊韻詞。腿軟的病，是「瘣頹」假借字。</rt></ruby>。我<ruby>姑<rt class='note'>三家《詩》作「夃」，《說文》引。《定聲》：從乃從刃皆舒遲留難之意，《說文》引本句「姑」作「夃」是本字本義，但經傳皆以「姑」為之。</rt></ruby>酌彼<ruby>金罍<rt class='note'>leí，金指青銅，青銅酒器，上刻雲雷花紋。孔《疏》引《韓詩》：「金罍，大夫器也。天子以玉，諸侯大夫皆以金，士以梓。」「金罍」與下章「兕觥」（音四公）都是以酒杯借代酒。</rt></ruby>，維以不<ruby>永<rt class='note'>水長也。義「長」</rt></ruby>懷。</p></div>
+    <div><p>陟彼高岡，我馬<ruby>玄黃<rt class='note'>馬病。玄，黑。雙聲詞</rt></ruby>。我姑酌彼<ruby>兕觥<rt class='note'>犀牛角製的大酒杯，一說乃刻木為之，形似兕角</rt></ruby>，維以不永<ruby>傷<rt class='note'>憂思。是「慯」假借字。</rt></ruby>。</p></div>
+    <div><p>陟彼<ruby>砠<rt class='note'>音居，多土的石山</rt></ruby>矣，我馬<ruby>瘏<rt class='note'>音涂，病。《爾雅·釋詁》「痡、瘏、虺隤、玄黃，病也」</rt></ruby>矣，我<ruby>僕<rt class='note'>駕車者</rt></ruby><ruby>痡<rt class='note'>pū，過度疲勞</rt></ruby>矣，<ruby>云<rt class='note'>語氣詞</rt></ruby>何<ruby>吁<rt class='note'>從版本上看作「盱」（音須），「盱」是「𢖳」的假借字，本字按《說文》義「憂也」 </rt></ruby>矣！</p></div>
+    <div><summary><div class="flextitle" onclick="toggleContent(this)"> 總結</div><div class="flexcontent"><p>一位婦女想念遠行丈夫的詩，從其用器可見得夫婦都是貴族。</p><p><strong>內容上</strong>——著重表現了丈夫（被思念對方）的勞苦，從而表現「我懷人」之深。「身在閨門而思在道途……若後世詩詞所謂『計程應說到梁州』、『計程應說到常山』之意耳」。</p><p><strong>「想象」技法的使用</strong>——想象不僅能擺脫時空的限制，還有寄托和激發感情的作用，「寂然凝慮，思接千載；悄焉動容，視通萬里」（劉勰《文心雕龍》）。詩人的感情通過「想象」曲折傳出，想象越豐富、細緻，思情越見深長。杜甫《月夜》、李白《寄東魯二稚子》、柳永《八聲甘州》、周邦彥《風流子》等，皆脫胎於此。</div></summary>
+
+    <div><h3>樛木</h3><summary><div class="flextitle" onclick="toggleContent(this)"> 總結</div><div class="flexcontent"><p>一首祝賀新郎的詩。</p><p>《昭明文選》收潘安仁《寡婦賦》「伊女子之有待兮，爰奉嬪于高族。承慶雲之光覆兮，荷君子之惠渥。願葛藟之蔓延兮，託微莖于樛木。」李善注：「言二草之託樛木，喻婦人之託夫家也。」可見，本詩首二句「南有樛木，葛藟纍之」是「興」的手法。</p></div></summary>
+    <div><p><ruby>南<rt class='note'>南土，南郡、南陽之間</rt></ruby>有<ruby>樛木<rt class='note'>「樛」音糾，彎曲的樹枝。</rt></ruby>，<ruby>葛藟<rt class='note'>一說野葡萄類蔓生植物，形似葛藤；一說葛即葛藤，藟為另一種蔓生植物，亦通</rt></ruby><ruby>纍<rt class='note'>本義繩索，引申為攀援</rt></ruby>之。樂<ruby>只<rt class='note'>語氣詞，可位於句中或句末（《鄘·柏舟》「母也天只，不諒人只」）</rt></ruby>君子，<ruby>福履<rt class='note'>《毛傳》「履，祿也」履的本義是鞋子，「祿」是引申義</rt></ruby><ruby>綏<rt class='note'>安定。綏的本義是車中繩索。《論語》「升車必正立執綏」周生烈注：「正立執綏，所以為安」，故引申為安之稱</rt></ruby>之。</p></div>
+    <div><p>南有樛木，葛藟<ruby>荒<rt class='note'>掩蓋</rt></ruby>之。樂只君子，福履<ruby>將<rt class='note'>扶助。是𢪇的假借字。《說文》「𢪇，扶也」</rt></ruby>之。</p></div>
+    <div><p>南有樛木，葛藟縈之。樂只君子，福履<ruby>成<rt class='note'>《爾雅》中「成」、「就」二字互訓</rt></ruby>之。</p>
+
+    <div><h3>螽斯</h3><summary><div class="flextitle" onclick="toggleContent(this)"> 總結</div><div class="flexcontent"><p>一首祝人多子多孫的詩。</p><p>「比」的運用——「比者，以彼物比此物也。」（朱熹）「比」就是比喻。蝗蟲多子比喻人的多子，表示對多子者的祝賀。</p><p>形式特點——這首詩和《樛木》在形式上十分相似。《國風》中的詩篇大多是叠咏體，語句反覆、排比。這兩首詩均只換六個字，但就在用字的變換中，顯示出前後之序、深淺之別，讀來非但不覺其煩，反覺有無窮餘味留於齒尖，有一咏三歎之妙。</p></div></summary></div>
+    <div><p><ruby>螽斯<rt class='note'>蝗蟲類，多子</rt></ruby>羽，<ruby>詵詵<rt class='note'>眾多貌。詵音身，是「多辛」（見三家《詩》版本）的假借字</rt></ruby>兮。<ruby>宜<rt class='note'>多。馬瑞辰《通釋》「古文宜作𡨆。竊謂宜從多聲，即有多義」</rt></ruby><ruby>爾<rt class='note'>指被祝賀的人。有人以為指螽斯，恐非詩意。</rt></ruby>子孫，<ruby>振振<rt class='note'>振奮有為貌（王先謙），一說仁厚、信厚（《毛傳》），非詩意</rt></ruby>兮。</p></div>
+    <div><p>螽斯羽，<ruby>薨薨<rt class='note'>昆蟲群飛的聲音。薨是「羽厷」的假借字</rt></ruby>兮。宜爾子孫，<ruby>繩繩<rt class='note'>謹慎貌。按：「繩」、「慎」雙聲通用</rt></ruby>兮。</p></div>
+    <div>螽斯羽，<ruby>揖揖<rt class='note'>群聚貌。魯、韓《詩》作集集</rt></ruby>兮。宜爾子孫，<ruby>蟄蟄<rt class='note'>安靜貌</rt></ruby>兮。</p></div>
+
+    
+    <script>
+        function toggleContent(element) {
+
+            var content = element.nextElementSibling;
+            if (content.style.display === "block") {
+                content.style.display = "none";
+            } else {
+                content.style.display = "block";
+            }
+            const beforeEl = window.getComputedStyle(element, "before");
+            beforeEl.setProperty("transform", "rotate(90deg)");
+        }
+
+        function toggleNotes(element) {
+
+            if (element.className === '') {
+                element.className = ("active");
+            } else {
+                element.className = ("");
+            }
+
+            var notes = document.getElementsByClassName('note');
+            for (note of notes) {
+                if (note.style.display === 'block') {
+                    note.style.display = 'none';
+                } else {
+                    note.style.display = 'block';
+                }
+            }
+        }
+    </script> 
+</body>
