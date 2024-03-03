@@ -1,0 +1,55 @@
+\documentclass[12pt,letterpaper]{article}
+\usepackage[T5,T1]{fontenc}\usepackage{mlmodern}
+\usepackage{amsmath}
+\usepackage[polish,vietnamese,french,main=english]{babel}
+\usepackage[expansion=false,protrusion]{microtype}
+\title{The MLModern fonts}
+\author{Daniel Benjamin Miller}
+\date{Version 1.2\\January 18, 2021}
+\usepackage{titlesec}\titleformat*{\section}{\bfseries}\titleformat*{\subsection}{\bfseries}
+\usepackage{hologo}
+\begin{document}
+\maketitle
+MLModern is a text and math font family with \hologo{(La)TeX} support, based on the design of Donald Knuth's Computer Modern and the Latin Modern project. Some find the default vector version of Computer Modern used by default in most \hologo{TeX} distributions to be spindly, sometimes making it hard to read on screen as well as on paper; this is in contrast with the older bitmap versions of Computer Modern. MLModern provides a sturdy rendition of the Computer Modern design.
+
+MLModern is based on Latin Modern, a version of Computer Modern with enhanced multilingual support. For basic use, add \texttt{\textbackslash usepackage\{mlmodern\}} to your preamble, or (for non-\hologo{LaTeX} use) replace references to \texttt{lm*} fonts with those to \texttt{mlm*} ones. You may also replace the Computer Modern and Latin Modern fonts (as well as the Vn\TeX\ fonts, etc.) without modifying a \hologo{TeX} file (or changing metrics) by using the map file \texttt{mlm-substitute.map}.
+
+You must have the Latin Modern fonts installed, since this package expects their encoding files to be present. MLModern is available in unhinted Type 1 format, and should be good for both printing and on-screen reading. OpenType support is planned for a future version.
+
+\section*{Licensing information}
+
+The MLModern fonts are
+\begin{quote}
+Copyright © 2003--2009 by B.\ Jackowski and J.\ M.\ Nowacki.\\
+Copyright © 2021 by Daniel Benjamin Miller.
+\end{quote}
+and based on the original ``Computer Modern'' family by Donald Knuth. A script by Chuanren Wu was used in the creation of the original MLModern font set before later adjustments. MLModern is made available under the \hologo{LaTeX} Project Public License, version 1.3c or later; the full terms are in \texttt{LICENSE}. This work has the \textsc{lppl} maintenance status ``maintained.'' The current maintainer of this work is Daniel Benjamin Miller.
+
+\section*{Sample}
+
+\begin{otherlanguage}{french}
+Frères humains, qui après nous vivez,\\
+N'ayez les cueurs contre nous endurciz,\\
+Car, si pitié de nous pouvres avez,\\
+Dieu en aura plustost de vous merciz.\\
+Vous nous voyez cy attachez cinq, six:
+
+\noindent Quant de la chair, que trop avons nourrie,\\
+Elle est pieça devorée et pourrie,\\
+Et nous, les os, devenons cendre et pouldre.\\
+De nostre mal personne ne s'en rie,\\
+Mais priez Dieu que tous nous vueille absouldre!\\
+
+\noindent \textsc{François Villon}, \frquote{Ballade des pendus}\\
+
+\end{otherlanguage}
+
+\begin{otherlanguage}{vietnamese}
+Tiếng Việt là ngôn ngữ của người Việt và là ngôn ngữ chính thức tại Việt Nam. Đây là tiếng mẹ đẻ của khoảng 85\% dân cư Việt Nam cùng với hơn 4 triệu Việt kiều.\end{otherlanguage}\ (\textsc{Wikipedia})\footnote{Full optical size support, as in Knuth's Computer Modern. And now here's some Polish: \foreignlanguage{polish}{Język polski, polszczyzna – język z grupy zachodniosłowiańskiej (do której należą również czeski, kaszubski słowacki i języki łużyckie), stanowiącej część rodziny indoeuropejskiej. Funkcjonuje jako język urzędowy Polski oraz należy do oficjalnych języków Unii Europejskiej.} (\textsc{Wikipedia})}
+
+\begin{align}
+E_0 &= mc^2 \\
+E &= \frac{mc^2}{\sqrt{1-\frac{v^2}{c^2}}}
+\end{align}
+
+\end{document}
