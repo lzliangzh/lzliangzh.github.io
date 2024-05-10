@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>Android Termux 环境下 ubuntu 安装、配置与用法 - 1ntersection</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="1ntersection"><meta name="msapplication-TileImage" content="/img/favicon.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="1ntersection"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="倒腾札记: Android Termux 环境下 ubuntu 安装、配置与用法 想要把手机变成小主机，毕竟安卓也是基于 Linux 的，无意间发现安卓手机上可以用 Android Termux 弄成衣蛾"><meta property="og:type" content="blog"><meta property="og:title" content="Android Termux 环境下 ubuntu 安装、配置与用法"><meta property="og:url" content="http://lzliangzh.github.com/2024/01/24/ubuntu-in-termux/"><meta property="og:site_name" content="1ntersection"><meta property="og:description" content="倒腾札记: Android Termux 环境下 ubuntu 安装、配置与用法 想要把手机变成小主机，毕竟安卓也是基于 Linux 的，无意间发现安卓手机上可以用 Android Termux 弄成衣蛾"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="http://lzliangzh.github.com/img/og_image.png"><meta property="article:published_time" content="2024-01-23T16:00:00.000Z"><meta property="article:modified_time" content="2024-05-10T10:08:11.468Z"><meta property="article:author" content="o0o0o0o"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="http://lzliangzh.github.com/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://lzliangzh.github.com/2024/01/24/ubuntu-in-termux/"},"headline":"1ntersection","image":["http://lzliangzh.github.com/img/og_image.png"],"datePublished":"2024-01-23T16:00:00.000Z","dateModified":"2024-05-10T10:08:11.468Z","author":{"@type":"Person","name":"o0o0o0o"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject"}},"description":"倒腾札记: Android Termux 环境下 ubuntu 安装、配置与用法 想要把手机变成小主机，毕竟安卓也是基于 Linux 的，无意间发现安卓手机上可以用 Android Termux 弄成衣蛾"}</script><link rel="canonical" href="http://lzliangzh.github.com/2024/01/24/ubuntu-in-termux/"><link rel="icon" href="/img/favicon.svg"><meta name="referrer" content="no-referrer-when-downgrade"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/font-awesome/5.12.0/css/all.min.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro|Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Microsoft YaHei:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&amp;amp;subset=latin,latin-ext|Inconsolata|Itim|Lobster.css"><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="/js/globalUtils.js"></script><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--><meta name="generator" content="Hexo 5.4.2"></head><body class="is-3-column has-navbar-fixed-top"><nav class="navbar navbar-main is-fixed-top"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/favicon.svg" alt="1ntersection" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home/主页</a><a class="navbar-item" href="/archives">Timeline/时间线</a><a class="navbar-item" href="/categories">Categories/分类</a><a class="navbar-item" href="/tags">Tags/标签</a><a class="navbar-item" href="/about">About/关于</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a><a class="navbar-item" id="night-nav" title="Night Mode" href="javascript:;"><i class="fas fa-moon" id="night-icon"></i></a></div></div></div></nav><script type="text/javascript" src="/js/theme-setting.js"></script><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-9-widescreen"><!--!--><div class="card"><article class="card-content article" role="article"><div class="article-meta size-small is-uppercase level is-mobile"><div class="level-left"><i class="far fa-calendar-plus"> </i>2024-01-24  <a class="commentCountImg" href="/2024/01/24/ubuntu-in-termux/#comment-container"><span class="display-none-class">/2024/01/24/ubuntu-in-termux/</span><i class="far fa-comment-dots"></i> <span class="commentCount" id="65bd8b9449ec477c1b2349932a2947cd">99+</span>  </a><span class="level-item"><i class="far fa-clock"> </i>15 分钟  <i class="fas fa-pencil-alt"> </i>2.2 k</span><span class="level-item" id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv">0</span>次访问</span></div></div><h1 class="title is-3 is-size-4-mobile">Android Termux 环境下 ubuntu 安装、配置与用法</h1><div class="content"><p>倒腾札记: Android Termux 环境下 ubuntu 安装、配置与用法</p>
+<p>想要把手机变成小主机，毕竟安卓也是基于 Linux 的，无意间发现安卓手机上可以用 Android Termux 弄成衣蛾</p>
+<span id="more"></span>
+
+<h2 id="ubuntu-安装"><a href="#ubuntu-安装" class="headerlink" title="ubuntu 安装"></a>ubuntu 安装</h2><ol>
+<li>安装 F-droid 开源商店</li>
+<li>从 F-droid 中下载 Termux 和 AnLinux</li>
+<li>按照 AnLinux 提示安装 ubuntu</li>
+<li>安装 KDE 桌面环境（Xfce4 似乎会出错？）</li>
+</ol>
+<h2 id="ubuntu-配置与用法"><a href="#ubuntu-配置与用法" class="headerlink" title="ubuntu 配置与用法"></a>ubuntu 配置与用法</h2><ol>
+<li>建议新建管理员账户并使用之，尽量不使用 root 账户。root 账户也要记得修改密码并记住。</li>
+<li><strong>安装基本软件</strong>：Chromium, WPS Office, VSCode, Sougoupinyin。都要挑选 arm64 版本。 WPS Office, VSCode 安装顺利。<ol>
+<li><code>sudo apt-get install &lt;package_name&gt;</code> 安装源里的软件包，<code>sudo dpkg -i</code> 安装本地下载的 deb 包， <code>aptitude</code> 强大的软件包管理器</li>
+<li><code>sudo apt-get remove/autoremove &lt;package_name&gt;</code> 删除</li>
+<li><code>sudo apt-get -f install</code> 或 <code>sudo apt --fix-broken install</code> 自动化解决依赖关系问题</li>
+<li><code>wget/curl/git clone</code> 下载网络上的文件</li>
+</ol>
+</li>
+<li><strong>踩坑：</strong><ol>
+<li>由于 anlinux 安装的 ubuntu 不知为何 snap 一直无法安装，而像 Firefox, Chromium 等浏览器等类应用，如果只通过命令行安装，就需要使用 snap，因此要换种思路，下载 .deb 包并使用 deb 包管理器 <code>dpkg -i</code> 安装。</li>
+<li>此外，发现对于 Ubuntu 22.04 (maybe not LTS) 及其所配置的源，Firefox &amp; Chromium 最新版的 .deb 包安装过程中均会出现依赖关系问题（部分软件包版本较老）。尝试使用 <code>sudo apt-get -f install</code> 解决，发现电脑要求删除；尝试使用 <code>sudo apt --fix-broken install</code> 无果；尝试使用 <code>sudo apt-get update</code> 却无法自动升级（应该是源里的包最新就到这个版本）；换 Tsinghua 源、UTSC 源均无果。</li>
+<li>无奈只能寻找老版本软件包。安装成功了。</li>
+<li>&#x3D;&#x3D;<strong>总结</strong>：电脑要求删除就别硬钢了！说明依赖关系电脑自动化程序解决不了了。尝试换低版本的 deb 包&#x3D;&#x3D;</li>
+<li><strong>注意</strong>：dpkg 后加 –ignore-depends 可以忽略依赖【慎用】</li>
+</ol>
+</li>
+<li>配置基于 fctix 的 搜狗输入法【尚未完成】。</li>
+</ol>
+<h2 id="Termux-Linux-基础命令"><a href="#Termux-Linux-基础命令" class="headerlink" title="Termux Linux 基础命令"></a>Termux Linux 基础命令</h2><h3 id="Termux-软件包管理"><a href="#Termux-软件包管理" class="headerlink" title="Termux 软件包管理"></a>Termux 软件包管理</h3><p>除了<code>apt</code>命令，Termux 还提供<code>pkg</code>命令进行软件包管理。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装软件包</span></span><br><span class="line">$ pkg install [package name]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 卸载软件包</span></span><br><span class="line">$ pkg uninstall [package name]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 列出所有软件包</span></span><br><span class="line">$ pkg list-all</span><br></pre></td></tr></table></figure>
+
+<p>其实，<code>pkg</code>的<a target="_blank" rel="noopener" href="https://github.com/termux/termux-packages/issues/2151#issuecomment-486184252">底层</a>就是<code>apt</code>，只是运行前会执行一次<code>apt update</code>，保证安装的是最新版本。所以，<code>apt install sl</code>基本等同于<code>pkg install sl</code>。</p>
+<p>Termux 支持的软件包清单，可以到<a target="_blank" rel="noopener" href="https://github.com/termux/termux-packages/tree/master/packages">这里</a>查看。</p>
+<h3 id="Termux-Linux-基础命令-Ed-1"><a href="#Termux-Linux-基础命令-Ed-1" class="headerlink" title="Termux Linux 基础命令 (Ed. 1)"></a>Termux Linux 基础命令 (Ed. 1)</h3><p>cd：(切换)<br>vim:(创建文件）   vi：编辑文件<br>bc：（计算器）quit：退出计算器<br>mkdir：（创建目录）   mkdir -p：递归建立目录<br>rmdir：（删除目录）<br>arch：（显示处理器X86）<br>hostname：（显示系统名称）<br>who：（显示目前登陆用户的信息）<br>cat：（查看文件）  more：（查看全部内容）<br>ls：（查看当前目录或文件）<br>pwd：（显示当前位置）<br>date：（显示当前日期和时间）<br>logout：（注销）<br>reboot；（重启）   init 6 :(重启）<br>inito：（关机）<br>rm:(删除） rm -rf：（删除任何文件）<br>echo：（回显内容）<br>touch：（创建文件）   touch  。 。 。：（创建在同意目录下多个文件）<br>wc -l：（查看文件数量或文件行数）<br>tail：（查看文件倒数十列）<br>tac:(文件倒序）<br>head：（查看文件前十行）  head -。：（加-几就显示几行）<br>grep：（过滤）  参考：cat 123 | grep 我在家<br>passwd：（更改用户密码)  passwd root:(指定更改用户密码）<br>df：（查看磁盘使用情况）<br>top：（查看内存，CPU性能）<br>Netstat：（显示各种网络相关信息）  （光驱）（目录）<br>mount：（挂载本地文件或磁盘） 参考：mount&#x2F;dev&#x2F;sr0 &#x2F;opt<br>Umount：（删除挂载）<br>free：（查看内存使用情况）  （文件名）（目录名）<br>mv：（移动文件或目录）  参考：mv 123 nihao   （ 参数）    （   文 件 名    )<br>find:(查找）   参考：find 路径 -name ifcfg-eth0<br>su:(切换用户）<br>EXIT:(退出登录）<br>userdel：（删除用户） 参考：userdel 123<br>graupadd：（创建组名）<br>groupdel：（删除组）<br>iostat：（查看磁盘状态）（导出）（文件名）（安装包）<br>sz：（导出文件）   参考：sz 123 lrzsz<br>yum install：（安装软件包）<br>tar xvf 文件名·tar·gz ：（解压） nginx：（服务安装包）<br>Unzip：（解压以zip结尾的文件）<br>ps -Aux：（查看当前运行的进程）<br>wget：（下载）wget 下载东西的链接<br>du：（查看文件或目录大小）<br>kill：（杀掉） 参考：kill 1231<br>clear：（清屏）（月）（年）<br>cal：（显示日历）    参考：cal 4 2016<br>cp：（复制）    （属性）   ( 文    件   名 ）<br>chmod：（修改文件权限）  参考： chmod 357 123.txt  （文件名）<br>chwon：（修改文件属主属组）  参考：chown 123：321  123<br> （属主）（属组） </p>
+<h3 id="Linux中一些基础命令-Ed-2"><a href="#Linux中一些基础命令-Ed-2" class="headerlink" title="Linux中一些基础命令 (Ed. 2)"></a>Linux中一些基础命令 (Ed. 2)</h3><p>(1) pwd：显示当前所在位置的绝对路径</p>
+<p>(2) cd+路径：切换当前工作位置</p>
+<p>(3) cd . ：退回到当前位置</p>
+<p>(4) cd .. ：退回到上一层</p>
+<p>(5) ls：默认显示当前位置当前目录下的内容</p>
+<p>(6) clear ：清屏，相当于翻页</p>
+<p>(7) cd ~ ：直接进入到当前用户的家目录</p>
+<p>(8) cd - ：切换到上一次所在位置，在两个位置间来回切换</p>
+<p>(9) mkdir + 文件名：创建一个目录（文件夹）</p>
+<p>(10) touch + 文件名：创建一个普通文件</p>
+<p>(11) man ：查看帮助手册 （1）代表命令（2）代表系统调用（3）代表库函数</p>
+<pre><code>例：man printf ：查询命令printf
+  man 3 printf ：查询库函数printf
+</code></pre>
+<p>(12) rm：删除文件（删除目录文件用 rm -r）</p>
+<pre><code>  rmdir 目录名：删除空目录
+  rm -r 目录名 ：删除非空目录
+</code></pre>
+<p>(13) cp：拷贝文件</p>
+<pre><code>拷贝普通文件： cp 源文件的路径+文件名 目的路径
+拷贝目录文件： cp -r 源目录文件路径+目录名 目的路径
+拷贝+重命名：  cp 源文件路径+文件名 目的文件+文件名
+</code></pre>
+<p>思考：cp -r 目录文件 tmp1 执行两次，两次结果为何不同？</p>
+<p>代码示例：</p>
+<p>第一次执行 tmp1目录文件不存在，所以是拷贝dir123文件并重命名为tmp1；第二次执行已经存在tmp1文件，将tmp1当成路径，将dir123拷贝到tmp1目录下</p>
+<p>(14) mv：剪切文件</p>
+<pre><code>移动普通文件：mv 源文件路径+文件名 目的路径
+移动目录文件：与移动普通文件一样，不需要加-r
+剪切并重命名： mv 源文件路径+文件名 目的路径+新文件名
+重命名：mv 源文件路径+文件名 源文件路径+新文件名
+</code></pre>
+<p>(15) find：查找</p>
+<pre><code>find 搜索路径 -name 文件名（按文件名搜索）
+find 搜索路径 -cmin -n(搜索过去几分钟内修改的文件)
+find 搜索路径 -ctime -n（搜索过去几天内修改的文件）
+</code></pre>
+<p>(16) grep：在文件中过滤出包含制定字符串的行</p>
+<pre><code>grep 字符串 文件名
+</code></pre>
+<p>(17) | ：管道命令</p>
+<pre><code>将前一个命令的输出结果作为后一个命令的输入，一般与过滤结合使用。例：ls | grep test
+</code></pre>
+<p>ls \bin | grep sh</p>
+<p>(18) wc :统计文件中单词的个数（-w），字符的个数（-c），行数（-l）</p>
+<pre><code>    wc -w 文件名 wc -c 文件名  wc -l 文件名
+</code></pre>
+<p>(19) su :切换用户</p>
+<pre><code>  sudo su ：切换为管理员   退出：exit
+  su 用户名：切换为其他用户  退出：exit
+</code></pre>
+<p>(20)关机与重启</p>
+<pre><code>  shut down -h now ：立刻关机
+  halt：关机  init 0 ：关机
+  shut down -r now ：立即重启
+  reboot：重启    init 6 ：重启
+</code></pre>
+<p>(21) 查看系统运行级别</p>
+<pre><code>  0:关机  1:单用户模式 2:多用户无网络服务  3:完全的多用户 文本界面  4.未定义或自定义  5.图形化界面  6.重启
+</code></pre>
+<p>(22) 其他命令及小知识点</p>
+<pre><code> 1.tab补全,按上下键查阅执行过的命令
+  2.ctrl - 调小窗口  ctrl +shift+ + 调大窗口
+  3.Ctrl+Alt: 释放鼠标
+  4.history: 查看终端的所有的历史命令
+</code></pre>
+</div><div class="article-licensing box"><div class="licensing-title"><p>Android Termux 环境下 ubuntu 安装、配置与用法</p><p><a href="http://lzliangzh.github.com/2024/01/24/ubuntu-in-termux/">http://lzliangzh.github.com/2024/01/24/ubuntu-in-termux/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><a href="http://lzliangzh.github.com"><p>o0o0o0o</p></a></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2024-01-24</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2024-05-10</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icon" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a><a class="icon" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a><a class="icon" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="recommend-area"><div class="recommend-post"><span class="is-size-6 has-text-grey has-mr-7"># 相关文章</span><br><span>  1.<a class="is-size-6" href="/2024/03/16/terminal-output-HZK16/" target="_blank">终端输出 HZK16(F) 点阵字</a><br></span><span>  2.<a class="is-size-6" href="/2024/03/12/Retro%20Journey/" target="_blank">Retro Journey</a><br></span><span>  3.<a class="is-size-6" href="/2024/03/02/%E8%BF%91%E6%9C%9F%E6%8A%98%E8%85%BE%EF%BC%9A%E7%94%A8%E9%A6%99%E6%A9%99%E6%B4%BE%E6%90%AD%E5%BB%BA%E7%AE%80%E6%98%93%E7%BD%91%E7%AB%99%E6%9C%8D%E5%8A%A1%E5%99%A8/" target="_blank">在香橙派上简易建站并远程访问 (Mkdocs based)</a><br></span><span>  4.<a class="is-size-6" href="/2024/02/02/easyuse-terminal/" target="_blank">Easy-use Terminal</a><br></span><span>  5.<a class="is-size-6" href="/2024/01/23/personal-git-repo/" target="_blank">个人 Git 仓库使用设置</a><br></span></div></div><!--!--></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3><div class="buttons is-centered"><a class="button donate" data-type="alipay"><span class="icon is-small"><i class="fab fa-alipay"></i></span><span>支付宝</span><span class="qrcode"><img src="/" alt="支付宝"></span></a><a class="button donate" data-type="wechat"><span class="icon is-small"><i class="fab fa-weixin"></i></span><span>微信</span><span class="qrcode"><img src="/" alt="微信"></span></a></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/2024/02/02/easyuse-terminal/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">Easy-use Terminal</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2024/01/23/personal-git-repo/"><span class="level-item">个人 Git 仓库使用设置</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><!--!--><div class="card"><div class="card-content"><div class="title is-5">评论</div><div id="disqus_thread"><noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div><script>var disqus_config = function () {
+            this.page.url = 'http://lzliangzh.github.com/2024/01/24/ubuntu-in-termux/';
+            this.page.identifier = '2024/01/24/ubuntu-in-termux/';
+        };
+        (function() {
+            var d = document, s = d.createElement('script');  
+            s.src = '//' + 'DISCUS' + '.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();</script></div></div></div><div class="column column-left is-4-tablet is-4-desktop is-3-widescreen  order-1 is-sticky"><!--!--><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar is-rounded" src="/./avatar.jpeg" alt="o0o0o0o"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">o0o0o0o</p><p class="is-size-6 is-block">北京大学</p><p class="is-size-6 is-flex justify-content-center"><span>Beijing, China &amp;&amp; Xiamen, Fujian, China</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">文章</p><a href="/archives"><p class="title">12</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">分类</p><a href="/categories"><p class="title">3</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">标签</p><a href="/tags"><p class="title">3</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="/about" target="_blank" rel="noopener">关注我</a></div><div><p id="hitokoto">With no fear in my heart, God comes into my mind.</p></div></div></div><!--!--><div class="card widget" data-type="links"><div class="card-content"><div class="menu"><h3 class="menu-label">链接</h3><ul class="menu-list"><li><a class="level is-mobile" href="https://blog.yixuan-wang.site" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Yixuan-Wang&#039;s site</span></span><span class="level-right"><span class="level-item tag">blog.yixuan-wang.site</span></span></a></li><li><a class="level is-mobile" href="https://arthals.ink" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Arthals</span></span><span class="level-right"><span class="level-item tag">arthals.ink</span></span></a></li></ul></div></div></div><div class="card widget"><div class="card-content"><div class="menu"><h3 class="menu-label">分类</h3><ul class="menu-list"><li><a class="level is-mobile is-marginless" href="/categories/Something-Interesting/"><span class="level-start"><span class="level-item">Something Interesting</span></span><span class="level-end"><span class="level-item tag">6</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/%E7%94%9F%E4%BA%A7%E5%8A%9B/"><span class="level-start"><span class="level-item">生产力</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/%E9%9A%8F%E7%AC%94/"><span class="level-start"><span class="level-item">随笔</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li></ul></div></div></div><div class="card widget"><div class="card-content"><h3 class="menu-label">最新文章</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2024-04-28T14:59:42.792Z">2024-04-28</time></p><p class="title"><a href="/2024/04/28/202405/">将五月</a></p><p class="categories"><a href="/categories/%E9%9A%8F%E7%AC%94/">随笔</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2024-03-25T16:00:00.000Z">2024-03-26</time></p><p class="title"><a href="/2024/03/26/%E6%9C%AC%E5%9C%B0%E8%A7%86%E9%A2%91%E6%80%BB%E7%BB%93%E6%8E%A2%E7%B4%A2/">本地视频总结探索</a></p><p class="categories"><a href="/categories/%E7%94%9F%E4%BA%A7%E5%8A%9B/">生产力</a></p></div></article><article class="media"><figure class="media-left"><a class="image" href="/2024/03/16/terminal-output-HZK16/"><img src="/gallery/terminal-output-HZK16/display0.png" alt="终端输出 HZK16(F) 点阵字"></a></figure><div class="media-content"><p class="date"><time dateTime="2024-03-15T16:00:00.000Z">2024-03-16</time></p><p class="title"><a href="/2024/03/16/terminal-output-HZK16/">终端输出 HZK16(F) 点阵字</a></p><p class="categories"><a href="/categories/Something-Interesting/">Something Interesting</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2024-03-11T16:00:00.000Z">2024-03-12</time></p><p class="title"><a href="/2024/03/12/Retro%20Journey/">Retro Journey</a></p><p class="categories"><a href="/categories/Something-Interesting/">Something Interesting</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2024-03-01T16:00:00.000Z">2024-03-02</time></p><p class="title"><a href="/2024/03/02/%E8%BF%91%E6%9C%9F%E6%8A%98%E8%85%BE%EF%BC%9A%E7%94%A8%E9%A6%99%E6%A9%99%E6%B4%BE%E6%90%AD%E5%BB%BA%E7%AE%80%E6%98%93%E7%BD%91%E7%AB%99%E6%9C%8D%E5%8A%A1%E5%99%A8/">在香橙派上简易建站并远程访问 (Mkdocs based)</a></p><p class="categories"><a href="/categories/Something-Interesting/">Something Interesting</a></p></div></article></div></div><div class="card widget"><div class="card-content"><div class="menu"><h3 class="menu-label">归档</h3><ul class="menu-list"><li><a class="level is-mobile is-marginless" href="/archives/2024/04/"><span class="level-start"><span class="level-item">四月 2024</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile is-marginless" href="/archives/2024/03/"><span class="level-start"><span class="level-item">三月 2024</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile is-marginless" href="/archives/2024/02/"><span class="level-start"><span class="level-item">二月 2024</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile is-marginless" href="/archives/2024/01/"><span class="level-start"><span class="level-item">一月 2024</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile is-marginless" href="/archives/2023/12/"><span class="level-start"><span class="level-item">十二月 2023</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><a class="level is-mobile is-marginless" href="/archives/"><span class="level-start"><span class="level-item">查看全部&gt;&gt;</span></span></a></ul></div></div></div><div class="card widget"><div class="card-content"><div class="menu"><h3 class="menu-label">标签</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/%E4%B8%80%E5%B9%B4%E5%8D%8A%E8%BD%BD/"><span class="tag">一年半载</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E4%B8%AD%E6%96%87%E4%BF%A1%E6%81%AF%E5%A4%84%E7%90%86%E5%8F%B2/"><span class="tag">中文信息处理史</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%8F%A4%E4%BB%A3%E6%BC%A2%E8%AA%9E/"><span class="tag">古代漢語</span><span class="tag is-grey-lightest">1</span></a></div></div></div></div></div><div class="column-right-shadow is-hidden-widescreen is-sticky"></div></div></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/favicon.svg" alt="1ntersection" height="28"></a><p class="size-small"><span>&copy; 2024 o0o0o0o</span><br></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" async></script><script>moment.locale("zh-CN");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "此网站使用Cookie来改善您的体验。",
+          dismiss: "知道了！",
+          allow: "允许使用Cookie",
+          deny: "拒绝",
+          link: "了解更多",
+          policy: "Cookie政策",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><script type="text/javascript" id="MathJax-script" async>MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      },
+      svg: {
+        fontCache: 'global'
+      },
+      chtml: {
+        matchFontHeight: false
+      }
+    };</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"></script><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script></body></html>
