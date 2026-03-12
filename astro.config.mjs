@@ -14,12 +14,13 @@ import rehypeMathJaxSvg from "rehype-mathjax/svg";
 // import rehypeTypst from "@myriaddreamin/rehype-typst"
 import rehypeAsciimath from "@widcardw/rehype-asciimath";
 import rehypeCallouts from "rehype-callouts";
-import pkg from 'glob';
+
 import { file } from "astro/loaders";
 
-const { glob } = pkg
+import { globSync } from 'node:fs';
+
 const contentDir = 'src/content/';
-const files = glob.sync('**/*', { cwd: contentDir });
+const files = globSync('**/*', { cwd: contentDir });
 const permalinks = files.reduce((acc, file) => {
   // 1. 检查是否为图片格式
   const isImage = /\.(png|jpg|jpeg|gif|webp|svg)$/i.test(file);
