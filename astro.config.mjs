@@ -40,7 +40,7 @@ const permalinks = files.reduce((acc, file) => {
   }
   
   return acc;
-}, {});
+}, /** @type {Record<string, string>} */ ({}));
 
 // console.log(files)
 
