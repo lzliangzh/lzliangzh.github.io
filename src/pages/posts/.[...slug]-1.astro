@@ -1,0 +1,199 @@
+---
+import { type CollectionEntry, getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import { formatDate } from "../../lib/utils";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("posts");
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: post,
+  }));
+}
+type Props = CollectionEntry<"posts">;
+
+const post = Astro.props;
+const { Content } = await post.render();
+
+const getTagTheme = (tag = "Default") => {
+  let hash = 0;
+  for (let i = 0; i < tag.length; i++) {
+    hash = tag.charCodeAt(i) + ((hash << 5) - hash);
+  }
+  // 在 HSL 空间取色，确保饱和度和亮度适合“灯光”效果
+  const hue = Math.abs(hash % 360);
+  return {
+    light: `hsla(${hue}, 80%, 60%, 0.1)`,    // 弱背景光
+    glow: `hsla(${hue}, 90%, 50%, 0.5)`,     // 核心发光
+    border: `hsla(${hue}, 70%, 45%, 0.8)`,   // 边框色
+    text: `hsla(${hue}, 80%, 40%, 1)`,       // 文字色
+  };
+};
+
+---
+
+<Layout
+  title={post.data.title}
+  description={post.data.description}
+  image={post.data.image}
+>
+  <div 
+    id="article-cover" 
+    class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-white dark:bg-zinc-950 pointer-events-none overflow-hidden"
+  >
+    <div 
+      class="w-full max-w-6xl px-8 md:px-16 grid md:grid-cols-2 gap-12 items-center" 
+      id="cover-content"
+    >
+        <div class="flex flex-col items-start text-left order-2 md:order-1">
+            <div class="flex flex-wrap gap-4 mb-8">
+                {post.data.tags?.map((tag) => {
+                    const tagTheme = getTagTheme(tag);
+                    return (
+                        <span 
+                            class="flex items-center gap-1.5 text-[11px] font-bold tracking-[0.2em]"
+                            style={`color: ${tagTheme.text};`}
+                        >
+                            <span class="w-1.5 h-1.5 rounded-sm" style={`background-color: ${tagTheme.border};`}></span>
+                            {tag.toUpperCase()}
+                        </span>
+                    );
+                })}
+            </div>
+
+            <h1 class="text-3xl md:text-4xl font-black mb-10 leading-[1.1] text-zinc-900 dark:text-zinc-100 tracking-tighter">
+                {post.data.title}
+            </h1>
+
+            <div class="flex items-center gap-4">
+                <div class="w-10 h-10 overflow-hidden rounded-full ring-2 ring-zinc-100 dark:ring-zinc-800">
+                    <img src="/author.png" alt="Avatar" class="object-cover w-full h-full" />
+                </div>
+                <div class="flex flex-col">
+                    <p class="font-bold text-sm text-zinc-800 dark:text-zinc-200">
+                      {post.data.link ? "转载文章" : "o0o0o0o"}
+                    </p>
+                    <time class="text-[11px] text-zinc-400 uppercase tracking-widest leading-none mt-1">
+                      {formatDate(post.data.date)}
+                    </time>
+                </div>
+            </div>
+        </div>
+
+        {post.data.image && (
+          <div class="order-1 md:order-2 flex justify-center md:justify-end">
+            <img 
+              src={post.data.image} 
+              alt="Illustration" 
+              class="w-full max-w-[400px] h-auto object-contain drop-shadow-2xl rounded-2xl"
+              style="view-transition-name: cover-image"
+            />
+          </div>
+        )}
+    </div>
+
+    <div id="scroll-hint" class="absolute bottom-10 left-8 md:left-16 flex items-center gap-3 text-zinc-300 dark:text-zinc-700">
+      <div class="h-[1px] w-12 bg-current"></div>
+      <span class="text-[10px] font-bold tracking-[0.3em] uppercase">Scroll to read</span>
+    </div>
+  </div>
+
+  <main class="relative">
+    <div id="scroll-buffer" class="h-[130vh] w-full"></div>
+
+    <article id="main-content" class="max-w-2xl mx-auto px-6 pb-32">
+      <div class="prose prose-zinc dark:prose-invert max-w-none 
+        prose-h2:text-2xl prose-h2:font-bold prose-p:leading-relaxed">
+        <Content />
+      </div>
+    </article>
+  </main>
+</Layout>
+
+<script>
+  function initParallax() {
+    const cover = document.getElementById('article-cover');
+    const coverContent = document.getElementById('cover-content');
+    const mainContent = document.getElementById('main-content');
+    const scrollHint = document.getElementById('scroll-hint');
+    
+    let idleTimer: ReturnType<typeof setTimeout>;
+    const IDLE_TIME = 30000;
+
+    const updateStyles = () => {
+      const scrollY = window.scrollY;
+      const vh = window.innerHeight;
+      
+      // 控制在滚动到 85% vh 时封面完全消失
+      const threshold = vh * 0.85;
+      const progress = Math.min(scrollY / threshold, 1);
+      
+      if (cover && coverContent) {
+        // 实时透明度同步
+        cover.style.opacity = (1 - progress).toString();
+        
+        // 实时变换：位移与缩放
+        const translateY = progress * (vh * 0.15);
+        const scale = 1 - (progress * 0.02); // 略微缩小，增加退后的感觉
+        coverContent.style.transform = `translateY(-${translateY}px) scale(${scale})`;
+        
+        // 隐藏提示
+        if (scrollHint) {
+          scrollHint.style.opacity = Math.max(0, 1 - progress * 4).toString();
+        }
+
+        // 性能开关
+        cover.style.visibility = progress >= 1 ? 'hidden' : 'visible';
+      }
+
+      if (mainContent) {
+        // 内容随之显现，稍微推迟一点点显现的时机以产生层次感
+        const contentProgress = Math.max(0, (scrollY - vh * 0.2) / (vh * 0.5));
+        mainContent.style.opacity = Math.min(contentProgress, 1).toString();
+      }
+
+      resetIdleTimer();
+    };
+
+    const resetIdleTimer = () => {
+      clearTimeout(idleTimer);
+      if (window.scrollY > 100) {
+        idleTimer = setTimeout(() => {
+          // 平滑回滚到顶部，触发封面自然淡入
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }, IDLE_TIME);
+      }
+    };
+
+    let ticking = false;
+    const onScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          updateStyles();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    updateStyles(); // 初始化页面位置
+  }
+
+  // 确保在 Astro 加载和客户端路由时均生效
+  initParallax();
+  document.addEventListener('astro:page-load', initParallax);
+</script>
+
+<style>
+  /* 极致性能优化 */
+  #article-cover, #cover-content, #main-content, #scroll-hint {
+    will-change: transform, opacity;
+    transition: none !important;
+  }
+
+  /* 适配暗色模式的文字反差 */
+  .dark #article-cover {
+    background: radial-gradient(circle at 70% 30%, #18181b 0%, #09090b 100%);
+  }
+</style>
