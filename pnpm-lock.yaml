@@ -38,6 +38,9 @@ importers:
       astro:
         specifier: ^5.1.0
         version: 5.16.9(jiti@1.21.7)(rollup@4.55.1)(typescript@5.9.3)(yaml@2.8.2)
+      clsx:
+        specifier: ^2.1.1
+        version: 2.1.1
       katex:
         specifier: ^0.16.27
         version: 0.16.27
@@ -57,7 +60,7 @@ importers:
         specifier: ^6.0.0
         version: 6.0.0
       tailwind-merge:
-        specifier: ^2.5.4
+        specifier: ^2.6.0
         version: 2.6.0
       tailwindcss:
         specifier: ^3.4.14
