@@ -1,0 +1,33 @@
+import type { APIRoute } from "astro";
+
+const getRobotsTxt = (sitemapURL: URL) => `
+# 1. 限制所有爬虫（严格模式）
+User-agent: *
+Disallow: /private/
+Disallow: /admin/
+Disallow: /api/
+# 延迟抓取（部分爬虫支持），减轻服务器压力
+Crawl-delay: 10
+
+# 2. 专门封杀 AI 训练爬虫 (GPT, Claude 等)
+User-agent: GPTBot
+Disallow: /
+User-agent: ChatGPT-User
+Disallow: /
+User-agent: CCBot
+Disallow: /
+User-agent: PerplexityBot
+Disallow: /
+User-agent: anthropic-ai
+Disallow: /
+User-agent: Google-Extended
+Disallow: /
+
+# 3. 指定 Sitemap
+Sitemap: ${sitemapURL.href}
+`.trim();
+
+export const GET: APIRoute = ({ site }) => {
+  const sitemapURL = new URL("sitemap-index.xml", site);
+  return new Response(getRobotsTxt(sitemapURL));
+};

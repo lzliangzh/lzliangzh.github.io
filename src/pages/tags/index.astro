@@ -1,0 +1,93 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+
+const allPosts = await getCollection("posts");
+
+// 数据预处理：按 Category 分组
+const categories = allPosts.reduce((acc, post) => {
+  const cat = post.data.category || "Uncategorized";
+  if (!acc[cat]) {
+    acc[cat] = {
+      posts: [],
+      // 记录每个标签在该分类下的出现次数
+      tagCounts: {} as Record<string, number>
+    };
+  }
+  acc[cat].posts.push(post);
+  post.data.tags?.forEach(tag => {
+    acc[cat].tagCounts[tag] = (acc[cat].tagCounts[tag] || 0) + 1;
+  });
+  return acc;
+}, {} as Record<string, { posts: any[], tagCounts: Record<string, number> }>);
+
+const sortedCategories = Object.keys(categories).sort();
+
+// 统一色彩逻辑
+const getTagColor = (tag: string) => {
+  let hash = 0;
+  for (let i = 0; i < tag.length; i++) {
+    hash = tag.charCodeAt(i) + ((hash << 5) - hash);
+  }
+  const hue = Math.abs(hash % 360);
+  return `hsla(${hue}, 40%, 45%, 1)`;
+};
+---
+
+<Layout title="Collections" description="所有合集">
+  <main class="max-w-4xl mx-auto px-6 py-20 text-zinc-800 dark:text-zinc-300">
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16">
+      {
+        sortedCategories.map((cat) => {
+          const group = categories[cat];
+          const tags = Object.keys(group.tagCounts).sort();
+
+          return (
+            <section class="flex flex-col gap-4">
+              <div class="flex items-baseline gap-2">
+                <a 
+                  href={`/categories/${cat}`} 
+                  class="text-lg font-bold text-zinc-900 dark:text-zinc-100 no-underline hover:opacity-70 transition-opacity sans"
+                >
+                  {cat}
+                </a>
+                <span class="text-xs tabular-nums text-zinc-400 opacity-60">
+                  {group.posts.length}
+                </span>
+              </div>
+
+              <div class="flex flex-wrap gap-x-4 gap-y-3">
+                {tags.map(tag => {
+                  const color = getTagColor(tag);
+                  const count = group.tagCounts[tag];
+                  return (
+                    <a 
+                      href={`/tags/${tag}`} 
+                      class="relative text-base no-underline transition-colors hover:opacity-70 flex items-start"
+                      style={`color: ${color};`}
+                    >
+                      <span class="leading-none">#{tag}</span>
+                      <span class="text-[10px] leading-none ml-0.5 opacity-50 tabular-nums">
+                        {count}
+                      </span>
+                    </a>
+                  )
+                })}
+              </div>
+            </section>
+          )
+        })
+      }
+    </div>
+  </main>
+</Layout>
+
+<style>
+  /* 针对两列布局在窄屏下的优化 */
+  @media (max-width: 768px) {
+    .grid {
+      gap: 3rem 0; /* 垂直间距适当缩小 */
+    }
+  }
+</style>

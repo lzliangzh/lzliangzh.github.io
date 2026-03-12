@@ -1,0 +1,219 @@
+{
+  "main": {
+    "id": "4a325080b4c9e049",
+    "type": "split",
+    "children": [
+      {
+        "id": "362e96b44e917ee5",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "290fcfad0aa4f530",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "posts/index.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "index"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "e076a1d409a13176",
+    "type": "split",
+    "children": [
+      {
+        "id": "83fd5cd9c2647e1b",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "34b1de2c171ce207",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "文件列表"
+            }
+          },
+          {
+            "id": "fa0652c87f4db384",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": true,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "搜索"
+            }
+          },
+          {
+            "id": "bebc9249fe34b152",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "书签"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 299.5
+  },
+  "right": {
+    "id": "a1570cd3fed6e591",
+    "type": "split",
+    "children": [
+      {
+        "id": "53356bb1af7c8dd2",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "f443d4d4c35769a0",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "RLHF.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "RLHF 的反向链接列表"
+            }
+          },
+          {
+            "id": "19596ec0604c737f",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "RLHF.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "RLHF 的出链列表"
+            }
+          },
+          {
+            "id": "675a4442473f8f50",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "标签"
+            }
+          },
+          {
+            "id": "b5cfd2a61b47b31e",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "大纲"
+            }
+          }
+        ],
+        "currentTab": 2
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:新建白板": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false
+    }
+  },
+  "active": "290fcfad0aa4f530",
+  "lastOpenFiles": [
+    "posts/Statistical Tests.md",
+    "posts/index.md",
+    "assets/Photo by fan yang (qgJW_SMG-Xw).jpg",
+    "posts-old/Chinese Phonetics Final HW.md",
+    "posts-old/Resonate.md",
+    "posts-old/Tests Are Linear Models.md",
+    "posts-old/to-do-list.md",
+    "posts-old/Poetry Taboo.md",
+    "posts/RLHF-1-PPO.md",
+    "posts/RLHF-4-DPO.md",
+    "posts/RLHF-3-Modelling-Human-Feedbacks.md",
+    "posts/RLHF-2-Actor-Critic.md",
+    "2025-12-08.md",
+    "posts/Charge into 2024.md",
+    "assets/1.png",
+    "posts/china-edu.md",
+    "posts-old/Hangzhou-2026-01.md",
+    "学年论文提纲.md",
+    "Film-Project.md",
+    "posts-old/daydreaming.md",
+    "posts-old/Interpretability.md",
+    "posts-old/kl-approx.md",
+    "stocks-quant.md",
+    "未命名.md",
+    "未命名 1.md",
+    "posts",
+    "lexical-semantics.md",
+    "yuan-bao.md",
+    "assets/1728cb2fabcf340bbae7af59218607ea.jpg",
+    "assets/IMG_20260110_160045.jpg",
+    "assets/3.png",
+    "assets/2.png",
+    "assets/pass_at_n_vs_best_at_n.png",
+    "assets/pass_at_n_vs_best_at_n-1.png",
+    "assets/p9-lr-2e-6-rewards.png",
+    "assets/p9-lr-2e-6-loss_entropy.png",
+    "assets",
+    "RL",
+    "Archived/trival",
+    "trival",
+    "Archived",
+    "archived",
+    "Pasted image 20251215191200.png.sb-03118320-hbc4NC",
+    "25fall/nlpdl25fall/Pasted image 20251208191145.png.sb-4db14e16-nkL0jZ",
+    "25fall/nlpdl25fall/Pasted image 20251208190904.png.sb-4db14e16-YB7dY1"
+  ]
+}

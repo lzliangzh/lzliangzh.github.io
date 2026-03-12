@@ -1,0 +1,207 @@
+---
+import { type CollectionEntry, getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import { formatDate } from "../../lib/utils";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("posts");
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: post,
+  }));
+}
+type Props = CollectionEntry<"posts">;
+
+const post = Astro.props;
+const { Content, headings } = await post.render();
+
+// 统一的色彩逻辑
+const getTagTheme = (tag: string) => {
+  let hash = 0;
+  for (let i = 0; i < tag.length; i++) {
+    hash = tag.charCodeAt(i) + ((hash << 5) - hash);
+  }
+  const hue = Math.abs(hash % 360);
+  return {
+    text: `hsla(${hue}, 40%, 45%, 1)`,
+    textDark: `hsla(${hue}, 45%, 75%, 1)`,
+    dot: `hsla(${hue}, 50%, 50%, 0.6)`
+  };
+};
+
+// 过滤掉层级过深的标题，只保留 h2, h3
+const toc = headings.filter((h) => h.depth <= 3);
+---
+
+<Layout
+  title={post.data.title}
+  description={post.data.description}
+  image={post.data.image}
+>
+  <main class="max-w-5xl mx-auto px-6 relative">
+    
+    {toc.length > 0 && (
+      <aside class="hidden xl:block absolute left-[calc(100%+2rem)] top-0 h-full w-48">
+        <nav class="sticky top-40 max-h-[calc(100vh-10rem)] overflow-y-auto no-scrollbar">
+          <ul class="space-y-3 border-l border-zinc-100 dark:border-zinc-800/60">
+            {toc.map((h) => (
+              <li class={`pl-4 ${h.depth === 3 ? 'ml-3' : ''}`}>
+                <a 
+                  href={`#${h.slug}`}
+                  data-toc-link
+                  class="block text-[13px] text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors no-underline leading-snug"
+                >
+                  {h.text}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </aside>
+    )}
+
+    <div class="max-w-2xl mx-auto">
+     <header class="py-10 md:py-20">
+      <h1 class="text-3xl md:text-4xl font-bold mb-6 leading-tight text-zinc-900 dark:text-zinc-100 tracking-tight">
+        {post.data.title}
+      </h1>
+
+      <div class="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm">
+        <time class="text-zinc-400 tabular-nums">
+          {formatDate(post.data.date)}
+        </time>
+
+        {post.data.category && (
+          <a 
+            href={`/categories/${post.data.category}`}
+            class="px-1.5 py-0.5 rounded-sm bg-stone-200 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 no-underline hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors"
+          >
+            {post.data.category}
+          </a>
+        )}
+
+        <div class="flex items-center gap-3">
+          {post.data.tags?.map((tag) => {
+            const theme = getTagTheme(tag);
+            return (
+              <a 
+                href={`/tags/${tag}`}
+                class="flex items-center gap-1.5 no-underline group"
+                style={`color: var(--tag-color); --tag-color: ${theme.text};`}
+              >
+                <span class="hover:underline underline-offset-4 decoration-1">#{tag}</span>
+              </a>
+            );
+          })}
+        </div>
+
+        {post.data.description && (
+          <span class="text-zinc-400 hidden md:inline">
+            —— {post.data.description}
+          </span>
+        )}
+      </div>
+    </header>
+
+      <article class="pb-32">
+        <div class="prose prose-zinc dark:prose-invert max-w-none 
+          prose-headings:text-zinc-900 dark:prose-headings:text-zinc-100
+          prose-h2:text-2xl prose-h2:font-bold prose-p:leading-relaxed prose-p:text-base hyphens-auto" lang="en">
+          <Content />
+        </div>
+      </article>
+    </div>
+    <script src="https://giscus.app/client.js"
+        data-repo="lzliangzh/giscus"
+        data-repo-id="R_kgDORlZbHA"
+        data-category="Announcements"
+        data-category-id="DIC_kwDORlZbHM4C4PlY"
+        data-mapping="title"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="light"
+        data-lang="zh-CN"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+    </script>
+  </main>
+</Layout>
+
+<script>
+  // 简单的滚动侦测：标记当前阅读位置
+  function initTOC() {
+    const links = document.querySelectorAll('[data-toc-link]');
+    const headings = Array.from(document.querySelectorAll('h2, h3'));
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          links.forEach(link => {
+            const href = link.getAttribute('href')?.substring(1);
+            if (href === entry.target.id) {
+              link.classList.add('text-zinc-900', 'dark:text-zinc-100', 'font-medium');
+              link.classList.remove('text-zinc-400');
+            } else {
+              link.classList.remove('text-zinc-900', 'dark:text-zinc-100', 'font-medium');
+              link.classList.add('text-zinc-400');
+            }
+          });
+        }
+      });
+    }, { rootMargin: '-10% 0% -80% 0%' });
+
+    headings.forEach(h => observer.observe(h));
+  }
+
+  initTOC();
+  document.addEventListener('astro:page-load', initTOC);
+</script>
+
+<style is:global>
+  /* 隐藏 TOC 滚动条 */
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+  /* 暗色模式标签适配 */
+  @media (prefers-color-scheme: dark) {
+    span[style*="--tag-color"] { color: var(--tag-color-dark) !important; }
+  }
+</style>
+
+<script is:inline>
+  function updateGiscusTheme() {
+    const theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+    
+    function sendMessage(config) {
+      const iframe = document.querySelector('iframe.giscus-frame');
+      if (!iframe) return;
+      iframe.contentWindow.postMessage({ giscus: config }, 'https://giscus.app');
+    }
+
+    sendMessage({
+      setConfig: {
+        theme: theme,
+      },
+    });
+  }
+
+  // 1. 监听来自系统或手动切换的主题变化
+  const observer = new MutationObserver((mutations) => {
+    mutations.forEach((mutation) => {
+      if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+        updateGiscusTheme();
+      }
+    });
+  });
+
+  observer.observe(document.documentElement, { attributes: true });
+
+  // 2. 初始加载完成后尝试同步一次（防止 iframe 加载慢于脚本执行）
+  document.addEventListener('DOMContentLoaded', () => {
+    // 延迟一小会儿确保 iframe 已存在
+    setTimeout(updateGiscusTheme, 2000);
+  });
+</script>

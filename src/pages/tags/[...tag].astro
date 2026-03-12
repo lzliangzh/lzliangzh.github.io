@@ -1,0 +1,70 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+
+export async function getStaticPaths() {
+  const allPosts = await getCollection("posts");
+  const uniqueTags = [...new Set(allPosts.flatMap((post) => post.data.tags || []))];
+
+  return uniqueTags.map((tag) => {
+    const filteredPosts = allPosts
+      .filter((post) => post.data.tags?.includes(tag))
+      .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+    
+    return {
+      params: { tag },
+      props: { posts: filteredPosts },
+    };
+  });
+}
+
+const { tag } = Astro.params;
+const { posts } = Astro.props;
+
+// 统一的哈希颜色函数
+const getTagStyles = (tag: string) => {
+  let hash = 0;
+  for (let i = 0; i < tag.length; i++) {
+    hash = tag.charCodeAt(i) + ((hash << 5) - hash);
+  }
+  const hue = Math.abs(hash % 360);
+  return {
+    "--tag-bg": `hsla(${hue}, 40%, 50%, 0.1)`,
+    "--tag-text": `hsla(${hue}, 40%, 40%, 1)`,
+    "--tag-text-dark": `hsla(${hue}, 45%, 75%, 1)`,
+  };
+};
+
+const styles = getTagStyles(tag || "");
+---
+
+<Layout title={`Tag: ${tag}`} description={`关于 ${tag} 的所有文章`}>
+  <main class="max-w-2xl mx-auto px-6 py-20 text-zinc-800 dark:text-zinc-300" style={styles}>
+    <header class="mb-14">
+      <div class="inline-block px-3 py-1 rounded-sm bg-[var(--tag-bg)] mb-4">
+        <h1 class="text-base font-medium text-[var(--tag-text)] dark:text-[var(--tag-text-dark)]">
+          #{tag}
+        </h1>
+      </div>
+
+    </header>
+
+    <div class="flex flex-col gap-3">
+      {
+        posts.map((post) => (
+          <a 
+            href={`/posts/${post.slug}`} 
+            class="group flex items-baseline gap-6 no-underline"
+          >
+            <time class="text-base text-zinc-400 shrink-0 tabular-nums">
+              {post.data.date.toLocaleDateString('zh-CN', {year: "numeric", month: '2-digit', day: '2-digit' })}
+            </time>
+            <span class="text-base group-hover:text-black dark:group-hover:text-white transition-colors">
+              {post.data.title}
+            </span>
+          </a>
+        ))
+      }
+    </div>
+  </main>
+</Layout>

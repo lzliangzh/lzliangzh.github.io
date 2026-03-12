@@ -1,0 +1,6 @@
+/* 修改编辑和预览模式下的正文 */
+.markdown-source-view.mod-cm6 .cm-content, 
+.markdown-rendered {
+    letter-spacing: 0.5px;
+    line-height: 1.7;
+}

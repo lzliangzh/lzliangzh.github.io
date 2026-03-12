@@ -1,0 +1,204 @@
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=IBM+Plex+Serif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Noto+Sans+SC:wght@100..900&family=Noto+Serif+SC:wght@200..900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@plugin "@tailwindcss/typography";
+
+mjx-container[jax="SVG"] {
+  display: inline-block;
+
+}
+
+@layer base {
+  :root {
+    /* 针对所有现代浏览器 */
+    scrollbar-width: none;
+    /* Firefox */
+    -ms-overflow-style: none;
+    /* IE and Edge */
+  }
+
+  /* 针对 Webkit 内核浏览器 (Chrome, Safari, Edge) */
+  ::-webkit-scrollbar {
+    display: none;
+    width: 0 !important;
+    height: 0 !important;
+  }
+
+  font-face {
+    font-family: "Geist Mono";
+    src: url("/fonts/geist-mono-variable.woff2") format("woff2");
+    font-display: swap;
+  }
+
+  html.dark .astro-code,
+  html.dark .astro-code span {
+    color: var(--shiki-dark) !important;
+    background-color: var(--shiki-dark-bg) !important;
+    font-style: var(--shiki-dark-font-style) !important;
+    font-weight: var(--shiki-dark-font-weight) !important;
+    text-decoration: var(--shiki-dark-text-decoration) !important;
+  }
+
+  html {
+    /* letter-spacing: 0.6px; */
+    font-size: 16px;
+    -webkit-text-stroke-width: 0.2px;
+    /* font-feature-settings: "halt"; */
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* 优化中文排版：允许标点挤压，看起来更紧凑 */
+    font-variant-ligatures: common-ligatures;
+    text-rendering: optimizeLegibility;
+    font-display: optional;
+  }
+
+  /* 既然隐藏了滚动条，为了防止点击目录跳转太生硬，开启平滑滚动 */
+  html {
+    scroll-behavior: smooth;
+  }
+
+
+  h1,
+  h2,
+  h3 {
+    font-family: "Bricolage Grotesque", "Noto Sans SC", sans-serif;
+  }
+}
+
+.sans {
+  font-family: "Bricolage Grotesque", "Noto Sans SC", sans-serif;
+}
+
+@layer components {
+  article {
+
+    @apply prose text-black dark:prose-invert dark:text-white/90;
+
+    p {
+      @apply my-4 leading-7 text-justify;
+    }
+
+    strong {
+      @apply dark:text-white
+    }
+
+    h1 {
+      @apply my-4 text-xl font-bold dark:text-white;
+    }
+
+    h2 {
+      @apply my-4 text-lg font-bold dark:text-white;
+    }
+
+    h3,
+    h4,
+    h5,
+    h6 {
+      @apply my-4 text-base font-bold dark:text-white;
+    }
+
+    :not(pre)>code {
+      @apply whitespace-nowrap rounded border bg-zinc-200/50 px-1 py-0.5 font-mono text-sm font-medium text-black dark:border-zinc-700 dark:bg-zinc-800/50 dark:text-white;
+    }
+
+    pre:has(code) {
+      @apply my-4 max-h-[600px] overflow-auto rounded-lg border p-4 font-mono text-sm font-medium dark:border-zinc-700;
+    }
+
+    img {
+      @apply my-4 dark:border-zinc-700;
+    }
+
+    video {
+      @apply my-4 rounded-lg border dark:border-zinc-700;
+    }
+
+    blockquote {
+      @apply my-4 border-l-2 pl-4;
+    }
+
+    /* a {
+      @apply my-4 border-b font-medium border-zinc-500 dark:text-white;
+    } */
+
+    table {
+      @apply my-4 w-full table-auto border-collapse lg:text-sm text-xs;
+
+      th {
+        @apply border-b p-4 text-left font-medium dark:border-zinc-700;
+      }
+
+      td {
+        @apply border-b bg-zinc-50 min-w-[100px] p-4 dark:border-zinc-700 dark:bg-zinc-800;
+      }
+    }
+
+    /* ol {
+      @apply my-1 list-inside list-decimal space-y-1 [&_ol]:pl-5 [&_ul]:pl-5;
+    }
+
+    ul {
+      @apply my-1 list-inside list-disc space-y-1 [&_ol]:pl-5 [&_ul]:pl-5;
+    } */
+
+    li {
+      @apply text-justify
+    }
+
+    kbd {
+      @apply rounded border border-b-2 bg-zinc-100 px-1 py-0.5 font-mono text-xs font-medium text-black dark:border-zinc-700 dark:bg-zinc-800 dark:text-white;
+    }
+
+    mark {
+      @apply dark:bg-yellow-500/50 dark:text-white;
+    }
+
+    .footnotes {
+      @apply text-sm border-t-2;
+    }
+  }
+}
+
+/* src/styles/global.css */
+
+.katex-display {
+  /* 允许横向滚动 */
+  overflow-x: auto;
+  /* 允许横向滚动 */
+  overflow-y: hidden;
+  /* 优化移动端滚动体验 */
+  -webkit-overflow-scrolling: touch;
+  /* 防止公式太贴边，增加一点内边距 */
+  padding: 1rem 0;
+  font-size: 1em;
+
+  @apply md:overflow-visible md:relative md:left-1/2 md:-translate-x-1/2 md:w-screen md:max-w-[90vw];
+}
+
+
+/* 隐藏滚动条（可选，看个人审美） */
+.katex-display::-webkit-scrollbar {
+  height: 0px;
+}
+
+.katex-display::-webkit-scrollbar-thumb {
+  background-color: #cbd5e1;
+  /* Tailwind slate-300 */
+  border-radius: 10px;
+}
+
+article table {
+  /* display: block; */
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  @apply lg:overflow-visible lg:relative lg:left-1/2 lg:-translate-x-1/2 lg:w-screen lg:w-auto lg:max-w-[60vw];
+}
+
+article table::-webkit-scrollbar {
+  height: 0px;
+}

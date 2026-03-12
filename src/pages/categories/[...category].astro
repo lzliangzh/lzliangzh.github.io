@@ -1,0 +1,110 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+
+export async function getStaticPaths() {
+  const allPosts = await getCollection("posts");
+  const categories = [...new Set(allPosts.map((post) => post.data.category).filter(Boolean))];
+
+  return categories.map((category) => {
+    const filteredPosts = allPosts
+      .filter((post) => post.data.category === category)
+      .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+    
+    return {
+      params: { category },
+      props: { posts: filteredPosts },
+    };
+  });
+}
+
+const { category } = Astro.params;
+const { posts } = Astro.props;
+
+// 1. 统计当前分类下每个标签出现的次数
+const tagCounts = posts.reduce((acc, post) => {
+  post.data.tags?.forEach(tag => {
+    acc[tag] = (acc[tag] || 0) + 1;
+  });
+  return acc;
+}, {} as Record<string, number>);
+
+const sortedTags = Object.keys(tagCounts).sort();
+
+// 获取季度的辅助函数
+const getQuarter = (date: Date) => Math.floor(date.getMonth() / 3);
+
+// 统一色彩逻辑
+const getSeedColor = (str: string) => {
+  let hash = 0;
+  for (let i = 0; i < str.length; i++) {
+    hash = str.charCodeAt(i) + ((hash << 5) - hash);
+  }
+  return Math.abs(hash % 360);
+};
+---
+
+<Layout title={`分类: ${category}`} description={`关于 ${category} 的所有文章`}>
+  <main class="max-w-2xl mx-auto px-6 py-20 text-zinc-800 dark:text-zinc-300">
+    
+    <header class="mb-14">
+      <div class="flex items-baseline gap-3 mb-6">
+        <h1 class="text-3xl font-bold text-zinc-900 dark:text-zinc-100">
+          {category}
+        </h1>
+        <span class="text-sm tabular-nums text-zinc-400">
+          {posts.length}
+        </span>
+      </div>
+
+      <div class="flex flex-wrap gap-x-5 gap-y-3">
+        {sortedTags.map((tag) => {
+          const hue = getSeedColor(tag);
+          const count = tagCounts[tag];
+          return (
+            <a 
+              href={`/tags/${tag}`}
+              class="relative flex items-start no-underline transition-colors hover:opacity-70"
+              style={`color: hsla(${hue}, 40%, 45%, 1);`}
+            >
+              <span class="text-base leading-none">#{tag}</span>
+              <span class="text-[10px] leading-none ml-0.5 opacity-50 tabular-nums">
+                {count}
+              </span>
+            </a>
+          )
+        })}
+      </div>
+    </header>
+
+    <div class="flex flex-col gap-3">
+      {
+        posts.map((post, index) => {
+          const currentQuarter = getQuarter(post.data.date);
+          const nextPost = posts[index + 1];
+          const isQuarterEnd = nextPost && getQuarter(nextPost.data.date) !== currentQuarter;
+
+          return (
+            <>
+              <a 
+                href={`/posts/${post.slug}`} 
+                class="flex items-baseline gap-6 group no-underline"
+              >
+                <time class="text-base text-zinc-400 shrink-0 tabular-nums">
+                  {post.data.date.toLocaleDateString('zh-CN', { year: "numeric", month: '2-digit', day: '2-digit' })}
+                </time>
+                <span class="text-base group-hover:text-black dark:group-hover:text-white transition-colors">
+                  {post.data.title}
+                </span>
+              </a>
+              
+              {isQuarterEnd && <div class="h-6" aria-hidden="true" />}
+            </>
+          );
+        })
+      }
+    </div>
+
+
+  </main>
+</Layout>

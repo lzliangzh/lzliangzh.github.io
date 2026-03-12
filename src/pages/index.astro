@@ -1,0 +1,105 @@
+---
+import { getCollection, getEntry } from "astro:content";
+import { SITE_DESCRIPTION, SITE_TITLE, EMAIL } from "../consts";
+import Layout from "../layouts/Layout.astro";
+
+// 获取首页 Markdown
+const entry = await getEntry("posts", "index");
+const { Content } = entry ? await entry.render() : { Content: null };
+
+// 获取最近的 6 篇文章
+const allPosts = await getCollection("posts", ({ id }) => id !== "index.md");
+const posts = allPosts
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 6);
+
+const currentYear = new Date().getFullYear();
+
+// 简单的季度判断函数，用于保持你参考样式中的间距逻辑
+const getQuarter = (date: Date) => Math.floor(date.getMonth() / 3);
+
+// 获取最新的一篇文章（用于 Latest 部分）
+const latestPost = allPosts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())[0];
+---
+
+<Layout
+  title={SITE_TITLE}
+  description={SITE_DESCRIPTION}
+  className="flex min-h-svh max-w-2xl flex-col justify-left"
+>
+  <main class="py-16 px-6 mx-auto w-full space-y-16">
+    
+    <header class="space-y-2">
+      <h1 class="text-5xl font-bold text-zinc-900 dark:text-zinc-100 tracking-tight">
+        {SITE_TITLE}
+      </h1>
+      <p class="text-[15px] text-zinc-500 dark:text-zinc-400">
+        {SITE_DESCRIPTION}
+      </p>
+    </header>
+
+
+    <section class="space-y-6">
+
+    <h2 class="text-2xl font-bold">Recent Posts</h2>
+      <div class="flex flex-col -mx-2"> {posts.map((post, index, array) => {
+          const postYear = post.data.date.getFullYear();
+          const isOldPost = postYear < currentYear;
+          
+          const currentQuarter = getQuarter(post.data.date);
+          const nextPost = array[index + 1];
+          const isQuarterEnd = nextPost && getQuarter(nextPost.data.date) !== currentQuarter;
+
+          return (
+            <>
+              <a 
+                href={`/posts/${post.slug}`} 
+                class="flex items-baseline gap-6 group no-underline p-2 py-4 rounded-xl hover:bg-stone-200 dark:hover:bg-stone-800 transition-colors"
+              >
+                <div class="relative shrink-0 w-12 text-left">
+                  {isOldPost && (
+                    <span class="absolute -top-3 left-0 text-[10px] font-bold text-zinc-400 dark:text-zinc-600 tabular-nums">
+                      {postYear}
+                    </span>
+                  )}
+                  <time class="text-base text-zinc-400 tabular-nums uppercase">
+                    {post.data.date.toLocaleDateString('en-US', { month: '2-digit', day: '2-digit' })}
+                  </time>
+                </div>
+
+                <span class="flex flex-col grow">
+                  <div class="font-medium sans group-hover:text-black dark:group-hover:text-white transition-colors">
+                    {post.data.title}
+                  </div>
+                  {post.data.description && (
+                    <div class="font-light">
+                      {post.data.description}
+                    </div>
+                  )}
+                </span>
+              </a>
+              
+              {isQuarterEnd && <div class="h-4" aria-hidden="true" />}
+            </>
+          );
+        })}
+      </div>
+
+      <a href="/posts" class="inline-block font-medium text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors">
+        View all posts →
+      </a>
+    </section>
+
+    {Content && (
+      <section class="prose prose-zinc dark:prose-invert max-w-none 
+        prose-p:text-[15px] prose-p:leading-relaxed prose-p:text-zinc-600 dark:prose-p:text-zinc-400
+        prose-a:text-zinc-900 dark:prose-a:text-zinc-100 prose-a:underline-offset-4
+        hyphens-auto" lang="en">
+        <Content />
+      </section>
+    )}
+
+
+       
+  </main>
+</Layout>

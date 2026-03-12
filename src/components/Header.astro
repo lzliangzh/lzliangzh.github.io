@@ -1,0 +1,36 @@
+---
+import ThemeToggle from "./ThemeToggle.astro";
+---
+
+<header 
+  class="fixed top-0 left-0 z-[99] w-full px-5 py-2.5 flex items-center justify-between backdrop-blur-md bg-stone-100 dark:bg-zinc-900/80 lg:bg-transparent lg:dark:bg-transparent md:backdrop-blur-none" 
+  transition:name="header"
+>
+  <nav class="flex items-center gap-5">
+    <a href="/" class="group flex items-center shrink-0 no-underline">
+      <img 
+        src="/author.png" 
+        alt="Home" 
+        class="w-7 h-7 rounded-full object-cover ring-1 ring-zinc-200 dark:ring-zinc-800 group-hover:ring-zinc-900 dark:group-hover:ring-zinc-100 transition-all"
+      />
+    </a>
+
+    <div class="flex items-center gap-4">
+      <a href="/posts">文章</a>
+      <a href="/tags">合集</a>
+    </div>
+  </nav>
+
+  <ThemeToggle />
+</header>
+
+<style>
+  a {
+    /* 保持 14px 适中大小，tracking-tighter 让中文更紧凑 */
+    @apply text-zinc-500 transition-colors no-underline tracking-tighter;
+  }
+
+  a:hover {
+    @apply text-zinc-950 dark:text-zinc-100;
+  }
+</style>
