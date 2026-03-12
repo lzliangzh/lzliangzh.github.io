@@ -17,7 +17,7 @@ import rehypeCallouts from "rehype-callouts";
 
 import { file } from "astro/loaders";
 
-import { globSync } from 'node:fs';
+import { globSync } from 'glob';
 
 const contentDir = 'src/content/';
 const files = globSync('**/*', { cwd: contentDir });
