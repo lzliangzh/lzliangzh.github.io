@@ -33,7 +33,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: "24"
           cache: 'pnpm' # 开启 pnpm 缓存，大幅提升后续打包速度
 
       - name: Setup Pages
