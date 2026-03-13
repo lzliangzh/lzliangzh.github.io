@@ -5,7 +5,7 @@ import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 
 import tailwind from "@astrojs/tailwind";
-import { SITE_URL } from "./src/consts";
+import { SITE_TITLE, SITE_URL } from "./src/consts";
 
 import wikiLinkPlugin, { defaultUrlResolver } from "@flowershow/remark-wiki-link"
 import remarkMath from "remark-math";
@@ -14,7 +14,7 @@ import rehypeMathJaxSvg from "rehype-mathjax/svg";
 // import rehypeTypst from "@myriaddreamin/rehype-typst"
 import rehypeAsciimath from "@widcardw/rehype-asciimath";
 import rehypeCallouts from "rehype-callouts";
-
+import watermarkPlugin from "./watermark-plugin";
 
 import { globSync } from 'node:fs';
 
@@ -34,7 +34,10 @@ const postFiles = globSync('**/*.{md,mdx}', { cwd: postsDir });
 
 const postPermalinks = postFiles.reduce((acc, file) => {
   // 移除路径和后缀，提取原始文件名作为 key，例如 [[My Post]]
-  const fileName = file.split('/').pop().replace(/\.(md|mdx)$/, "");
+  const fileName = file?.split('/').pop()?.replace(/\.(md|mdx)$/, "") ?? "untitled";
+
+  // 如果 fileName 依然无效（比如是空字符串），提前返回或处理
+  if (!fileName || fileName === "untitled") return acc;
   
   // 生成与 Astro 路由一致的 slug
   const slug = fileName
@@ -55,7 +58,7 @@ const files = [...Object.keys(assetPermalinks), ...Object.keys(postPermalinks)];
 export default defineConfig({
   site: SITE_URL,
   base: "/",
-  integrations: [mdx(), sitemap(), tailwind()],
+  integrations: [mdx(), sitemap(), tailwind(), watermarkPlugin(SITE_TITLE)],
   markdown: {
     shikiConfig: {
       themes: {
