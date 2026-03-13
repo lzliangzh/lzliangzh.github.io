@@ -17,6 +17,7 @@ import rehypeCallouts from "rehype-callouts";
 import watermarkPlugin from "./watermark-plugin";
 
 import { globSync } from 'node:fs';
+import lazyloadPlugin from "rehype-plugin-image-native-lazy-loading";
 
 // 1. 扫描图片资源 (Public 目录)
 const assetDir = 'public/assets/';
@@ -75,6 +76,7 @@ export default defineConfig({
       }]
     ],
     rehypePlugins: [
+      lazyloadPlugin,
       rehypeAsciimath,
       // [rehypeKatex, {output: "html"}],
       rehypeMathJaxSvg,

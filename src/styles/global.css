@@ -78,6 +78,7 @@ mjx-container[jax="SVG"] {
 
 .sans {
   font-family: "Bricolage Grotesque", "Noto Sans SC", sans-serif;
+  @apply text-left
 }
 
 @layer components {

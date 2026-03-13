@@ -41,6 +41,14 @@ const buildTime = new Date().toLocaleString('zh-CN', {
 
 <html lang="zh-CN"> <head>
     <meta charset="utf-8" />
+    
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content={Astro.url} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={fullImageURL} />
+    <meta property="og:site_name" content={SITE_TITLE} />
+
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <link rel="icon" type="image/svg+xml" href="/author.png" />
     <meta name="generator" content={Astro.generator} />
@@ -57,12 +65,6 @@ const buildTime = new Date().toLocaleString('zh-CN', {
     <title>{title}</title>
     <meta name="title" content={title} />
     <meta name="description" content={description} />
-
-    <meta property="og:type" content="article" /> <meta property="og:url" content={Astro.url} />
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
-    <meta property="og:image" content={fullImageURL} />
-    <meta property="og:site_name" content={SITE_TITLE} />
 
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content={Astro.url} />
