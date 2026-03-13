@@ -4,6 +4,8 @@ date: 2026-01-25
 category: Life
 tags:
   - roaming
+image: /src/assets/IMG_20260126_103536.jpg
+description: 计划有变，改为首都机场出发，杭州中转
 ---
 最后一个 DDL 结束后，依然不敢懈怠，努力为了前途而奔走。又熬过将近一周，熬过一场雪，今天终于离开了北京。
 
