@@ -44,6 +44,7 @@ mjx-container[jax="SVG"] {
     /* letter-spacing: 0.6px; */
     font-size: 16px;
     -webkit-text-stroke-width: 0.2px;
+    @apply text-justify;
     /* font-feature-settings: "halt"; */
   }
 
@@ -198,7 +199,7 @@ mjx-container[jax="SVG"] {
 }
 
 article table {
-  /* display: block; */
+  display: block;
   width: 100%;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
