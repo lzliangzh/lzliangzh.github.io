@@ -25,6 +25,7 @@ const {
 
 // 获取编译时的 ISO 字符串或自定义格式
 const buildTime = new Date().toLocaleString('zh-CN', {
+  timeZone: 'Asia/Shanghai',
   year: 'numeric',
   month: '2-digit',
   day: '2-digit',
