@@ -4,7 +4,7 @@ import { SITE_DESCRIPTION, SITE_TITLE, EMAIL } from "../consts";
 import Layout from "../layouts/Layout.astro";
 
 // 获取首页 Markdown
-const entry = await getEntry("posts", "index");
+const entry = await getEntry("posts", "whoami");
 const { Content } = entry ? await entry.render() : { Content: null };
 
 // 获取最近的 6 篇文章

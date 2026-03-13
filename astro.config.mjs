@@ -15,32 +15,39 @@ import rehypeMathJaxSvg from "rehype-mathjax/svg";
 import rehypeAsciimath from "@widcardw/rehype-asciimath";
 import rehypeCallouts from "rehype-callouts";
 
-import { file } from "astro/loaders";
 
 import { globSync } from 'node:fs';
 
-const contentDir = 'src/content/';
-const files = globSync('**/*', { cwd: contentDir });
-const permalinks = files.reduce((acc, file) => {
-  // 1. 检查是否为图片格式
-  const isImage = /\.(png|jpg|jpeg|gif|webp|svg)$/i.test(file);
-  
-  if (isImage) {
-    // 如果是图片，指向资源目录（根据你实际存放位置修改，例如 /public/src/ 或 /src/assets/）
-    acc[file] = `/src/${file}`;
-  } else {
-    // 2. 如果是 Markdown (md/mdx)，处理成文章路由
-    // 移除后缀名以便匹配 [[filename]]
-    const slug = file
-      .replace(/\.(md|mdx)$/, "") 
-      .toLowerCase()
-      .replace(/\s+/g, '-'); // 确保这里的逻辑和你的 [...slug].astro 一致
-      
-    acc[file] = `/${slug}`;
-  }
-  
+// 1. 扫描图片资源 (Public 目录)
+const assetDir = 'public/assets/';
+const assetFiles = globSync('**/*.{png,jpg,jpeg,gif,webp,svg}', { cwd: assetDir });
+
+const assetPermalinks = assetFiles.reduce((acc, file) => {
+  // 保持文件名作为 key，方便 [[image.png]] 匹配
+  acc[file] = `/assets/${file}`;
   return acc;
 }, /** @type {Record<string, string>} */ ({}));
+
+// 2. 扫描文章资源 (Content 目录)
+const postsDir = 'src/content/posts/';
+const postFiles = globSync('**/*.{md,mdx}', { cwd: postsDir });
+
+const postPermalinks = postFiles.reduce((acc, file) => {
+  // 移除路径和后缀，提取原始文件名作为 key，例如 [[My Post]]
+  const fileName = file.split('/').pop().replace(/\.(md|mdx)$/, "");
+  
+  // 生成与 Astro 路由一致的 slug
+  const slug = fileName
+    .toLowerCase()
+    .replace(/\s+/g, '-');
+    
+  acc[fileName] = `/posts/${slug}`; // 假设你的路由是 /posts/[slug]
+  return acc;
+}, /** @type {Record<string, string>} */ ({}));
+
+// 3. 合并所有永久链接
+const permalinks = { ...assetPermalinks, ...postPermalinks };
+const files = [...Object.keys(assetPermalinks), ...Object.keys(postPermalinks)];
 
 // console.log(files)
 

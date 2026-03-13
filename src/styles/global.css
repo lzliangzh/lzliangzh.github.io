@@ -47,6 +47,12 @@ mjx-container[jax="SVG"] {
     /* font-feature-settings: "halt"; */
   }
 
+  @media (max-width: 768px) {
+    html {
+      font-size: 14px;
+    }
+  }
+
   html {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;

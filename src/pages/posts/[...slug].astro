@@ -111,22 +111,8 @@ const toc = headings.filter((h) => h.depth <= 3);
         </div>
       </article>
     </div>
-    <script src="https://giscus.app/client.js"
-        data-repo="lzliangzh/giscus"
-        data-repo-id="R_kgDORlZbHA"
-        data-category="Announcements"
-        data-category-id="DIC_kwDORlZbHM4C4PlY"
-        data-mapping="title"
-        data-strict="0"
-        data-reactions-enabled="1"
-        data-emit-metadata="0"
-        data-input-position="top"
-        data-theme="light"
-        data-lang="zh-CN"
-        data-loading="lazy"
-        crossorigin="anonymous"
-        async>
-    </script>
+    <div class="giscus"></div>
+
   </main>
 </Layout>
 
@@ -159,6 +145,49 @@ const toc = headings.filter((h) => h.depth <= 3);
   initTOC();
   document.addEventListener('astro:page-load', initTOC);
 </script>
+
+
+<script is:inline>
+  function loadGiscus() {
+    // 如果页面上没有 giscus 容器，直接返回
+    const container = document.querySelector('.giscus');
+    if (!container) return;
+
+    // 清除可能存在的旧评论框内容
+    container.innerHTML = '';
+
+    const script = document.createElement('script');
+    script.src = 'https://giscus.app/client.js';
+    script.setAttribute('data-repo', 'lzliangzh/giscus');
+    script.setAttribute('data-repo-id', 'R_kgDORlZbHA');
+    script.setAttribute('data-category', 'Announcements');
+    script.setAttribute('data-category-id', 'DIC_kwDORlZbHM4C4PlY');
+    script.setAttribute('data-mapping', 'title');
+    script.setAttribute('data-strict', '0');
+    script.setAttribute('data-reactions-enabled', '1');
+    script.setAttribute('data-emit-metadata', '0');
+    script.setAttribute('data-input-position', 'top');
+    
+    // 动态根据当前主题设置 Giscus 主题
+    const theme = localStorage.getItem('theme') === 'dark' ? 'dark' : 'light';
+    script.setAttribute('data-theme', theme);
+    
+    script.setAttribute('data-lang', 'zh-CN');
+    script.setAttribute('data-loading', 'lazy');
+    script.setAttribute('crossorigin', 'anonymous');
+    script.async = true;
+
+    document.head.appendChild(script);
+  }
+
+  // 初次加载
+  loadGiscus();
+
+  // 针对 View Transitions 的导航监听
+  document.addEventListener('astro:after-swap', loadGiscus);
+</script>
+
+ 
 
 <style is:global>
   /* 隐藏 TOC 滚动条 */
