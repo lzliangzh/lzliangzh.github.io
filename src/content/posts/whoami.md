@@ -3,13 +3,11 @@ title: 关于我
 date: 2026-03-10
 category: Life
 ---
-[GitHub](https://github.com/lzliangzh) 
+I am currently studying computational linguistics at the Department of Chinese Language and Literature, Peking University, interested in explainable neural language systems as well as linguistics. 
 
-![[Photo by fan yang (qgJW_SMG-Xw).jpg|The JR 211 Series on Joetsu Line (Shot by fan yang)]]
+I am about to pursue a master's degree in computer science at the Institute of Computational Linguistics, School of Computer Science, Peking University, and join COOLPKU under the guidance of Professor Yang Liu.
 
-**Hi, I am Leo Liang!** I am currently studying computational linguistics at the Department of Chinese Language and Literature, Peking University. 
-
-I am about to pursue a master's degree in computer science at the Institute of Computational Linguistics, School of Computer Science, Peking University, specializing in Natural Language Processing and lexical semantics, and will join the COOLPKU group under the guidance of Professor Liu Yang.
+Feel free to find me at [GitHub](https://github.com/lzliangzh).
 
 ## Education
 

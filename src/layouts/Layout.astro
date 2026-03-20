@@ -1,6 +1,7 @@
 ---
 import { ViewTransitions } from "astro:transitions";
 import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
 import { cn } from "../lib/utils";
 import "../styles/global.css";
 import 'katex/dist/katex.min.css';
@@ -26,17 +27,6 @@ const {
 
 // 确保图片 URL 是绝对路径
 const fullImageURL = new URL(image, Astro.url);
-
-const buildTime = new Date().toLocaleString('zh-CN', {
-  timeZone: 'Asia/Shanghai',
-  year: 'numeric',
-  month: '2-digit',
-  day: '2-digit',
-  hour: '2-digit',
-  minute: '2-digit',
-  second: '2-digit',
-  hour12: false
-});
 ---
 
 <html lang="zh-CN"> <head>
@@ -86,36 +76,13 @@ const buildTime = new Date().toLocaleString('zh-CN', {
         <slot/>
       </div>
       
-      <section class="mt-12 p-6 border-t border-dashed border-zinc-300 dark:border-zinc-700 no-print">
-        <p class="text-sm font-medium mb-4 italic">喜欢这篇文章吗？</p>
-        <div class="flex flex-wrap gap-4">
-          <button 
-             onclick="window.scrollTo({top: 0, behavior: 'smooth'})"
-             class="px-3 py-1 text-xs border border-zinc-400 rounded-full hover:bg-zinc-200 dark:hover:bg-zinc-800 transition-all"
-          >
-            ↑ 回到顶部
-          </button>
-          <button 
-            id="share-btn"
-            class="px-3 py-1 text-xs bg-zinc-900 text-zinc-100 dark:bg-zinc-100 dark:text-zinc-900 rounded-full hover:opacity-80 transition-all"
-          >
-            📢 分享文章
-          </button>
-        </div>
-      </section>
+      
 
       <footer class="mt-20 p-8 text-sm text-zinc-500">
         <p>© {new Date().getFullYear()} {SITE_TITLE}. All rights reserved.</p>
-        <p class="mt-2 text-xs opacity-70">
-          Last Build: <span class="font-mono">{buildTime}</span>
-        </p>
       </footer>
     </main>
-
-    <div id="share-overlay" class="fixed inset-0 bg-black/70 z-[99] hidden flex-col items-end p-6 text-white text-right">
-       <div class="mb-4 text-xl">点击右上角菜单分享给好友 <span class="text-4xl">↗</span></div>
-       <button id="close-overlay" class="mt-10 self-center px-6 py-2 border border-white rounded-full">知道了</button>
-    </div>
+  <Footer/>
 
   </body>
 </html>

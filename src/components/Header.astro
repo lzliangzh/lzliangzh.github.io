@@ -3,7 +3,7 @@ import ThemeToggle from "./ThemeToggle.astro";
 ---
 
 <header 
-  class="fixed top-0 left-0 z-[99] w-full px-5 py-2.5 flex items-center justify-between backdrop-blur-md bg-stone-100 dark:bg-zinc-900/80 lg:bg-transparent lg:dark:bg-transparent md:backdrop-blur-none" 
+  class="fixed no-print top-0 left-0 z-[99] w-full px-5 py-2.5 flex items-center justify-between backdrop-blur-md bg-stone-100 dark:bg-zinc-900/80 lg:bg-transparent lg:dark:bg-transparent md:backdrop-blur-none" 
   transition:name="header"
 >
   <nav class="flex items-center gap-5">
@@ -16,7 +16,8 @@ import ThemeToggle from "./ThemeToggle.astro";
     </a>
 
     <div class="flex items-center gap-4">
-      <a href="/posts">文章</a>
+      <a href="/blog">博客</a>
+      <a href="/posts">归档</a>
       <a href="/tags">合集</a>
     </div>
   </nav>

@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "e863babef2b2620f",
+        "id": "ab2a856a1ddaf8d3",
         "type": "tabs",
         "children": [
           {
-            "id": "3e513f5ca1e08756",
+            "id": "720ed84b68d95f20",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "posts/Hangzhou-2026-01.md",
+                "file": "posts/whoami.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Hangzhou-2026-01"
+              "title": "whoami"
             }
           }
         ]
@@ -168,28 +168,39 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "3e513f5ca1e08756",
+  "active": "720ed84b68d95f20",
   "lastOpenFiles": [
-    "posts/RLHF-1-PPO.md",
+    "杂项文档/SKILL.md.md",
+    "杂项文档/lexical-semantics.md",
+    "杂项文档/Film-Project.md",
+    "杂项文档/draft.md",
+    "杂项文档/学年论文提纲.md",
+    "杂项文档/未命名 1.md",
+    "杂项文档/未命名.md",
+    "杂项文档/Paper - Geometry-Aware In-Context Learning.md",
+    "杂项文档/Charge into 2026.md",
+    "集合论与图论学习/Lec00.md",
     "posts/Hangzhou-2026-01.md",
+    "杂项文档/2026-init-snow.md",
+    "杂项文档/挑战杯实施方案.md",
+    "待发posts/yuan-bao.md",
+    "杂项文档/workflow.md",
+    "杂项文档/stocks-technical.md",
+    "杂项文档/stocks-quant.md",
+    "杂项文档/stocks-init.md",
+    "杂项文档/image-20250926104819672.md",
+    "杂项文档/consistency-report.md",
+    "未命名.md",
+    "待发posts",
+    "杂项文档",
+    "未命名 2.md",
+    "集合论与图论学习",
+    "未命名 3.md",
+    "posts/RLHF-1-PPO.md",
     "assets/IMG_20260126_121500.jpg",
     "posts/whoami.md",
     "posts/GenAI-diffusion-and-ddpm.md",
-    "posts/Gaussian Shading.md",
-    "image-20250926104819672.md",
-    "consistency-report.md",
-    "posts/index.md",
-    "posts-old/GenAI/Gaussian Shading.md",
-    "posts-old/to-do-list.md",
-    "posts-old/kl-approx.md",
-    "posts-old/daydreaming.md",
-    "posts-old/Tests Are Linear Models.md",
-    "posts-old/Resonate.md",
-    "posts-old/Poetry Taboo.md",
-    "posts-old/Interpretability.md",
-    "posts-old/Hangzhou-2026-01.md",
     "posts-old/GenAI",
-    "posts-old/Chinese Phonetics Final HW.md",
     "posts-old",
     "assets/IMG_20260126_113201.jpg",
     "assets/IMG_20260126_104005.jpg",
@@ -198,23 +209,12 @@
     "assets/IMG_20260125_203148.jpg",
     "assets/IMG_20260125_193922.jpg",
     "assets/IMG_20260125_193401.jpg",
-    "posts/03-Autoencoders.md",
-    "posts/04-Transformer.md",
-    "posts/Charge into 2024.md",
-    "genai-summary.md",
-    "posts/genai-summary.md",
-    "posts-old/GenAI/05-Autoregressive models.md",
     "assets/image-20250926114833272.png",
-    "posts/genai-final.md",
-    "posts-old/GenAI/09-Diffusion.md",
     "assets/image-20251111110029288.png",
     "assets",
     "posts",
     "RL",
     "Archived/trival",
-    "trival",
-    "Archived",
-    "archived",
-    "Pasted image 20251215191200.png.sb-03118320-hbc4NC"
+    "trival"
   ]
 }

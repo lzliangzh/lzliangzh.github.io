@@ -1,0 +1,169 @@
+---
+const buildTime = new Date().toLocaleString('zh-CN', {
+  timeZone: 'Asia/Shanghai',
+  year: 'numeric',
+  month: '2-digit',
+  day: '2-digit',
+  hour: '2-digit',
+  minute: '2-digit',
+  second: '2-digit',
+  hour12: false
+});
+---
+<section class="mt-12 p-6 fixed bottom-0 no-print z-[99] w-full px-5 py-2 flex items-center justify-between backdrop-blur-md bg-stone-100 dark:bg-zinc-900/80 lg:bg-transparent lg:dark:bg-transparent md:backdrop-blur-none">
+    <div class="flex items-center gap-2">
+      <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})"
+         class="w-8 h-8 flex items-center justify-center border border-zinc-400 rounded-full hover:bg-zinc-200 dark:hover:bg-zinc-800 transition-all">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
+      </button>
+            <div class="w-8 h-8 flex items-center justify-center border border-zinc-400 rounded-full cursor-help group relative">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+        <span class="absolute bottom-10 left-0 hidden group-hover:block bg-zinc-800 text-white text-[10px] px-2 py-1 rounded whitespace-nowrap">
+            Build: {buildTime}
+        </span>
+      </div>
+      </div>
+      <div class="flex items-center gap-2">
+      <button id="share-btn"
+        class="w-8 h-8 flex items-center justify-center bg-zinc-900 text-zinc-100 dark:bg-zinc-100 dark:text-zinc-900 rounded-full hover:opacity-80 transition-all">
+        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" x2="12" y1="2" y2="15"/></svg>
+      </button>
+
+      <button id="comment-toggle"
+        onclick="document.getElementById('comment-drawer').classList.toggle('translate-y-full')"
+        class="w-8 h-8 flex items-center justify-center border border-zinc-400 rounded-full hover:bg-zinc-200 dark:hover:bg-zinc-800 transition-all relative z-[110]">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      </button>
+
+
+    </div>
+</div>
+</section>
+
+<div id="comment-drawer" class="fixed inset-x-0 bottom-0 z-[100] transform translate-y-full transition-transform duration-500 ease-in-out flex justify-center px-4">
+    <div class="w-full max-w-2xl bg-stone-100 dark:bg-zinc-900 border-t border-x border-zinc-300 dark:border-zinc-800 h-[65vh] flex flex-col rounded-t-2xl relative">
+        <button onclick="document.getElementById('comment-drawer').classList.add('translate-y-full')" class="absolute top-4 right-4 p-1 opacity-40 hover:opacity-100">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+        </button>
+        <div class="py-3 flex justify-center" onclick="document.getElementById('comment-drawer').classList.add('translate-y-full')">
+            <div class="w-8 h-1 bg-zinc-400/30 rounded-full cursor-pointer"></div>
+        </div>
+        <div class="flex-1 overflow-y-auto px-6 pb-12">
+            <div class="giscus"></div>
+        </div>
+    </div>
+</div>
+
+<div id="share-overlay" class="fixed inset-0 bg-black/70 z-[101] hidden flex-col items-end p-6 text-white text-right">
+   <div class="mb-4 text-xl">点击右上角菜单分享给好友 <span class="text-4xl">↗</span></div>
+   <button id="close-overlay" class="mt-10 self-center px-6 py-2 border border-white rounded-full">知道了</button>
+</div>
+
+<div id="copy-toast" class="fixed bottom-16 left-1/2 -translate-x-1/2 bg-zinc-800 text-white text-xs px-4 py-2 rounded-full opacity-0 transition-opacity pointer-events-none z-[110]">
+    链接已复制到剪贴板
+</div>
+
+<script>
+  const shareBtn = document.getElementById('share-btn');
+  const shareOverlay = document.getElementById('share-overlay');
+  const closeOverlay = document.getElementById('close-overlay');
+  const toast = document.getElementById('copy-toast');
+
+  shareBtn.onclick = function() {
+    // 1. 判断是否为微信浏览器
+    const isWechat = /MicroMessenger/i.test(navigator.userAgent);
+
+    if (isWechat) {
+      // 微信环境：显示遮罩
+      shareOverlay.classList.remove('hidden');
+    } else {
+      // 非微信环境：尝试复制链接
+      const url = window.location.href;
+      navigator.clipboard.writeText(url).then(() => {
+        // 显示复制成功提示
+        toast.classList.replace('opacity-0', 'opacity-100');
+        setTimeout(() => toast.classList.replace('opacity-100', 'opacity-0'), 2000);
+      }).catch(err => {
+        console.error('复制失败', err);
+      });
+    }
+  };
+
+  closeOverlay.onclick = () => shareOverlay.classList.add('hidden');
+</script>
+
+
+<script is:inline>
+  function loadGiscus() {
+    // 如果页面上没有 giscus 容器，直接返回
+    const container = document.querySelector('.giscus');
+    if (!container) return;
+
+    // 清除可能存在的旧评论框内容
+    container.innerHTML = '';
+
+    const script = document.createElement('script');
+    script.src = 'https://giscus.app/client.js';
+    script.setAttribute('data-repo', 'lzliangzh/giscus');
+    script.setAttribute('data-repo-id', 'R_kgDORlZbHA');
+    script.setAttribute('data-category', 'Announcements');
+    script.setAttribute('data-category-id', 'DIC_kwDORlZbHM4C4PlY');
+    script.setAttribute('data-mapping', 'title');
+    script.setAttribute('data-strict', '0');
+    script.setAttribute('data-reactions-enabled', '1');
+    script.setAttribute('data-emit-metadata', '0');
+    script.setAttribute('data-input-position', 'top');
+    
+    // 动态根据当前主题设置 Giscus 主题
+    const theme = localStorage.getItem('theme') === 'dark' ? 'dark' : 'light';
+    script.setAttribute('data-theme', theme);
+    
+    script.setAttribute('data-lang', 'zh-CN');
+    script.setAttribute('data-loading', 'lazy');
+    script.setAttribute('crossorigin', 'anonymous');
+    script.async = true;
+
+    document.head.appendChild(script);
+  }
+
+  // 初次加载
+  loadGiscus();
+
+  // 针对 View Transitions 的导航监听
+  document.addEventListener('astro:after-swap', loadGiscus);
+</script>
+
+<script is:inline>
+  function updateGiscusTheme() {
+    const theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+    
+    function sendMessage(config) {
+      const iframe = document.querySelector('iframe.giscus-frame');
+      if (!iframe) return;
+      iframe.contentWindow.postMessage({ giscus: config }, 'https://giscus.app');
+    }
+
+    sendMessage({
+      setConfig: {
+        theme: theme,
+      },
+    });
+  }
+
+  // 1. 监听来自系统或手动切换的主题变化
+  const observer = new MutationObserver((mutations) => {
+    mutations.forEach((mutation) => {
+      if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+        updateGiscusTheme();
+      }
+    });
+  });
+
+  observer.observe(document.documentElement, { attributes: true });
+
+  // 2. 初始加载完成后尝试同步一次（防止 iframe 加载慢于脚本执行）
+  document.addEventListener('DOMContentLoaded', () => {
+    // 延迟一小会儿确保 iframe 已存在
+    setTimeout(updateGiscusTheme, 2000);
+  });
+</script>
