@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>Zhong Liang</title>
+    <link>https://lzliangzh.github.io</link>
+    <description>Zhong Liang, Peking University</description>
+    <language>en</language>
+    <lastBuildDate>Sat, 03 Oct 2026 06:12:35 +0000</lastBuildDate>
+    <atom:link href="https://lzliangzh.github.io/feed.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>RLHF</title>
+      <link>https://lzliangzh.github.io/Blog/2025-12-08-rlhf-notes/</link>
+      <guid isPermaLink="true">https://lzliangzh.github.io/Blog/2025-12-08-rlhf-notes/</guid>
+      <pubDate>Mon, 08 Dec 2025 00:00:00 +0000</pubDate>
+      <category>Blog</category>
+      <description>四篇 RLHF 笔记的合集：策略梯度与目标函数、Actor-Critic 架构、用 Bradley–Terry 建模人类偏好、以及 DPO 的推导。</description>
+    </item>
+    <item>
+      <title>Charge into 2024</title>
+      <link>https://lzliangzh.github.io/Blog/2023-12-31-charge-into-2024/</link>
+      <guid isPermaLink="true">https://lzliangzh.github.io/Blog/2023-12-31-charge-into-2024/</guid>
+      <pubDate>Sun, 31 Dec 2023 00:00:00 +0000</pubDate>
+      <category>Blog</category>
+      <description>又是一年年关岁末。</description>
+    </item>
+  </channel>
+</rss>

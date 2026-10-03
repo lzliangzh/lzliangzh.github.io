@@ -1,0 +1,416 @@
+/*******************************************************************************
+CUSTOM STYLES
+
+Add your custom CSS styles here to override or extend the default styles.
+*******************************************************************************/
+
+/* ---------------------------------------------------------------------------
+   正文字体：Palatino
+
+   模板默认从 cdnjs 引入 tufte-css，它的 body 用的是 et-book ——
+   一套同样从 CDN 下载的 webfont。这里直接在 body 上覆盖成系统字体，
+   既换成 Palatino，也省掉一次字体请求（不再有 FOUT / font swap）。
+
+   - 英文：Palatino（macOS）→ Palatino Linotype / Book Antiqua（Windows）
+     → URW Palladio L / P052 / Liberation Serif（Linux）→ Georgia → Times
+   - 中文：保持系统默认（macOS 苹方、Windows 微软雅黑），与改动前一致。
+     若想让中文也走宋体（与 Palatino 同为衬线，更统一），把 --font-cjk 换成：
+       "Source Han Serif CN", "Noto Serif CJK SC", "Songti SC", SimSun, serif
+   --------------------------------------------------------------------------- */
+
+:root {
+  --font-serif-en: Palatino, "Palatino Linotype", "Palatino LT STD",
+    "Book Antiqua", "URW Palladio L", P052, "Liberation Serif", "DejaVu Serif",
+    Georgia, "Times New Roman", serif;
+  --font-cjk: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
+    "Noto Sans CJK SC", "Source Han Sans CN", sans-serif;
+}
+
+body {
+  font-family: var(--font-serif-en), var(--font-cjk);
+}
+
+/* 边注编号原本单独指定 et-book 的旧式数字，一并换成正文字体 */
+.numeral,
+.sidenote-number::after,
+.sidenote::before {
+  font-family: var(--font-serif-en), var(--font-cjk);
+}
+
+/* ---------------------------------------------------------------------------
+   内联 SVG 插图
+
+   由 content/_lib/figures.typ 生成，笔画统一用 currentColor，
+   因此深浅色切换时会自动跟随正文颜色，不需要任何反色处理。
+   这里只负责让它随栏宽等比缩放（viewBox 已在 Typst 侧写好）。
+   --------------------------------------------------------------------------- */
+
+figure svg.figure-svg,
+.marginnote svg.figure-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+/* 正文栏里的示意图限制上限，避免小图被拉满栏宽显得空旷。
+   full-width 区块里的图（如时间线）不受此限制。 */
+figure svg.figure-svg {
+  max-width: 20rem;
+  margin: 0.6rem 0 0.4rem;
+}
+
+.fullwidth figure svg.figure-svg,
+.fullwidth svg.figure-svg {
+  max-width: 100%;
+}
+
+/* ---------------------------------------------------------------------------
+   News 外框
+
+   由 content/_lib/news.typ 的 #news(…) 生成：
+     <div class="news-box"><strong>News</strong>
+       <ul class="news-list">
+         <li><span class="news-date">…</span><span class="news-text">…</span></li>
+    每条 News 是独立的 <li>，才能用 CSS 画出纵向时间线的轴线与节点。
+   边框与轴线都用 currentColor，深浅色模式下自动跟随正文颜色，不需要写两套。
+   --------------------------------------------------------------------------- */
+
+.news-box {
+  box-sizing: border-box;
+  max-width: 100%;
+  margin: 1.6em 0;
+  padding: 0.9em 1.1em;
+  /* 简洁的单线边框。用 currentColor 而不是写死黑色：
+     浅色模式下它等于正文色（近黑），深色模式下自动变成浅灰，一套规则通吃。 */
+  border: 2px solid currentColor;
+  /* 与正文段落对齐 —— Tufte 只给 dl/ol/p/ul 设了 1.4rem/2rem，
+     div 不在这个列表里，不显式写就会继承成 1rem，比正文小约三成。 */
+  font-size: 1.4rem;
+  line-height: 2rem;
+  /* 时间线左侧有固定的日期列，两端对齐会把短句拉成满行 */
+  text-align: left;
+  /* 日期列宽度，以及「日期→轴线」「轴线→正文」两段间隙。
+     轴线与节点的位置都由这三个值算出，改这里即可整体调间距。 */
+  --news-date-w: 4.4em;
+  --news-axis-gap: 0.55em;
+  --news-text-gap: 0.85em;
+}
+
+/* 宽屏下与正文栏同宽：模板把正文栏设为 section 宽度的 55%
+   （--sidenote-content-width 只在 ≥761px 时定义，窄屏保持 100%） */
+@media (min-width: 761px) {
+  .news-box {
+    max-width: calc(100% * var(--sidenote-content-width, 0.55));
+  }
+}
+
+/* 让「News」单独成行，和下面的条目拉开距离 */
+.news-box > strong:first-child {
+  display: block;
+  margin-bottom: 0.5em;
+  letter-spacing: 0.03em;
+}
+
+/* 纵向时间线 -------------------------------------------------------------
+   每条 News 是一个两列网格：左边固定宽的日期列，右边自适应正文列。
+   轴线是正文列左边缘的一条 1px 竖线；因为竖线画在 .news-text 上、
+   而条目间距用的是 .news-text 自己的 padding-bottom，
+   所以相邻条目的竖线首尾相接，不会出现断口。
+   节点（小圆点）挂在日期列右侧，圆心正好落在轴线上。
+   --------------------------------------------------------------------- */
+
+ul.news-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+ul.news-list > li {
+  display: grid;
+  grid-template-columns: var(--news-date-w) 1fr;
+  column-gap: var(--news-axis-gap);
+}
+
+/* 日期：等宽数字对齐，弱化成次要信息 */
+.news-date {
+  position: relative;      /* 节点以此为定位基准 */
+  opacity: 0.65;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+/* 正文：左内边距让出轴线到文字的距离，下内边距作为条目间距 */
+.news-text {
+  position: relative;      /* 轴线以此为定位基准 */
+  padding-left: var(--news-text-gap);
+  padding-bottom: 0.5em;
+}
+
+/* 轴线 */
+.news-text::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: currentColor;
+  opacity: 0.25;
+}
+
+/* 首尾两端收口：轴线只画到第一个/最后一个节点的高度为止，不留多余线头 */
+ul.news-list > li:first-child .news-text::before {
+  top: 1rem;               /* 行高 2rem → 第一行正中 */
+}
+ul.news-list > li:last-child .news-text::before {
+  bottom: calc(100% - 1rem);
+}
+
+/* 节点：空心小圆点，底色用页面背景遮住轴线，看起来像线穿过珠子 */
+.news-date::after {
+  content: "";
+  position: absolute;
+  box-sizing: border-box;
+  top: calc(1rem - 3.5px);
+  right: calc(-1 * var(--news-axis-gap) - 3.5px);
+  width: 7px;
+  height: 7px;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  background: var(--theme-bg, #fffff8);
+}
+
+/* ---------------------------------------------------------------------------
+   边栏里的图片（如头像）
+
+   Typst 会把 image() 的自然尺寸写进 width/height 属性，边栏只有正文四分之一宽，
+   不约束的话会撑破版面。这里统一让它跟随栏宽等比缩放。
+   --------------------------------------------------------------------------- */
+
+.marginnote img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 3px;
+}
+
+/* ---------------------------------------------------------------------------
+   正文对齐与断行：按页面语言区分
+
+   html 的 lang 由 config.typ 的 lang 决定，单页可用
+   `template.with(lang: "en")` 覆盖。
+
+   两种页面都用两端对齐，区别在于英文从哪儿拿断词词典：
+
+   - 英文页（lang="en"）：整页就是英文，直接对 p/li/blockquote 开
+     hyphens: auto 即可。若浏览器不支持自动断词，退回左对齐 ——
+     英文不断词就两端对齐会在词间拉出难看的空隙（river）。
+   - 中文页（lang="zh"）：CJK 可在任意字符间断行，不需要断词就能对齐
+     得很均匀；页面里内嵌的英文片段由 build.py 自动套上
+     <span lang="en">，从而单独启用英文断词词典。
+   --------------------------------------------------------------------------- */
+
+/* 英文页：两端对齐（断词能力由下面的 @supports 判断） */
+html[lang="en"] article p,
+html[lang="en"] article li,
+html[lang="en"] article blockquote {
+  text-align: justify;
+  /* 超长英文单词 / URL 兜底断行，避免撑破两端对齐的版面 */
+  overflow-wrap: break-word;
+}
+
+/* 支持自动断词：启用断词，保持两端对齐 */
+@supports ((hyphens: auto) or (-webkit-hyphens: auto)) {
+  html[lang="en"] article p,
+  html[lang="en"] article li,
+  html[lang="en"] article blockquote {
+    hyphens: auto;
+    -webkit-hyphens: auto;
+    /* 只在足够长的单词上断，且前后各留至少 3 个字符 */
+    hyphenate-limit-chars: 6 3 3;
+  }
+}
+
+/* 不支持自动断词：退回左对齐，避免出现 river */
+@supports not ((hyphens: auto) or (-webkit-hyphens: auto)) {
+  html[lang="en"] article p,
+  html[lang="en"] article li,
+  html[lang="en"] article blockquote {
+    text-align: left;
+  }
+}
+
+/* 中文页：两端对齐 */
+html[lang="zh"] article p,
+html[lang="zh"] article li,
+html[lang="zh"] article blockquote {
+  text-align: justify;
+  text-justify: inter-ideograph;
+  /* 超长英文单词 / URL 兜底断行，避免撑破两端对齐的版面 */
+  overflow-wrap: break-word;
+}
+
+/* 中文页里内嵌的英文片段：自动断词。
+   这里的 [lang="en"] 由 build.py 的 _mark_english_runs() 自动注入 ——
+   Typst 的 HTML 导出不会为 #text(lang: "en") 输出 lang 属性，只能后处理。 */
+html[lang="zh"] article [lang="en"] {
+  hyphens: auto;
+  -webkit-hyphens: auto;
+  /* 只在足够长的单词上断，且前后各留至少 3 个字符 */
+  hyphenate-limit-chars: 6 3 3;
+}
+
+/* 等宽代码、公式：不参与两端对齐与断词
+   （边注已改为两端对齐，见下面「边注排版」一节） */
+article pre,
+article code,
+article kbd,
+article samp {
+  text-align: left;
+  hyphens: none;
+  -webkit-hyphens: none;
+}
+
+/* ---------------------------------------------------------------------------
+   列表里的块级公式
+
+   Typst 把独立成行的公式导出成 <figure class="math-block">，模板给它的样式是
+   width: 55%; font-size: 1.4em。这两条在顶层是对的，但放进列表就双重缩水/放大：
+   - tufte.css 里 `section > ol/ul { width: 50%; padding-inline-start: 5% }`，
+     所以 li 的内容盒只有正文栏的 50%/55% ≈ 0.9 倍；再乘上 55% 就只剩
+     半栏左右，长公式只能横向滚动。
+   - tufte.css 里 `dl, ol, p, ul { font-size: 1.4rem }`，li 继承成 1.4rem，
+     而 .math-block 又写 1.4em —— em 相对父级，于是被放大到 1.4 × 1.4rem，
+     比正文里的公式大 40%。
+   修法与模板自己处理引用块一致（tufted.css 里那条
+   `div[style*="border-inline-start"] > figure.math-block`）：宽度放回 100%，
+   字号改 1em —— 父级已经是 1.4rem，1em 正好等于顶层公式的 1.4rem。
+   --------------------------------------------------------------------------- */
+
+li > figure.math-block,
+ul figure.math-block,
+ol figure.math-block,
+dl figure.math-block {
+  width: 100%;
+  max-width: 100%;
+  font-size: 1em;
+}
+
+/* 边注里若放公式，同理：不要只占边注栏的 55% */
+.marginnote figure.math-block {
+  width: 100%;
+  max-width: 100%;
+  font-size: 1em;
+}
+
+/* ---------------------------------------------------------------------------
+   边注内的块级内容：figure、有序/无序列表
+
+   为什么需要单独写：
+   - tufte.css 只给「section 的直接子列表」定了宽度（50%），边注里的 <ul>/<ol>
+     不受它约束，于是退回到浏览器的默认缩进 40px —— 在只有正文栏 27.5% 宽的
+     边注里，这个缩进会吃掉一大半可用宽度。
+   - tufte.css 的 `dl, ol, p, ul { font-size: 1.4rem; line-height: 2rem }`
+     会把边注里的列表/段落强行拉回正文字号，比边注正文（1.1rem）大一圈，
+     行距也跟着变松。
+   - figure 默认 `max-width: 55%`，放在边注里就只剩半栏宽。
+   这里统一改成「跟随边注自己的字号、缩进缩进到 1.4em、figure 占满边注栏」。
+
+   注意：边注本体是 <span class="marginnote">，理论上 HTML 不允许 span 里放
+   figure/ul 这类块级元素；但因为它带 float:right，浏览器会把它块级化，
+   实际渲染没问题。模板用 span 是故意的 —— 边注必须内联嵌在 <p> 中间做锚点，
+   换成 div 会让浏览器把 <p> 提前闭合，反而排版错乱。
+   --------------------------------------------------------------------------- */
+
+.marginnote figure {
+  max-width: 100%;
+  margin: 0.4em 0;
+}
+
+.marginnote p,
+.marginnote ul,
+.marginnote ol,
+.marginnote dl {
+  font-size: inherit;      /* 跟随边注的 1.1rem，别被 tufte 的 1.4rem 拉大 */
+  line-height: inherit;    /* 跟随边注的 1.3 */
+  margin: 0.35em 0;
+}
+
+.marginnote ul,
+.marginnote ol,
+.marginnote dl {
+  padding-inline-start: 1.4em;   /* 覆盖浏览器默认的 40px 缩进 */
+}
+
+.marginnote li {
+  margin-top: 0.15em;
+}
+
+/* ---------------------------------------------------------------------------
+   边注排版：两端对齐 + 英文自动断词
+
+   与正文用同一套规则，按页面语言分别处理：
+   英文页直接开 hyphens；中文页靠 build.py 注入的 <span lang="en"> 单独断词。
+   只有最后一行会保持左对齐，这是两端对齐的正常表现。
+   --------------------------------------------------------------------------- */
+
+html[lang="en"] article .marginnote {
+  text-align: justify;
+  overflow-wrap: break-word;
+}
+
+@supports ((hyphens: auto) or (-webkit-hyphens: auto)) {
+  html[lang="en"] article .marginnote {
+    hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphenate-limit-chars: 6 3 3;
+  }
+}
+
+html[lang="zh"] article .marginnote {
+  text-align: justify;
+  text-justify: inter-ideograph;
+  overflow-wrap: break-word;
+}
+
+html[lang="zh"] article .marginnote [lang="en"] {
+  hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphenate-limit-chars: 6 3 3;
+}
+
+/* ---------------------------------------------------------------------------
+   紧凑图（tufted.compacted-figure）
+
+   模板默认把图注渲染成 .marginnote 浮到边注栏、图片留在正文栏；
+   compacted-figure 改成 <figure><img><figcaption></figure>，图注紧贴图片下方。
+   但 tufte.css 给 figcaption 的样式是为了「飘到边注栏」设计的
+   （float:right; clear:right; max-width:40%; position:relative），
+   这里全部取消，让它回到图片下方的正常文档流。
+   --------------------------------------------------------------------------- */
+
+figure.compacted-figure {
+  margin: 1em 0;
+}
+
+figure.compacted-figure figcaption {
+  float: none;
+  clear: none;
+  position: static;
+  max-width: none;
+  margin: 0.5em 0 0;
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
+
+/* 放在边注里时：跟随边注自己的字号，间距也收紧 */
+.marginnote figure.compacted-figure {
+  margin: 0.5em 0;
+}
+
+.marginnote figure.compacted-figure figcaption {
+  font-size: inherit;
+  margin-top: 0.35em;
+}
